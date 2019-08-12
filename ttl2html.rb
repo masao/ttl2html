@@ -174,18 +174,22 @@ class TTL2HTML
 end
 
 if $0 == __FILE__
-  ttl2html = TTL2HTML.new
-  opt_cleanup = false
   require "getoptlong"
   parser = GetoptLong.new
   parser.set_options(
-    ['--cleanup', GetoptLong::NO_ARGUMENT]
+    ['--cleanup', GetoptLong::NO_ARGUMENT],
+    ['--config',  GetoptLong::REQUIRED_ARGUMENT],
   )
+  opt_cleanup = false
+  opt_config = "config.yml"
   parser.each_option do |optname, optarg|
     if optname == "--cleanup"
       opt_cleanup = true
+    elsif optname == "--config"
+      opt_config = optarg
     end
   end
+  ttl2html = TTL2HTML.new(opt_config)
   ARGV.each do |file|
     ttl2html.load_turtle(file)
   end
