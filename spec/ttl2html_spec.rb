@@ -22,5 +22,11 @@ RSpec.describe TTL2HTML do
         ttl2html.output_html_files
       }.not_to raise_error
     end
+    it "should respect output dir" do
+      ttl2html = TTL2HTML.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      expect(File.exist?("/tmp/html/a")).to be true
+    end
   end
 end

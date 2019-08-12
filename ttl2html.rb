@@ -33,6 +33,7 @@ class PageTemplate
   end
   def to_html_raw(template, param)
     @param = @param.merge(param)
+    template = File.join(File.dirname(__FILE__), template)
     tmpl = open(template){|io| io.read }
     erb = ERB.new(tmpl, $SAFE, "-")
     erb.filename = template
@@ -131,6 +132,10 @@ class TTL2HTML
   end
 
   def output_html_files
+    if @config[:output_dir]
+      Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
+      Dir.chdir @config[:output_dir]
+    end
     @data.each do |uri, v|
       next if not uri.start_with? @config[:base_uri]
       template = PageTemplate.new("templates/default.html.erb")
