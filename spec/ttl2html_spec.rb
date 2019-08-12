@@ -9,6 +9,8 @@ RSpec.describe TTL2HTML do
     it "should accept an argument" do
       ttl2html = TTL2HTML.new("config.yml")
       expect(ttl2html).not_to be_nil
+      ttl2html = TTL2HTML.new(File.join(File.dirname(__FILE__), "example/example.yml"))
+      expect(ttl2html).not_to be_nil
     end
   end
   context "#output_html_files" do
