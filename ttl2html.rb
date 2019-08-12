@@ -139,8 +139,13 @@ class TTL2HTML
       param[:data] = v
       param[:data_global] = @data
       param[:title] = template.get_title(v)
+      if @data.keys.find{|e| e.start_with?(uri + "/") }
+        file = uri + "/index.html"
+      else
+        file = uri + ".html"
+      end
       #p uri, param
-      file = uri.sub(@config[:base_uri], "")
+      file = file.sub(@config[:base_uri], "")
       STDERR.puts "output_to #{file}"
       template.output_to(file, param)
     end
