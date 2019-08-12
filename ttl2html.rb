@@ -155,12 +155,43 @@ class TTL2HTML
       template.output_to(file, param)
     end
   end
+  def cleanup
+    if @config[:output_dir]
+      Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
+      Dir.chdir @config[:output_dir]
+    end
+    @data.each do |uri, v|
+      next if not uri.start_with? @config[:base_uri]
+      if @data.keys.find{|e| e.start_with?(uri + "/") }
+        file = uri + "/index.html"
+      else
+        file = uri + ".html"
+      end
+      file = file.sub(@config[:base_uri], "")
+      File.unlink file
+    end
+  end
 end
 
 if $0 == __FILE__
   ttl2html = TTL2HTML.new
+  opt_cleanup = false
+  require "getoptlong"
+  parser = GetoptLong.new
+  parser.set_options(
+    ['--cleanup', GetoptLong::NO_ARGUMENT]
+  )
+  parser.each_option do |optname, optarg|
+    if optname == "--cleanup"
+      opt_cleanup = true
+    end
+  end
   ARGV.each do |file|
     ttl2html.load_turtle(file)
   end
-  ttl2html.output_html_files
+  if opt_cleanup
+    ttl2html.cleanup
+  else
+    ttl2html.output_html_files
+  end
 end

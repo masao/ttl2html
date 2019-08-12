@@ -31,4 +31,14 @@ RSpec.describe TTL2HTML do
       expect(File.exist?("/tmp/html/a/b.html")).to be true
     end
   end
+  context "#cleanup" do
+    it "should cleanup" do
+      ttl2html = TTL2HTML.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      expect(File.exist?("/tmp/html/a/b.html")).to be true
+      ttl2html.cleanup
+      expect(File.exist?("/tmp/html/a/b.html")).to be false
+    end
+  end
 end
