@@ -90,16 +90,16 @@ end
 
 class TTL2HTML
   using ProgressBar::Refinements::Enumerator
-  def initialize
+  def initialize(config = "config.yml")
     @template = {}
-    @config = load_config
+    @config = load_config(config)
     if not @config[:base_uri]
       raise "load_config: base_uri not found"
     end
     @data = {}
   end
 
-  def load_config(file = "config.yml")
+  def load_config(file)
     config = {}
     YAML.load_file(file).each do |k, v|
       config[k.intern] = v
