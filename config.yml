@@ -1,0 +1,5 @@
+site_title: 教科書LOD
+base_uri: https://w3id.org/jp-textbook/
+labels:
+  http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Type
+  http://schema.org/name: Title
