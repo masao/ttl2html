@@ -89,6 +89,7 @@ class PageTemplate
 end
 
 class TTL2HTML
+  using ProgressBar::Refinements::Enumerator
   def initialize
     @template = {}
     @config = load_config
@@ -130,7 +131,6 @@ class TTL2HTML
   end
 
   def output_html_files
-    using ProgressBar::Refinements::Enumerator
     @data.each do |uri, v|
       next if not uri.start_with? @config[:base_uri]
       template = PageTemplate.new("templates/default.html.erb")
