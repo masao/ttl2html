@@ -48,8 +48,10 @@ RSpec.describe TTL2HTML do
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
       ttl2html.output_html_files
       expect(File.exist?("/tmp/html/a/b.html")).to be true
+      expect(File.exist?("/tmp/html/a/b.ttl")).to be true
       ttl2html.cleanup
       expect(File.exist?("/tmp/html/a/b.html")).to be false
+      expect(File.exist?("/tmp/html/a/b.ttl")).to be false
     end
   end
 end

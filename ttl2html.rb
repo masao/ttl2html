@@ -197,7 +197,7 @@ class TTL2HTML
       end
       #p uri, param
       file = file.sub(@config[:base_uri], "")
-      STDERR.puts "output_to #{file}"
+      #STDERR.puts "output_to #{file}"
       template.output_to(file, param)
     end
   end
@@ -218,8 +218,11 @@ class TTL2HTML
       else
         file = uri + ".html"
       end
-      file = file.sub(@config[:base_uri], "")
-      File.unlink file
+      html_file = file.sub(@config[:base_uri], "")
+      File.unlink html_file
+
+      ttl_file = uri.sub(@config[:base_uri], "") + ".ttl"
+      File.unlink ttl_file
     end
   end
 end
