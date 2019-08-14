@@ -131,13 +131,18 @@ class TTL2HTML
     @data
   end
 
-  def output_html_files
+  def each_data
     if @config[:output_dir]
       Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
       Dir.chdir @config[:output_dir]
     end
     @data.each do |uri, v|
       next if not uri.start_with? @config[:base_uri]
+      yield uri, v
+    end
+  end
+  def output_html_files
+    each_data do |uri, v|
       template = PageTemplate.new("templates/default.html.erb")
       param = @config.dup
       param[:uri] = uri
@@ -156,12 +161,7 @@ class TTL2HTML
     end
   end
   def cleanup
-    if @config[:output_dir]
-      Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
-      Dir.chdir @config[:output_dir]
-    end
-    @data.each do |uri, v|
-      next if not uri.start_with? @config[:base_uri]
+    each_data do |uri, v|
       if @data.keys.find{|e| e.start_with?(uri + "/") }
         file = uri + "/index.html"
       else
