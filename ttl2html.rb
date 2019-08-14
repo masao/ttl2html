@@ -98,6 +98,7 @@ class TTL2HTML
       raise "load_config: base_uri not found"
     end
     @data = {}
+    @graph = RDF::Graph.new
   end
 
   def load_config(file)
@@ -113,6 +114,7 @@ class TTL2HTML
     count = 0
     RDF::Turtle::Reader.open(file) do |reader|
       reader.statements.each do |statement|
+        @graph.insert(statement)
         s = statement.subject
         v = statement.predicate
         o = statement.object
@@ -129,6 +131,45 @@ class TTL2HTML
     end
     STDERR.puts "#{count} triples. #{@data.size} subjects."
     @data
+  end
+  def format_turtle(subject, depth = 1)
+    turtle = RDF::Turtle::Writer.new
+    result = ""
+    if subject.iri?
+      result << "<#{subject}>\n#{"  "*depth}"
+    else
+      result << "[\n#{"  "*depth}"
+    end
+    result << @graph.query([subject, nil, nil]).predicates.sort.map do |predicate|
+      str = "<#{predicate}> "
+      str << @graph.query([subject, predicate, nil]).objects.sort_by do |object|
+        if object.resource? and not object.iri? # blank node:
+          i@graph.query([object, nil, nil]).statements.sort_by{|e|
+            [ e.predicate, e.object ]
+          }.map{|e|
+            [ e.predicate, e.object ]
+          }
+        else
+          object
+        end
+      end.map do |object|
+        if object.resource? and not object.iri? # blank node:
+          format_turtle(object, depth + 1)
+        else
+          case object
+          when RDF::URI
+            turtle.format_uri(object)
+          else
+            turtle.format_literal(object)
+          end
+        end
+      end.join(", ")
+      str
+    end.join(";\n#{"  "*depth}")
+    result << " ." if subject.iri?
+    result << "\n"
+    result << "#{"  "*(depth-1)}]" if not subject.iri?
+    result
   end
 
   def each_data
@@ -158,6 +199,16 @@ class TTL2HTML
       file = file.sub(@config[:base_uri], "")
       STDERR.puts "output_to #{file}"
       template.output_to(file, param)
+    end
+  end
+  def output_turtle_files
+    each_data do |uri, v|
+      file = uri.sub(@config[:base_uri], "")
+      file << ".ttl"
+      str = format_turtle(RDF::URI.new uri)
+      open(file, "w") do |io|
+        io.puts str.strip
+      end
     end
   end
   def cleanup
@@ -197,5 +248,6 @@ if $0 == __FILE__
     ttl2html.cleanup
   else
     ttl2html.output_html_files
+    ttl2html.output_turtle_files
   end
 end
