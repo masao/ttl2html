@@ -33,7 +33,7 @@ class PageTemplate
   end
   def to_html_raw(template, param)
     @param = @param.merge(param)
-    template = File.join(File.dirname(__FILE__), template)
+    template = File.join(File.dirname(__FILE__), "..", template)
     tmpl = open(template){|io| io.read }
     erb = ERB.new(tmpl, $SAFE, "-")
     erb.filename = template

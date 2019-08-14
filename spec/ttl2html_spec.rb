@@ -1,5 +1,3 @@
-require_relative "../ttl2html"
-
 RSpec.describe TTL2HTML do
   spec_base_dir = File.dirname(__FILE__)
   context "#new" do
