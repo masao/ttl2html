@@ -61,6 +61,7 @@ class PageTemplate
     ).each do |property|
       return data[property].first if data[property]
     end
+    "no title"
   end
   def format_property(property, labels)
     if labels and labels[property]

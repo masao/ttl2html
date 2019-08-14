@@ -30,6 +30,14 @@ RSpec.describe TTL2HTML do
       expect(File.exist?("/tmp/html/a/index.html")).to be true
       expect(File.exist?("/tmp/html/a/b.html")).to be true
     end
+    it "should respect title property" do
+      ttl2html = TTL2HTML.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = File.open("/tmp/html/a/b.html").read
+      html = Capybara.string cont
+      expect(html).to have_title("no title")
+    end
   end
   context "#output_turtle_files" do
     it "should generate files" do
