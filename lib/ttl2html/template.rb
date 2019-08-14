@@ -5,15 +5,15 @@ require "pathname"
 require "erb"
 
 module TTL2HTML
-  class PageTemplate
+  class Template
     attr_reader :param
     include ERB::Util
-    def initialize(template)
+    def initialize(template, param = {})
       @template = template
-      @param = {}
-    end
-    def output_to(file, param)
       @param = param
+    end
+    def output_to(file, param = {})
+      @param = @param.update(param)
       @param[:output_file] = file
       dir = File.dirname(file)
       FileUtils.mkdir_p(dir) if not File.exist?(dir)
@@ -27,7 +27,7 @@ module TTL2HTML
       to_html_raw(layout_fname, param)
     end
     def to_html_raw(template, param)
-      @param = @param.merge(param)
+      @param = @param.update(param)
       template = File.join(File.dirname(__FILE__), "..", "..", template)
       tmpl = open(template){|io| io.read }
       erb = ERB.new(tmpl, $SAFE, "-")
@@ -43,8 +43,12 @@ module TTL2HTML
       path
     end
     def relative_path_uri(dest_uri, base_uri)
-      dest = dest_uri.sub(base_uri, "")
-      relative_path(dest)
+      if dest_uri.start_with? base_uri
+        dest = dest_uri.sub(base_uri, "")
+        relative_path(dest)
+      else
+        dest_uri
+      end
     end
     def get_title(data)
       %w(
@@ -80,8 +84,8 @@ module TTL2HTML
       end
     end
     def format_triples(triples)
-      template = PageTemplate.new("templates/triples.html.erb")
-      template.to_html_raw("templates/triples.html.erb", param.update({data: triples}))
+      template = Template.new("templates/triples.html.erb", @param)
+      template.to_html_raw("templates/triples.html.erb", data: triples)
     end
   end
 end

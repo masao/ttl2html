@@ -5,7 +5,7 @@ require "nokogiri"
 require "rdf/turtle"
 require "ruby-progressbar"
 
-require "ttl2html/pagetemplate"
+require "ttl2html/template"
 
 module TTL2HTML
   class App
@@ -92,6 +92,7 @@ module TTL2HTML
     end
 
     def each_data
+      cwd = Dir.pwd
       if @config[:output_dir]
         Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
         Dir.chdir @config[:output_dir]
@@ -100,10 +101,11 @@ module TTL2HTML
         next if not uri.start_with? @config[:base_uri]
         yield uri, v
       end
+      Dir.chdir cwd
     end
     def output_html_files
       each_data do |uri, v|
-        template = PageTemplate.new("templates/default.html.erb")
+        template = Template.new("templates/default.html.erb")
         param = @config.dup
         param[:uri] = uri
         param[:data] = v

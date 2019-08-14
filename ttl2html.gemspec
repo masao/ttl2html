@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Static site generator for RDF/Turtle"
   s.authors     = ["Masao Takaku"]
   s.email       = 'tmasao@acm.org'
-  s.files       = [ "lib/ttl2html.rb", "lib/ttl2html/version.rb" ]
+  s.files       = [ "lib/ttl2html.rb", "lib/ttl2html/version.rb", "lib/ttl2html/template.rb" ]
   s.files       += Dir["templates/*"]
   s.executables << "ttl2html"
   s.homepage    = 'https://github.org/masao/ttl2html'
