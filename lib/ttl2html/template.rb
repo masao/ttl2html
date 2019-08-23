@@ -11,6 +11,7 @@ module TTL2HTML
     def initialize(template, param = {})
       @template = template
       @param = param
+      @template_path = [ Dir.pwd, File.join(Dir.pwd, "templates") ]
     end
     def output_to(file, param = {})
       @param = @param.update(param)
@@ -23,21 +24,34 @@ module TTL2HTML
     end
     def to_html(param)
       param[:content] = to_html_raw(@template, param)
-      layout_fname = "templates/layout.html.erb"
+      layout_fname = "layout.html.erb"
       to_html_raw(layout_fname, param)
     end
     def to_html_raw(template, param)
       @param = @param.update(param)
-      template = File.join(File.dirname(__FILE__), "..", "..", template)
+      template = find_template_path(template)
       tmpl = open(template){|io| io.read }
       erb = ERB.new(tmpl, $SAFE, "-")
       erb.filename = template
       erb.result(binding)
     end
+
+    def find_template_path(fname)
+      if @param[:template_dir] and Dir.exist?(@param[:template_dir])
+        @template_path.unshift(@param[:template_dir])
+        @template_path.uniq!
+      end
+      @template_path.each do |dir|
+        file = File.join(dir, fname)
+        return file if File.exist? file
+      end
+      return nil
+    end
   
     # helper method:
     def relative_path(dest)
       src = @param[:output_file]
+      src = Pathname.new(src).relative_path_from(@param[:output_dir]) if @param[:output_dir]
       path = Pathname(dest).relative_path_from(Pathname(File.dirname src))
       path = path.to_s + "/" if File.directory? path
       path

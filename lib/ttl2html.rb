@@ -92,20 +92,14 @@ module TTL2HTML
     end
 
     def each_data
-      cwd = Dir.pwd
-      if @config[:output_dir]
-        Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
-        Dir.chdir @config[:output_dir]
-      end
       @data.each do |uri, v|
         next if not uri.start_with? @config[:base_uri]
         yield uri, v
       end
-      Dir.chdir cwd
     end
     def output_html_files
       each_data do |uri, v|
-        template = Template.new("templates/default.html.erb")
+        template = Template.new("default.html.erb")
         param = @config.dup
         param[:uri] = uri
         param[:data] = v
@@ -118,7 +112,10 @@ module TTL2HTML
         end
         #p uri, param
         file = file.sub(@config[:base_uri], "")
-        #STDERR.puts "output_to #{file}"
+        if @config[:output_dir]
+          Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
+          file = File.join(@config[:output_dir], file)
+        end
         template.output_to(file, param)
       end
     end
@@ -126,6 +123,10 @@ module TTL2HTML
       each_data do |uri, v|
         file = uri.sub(@config[:base_uri], "")
         file << ".ttl"
+        if @config[:output_dir]
+          Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
+          file = File.join(@config[:output_dir], file)
+        end
         str = format_turtle(RDF::URI.new uri)
         open(file, "w") do |io|
           io.puts str.strip
@@ -140,8 +141,10 @@ module TTL2HTML
           file = uri + ".html"
         end
         html_file = file.sub(@config[:base_uri], "")
+        html_file = File.join(@config[:output_dir], html_file) if @config[:output_dir]
         File.unlink html_file
         ttl_file = uri.sub(@config[:base_uri], "") + ".ttl"
+        ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
         File.unlink ttl_file
       end
     end
