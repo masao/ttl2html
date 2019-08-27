@@ -31,4 +31,18 @@ RSpec.describe TTL2HTML::Template do
       expect(path).to eq File.join(template_dir, "layout.html.erb")
     end
   end
+  context "format_property" do
+    it "should return formatted values" do
+      labels = {
+        "http://schema.org/name" => "Title",
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" => "Class",
+      }
+      template = TTL2HTML::Template.new("")
+      expect(template.format_property("http://schema.org/name")).to eq "Name"
+      value = template.format_property("http://schema.org/name", labels)
+      expect(value).to eq "Title"
+      value = template.format_property("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", labels)
+      expect(value).to eq "Class"
+    end
+  end
 end

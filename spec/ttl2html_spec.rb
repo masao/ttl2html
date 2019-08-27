@@ -36,6 +36,14 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_title("no title")
     end
+    it "should respect labels" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = File.open("/tmp/html/a/b.html").read
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "Class")
+    end
   end
   context "#output_turtle_files" do
     it "should generate files" do

@@ -14,7 +14,7 @@ module TTL2HTML
       @template_path = [ Dir.pwd, File.join(Dir.pwd, "templates") ]
     end
     def output_to(file, param = {})
-      @param = @param.update(param)
+      @param.update(param)
       @param[:output_file] = file
       dir = File.dirname(file)
       FileUtils.mkdir_p(dir) if not File.exist?(dir)
@@ -28,7 +28,7 @@ module TTL2HTML
       to_html_raw(layout_fname, param)
     end
     def to_html_raw(template, param)
-      @param = @param.update(param)
+      @param.update(param)
       template = find_template_path(template)
       tmpl = open(template){|io| io.read }
       erb = ERB.new(tmpl, $SAFE, "-")
@@ -76,7 +76,7 @@ module TTL2HTML
       end
       "no title"
     end
-    def format_property(property, labels)
+    def format_property(property, labels = {})
       if labels and labels[property]
         labels[property]
       else
@@ -98,8 +98,8 @@ module TTL2HTML
       end
     end
     def format_triples(triples)
-      template = Template.new("templates/triples.html.erb", @param)
-      template.to_html_raw("templates/triples.html.erb", data: triples)
+      param_local = @param.merge(data: triples)
+      to_html_raw("templates/triples.html.erb", param_local)
     end
   end
 end
