@@ -44,17 +44,21 @@ ttl2html --config test.yml --output_dir public_html dataset.ttl
 The command ``ttl2html`` accepts the following options:
 
 * ``--config file``:  Read the configuration file from ``file``.
-* ``--output_dir dir``: Set the output directory to ``dir`.
+* ``--output_dir dir``: Set the output directory to ``dir``.
 
 ### Configuration file
 
-You can setup several options on the command line and/or configuration file, ``config.yml``.
+You can setup several options on the configuration file, ``config.yml`` (default).
 
 ```yaml
 base_uri: https://www.example.org/
 output_dir: /var/www/html/dataset/
 site_title: A sample dataset
 ```
+
+* ``base_uri``: (Required) Base URI for the dataset. Base URI is considered as the prefix for the target resources, and only the matched URIs with the prefix are picked up for the generation.
+* ``output_dir``: Output directory for the dataset.
+* ``site_title`: Main title for the whole website.
 
 ## History
 
