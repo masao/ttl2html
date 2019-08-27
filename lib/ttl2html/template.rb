@@ -51,7 +51,7 @@ module TTL2HTML
     # helper method:
     def relative_path(dest)
       src = @param[:output_file]
-      src = Pathname.new(src).relative_path_from(@param[:output_dir]) if @param[:output_dir]
+      src = Pathname.new(src).relative_path_from(Pathname.new(@param[:output_dir])) if @param[:output_dir]
       path = Pathname(dest).relative_path_from(Pathname(File.dirname src))
       path = path.to_s + "/" if File.directory? path
       path
