@@ -35,15 +35,25 @@ ttl2html dataset.ttl
 
 The command parses a dataset file and generate a HTML files.
 
-### Options
+### Commandline options
 
-You can setup several options on the command line and/or configuration file.
-
-```yaml
-output_dir: /var/www/html/dataset/
+```sh
+ttl2html --config test.yml --output_dir public_html dataset.ttl
 ```
 
-## Origin
+The comman ``ttl2html`` accepts the following options:
+
+### Configuration file
+
+You can setup several options on the command line and/or configuration file, ``config.yml``.
+
+```yaml
+base_uri: https://www.example.org/
+output_dir: /var/www/html/dataset/
+site_title: A sample dataset
+```
+
+## History
 
 This tool is based on experiences from publishing Japanese Textbook LOD dataset [JP-TEXTBOOK:2017].
 
