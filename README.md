@@ -41,7 +41,10 @@ The command parses a dataset file and generate a HTML files.
 ttl2html --config test.yml --output_dir public_html dataset.ttl
 ```
 
-The comman ``ttl2html`` accepts the following options:
+The command ``ttl2html`` accepts the following options:
+
+* ``--config file``:  Read the configuration file from ``file``.
+* ``--output_dir dir``: Set the output directory to ``dir`.
 
 ### Configuration file
 
