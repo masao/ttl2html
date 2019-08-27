@@ -19,7 +19,7 @@ parser.each_option do |optname, optarg|
   end
 end
 
-ttl2html = TTL2HTML.new(opt_config)
+ttl2html = TTL2HTML::App.new(opt_config)
 ARGV.each do |file|
   ttl2html.load_turtle(file)
 end
