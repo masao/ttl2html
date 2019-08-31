@@ -65,6 +65,10 @@ module TTL2HTML
       end
     end
     def get_title(data)
+      p @param[:title_property]
+      if @param[:title_property]
+        return data[@param[:title_property]].first if data[@param[:title_property]]
+      end
       %w(
         https://www.w3.org/TR/rdf-schema/#label
         http://purl.org/dc/terms/title

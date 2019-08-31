@@ -99,7 +99,7 @@ module TTL2HTML
     end
     def output_html_files
       each_data do |uri, v|
-        template = Template.new("default.html.erb")
+        template = Template.new("default.html.erb", @config)
         param = @config.dup
         param[:uri] = uri
         param[:data] = v
