@@ -65,9 +65,8 @@ module TTL2HTML
       end
     end
     def get_title(data)
-      p @param[:title_property]
-      if @param[:title_property]
-        return data[@param[:title_property]].first if data[@param[:title_property]]
+      if @param[:title_property] and data[@param[:title_property]]
+        return get_language_literal(data[@param[:title_property]])
       end
       %w(
         https://www.w3.org/TR/rdf-schema/#label
@@ -76,9 +75,16 @@ module TTL2HTML
         http://schema.org/name
         http://www.w3.org/2004/02/skos/core#prefLabel
       ).each do |property|
-        return data[property].first if data[property]
+        return get_language_literal(data[property]) if data[property]
       end
       "no title"
+    end
+    def get_language_literal(object)
+      if object.respond_to? :has_key?
+        object.values.first
+      else
+        object
+      end
     end
     def format_property(property, labels = {})
       if labels and labels[property]

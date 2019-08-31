@@ -1,7 +1,11 @@
 <dl>
 <% param[:data].each do |k, v| %>
   <dt><%=h format_property(k, param[:labels]) %></dt>
-  <% if v.size > 1 %>
+  <% if v.respond_to? :has_key? %>
+    <% v.each do |lang, v2| %>
+    <dd lang="<%=h lang %>"><%= format_object v2, param[:data] %></dd>
+    <% end %>
+  <% elsif v.size > 1 %>
     <% v.each do |v2| %>
     <dd><%= format_object v2, param[:data] %></dd>
     <% end %>

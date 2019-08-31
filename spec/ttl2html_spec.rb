@@ -38,6 +38,9 @@ RSpec.describe TTL2HTML::App do
       cont = File.open("/tmp/html/a/b.html").read
       html = Capybara.string cont
       expect(html).to have_title("no title")
+      cont = File.open("/tmp/html/c.html").read
+      html = Capybara.string cont
+      expect(html).to have_title("test title", exact: true)
     end
     it "should respect title property settings" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_title.yml"))

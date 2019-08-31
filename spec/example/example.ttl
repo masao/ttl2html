@@ -2,3 +2,5 @@
 <https://example.org/a> <http://purl.org/dc/terms/title> "test title".
 <https://example.org/a/b> a <https://example.org/b>.
 <https://example.org/a/b> <http://example.org/title> "test title example".
+<https://example.org/c> a <https://example.org/b>.
+<https://example.org/c> <http://purl.org/dc/terms/title> "test title"@ja.
