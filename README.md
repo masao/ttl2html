@@ -38,13 +38,12 @@ The command parses a dataset file and generate a HTML files.
 ### Commandline options
 
 ```sh
-ttl2html --config test.yml --output_dir public_html dataset.ttl
+ttl2html --config test.yml dataset.ttl
 ```
 
 The command ``ttl2html`` accepts the following options:
 
 * ``--config file``:  Read the configuration file from ``file``.
-* ``--output_dir dir``: Set the output directory to ``dir``.
 
 ### Configuration file
 
@@ -53,12 +52,16 @@ You can setup several options on the configuration file, ``config.yml`` (default
 ```yaml
 base_uri: https://www.example.org/
 output_dir: /var/www/html/dataset/
+labels:
+  http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
+  http://schema.org/name: Title
 site_title: A sample dataset
 ```
 
 * ``base_uri``: (Required) Base URI for the dataset. Base URI is considered as the prefix for the target resources, and only the matched URIs with the prefix are picked up for the generation.
 * ``output_dir``: Output directory for the dataset.
-* ``site_title`: Main title for the whole website.
+* ``label``: Mappings for the custom property labels. 
+* ``site_title``: Main title for the whole website.
 
 ## History
 
