@@ -6,17 +6,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title><% if param[:title] %><%=h param[:title] %><% end %><% if param[:site_title] %> - <%=h param[:site_title] %><% end %></title>
-    <meta property="og:image" content="https://jp-textbook.github.io/textbook-LOD-logo-FB.png">
-    <meta name="twitter:image" content="https://jp-textbook.github.io/textbook-lod-logo-twitter.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<% if param[:title] %><%=h param[:title] %><% end %><% if param[:site_title] %> - <%=h param[:site_title] %><% end %>">
   </head>
   <body>
     <nav class="navbar navbar-inverse">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-left" href="/"><img src="<%=h relative_path("textbookLOD-logo-no-bg.png") %>" alt="<%=h param[:site_title] %>" style="height:50px"></a>
-        </div>
         <ul class="nav navbar-nav navbar-right">
           <li<%= ' class="active"' if param[:active] == :home %>><a class="navbar-brand" href="/">Home</a></li>
           <li<%= ' class="active"' if param[:active] == :about %>><a href="/about">About</a></li>
