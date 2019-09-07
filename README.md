@@ -43,7 +43,7 @@ ttl2html --config test.yml dataset.ttl
 
 The command ``ttl2html`` accepts the following options:
 
-* ``--config file``:  Read the configuration file from ``file``.
+* ``--config file``:  Read the configuration file from ``file`` (Default: ```config.yml```).
 
 ### Configuration file
 
