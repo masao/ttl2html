@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.files       = [ "lib/ttl2html.rb", "lib/ttl2html/version.rb", "lib/ttl2html/template.rb" ]
   s.files       += Dir["templates/*"]
   s.executables << "ttl2html"
-  s.homepage    = 'https://github.org/masao/ttl2html'
+  s.homepage    = 'https://github.com/masao/ttl2html'
   s.license     = 'MIT'
   s.add_dependency "nokogiri"
   s.add_dependency "rdf-turtle"
