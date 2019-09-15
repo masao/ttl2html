@@ -56,12 +56,19 @@ labels:
   http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
   http://schema.org/name: Title
 site_title: A sample dataset
+title_property: http://example.org/title
 ```
 
 * ``base_uri``: (Required) Base URI for the dataset. Base URI is considered as the prefix for the target resources, and only the matched URIs with the prefix are picked up for the generation.
 * ``output_dir``: Output directory for the dataset.
 * ``label``: Mappings for the custom property labels. 
 * ``site_title``: Main title for the whole website.
+* ``title_property``: Specified URI is regarded as a title property for the resource. In default, a title is matched with the following properties:
+  - https://www.w3.org/TR/rdf-schema/#label
+  - http://purl.org/dc/terms/title
+  - http://purl.org/dc/elements/1.1/title
+  - http://schema.org/name
+  - http://www.w3.org/2004/02/skos/core#prefLabel
 
 ## History
 
