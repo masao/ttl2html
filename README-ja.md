@@ -58,12 +58,19 @@ labels:
   http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
   http://schema.org/name: Title
 site_title: A sample dataset
+title_property: https://www.example.org/title
 ```
 
 * ``base_uri``: (必須) データセット用のベースURIを指定します。ベースURIは出力されるファイル群に対する接頭辞とみなし、先頭一致したURIリソースのみが生成対象となります。
 * ``output_dir``: 出力ディレクトリを指定します。
 * ``label``: 個別プロパティの出力ラベル名を指定します。
 * ``site_title``: ウェブサイト全体のメインタイトルを指定します。
+* ``title_property``: 指定したURIをタイトルとして指定します。指定されていない場合、もしくは指定したプロパティが存在しない場合は以下のプロパティの存在を走査して、その値をタイトルとみなします:
+  - https://www.w3.org/TR/rdf-schema/#label
+  - http://purl.org/dc/terms/title
+  - http://purl.org/dc/elements/1.1/title
+  - http://schema.org/name
+  - http://www.w3.org/2004/02/skos/core#prefLabel
 
 ## 履歴
 
