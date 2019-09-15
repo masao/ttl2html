@@ -12,6 +12,7 @@ module TTL2HTML
       @template = template
       @param = param
       @template_path = [ Dir.pwd, File.join(Dir.pwd, "templates") ]
+      @template_path << File.join(File.dirname(__FILE__), "..", "..", "templates")
     end
     def output_to(file, param = {})
       @param.update(param)
@@ -109,7 +110,7 @@ module TTL2HTML
     end
     def format_triples(triples)
       param_local = @param.merge(data: triples)
-      to_html_raw("templates/triples.html.erb", param_local)
+      to_html_raw("triples.html.erb", param_local)
     end
   end
 end

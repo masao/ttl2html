@@ -63,7 +63,7 @@ module TTL2HTML
         str = "<#{predicate}> "
         str << @graph.query([subject, predicate, nil]).objects.sort_by do |object|
           if object.resource? and not object.iri? # blank node:
-            i@graph.query([object, nil, nil]).statements.sort_by{|e|
+            @graph.query([object, nil, nil]).statements.sort_by{|e|
               [ e.predicate, e.object ]
             }.map{|e|
               [ e.predicate, e.object ]
