@@ -83,6 +83,8 @@ module TTL2HTML
     def get_language_literal(object)
       if object.respond_to? :has_key?
         object.values.first
+      elsif object.is_a? Array
+        object.first
       else
         object
       end
