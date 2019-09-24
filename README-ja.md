@@ -1,5 +1,7 @@
 # ttl2html  [![Build Status](https://travis-ci.com/masao/ttl2html.svg?branch=master)](https://travis-ci.com/masao/ttl2html) [![Maintainability](https://api.codeclimate.com/v1/badges/6897bef51f3280ae64e5/maintainability)](https://codeclimate.com/github/masao/ttl2html/maintainability)
 
+<div align="right">English: https://github.com/masao/ttl2html/blob/master/README.md</div>
+
 ## 概要
 
 Linked Dataのための静的サイト生成ツールです。
