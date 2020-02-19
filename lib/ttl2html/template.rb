@@ -32,7 +32,7 @@ module TTL2HTML
       @param.update(param)
       template = find_template_path(template)
       tmpl = open(template){|io| io.read }
-      erb = ERB.new(tmpl, trim_mode: "-")
+      erb = ERB.new(tmpl, nil, "-")
       erb.filename = template
       erb.result(binding)
     end
