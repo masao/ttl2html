@@ -73,6 +73,13 @@ RSpec.describe TTL2HTML::App do
         ttl2html.load_turtle("/tmp/html/a/b.ttl")
       }.not_to raise_error
     end
+    it "should generate files" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.output_turtle_files
+      expect(File.exist?("/tmp/html/b.ttl")).to be true
+      data = ttl2html.load_turtle("/tmp/html/b.ttl")
+      expect(data.size).to be > 1
+    end
   end
   context "#cleanup" do
     it "should cleanup" do
