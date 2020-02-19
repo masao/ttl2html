@@ -68,6 +68,10 @@ RSpec.describe TTL2HTML::App do
       }.not_to raise_error
       expect(File.exist?("/tmp/html/a.ttl")).to be true
       expect(File.exist?("/tmp/html/a/b.ttl")).to be true
+      expect {
+        ttl2html.load_turtle("/tmp/html/a.ttl")
+        ttl2html.load_turtle("/tmp/html/a/b.ttl")
+      }.not_to raise_error
     end
   end
   context "#cleanup" do
