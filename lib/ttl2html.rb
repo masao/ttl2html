@@ -17,7 +17,7 @@ module TTL2HTML
         raise "load_config: base_uri not found"
       end
       @data = {}
-      @reverse_data = {}
+      @data_inverse = {}
       @graph = RDF::Graph.new
     end
 
@@ -48,9 +48,9 @@ module TTL2HTML
             @data[s.to_s][v.to_s] << o.to_s
           end
           if o.is_a? RDF::URI
-            @reverse_data[o.to_s] ||= {}
-            @reverse_data[o.to_s][v.to_s] ||= []
-            @reverse_data[o.to_s][v.to_s] << s.to_s
+            @data_inverse[o.to_s] ||= {}
+            @data_inverse[o.to_s][v.to_s] ||= []
+            @data_inverse[o.to_s][v.to_s] << s.to_s
           end
         end
       end
@@ -96,7 +96,7 @@ module TTL2HTML
       result << "#{"  "*(depth-1)}]" if not subject.iri?
       result
     end
-    def format_turtle_reverse(object)
+    def format_turtle_inverse(object)
       turtle = RDF::Turtle::Writer.new
       result = ""
       @graph.query([nil, nil, object]).statements.sort_by do |e|
@@ -119,6 +119,7 @@ module TTL2HTML
         param = @config.dup
         param[:uri] = uri
         param[:data] = v
+        param[:data_inverse] = @data_inverse[uri]
         param[:data_global] = @data
         param[:title] = template.get_title(v)
         if @data.keys.find{|e| e.start_with?(uri + "/") }
@@ -144,7 +145,7 @@ module TTL2HTML
           file = File.join(@config[:output_dir], file)
         end
         str = format_turtle(RDF::URI.new uri)
-        str << format_turtle_reverse(RDF::URI.new uri)
+        str << format_turtle_inverse(RDF::URI.new uri)
         open(file, "w") do |io|
           io.puts str.strip
         end
