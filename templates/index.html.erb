@@ -1,0 +1,18 @@
+    <div class="jumbotron">
+      <div class="container">
+        <h1><%=h param[:site_title] %></h1>
+        <p><small><span class="glyphicon glyphicon-link"></span> <a href="<%=h param[:base_uri] %>"><%=h param[:base_uri] %></a></small></p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2><%=h param[:class_label] %> 一覧</h2>
+          <ul>
+            <% param[:index_data].each do |e| %>
+              <li><%= format_object(e, param[:data_global]) %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>

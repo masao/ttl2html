@@ -135,6 +135,17 @@ module TTL2HTML
         end
         template.output_to(file, param)
       end
+      index_html = File.join(@config[:output_dir], "index.html")
+      if @config.has_key? :top_class and not File.exist? index_html
+        template = Template.new("index.html.erb", @config)
+        param = @config.dup
+        param[:data_global] = @data
+        @graph.query([nil, RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), nil]).subjects.sort.each do |subject|
+          param[:index_data] ||= []
+          param[:index_data] << subject.to_s
+        end
+        template.output_to(index_html, param)
+      end
     end
     def output_turtle_files
       each_data do |uri, v|
@@ -164,6 +175,10 @@ module TTL2HTML
         ttl_file = uri.sub(@config[:base_uri], "") + ".ttl"
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
         File.unlink ttl_file
+      end
+      index_html = File.join(@config[:output_dir], "index.html")
+      if @config[:top_class] and File.exist? index_html
+        File.unlink index_html
       end
     end
   end

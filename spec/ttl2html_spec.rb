@@ -13,6 +13,10 @@ RSpec.describe TTL2HTML::App do
     end
   end
   context "#output_html_files" do
+    after(:each) do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.cleanup
+    end
     it "should deal with path separators" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       expect {
@@ -66,6 +70,16 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_link "https://example.org/a"
     end
+    it "should accept top_category config" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      expect(File).to exist "/tmp/html/index.html"
+      cont = File.open("/tmp/html/index.html").read
+      html = Capybara.string cont
+      expect(html).to have_link href: "a"
+      expect(html).to have_link href: "c"
+    end
   end
   context "#output_turtle_files" do
     it "should generate files" do
@@ -94,11 +108,13 @@ RSpec.describe TTL2HTML::App do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
       ttl2html.output_html_files
+      expect(File.exist?("/tmp/html/index.html")).to be true
       expect(File.exist?("/tmp/html/a/b.html")).to be true
       expect(File.exist?("/tmp/html/a/b.ttl")).to be true
       ttl2html.cleanup
       expect(File.exist?("/tmp/html/a/b.html")).to be false
       expect(File.exist?("/tmp/html/a/b.ttl")).to be false
+      expect(File.exist?("/tmp/html/index.html")).to be false
     end
   end
 end
