@@ -73,6 +73,7 @@ title_property: https://www.example.org/title
   - http://purl.org/dc/elements/1.1/title
   - http://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
+* ``top_class``: トップページに表示すべきレコード一覧に対応するクラスURIを指定する。デフォルトではトップページは生成されない。
 
 ## 履歴
 

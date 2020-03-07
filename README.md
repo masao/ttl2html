@@ -71,6 +71,7 @@ title_property: http://example.org/title
   - http://purl.org/dc/elements/1.1/title
   - http://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
+* ``top_class``: Specified URI is the class of the records listed in the top page. By default, this tool does not generate the top page.
 
 ## History
 

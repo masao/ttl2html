@@ -3,3 +3,4 @@ base_uri: https://w3id.org/jp-textbook/
 labels:
   http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
   http://schema.org/name: Title
+top_class: http://schema.org/Book
