@@ -80,6 +80,15 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_link href: "a"
       expect(html).to have_link href: "c"
     end
+    it "should work even if config does not have output_dir paramerter" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_nooutput_dir.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      expect {
+        ttl2html.output_html_files
+        ttl2html.output_turtle_files
+      }.not_to raise_error
+      ttl2html.cleanup
+    end
   end
   context "#output_turtle_files" do
     it "should generate files" do
@@ -112,6 +121,7 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/a/b.html")).to be true
       expect(File.exist?("/tmp/html/a/b.ttl")).to be true
       ttl2html.cleanup
+      expect(File.exist?("/tmp/html/a")).to be false
       expect(File.exist?("/tmp/html/a/b.html")).to be false
       expect(File.exist?("/tmp/html/a/b.ttl")).to be false
       expect(File.exist?("/tmp/html/index.html")).to be false

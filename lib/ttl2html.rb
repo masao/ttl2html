@@ -135,7 +135,8 @@ module TTL2HTML
         end
         template.output_to(file, param)
       end
-      index_html = File.join(@config[:output_dir], "index.html")
+      index_html = "index.html"
+      index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
       if @config.has_key? :top_class and not File.exist? index_html
         template = Template.new("index.html.erb", @config)
         param = @config.dup
@@ -163,7 +164,11 @@ module TTL2HTML
       end
     end
     def cleanup
-      each_data do |uri, v|
+      @data.select do |uri, v|
+        uri.start_with? @config[:base_uri]
+      end.sort_by do |uri, v|
+        -(uri.size)
+      end.each do |uri, v|
         if @data.keys.find{|e| e.start_with?(uri + "/") }
           file = uri + "/index.html"
         else
@@ -175,8 +180,12 @@ module TTL2HTML
         ttl_file = uri.sub(@config[:base_uri], "") + ".ttl"
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
         File.unlink ttl_file
+        dir = uri.sub(@config[:base_uri], "")
+        dir = File.join(@config[:output_dir], dir) if @config[:output_dir]
+        Dir.rmdir dir if File.exist? dir
       end
-      index_html = File.join(@config[:output_dir], "index.html")
+      index_html = "index.html"
+      index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
       if @config[:top_class] and File.exist? index_html
         File.unlink index_html
       end
