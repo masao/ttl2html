@@ -3,6 +3,10 @@
 require "getoptlong"
 require "ttl2html"
 
+def usage
+  puts "Usage: #$0 [ --config config.yml ] dataset.ttl ..."
+end
+
 parser = GetoptLong.new
 parser.set_options(
   ['--cleanup', GetoptLong::NO_ARGUMENT],
@@ -19,6 +23,13 @@ parser.each_option do |optname, optarg|
   end
 end
 
+if not File.exist? opt_config
+  puts "Configuration file [#{opt_config}] not found."
+  puts "  Please setup a configuration file, or specify it with --config option."
+  puts
+  usage
+  exit
+end
 ttl2html = TTL2HTML::App.new(opt_config)
 ARGV.each do |file|
   ttl2html.load_turtle(file)
