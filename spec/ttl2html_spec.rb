@@ -79,6 +79,7 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_link href: "a"
       expect(html).to have_link href: "c"
+      expect(html).not_to have_link href: "b"
     end
     it "should work even if config does not have output_dir paramerter" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_nooutput_dir.yml"))
