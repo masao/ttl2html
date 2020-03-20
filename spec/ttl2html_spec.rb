@@ -98,6 +98,27 @@ RSpec.describe TTL2HTML::App do
       }.not_to raise_error
       ttl2html.cleanup
     end
+    it "should generate about.html" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape.ttl"))
+      ttl2html.output_html_files
+      ttl2html.output_turtle_files
+      expect(File).to exist "/tmp/html/about.html"
+      expect(File).to exist "/tmp/html/AShape.html"
+      expect(File).to exist "/tmp/html/AShape.ttl"
+      ttl2html.cleanup
+    end
+    it "should accept sh:or node for about.html" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_or.ttl"))
+      expect {
+        ttl2html.output_html_files
+        ttl2html.output_turtle_files
+      }.not_to raise_error
+      expect(File).to exist "/tmp/html/about.html"
+      expect(File).to exist "/tmp/html/AShape.html"
+      expect(File).to exist "/tmp/html/AShape.ttl"
+    end
   end
   context "#output_turtle_files" do
     it "should generate files" do

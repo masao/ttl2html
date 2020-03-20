@@ -50,6 +50,8 @@ module TTL2HTML
     end
 
     def expand_shape(data, uri, prefixes = {})
+      return nil if not data[uri]
+      return nil if not data[uri]["http://www.w3.org/ns/shacl#property"]
       result = data[uri]["http://www.w3.org/ns/shacl#property"].sort_by do |e|
         e["http://www.w3.org/ns/shacl#order"]
       end.map do |property|
@@ -100,7 +102,7 @@ module TTL2HTML
           node_mode: node_mode,
         }
       end
-      template = "templates/shape-table.html.erb"
+      template = "shape-table.html.erb"
       tmpl = Template.new(template)
       tmpl.to_html_raw(template, {properties: result})
     end

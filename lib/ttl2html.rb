@@ -18,6 +18,7 @@ module TTL2HTML
       end
       @data = {}
       @data_inverse = {}
+      @prefix = {}
       @graph = RDF::Graph.new
     end
 
@@ -33,6 +34,7 @@ module TTL2HTML
       STDERR.puts "loading #{file}..."
       count = 0
       RDF::Turtle::Reader.open(file) do |reader|
+        @prefix.merge! reader.prefixes
         reader.statements.each do |statement|
           @graph.insert(statement)
           s = statement.subject
@@ -159,14 +161,24 @@ module TTL2HTML
                              RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                              RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
       if shapes.size > 0
-        about_html = "about.html"
-        about_html =  File.join(@config[:output_dir], "about.html") if @config[:output_dir]
-        template = Template.new("index.html.erb", @config)
+        about_html = @config[:about_file] || "about.html"
+        about_html =  File.join(@config[:output_dir], about_html) if @config[:output_dir]
+        template = Template.new("about.html.erb", @config)
         param = @config.dup
         param[:data_global] = @data
         param[:content] = {}
         shapes.subjects.each do |subject|
-          param[:content][subject] = expand_shape(data, subject, prefix)
+          label = nil
+          target_class = @data[subject.to_s]["http://www.w3.org/ns/shacl#targetClass"]
+          if target_class and @data[target_class.first]
+            label = template.get_title(@data[target_class.first])
+          else
+            label = template.get_title(@data[subject.to_s])
+          end
+          param[:content][subject] = {
+            label: label,
+            html: template.expand_shape(@data, subject.to_s, @prefix),
+          }
         end
         template.output_to(about_html, param)
       end

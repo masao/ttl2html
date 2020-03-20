@@ -1,0 +1,5 @@
+<https://example.org/AShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#or> (
+    <https://example.org/BShape>
+    <https://example.org/CShape>
+  ).
