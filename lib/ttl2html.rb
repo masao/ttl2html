@@ -137,13 +137,14 @@ module TTL2HTML
       end
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
-      if @config.has_key? :top_class
+      subjects = @graph.query([nil,
+                              RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
+                              RDF::URI(@config[:top_class])]).subjects
+      if @config.has_key? :top_class and subjects.size > 0
         template = Template.new("index.html.erb", @config)
         param = @config.dup
         param[:data_global] = @data
-        @graph.query([nil,
-                      RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-                      RDF::URI(@config[:top_class])]).subjects.sort.each do |subject|
+        subjects.each do |subject|
           param[:index_data] ||= []
           param[:index_data] << subject.to_s
         end

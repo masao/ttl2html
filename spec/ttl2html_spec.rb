@@ -70,7 +70,7 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_link "https://example.org/a"
     end
-    it "should accept top_category config" do
+    it "should accept top_class config" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
       ttl2html.output_html_files
@@ -80,6 +80,14 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_link href: "a"
       expect(html).to have_link href: "c"
       expect(html).not_to have_link href: "b"
+    end
+    it "should be fine even if no instance available" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_noclass.ttl"))
+      expect {
+        ttl2html.output_html_files
+      }.not_to raise_error
+      expect(File).not_to exist "/tmp/html/index.html"
     end
     it "should work even if config does not have output_dir paramerter" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_nooutput_dir.yml"))
