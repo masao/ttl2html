@@ -48,7 +48,63 @@ module TTL2HTML
       end
       return nil
     end
-  
+
+    def expand_shape(data, uri, prefixes = {})
+      result = data[uri]["http://www.w3.org/ns/shacl#property"].sort_by do |e|
+        e["http://www.w3.org/ns/shacl#order"]
+      end.map do |property|
+        path = data[property]["http://www.w3.org/ns/shacl#path"].first
+        shorten_path = path.dup
+        prefixes.each do |prefix, val|
+          if path.index(val) == 0
+            shorten_path = path.sub(/\A#{val}/, "#{prefix}:")
+          end
+        end
+        repeatable = false
+        if data[property]["http://www.w3.org/ns/shacl#maxCount"]
+          max_count = data[property]["http://www.w3.org/ns/shacl#maxCount"].first.to_i
+          if max_count > 1
+            repeatable = true
+          end
+        else
+          repeatable = true
+        end
+        nodes = nil
+        if data[property]["http://www.w3.org/ns/shacl#node"]
+          node = data[property]["http://www.w3.org/ns/shacl#node"].first
+          if data[node]["http://www.w3.org/ns/shacl#or"]
+            node_or = data[data[node]["http://www.w3.org/ns/shacl#or"].first]
+            node_mode = :or
+            nodes = []
+            nodes << expand_shape(data, node_or["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"].first, prefixes)
+            rest = node_or["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"].first
+            while data[rest] do
+              nodes << expand_shape(data, data[rest]["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"].first, prefixes)
+              rest = data[rest]["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"].first
+            end
+          else
+            nodes = expand_shape(data, node, prefixes)
+          end
+          #p nodes
+        end
+        {
+          path: path,
+          shorten_path: shorten_path,
+          name: data[property]["http://www.w3.org/ns/shacl#name"].first,
+          example: data[property]["http://www.w3.org/2004/02/skos/core#example"] ? data[property]["http://www.w3.org/2004/02/skos/core#example"].first : nil,
+          description: data[property]["http://www.w3.org/ns/shacl#description"] ? data[property]["http://www.w3.org/ns/shacl#description"].first : nil,
+          required: data[property]["http://www.w3.org/ns/shacl#minCount"] ? data[property]["http://www.w3.org/ns/shacl#minCount"].first.to_i > 0 : false,
+          repeatable: repeatable,
+          nodeKind: data[property]["http://www.w3.org/ns/shacl#nodeKind"] ? data[property]["http://www.w3.org/ns/shacl#nodeKind"].first : nil,
+          nodes: nodes,
+          node_mode: node_mode,
+        }
+      end
+      template = "templates/shape-table.html.erb"
+      tmpl = Template.new(template)
+      tmpl.to_html_raw(template, {properties: result})
+    end
+
     # helper method:
     def relative_path(dest)
       src = @param[:output_file]

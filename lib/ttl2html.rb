@@ -137,7 +137,7 @@ module TTL2HTML
       end
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
-      if @config.has_key? :top_class and not File.exist? index_html
+      if @config.has_key? :top_class
         template = Template.new("index.html.erb", @config)
         param = @config.dup
         param[:data_global] = @data
@@ -148,6 +148,21 @@ module TTL2HTML
           param[:index_data] << subject.to_s
         end
         template.output_to(index_html, param)
+      end
+      shapes = @graph.query([nil,
+                             RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
+                             RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
+      if shapes.size > 0
+        about_html = "about.html"
+        about_html =  File.join(@config[:output_dir], "about.html") if @config[:output_dir]
+        template = Template.new("index.html.erb", @config)
+        param = @config.dup
+        param[:data_global] = @data
+        param[:content] = {}
+        shapes.subjects.each do |subject|
+          param[:content][subject] = expand_shape(data, subject, prefix)
+        end
+        template.output_to(about_html, param)
       end
     end
     def output_turtle_files
