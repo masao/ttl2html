@@ -137,18 +137,23 @@ module TTL2HTML
       end
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
-      subjects = @graph.query([nil,
-                              RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-                              RDF::URI(@config[:top_class])]).subjects
-      if @config.has_key? :top_class and subjects.size > 0
-        template = Template.new("index.html.erb", @config)
-        param = @config.dup
-        param[:data_global] = @data
-        subjects.each do |subject|
-          param[:index_data] ||= []
-          param[:index_data] << subject.to_s
+      if @config.has_key? :top_class
+        subjects = @graph.query([nil,
+                                RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
+                                RDF::URI(@config[:top_class])]).subjects
+        if subjects.empty?
+          STDERR.puts "WARN: top_class parameter specified as [#{@config[:top_class]}], but there is no instance data."
+          STDERR.puts "  Skip generation of top page."
+        else
+          template = Template.new("index.html.erb", @config)
+          param = @config.dup
+          param[:data_global] = @data
+          subjects.each do |subject|
+            param[:index_data] ||= []
+            param[:index_data] << subject.to_s
+          end
+          template.output_to(index_html, param)
         end
-        template.output_to(index_html, param)
       end
       shapes = @graph.query([nil,
                              RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
