@@ -123,12 +123,12 @@ module TTL2HTML
         dest_uri
       end
     end
-    def get_title(data)
+    def get_title(data, default_title = "no title")
       if @param[:title_property] and data[@param[:title_property]]
         return get_language_literal(data[@param[:title_property]])
       end
       %w(
-        https://www.w3.org/TR/rdf-schema/#label
+        https://www.w3.org/TR/rdf-schema#label
         http://purl.org/dc/terms/title
         http://purl.org/dc/elements/1.1/title
         http://schema.org/name
@@ -136,7 +136,7 @@ module TTL2HTML
       ).each do |property|
         return get_language_literal(data[property]) if data[property]
       end
-      "no title"
+      default_title
     end
     def get_language_literal(object)
       if object.respond_to? :has_key?

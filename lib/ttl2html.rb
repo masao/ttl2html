@@ -170,8 +170,8 @@ module TTL2HTML
         shapes.subjects.each do |subject|
           label = nil
           target_class = @data[subject.to_s]["http://www.w3.org/ns/shacl#targetClass"]
-          if target_class and @data[target_class.first]
-            label = template.get_title(@data[target_class.first])
+          if target_class
+            label = template.get_title(@data[target_class.first], nil) if @data[target_class.first]
           else
             label = template.get_title(@data[subject.to_s])
           end

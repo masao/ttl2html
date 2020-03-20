@@ -42,6 +42,9 @@ RSpec.describe TTL2HTML::App do
       cont = File.open("/tmp/html/a/b.html").read
       html = Capybara.string cont
       expect(html).to have_title("no title")
+      cont = File.open("/tmp/html/b.html").read
+      html = Capybara.string cont
+      expect(html).to have_title("test label")
       cont = File.open("/tmp/html/c.html").read
       html = Capybara.string cont
       expect(html).to have_title("test title", exact: true)

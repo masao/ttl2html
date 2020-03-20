@@ -45,6 +45,22 @@ RSpec.describe TTL2HTML::Template do
       expect(value).to eq "Class"
     end
   end
+  context "get_title" do
+    it "should get title from rdf:label" do
+      data = { "http://schema.org/name" => ["test name"] }
+      template = TTL2HTML::Template.new("")
+      title = template.get_title(data)
+      expect(title).to eq "test name"
+      data = {
+        "http://schema.org/name" => ["test name"],
+        "https://www.w3.org/TR/rdf-schema#label" => ["test label"],
+      }
+      title = template.get_title(data)
+      expect(title).to eq "test label"
+      title = template.get_title({})
+      expect(title).to eq "no title"
+    end
+  end
   context "expand_shape" do
     it "should generate shape documentation" do
       spec_base_dir = File.dirname(__FILE__)
