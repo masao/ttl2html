@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "xlsx2shape"
+
+if ARGV.size == 0
+  puts "USAGE: xlsx2shape file.xlsx"
+  exit
+end
+
+turtle = XLSX2Shape.xlsx2shape(ARGV[0])
+puts turtle

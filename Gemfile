@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 gem "nokogiri"
 gem "rdf-turtle"
+gem "roo"
 gem "ruby-progressbar"
 gem "rspec"
 gem "rake"
