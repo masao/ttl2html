@@ -5,7 +5,7 @@ require "roo"
 module XLSX2Shape
   def xlsx2shape(filename)
     shapes = {}
-    prefix = {}
+    prefix = { "sh:": "http://www.w3.org/ns/shacl#" }
     xlsx = Roo::Excelx.new(filename)
     xlsx.each_with_pagename do |name, sheet|
       if name =~ /\Aprefix\z/i

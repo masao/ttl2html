@@ -8,10 +8,13 @@ RSpec.describe XLSX2Shape do
         shape = xlsx2shape(File.join(spec_base_dir, "example", "example.xlsx"))
       }.not_to raise_error
       io = StringIO.new(shape)
+      turtle = nil
       expect {
-        turtle = RDF::Turtle::Reader.for(:turtle).new(shape)
-        turtle.statements
+        turtle = RDF::Turtle::Reader.for(:turtle).new(shape, validate: true)
       }.not_to raise_error
+      statements = turtle.statements
+      expect(turtle).to be_valid
+      expect(statements).not_to be_empty
     end
   end
 end
