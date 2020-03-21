@@ -28,10 +28,10 @@ xlsx2shape metadata.xlsx
 
 スプレッドシートの内容を解析し、検証用SHACLデータ内容をRDF/Turtle形式で出力します。
 
-## History
+## 関連情報
 
-This tool is based on experiences from publishing Japanese Textbook LOD dataset [JP-TEXTBOOK:2017].
+本ツールの開発にあたっては教科書LODデータセット[JP-TEXTBOOK:2017]における経験をもとにしています。
 
-## References
+## 参照文献
 
 * [JP-TEXTBOOK:2017] Y. Egusa & M. Takaku (2017). "Japanese Textbook LOD". https://w3id.org/jp-textbook/
