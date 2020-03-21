@@ -61,6 +61,7 @@ labels:
   http://schema.org/name: Title
 site_title: A sample dataset
 title_property: https://www.example.org/title
+top_class: http://schema.org/Book
 ```
 
 * ``base_uri``: (必須) データセット用のベースURIを指定します。ベースURIは出力されるファイル群に対する接頭辞とみなし、先頭一致したURIリソースのみが生成対象となります。
@@ -74,8 +75,11 @@ title_property: https://www.example.org/title
   - http://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: トップページに表示すべきレコード一覧に対応するクラスURIを指定する。デフォルトではトップページは生成されない。
+* ``about_file``: 指定された名前のファイルにスキーマ説明を出力する。データセット内にSHACL記述が存在するときのみ有効。ファイル名 `about.html`　に出力する。
 
-## 履歴
+## 関連情報
+
+SHACLに基づくデータセットスキーマ記述を簡便に行うためのツール **`xlsx2shape`** も同梱しています。詳細は [README-xlsx2shape-ja.md](README-xlsx2shape-ja.md) をご覧ください。
 
 本ツールの開発にあたっては教科書LODデータセット[JP-TEXTBOOK:2017]における経験をもとにしています。
 
