@@ -18,6 +18,7 @@ Install with `gem install ttl2html`
 * Mapping property labels
 * Mapping title properties
 * ERB templates based on Bootstrap
+* SHACL to documentation for the dataset schema
 
 ## Usage
 
@@ -59,6 +60,7 @@ labels:
   http://schema.org/name: Title
 site_title: A sample dataset
 title_property: http://example.org/title
+top_class: http://schema.org/Book
 ```
 
 * ``base_uri``: (Required) Base URI for the dataset. Base URI is considered as the prefix for the target resources, and only the matched URIs with the prefix are picked up for the generation.
@@ -72,8 +74,11 @@ title_property: http://example.org/title
   - http://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: Specified URI is the class of the records listed in the top page. By default, this tool does not generate the top page.
+* ``about_file``: Specified filename is used for documenting schemas of the dataset. It requires SHACL documentation within the dataset. By default, the filename `about.html` is used.
 
-## History
+## See also
+
+There is another tool **``xlsx2shape``** to describe a dataset schema using SHACL. See [README-xlsx2shape.md](README-xlsx2shape.md) for details.
 
 This tool is based on experiences from publishing Japanese Textbook LOD dataset [JP-TEXTBOOK:2017].
 
