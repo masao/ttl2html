@@ -7,7 +7,7 @@
 Application profile generator for Linked Data using SHACL.
 
 This tool accepts MS Excel format as a description of Metadata model (Aplication Profile) through SHACL validation schema.
-It allows metadata publishers to describe and publish their own metadata model on the web.
+It allows metadata publishers to describe and validate their own metadata, as wel as to publish the application profile on the web by using the ttl2html tool.
 
 ## Features
 
