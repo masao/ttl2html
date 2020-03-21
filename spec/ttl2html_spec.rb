@@ -116,11 +116,16 @@ RSpec.describe TTL2HTML::App do
       ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_or.ttl"))
       expect {
         ttl2html.output_html_files
-        ttl2html.output_turtle_files
       }.not_to raise_error
       expect(File).to exist "/tmp/html/about.html"
-      expect(File).to exist "/tmp/html/AShape.html"
-      expect(File).to exist "/tmp/html/AShape.ttl"
+    end
+    it "should use Class label for title" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("h3", text: "Bookをあらわすリソース")
     end
   end
   context "#output_turtle_files" do

@@ -172,6 +172,7 @@ module TTL2HTML
           target_class = @data[subject.to_s]["http://www.w3.org/ns/shacl#targetClass"]
           if target_class
             label = template.get_title(@data[target_class.first], nil) if @data[target_class.first]
+            label = template.format_property(target_class.first) if label.nil?
           else
             label = template.get_title(@data[subject.to_s])
           end
