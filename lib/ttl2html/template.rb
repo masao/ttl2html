@@ -128,7 +128,7 @@ module TTL2HTML
         return get_language_literal(data[@param[:title_property]])
       end
       %w(
-        https://www.w3.org/TR/rdf-schema#label
+        http://www.w3.org/2000/01/rdf-schema#label
         http://purl.org/dc/terms/title
         http://purl.org/dc/elements/1.1/title
         http://schema.org/name

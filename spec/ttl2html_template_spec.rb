@@ -53,7 +53,7 @@ RSpec.describe TTL2HTML::Template do
       expect(title).to eq "test name"
       data = {
         "http://schema.org/name" => ["test name"],
-        "https://www.w3.org/TR/rdf-schema#label" => ["test label"],
+        "http://www.w3.org/2000/01/rdf-schema#label" => ["test label"],
       }
       title = template.get_title(data)
       expect(title).to eq "test label"
