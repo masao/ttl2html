@@ -24,6 +24,13 @@ RSpec.describe TTL2HTML::App do
         ttl2html.output_html_files
       }.not_to raise_error
     end
+    it "should deal with URIs ending with '/'" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_ending_slash.ttl"))
+      ttl2html.output_html_files
+      expect(File.exist?("/tmp/html/a/index.html")).to be true
+      expect(File.exist?("/tmp/html/a/.html")).to be false
+    end
     it "should respect output dir" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

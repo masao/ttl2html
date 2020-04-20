@@ -126,6 +126,8 @@ module TTL2HTML
         param[:title] = template.get_title(v)
         if @data.keys.find{|e| e.start_with?(uri + "/") }
           file = uri + "/index.html"
+        elsif uri.end_with?("/")
+          file = uri + "index.html"
         else
           file = uri + ".html"
         end
