@@ -152,7 +152,7 @@ module TTL2HTML
           template = Template.new("index.html.erb", @config)
           param = @config.dup
           param[:data_global] = @data
-          subjects.each do |subject|
+          subjects.sort.each do |subject|
             param[:index_data] ||= []
             param[:index_data] << subject.to_s
           end

@@ -91,6 +91,17 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_link href: "c"
       expect(html).not_to have_link href: "b"
     end
+    it "should generate URI order for index.html" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      expect(File).to exist "/tmp/html/index.html"
+      cont = File.open("/tmp/html/index.html").read
+      html = Capybara.string cont
+      expect(html.find("div.row ul li:nth-child(1)")).to have_link href: "a"
+      expect(html.find("div.row ul li:nth-child(2)")).to have_link href: "a/b"
+      expect(html.find("div.row ul li:nth-child(3)")).to have_link href: "c"
+    end
     it "should be fine even if no instance available" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_noclass.ttl"))
