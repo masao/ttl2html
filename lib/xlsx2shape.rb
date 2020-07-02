@@ -5,12 +5,12 @@ require "roo"
 module XLSX2Shape
   def xlsx2shape(filename)
     shapes = {}
-    prefix = { "sh:": "http://www.w3.org/ns/shacl#" }
+    prefix = { sh: "http://www.w3.org/ns/shacl#" }
     xlsx = Roo::Excelx.new(filename)
     xlsx.each_with_pagename do |name, sheet|
       if name =~ /\Aprefix\z/i
         sheet.each do |row|
-          prefix[row[0]] = row[1] if not row[1].empty?
+          prefix[row[0].to_s.intern] = row[1] if not row[1].empty?
         end
       else
         headers = sheet.row(1)
@@ -59,8 +59,8 @@ module XLSX2Shape
       end
     end
     result = ""
-    prefix.sort.each do |prefix, val|
-      result << "@prefix #{prefix} <#{val}>.\n"
+    prefix.sort_by{|k,v| [k,v] }.each do |prefix, val|
+      result << "@prefix #{prefix}: <#{val}>.\n"
     end
     shapes.sort_by{|uri, val| uri }.each do |uri, val|
       result << "\n"
