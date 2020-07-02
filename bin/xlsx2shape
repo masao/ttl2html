@@ -7,5 +7,6 @@ if ARGV.size == 0
   exit
 end
 
-turtle = XLSX2Shape.xlsx2shape(ARGV[0])
+include XLSX2Shape
+turtle = xlsx2shape(ARGV[0])
 puts turtle
