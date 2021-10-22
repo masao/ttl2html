@@ -1,18 +1,24 @@
 #!/usr/bin/env ruby
 
+require "zlib"
 require "ttl2html"
-include Textbook
+include TTL2HTML
 
 prefix = {}
 ttl = []
 
 ARGV.each do |file|
   filename = find_turtle(file)
+  if filename.nil?
+    STDERR.puts "#{file} not found. skipping."
+    next
+  end
   klass = File
-  if File.extname(file) == ".gz"
+  if File.extname(filename) == ".gz"
     klass = Zlib::GzipReader
   end
-  klass.readlines(filename).each do |line|
+  io = klass.open(filename)
+  io.each do |line|
     line = line.chomp
     next if line.empty?
     if line =~ /^@prefix\s+(\w[\w\-]*):\s*<(.+)>/
