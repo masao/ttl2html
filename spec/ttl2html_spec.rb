@@ -12,6 +12,15 @@ RSpec.describe TTL2HTML::App do
       expect(ttl2html).not_to be_nil
     end
   end
+  context "#load_tutle" do
+    it "should load files properly, with/without gz" do
+      ttl2html = TTL2HTML::App.new
+      data = ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      expect(data.size).to be > 0
+      data = ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl.gz"))
+      expect(data.size).to be > 0
+    end
+  end
   context "#output_html_files" do
     after(:each) do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

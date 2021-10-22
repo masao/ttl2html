@@ -33,7 +33,12 @@ module TTL2HTML
     def load_turtle(file)
       STDERR.puts "loading #{file}..."
       count = 0
-      RDF::Turtle::Reader.open(file) do |reader|
+      if file.end_with?(".gz")
+        io = Zlib::GzipReader.open(file)
+      else
+        io = File.open(file)
+      end
+      RDF::Turtle::Reader.new(io) do |reader|
         @prefix.merge! reader.prefixes
         reader.statements.each do |statement|
           @graph.insert(statement)
