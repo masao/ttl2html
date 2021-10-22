@@ -21,6 +21,13 @@ RSpec.describe TTL2HTML::App do
       expect(data.size).to be > 0
     end
   end
+  context "#find_turtle" do
+    it "should find a turtle file" do
+      ttl2html = TTL2HTML::App.new
+      file = ttl2html.find_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      expect(file).to eq File.join(spec_base_dir, "example/example-20211023.ttl.gz")
+    end
+  end
   context "#output_html_files" do
     after(:each) do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

@@ -64,6 +64,19 @@ module TTL2HTML
       STDERR.puts "#{count} triples. #{@data.size} subjects."
       @data
     end
+    def find_turtle(filename, params = {})
+      if params[:noexpand] == true
+        filename if File.exists? filename
+      else
+        file = nil
+        basename = File.basename(filename, ".ttl")
+        dirname = File.dirname(filename)
+        files = Dir.glob("#{dirname}/#{basename}-[0-9]*.ttl{,.gz}")
+        file = files.sort.last
+        file
+      end
+    end
+
     def format_turtle(subject, depth = 1)
       turtle = RDF::Turtle::Writer.new
       result = ""
