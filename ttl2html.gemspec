@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'ttl2html'
-  s.version     = '0.2.8'
-  s.date        = '2020-07-02'
+  s.version     = '0.3.0'
+  s.date        = '2021-10-23'
   s.summary     = "ttl2html"
   s.description = "Static site generator for RDF/Turtle"
   s.authors     = ["Masao Takaku"]
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
     "lib/xlsx2shape.rb",
   ]
   s.files       += Dir["templates/*"]
-  s.executables += ["ttl2html", "xlsx2shape"]
+  s.executables += ["ttl2html", "xlsx2shape", "catttl"]
   s.homepage    = 'https://github.com/masao/ttl2html'
   s.license     = 'MIT'
   s.add_dependency "nokogiri"
