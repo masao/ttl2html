@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require "zlib"
 require "yaml"
 require "nokogiri"
 require "rdf/turtle"
