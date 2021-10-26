@@ -22,9 +22,9 @@ RSpec.describe TTL2HTML::App do
     end
   end
   context "#find_turtle" do
+    include TTL2HTML
     it "should find a turtle file" do
-      ttl2html = TTL2HTML::App.new
-      file = ttl2html.find_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      file = find_turtle(File.join(spec_base_dir, "example/example.ttl"))
       expect(file).to eq File.join(spec_base_dir, "example/example-20211023.ttl.gz")
     end
   end
@@ -160,6 +160,17 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("h3", text: "Bookをあらわすリソース")
+    end
+    it "should accept labels_with_class settings per target class" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/a/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "Description")
+      cont = open("/tmp/html/b.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "Class")
     end
   end
   context "#output_turtle_files" do
