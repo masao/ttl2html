@@ -130,12 +130,23 @@ module TTL2HTML
         param[:data_inverse] = @data_inverse[uri]
         param[:data_global] = @data
         param[:title] = template.get_title(v)
-        if @data.keys.find{|e| e.start_with?(uri + "/") }
-          file = uri + "/index.html"
-        elsif uri.end_with?("/")
-          file = uri + "index.html"
-        else
-          file = uri + ".html"
+        file = nil
+        if @config[:uri_mappings]
+          @config[:uri_mappings].each do |mapping|
+            local_file = uri.sub(@config[:base_uri], "")
+            if mapping["regexp"] =~ local_file
+              file = local_file.sub(mapping["regexp"], mapping["path"])
+            end
+          end
+        end
+        if file.nil?
+          if @data.keys.find{|e| e.start_with?(uri + "/") }
+            file = uri + "/index.html"
+          elsif uri.end_with?("/")
+            file = uri + "index.html"
+          else
+            file = uri + ".html"
+          end
         end
         #p uri, param
         file = file.sub(@config[:base_uri], "")

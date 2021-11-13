@@ -1,0 +1,8 @@
+base_uri: https://example.org/
+output_dir: /tmp/html
+top_class: https://example.org/b
+labels:
+  http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
+uri_mappings:
+  - regexp: !ruby/regexp /^(\d{3})(\d{10})$/
+    path: '\1/\2.html'
