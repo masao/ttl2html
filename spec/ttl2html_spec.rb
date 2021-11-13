@@ -201,6 +201,13 @@ RSpec.describe TTL2HTML::App do
       data = ttl2html.load_turtle("/tmp/html/b.ttl")
       expect(data.size).to be > 1
     end
+    it "should accept uri_maping parameters in config.yml" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_mapping.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_mapping.ttl"))
+      ttl2html.output_turtle_files
+      expect(File.exist?("/tmp/html/a.ttl")).to be true
+      expect(File.exist?("/tmp/html/123/4567890123.ttl")).to be true
+    end
   end
   context "#cleanup" do
     it "should cleanup" do

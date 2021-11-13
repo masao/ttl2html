@@ -130,26 +130,7 @@ module TTL2HTML
         param[:data_inverse] = @data_inverse[uri]
         param[:data_global] = @data
         param[:title] = template.get_title(v)
-        file = nil
-        if @config[:uri_mappings]
-          @config[:uri_mappings].each do |mapping|
-            local_file = uri.sub(@config[:base_uri], "")
-            if mapping["regexp"] =~ local_file
-              file = local_file.sub(mapping["regexp"], mapping["path"])
-            end
-          end
-        end
-        if file.nil?
-          if @data.keys.find{|e| e.start_with?(uri + "/") }
-            file = uri + "/index.html"
-          elsif uri.end_with?("/")
-            file = uri + "index.html"
-          else
-            file = uri + ".html"
-          end
-        end
-        #p uri, param
-        file = file.sub(@config[:base_uri], "")
+        file = uri_mapping_to_path(uri, ".html")
         if @config[:output_dir]
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
@@ -205,8 +186,7 @@ module TTL2HTML
     end
     def output_turtle_files
       each_data do |uri, v|
-        file = uri.sub(@config[:base_uri], "")
-        file << ".ttl"
+        file = uri_mapping_to_path(uri, ".ttl")
         if @config[:output_dir]
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
@@ -218,21 +198,44 @@ module TTL2HTML
         end
       end
     end
+    def uri_mapping_to_path(uri, suffix = ".html")
+      path = nil
+      if @config[:uri_mappings]
+        @config[:uri_mappings].each do |mapping|
+          local_file = uri.sub(@config[:base_uri], "")
+          if mapping["regexp"] =~ local_file
+            path = local_file.sub(mapping["regexp"], mapping["path"])
+          end
+        end
+      end
+      if path.nil?
+        if suffix == ".html"
+          if @data.keys.find{|e| e.start_with?(uri + "/") }
+            path = uri + "/index"
+          elsif uri.end_with?("/")
+            path = uri + "index"
+          else
+            path = uri
+          end
+        else
+          path = uri
+        end
+      end
+      path = path.sub(@config[:base_uri], "")
+      path << suffix
+      #p [uri, path]
+      path
+    end
     def cleanup
       @data.select do |uri, v|
         uri.start_with? @config[:base_uri]
       end.sort_by do |uri, v|
         -(uri.size)
       end.each do |uri, v|
-        if @data.keys.find{|e| e.start_with?(uri + "/") }
-          file = uri + "/index.html"
-        else
-          file = uri + ".html"
-        end
-        html_file = file.sub(@config[:base_uri], "")
+        html_file = uri_mapping_to_path(uri, ".html")
         html_file = File.join(@config[:output_dir], html_file) if @config[:output_dir]
         File.unlink html_file
-        ttl_file = uri.sub(@config[:base_uri], "") + ".ttl"
+        ttl_file = uri_mapping_to_path(uri, ".ttl")
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
         File.unlink ttl_file
         dir = uri.sub(@config[:base_uri], "")
