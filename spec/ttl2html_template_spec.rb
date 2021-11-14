@@ -62,15 +62,24 @@ RSpec.describe TTL2HTML::Template do
     end
   end
   context "expand_shape" do
+    spec_base_dir = File.dirname(__FILE__)
     it "should generate shape documentation" do
-      spec_base_dir = File.dirname(__FILE__)
       ttl2html = TTL2HTML::App.new
       data = ttl2html.load_turtle(File.join(spec_base_dir, "example", "shape.ttl"))
       template = TTL2HTML::Template.new("")
       cont = template.expand_shape(data, "https://example.org/AShape")
       html = Capybara.string cont
       expect(html).to have_css("tbody > tr")
-      expect(html).to have_css("strong", text: "必須")
+      expect(html).to have_css("strong", text: "Required")
+    end
+    it "should respect i18n locale" do
+      ttl2html = TTL2HTML::App.new
+      data = ttl2html.load_turtle(File.join(spec_base_dir, "example", "shape.ttl"))
+      template = TTL2HTML::Template.new("", {locale: :ja})
+      cont = template.expand_shape(data, "https://example.org/AShape")
+      html = Capybara.string cont
+      expect(html).to have_css("table > tr > th")
+      expect(html).to have_css("th", text: "プロパティ名")
     end
   end
 end

@@ -3,16 +3,20 @@
 require "fileutils"
 require "pathname"
 require "erb"
+require "i18n"
 
 module TTL2HTML
   class Template
     attr_reader :param
     include ERB::Util
+    include I18n::Base
     def initialize(template, param = {})
       @template = template
       @param = param
       @template_path = [ Dir.pwd, File.join(Dir.pwd, "templates") ]
       @template_path << File.join(File.dirname(__FILE__), "..", "..", "templates")
+      I18n.load_path << Dir[File.expand_path("locales") + "/*.yml"]
+      I18n.locale = @param[:locale] if @param[:locale]
     end
     def output_to(file, param = {})
       @param.update(param)

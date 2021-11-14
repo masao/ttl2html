@@ -1,0 +1,7 @@
+<https://example.org/AShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#targetClass> <http://schema.org/Book>;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#path> <https://example.org/name>;
+    <http://www.w3.org/ns/shacl#name> "名称"@ja;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+  ] .

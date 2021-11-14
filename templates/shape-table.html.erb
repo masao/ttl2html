@@ -1,6 +1,11 @@
 <table class="table table-condensed">
   <tr>
-    <th>プロパティ名</th><th>説明</th><th>プロパティ値の例</th><th>必須・省略の別<br>繰り返しの有無</th><th>備考</th>
+    <th><%=h t('shape-table.header.property-name') %></th>
+    <th><%=h t('shape-table.header.description') %></th>
+    <th><%=h t('shape-table.header.example') %></th>
+    <th><%=h t('shape-table.header.required') %><br>
+        <%=h t('shape-table.header.repeatable') %></th>
+    <th><%=h t('shape-table.header.note') %></th>
   </tr>
   <tbody>
   <%- param[:properties].each do |property| -%>
@@ -10,7 +15,7 @@
       <%- else -%>
       <td><code><%=h property[:shorten_path] %></code></td>
       <%- end -%>
-      <td><%= property[:name_ja] %></td>
+      <td><%= property[:name] %></td>
       <%- if property[:nodeKind] == "http://www.w3.org/ns/shacl#IRI" -%>
       <td class="url"><%= property[:example] %></td>
       <%- else -%>
@@ -19,31 +24,31 @@
       <td>
         <div>
         <%- if property[:required] -%>
-          <strong>必須</strong>
+          <strong><%=h t('shape-table.required') %></strong>
         <%- else -%>
-          省略可能
+        <%=h t('shape-table.optional') %>
         <%- end -%>
         </div>
         <div>
         <%- if property[:repeatable] -%>
-          繰り返し有り
+        <%=h t('shape-table.repeatable') %>
         <%- else -%>
-          繰り返し無し
+        <%=h t('shape-table.non-repeatable') %>
         <%- end -%>
         </div>
       </td>
-      <td><%= property[:description_ja] %></td>
+      <td><%= property[:description] %></td>
     </tr>
     <%- if property[:nodeKind] == "http://www.w3.org/ns/shacl#BlankNode" -%>
     <tr>
       <td colspan="4">
         <%- if property[:node_mode] == :or -%>
-        ブランクノードの内容は以下のいずれかの内容からなる構造を持ちます。
+        <%=h t("shape-tabel.blank-node-or-structure") %>
         <%- property[:nodes].each do |e| -%>
           <div class="blank_node"><%= e.sub(/class="table"/, 'class="table table-condensed"') %></div>
         <%- end -%>
         <%- else -%>
-        ブランクノードの内容は以下の構造を持ちます。
+        <%=h t("shape-tabel.blank-node-structure") %>
         <div class="blank_node"><%= property[:nodes].sub(/class="table"/, 'class="table table-condensed"') %></div>
         <%- end -%>
       </td>

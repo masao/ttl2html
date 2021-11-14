@@ -1,0 +1,26 @@
+en:
+  about:
+    title: "About %{title}"
+    The properties for the textbook resources are as follows:
+    shape-note: "The properties for the %{resource} resources are as follows:"
+  default:
+    details: Details
+    inverse_data: Referred resources
+  index:
+    list: "List of %{resource}"
+  layout:
+    rdf-data: RDF data
+  shape-table:
+    header:
+      property-name: "Property name"
+      description: "Description"
+      example: "Example of the property value(s)"
+      required: "Required?"
+      repeatable: "Repeatable?"
+      note: "Notes"
+    required: "Required"
+    repeatable: "Repeatable"
+    optional: "Optional"
+    non-repeatable: "Non repeatable"
+    blank-node-structure: "The structural contents of a blank node are as follows:"
+    blank-node-or-structure: "The structural contents of a blank node are either of the followings:"

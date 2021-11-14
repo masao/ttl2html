@@ -159,7 +159,7 @@ RSpec.describe TTL2HTML::App do
       ttl2html.output_html_files
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
-      expect(html).to have_css("h3", text: "Bookをあらわすリソース")
+      expect(html).to have_css("h3", text: "Book")
     end
     it "should accept labels_with_class settings per target class" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
@@ -178,6 +178,15 @@ RSpec.describe TTL2HTML::App do
       ttl2html.output_html_files
       expect(File.exist?("/tmp/html/a.html")).to be true
       expect(File.exist?("/tmp/html/123/4567890123.html")).to be true
+    end
+    it "should respect i18n settings for names and" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_ja.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_ja.ttl"))
+      ttl2html.output_html_files
+      expect(File.exist?("/tmp/html/about.html")).to be true
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("td", text: "名称")
     end
   end
   context "#output_turtle_files" do

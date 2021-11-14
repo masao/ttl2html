@@ -1,6 +1,6 @@
     <div class="jumbotron">
       <div class="container">
-        <h1><%=h param[:site_title] %>について</h1>
+        <h1><%=h t("about.title", title: param[:site_title]) %></h1>
       </div>
     </div>
     <div class="container">
@@ -8,7 +8,7 @@
         <div class="col-md-12">
           <ol class="breadcrumb">
             <li><a href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-            <li class="active"><%=h param[:site_title] %>について</li>
+            <li class="active"><%=h t("about.title", title: param[:site_title]) %></li>
           </ol>
         </div>
       </div>
@@ -16,8 +16,9 @@
       <div class="row">
         <div class="col-md-10">
           <%- param[:content].keys.sort.each do |shape| -%>
-            <h3><%=h param[:content][shape][:label] %>をあらわすリソース</h3>
-            <p><%=h param[:content][shape][:label] %>リソースが持つプロパティを下表に示します</p>
+            <h3><%=h param[:content][shape][:label] %></h3>
+            <p><%= param[:content][shape][:comment] %></p>
+            <p><%=h t("about.shape-note", resource: param[:content][shape][:label]) %></p>
             <%= param[:content][shape][:html] -%>
           <%- end -%>
         </div>
