@@ -43,12 +43,12 @@
     <tr>
       <td colspan="4">
         <%- if property[:node_mode] == :or -%>
-        <%=h t("shape-tabel.blank-node-or-structure") %>
+        <%=h t("shape-table.blank-node-or-structure") %>
         <%- property[:nodes].each do |e| -%>
           <div class="blank_node"><%= e.sub(/class="table"/, 'class="table table-condensed"') %></div>
         <%- end -%>
         <%- else -%>
-        <%=h t("shape-tabel.blank-node-structure") %>
+        <%=h t("shape-table.blank-node-structure") %>
         <div class="blank_node"><%= property[:nodes].sub(/class="table"/, 'class="table table-condensed"') %></div>
         <%- end -%>
       </td>
