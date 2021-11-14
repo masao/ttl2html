@@ -187,6 +187,7 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("td", text: "名称")
+      expect(html).to have_css("td", text: "名前を示すプロパティ")
     end
   end
   context "#output_turtle_files" do

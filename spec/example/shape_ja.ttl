@@ -2,6 +2,7 @@
   <http://www.w3.org/ns/shacl#targetClass> <http://schema.org/Book>;
   <http://www.w3.org/ns/shacl#property> [
     <http://www.w3.org/ns/shacl#path> <https://example.org/name>;
-    <http://www.w3.org/ns/shacl#name> "名称"@ja;
+    <http://www.w3.org/ns/shacl#name> "名称"@ja, "Name"@en;
+    <http://www.w3.org/ns/shacl#description> "名前を示すプロパティ"@ja, "This property represents the name of the resource."@en;
     <http://www.w3.org/ns/shacl#minCount> 1;
   ] .
