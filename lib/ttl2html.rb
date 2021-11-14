@@ -110,6 +110,7 @@ module TTL2HTML
       @graph.query([nil, nil, object]).statements.sort_by do |e|
         [ e.subject, e.predicate, object ]
       end.map do |e|
+        next if e.subject.node?
         result << "<#{e.subject}> <#{e.predicate}> <#{object}>.\n"
       end
       result

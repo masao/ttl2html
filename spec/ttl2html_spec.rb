@@ -218,6 +218,17 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/a.ttl")).to be true
       expect(File.exist?("/tmp/html/123/4567890123.ttl")).to be true
     end
+    it "should skip blank subjects in inverse statements" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_blank_subject.ttl"))
+      ttl2html.output_turtle_files
+      expect(File.exist?("/tmp/html/a.ttl")).to be true
+      RDF::Turtle::Reader.new(open("/tmp/html/a.ttl")) do |reader|
+        reader.statements.each do |statement|
+          expect(statement.subject.to_s).not_to start_with("_:")
+        end
+      end
+    end
   end
   context "#cleanup" do
     it "should cleanup" do
