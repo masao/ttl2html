@@ -96,9 +96,9 @@ module TTL2HTML
         {
           path: path,
           shorten_path: shorten_path,
-          name: data[property]["http://www.w3.org/ns/shacl#name"].first,
+          name: get_language_literal(data[property]["http://www.w3.org/ns/shacl#name"]),
           example: data[property]["http://www.w3.org/2004/02/skos/core#example"] ? data[property]["http://www.w3.org/2004/02/skos/core#example"].first : nil,
-          description: data[property]["http://www.w3.org/ns/shacl#description"] ? data[property]["http://www.w3.org/ns/shacl#description"].first : nil,
+          description: get_language_literal(data[property]["http://www.w3.org/ns/shacl#description"]),
           required: data[property]["http://www.w3.org/ns/shacl#minCount"] ? data[property]["http://www.w3.org/ns/shacl#minCount"].first.to_i > 0 : false,
           repeatable: repeatable,
           nodeKind: data[property]["http://www.w3.org/ns/shacl#nodeKind"] ? data[property]["http://www.w3.org/ns/shacl#nodeKind"].first : nil,
@@ -144,7 +144,11 @@ module TTL2HTML
     end
     def get_language_literal(object)
       if object.respond_to? :has_key?
-        object.values.first
+        if object.has_key?(I18n.locale)
+          object[I18n.locale]
+        else
+          object.values.first
+        end
       elsif object.is_a? Array
         object.first
       else
