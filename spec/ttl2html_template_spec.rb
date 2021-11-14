@@ -66,7 +66,7 @@ RSpec.describe TTL2HTML::Template do
     it "should generate shape documentation" do
       ttl2html = TTL2HTML::App.new
       data = ttl2html.load_turtle(File.join(spec_base_dir, "example", "shape.ttl"))
-      template = TTL2HTML::Template.new("")
+      template = TTL2HTML::Template.new("", {locale: :en})
       cont = template.expand_shape(data, "https://example.org/AShape")
       html = Capybara.string cont
       expect(html).to have_css("tbody > tr")
