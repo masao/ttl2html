@@ -80,6 +80,14 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_title("test title example")
     end
+    it "should respect title property per class settings" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_title_perclass.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_title_perclass.ttl"))
+      ttl2html.output_html_files
+      cont = File.open("/tmp/html/a/index.html").read
+      html = Capybara.string cont
+      expect(html).to have_title("test description")
+    end
     it "should respect labels" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
