@@ -10,7 +10,6 @@ require "ttl2html/template"
 
 module TTL2HTML
   class App
-    using ProgressBar::Refinements::Enumerator
     def initialize(config = "config.yml")
       @template = {}
       @config = load_config(config)
@@ -139,7 +138,11 @@ module TTL2HTML
           end
         end
       end
+      progressbar = ProgressBar.create(title: :output_html_files,
+        total: @data.size,
+        format: "(%t) %a %e %P% Processed: %c from %C")
       each_data do |uri, v|
+        progressbar.increment
         template = Template.new("default.html.erb", @config)
         param = @config.dup
         param[:uri] = uri
@@ -154,6 +157,7 @@ module TTL2HTML
         end
         template.output_to(file, param)
       end
+      progressbar.finish
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
       if @config.has_key? :top_class
@@ -216,7 +220,11 @@ module TTL2HTML
     end
 
     def output_turtle_files
+      progressbar = ProgressBar.create(title: :output_turtle_files,
+        total: @data.size,
+        format: "(%t) %a %e %P% Processed: %c from %C")
       each_data do |uri, v|
+        progressbar.increment
         file = uri_mapping_to_path(uri, ".ttl")
         if @config[:output_dir]
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
@@ -228,6 +236,7 @@ module TTL2HTML
           io.puts str.strip
         end
       end
+      progressbar.finish
     end
     def uri_mapping_to_path(uri, suffix = ".html")
       path = nil
