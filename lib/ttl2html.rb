@@ -123,6 +123,22 @@ module TTL2HTML
       end
     end
     def output_html_files
+      template = Template.new("")
+      shapes = @graph.query([nil,
+                             RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
+                             RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
+      labels = shapes2labels(shapes)
+      @config[:labels_with_class] ||= {}
+      labels.each do |klass, props|
+        props.each do |property, label|
+          @config[:labels_with_class][klass] ||= {}
+          if @config[:labels_with_class][klass][property]
+            next
+          else
+            @config[:labels_with_class][klass][property] = template.get_language_literal(label)
+          end
+        end
+      end
       each_data do |uri, v|
         template = Template.new("default.html.erb", @config)
         param = @config.dup
@@ -158,9 +174,6 @@ module TTL2HTML
           template.output_to(index_html, param)
         end
       end
-      shapes = @graph.query([nil,
-                             RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-                             RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
       if shapes.size > 0
         about_html = @config[:about_file] || "about.html"
         about_html =  File.join(@config[:output_dir], about_html) if @config[:output_dir]
@@ -185,6 +198,23 @@ module TTL2HTML
         template.output_to(about_html, param)
       end
     end
+
+    def shapes2labels(shapes)
+      labels = {}
+      shapes.subjects.each do |shape|
+        target_class = @data[shape.to_s]["http://www.w3.org/ns/shacl#targetClass"]&.first
+        if target_class
+          @data[shape.to_s]["http://www.w3.org/ns/shacl#property"].each do |property|
+            path = @data[property]["http://www.w3.org/ns/shacl#path"].first
+            name = @data[property]["http://www.w3.org/ns/shacl#name"]
+            labels[target_class] ||= {}
+            labels[target_class][path] = name
+          end
+        end
+      end
+      labels
+    end
+
     def output_turtle_files
       each_data do |uri, v|
         file = uri_mapping_to_path(uri, ".ttl")
