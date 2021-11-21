@@ -195,10 +195,14 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/a.html")).to be true
       expect(File.exist?("/tmp/html/123/4567890123.html")).to be true
     end
-    it "should respect i18n settings for names and" do
+    it "should respect i18n settings for names" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_ja.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_ja.ttl"))
       ttl2html.output_html_files
+      expect(File.exist?("/tmp/html/AShape.html")).to be true
+      cont = open("/tmp/html/AShape.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("footer img[alt='RDFデータ']")
       expect(File.exist?("/tmp/html/about.html")).to be true
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
