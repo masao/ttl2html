@@ -67,25 +67,15 @@ module TTL2HTML
     def format_turtle(subject, depth = 1)
       turtle = RDF::Turtle::Writer.new
       result = ""
-      if subject.iri?
-        result << "<#{subject}>\n#{"  "*depth}"
-      else
+      if subject =~ /^_:/
         result << "[\n#{"  "*depth}"
+      else
+        result << "<#{subject}>\n#{"  "*depth}"
       end
-      result << @graph.query([subject, nil, nil]).predicates.sort.map do |predicate|
+      result << @data[subject.to_s].keys.sort.map do |predicate|
         str = "<#{predicate}> "
-        str << @graph.query([subject, predicate, nil]).objects.sort_by do |object|
-          if object.resource? and not object.iri? # blank node:
-            @graph.query([object, nil, nil]).statements.sort_by{|e|
-              [ e.predicate, e.object ]
-            }.map{|e|
-              [ e.predicate, e.object ]
-            }
-          else
-            object
-          end
-        end.map do |object|
-          if object.resource? and not object.iri? # blank node:
+        str << @data[subject.to_s][predicate].sort.map do |object|
+          if object =~ /^_:/ # blank node:
             format_turtle(object, depth + 1)
           else
             case object
@@ -98,19 +88,21 @@ module TTL2HTML
         end.join(", ")
         str
       end.join(";\n#{"  "*depth}")
-      result << " ." if subject.iri?
+      result << " ." if not subject =~ /^_:/
       result << "\n"
-      result << "#{"  "*(depth-1)}]" if not subject.iri?
+      result << "#{"  "*(depth-1)}]" if subject =~ /^_:/
       result
     end
     def format_turtle_inverse(object)
-      turtle = RDF::Turtle::Writer.new
       result = ""
-      @graph.query([nil, nil, object]).statements.sort_by do |e|
-        [ e.subject, e.predicate, object ]
-      end.map do |e|
-        next if e.subject.node?
-        result << "<#{e.subject}> <#{e.predicate}> <#{object}>.\n"
+      return result if not object.start_with? @config[:base_uri]
+      return result if not @data_inverse.has_key? object
+      turtle = RDF::Turtle::Writer.new
+      @data_inverse[object].keys.sort.each do |predicate|
+        @data_inverse[object.to_s][predicate].sort.each do |subject|
+          next if subject =~ /^_:/
+          result << "<#{subject}> <#{predicate}> <#{object}>.\n"
+        end
       end
       result
     end
@@ -230,8 +222,8 @@ module TTL2HTML
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
-        str = format_turtle(RDF::URI.new uri)
-        str << format_turtle_inverse(RDF::URI.new uri)
+        str = format_turtle(uri)
+        str << format_turtle_inverse(uri)
         open(file, "w") do |io|
           io.puts str.strip
         end
