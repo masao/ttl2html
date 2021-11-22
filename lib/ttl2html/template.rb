@@ -12,7 +12,7 @@ module TTL2HTML
     include I18n::Base
     def initialize(template, param = {})
       @template = template
-      @param = param
+      @param = param.dup
       @template_path = [ Dir.pwd, File.join(Dir.pwd, "templates") ]
       @template_path << File.join(File.dirname(__FILE__), "..", "..", "templates")
       I18n.load_path << Dir[File.join(File.dirname(__FILE__), "..", "..", "locales") + "/*.yml"]

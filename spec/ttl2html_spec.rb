@@ -216,6 +216,14 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("td", text: /^名称$/)
       expect(html).to have_css("td", text: /^名前を示すプロパティ$/)
     end
+    it "should not have a link to rdf data at index.html" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).not_to have_css("footer a")
+    end
   end
   context "#output_turtle_files" do
     it "should generate files" do
