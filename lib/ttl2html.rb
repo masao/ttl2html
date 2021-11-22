@@ -114,7 +114,7 @@ module TTL2HTML
       end
     end
     def output_html_files
-      template = Template.new("")
+      template = Template.new("", @config)
       shapes = @graph.query([nil,
                              RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                              RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])

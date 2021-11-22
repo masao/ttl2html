@@ -15,6 +15,6 @@ ex:AShape a sh:NodeShape;
   sh:targetClass ex:b;
   sh:property [
     sh:path ex:title;
-    sh:name "Name";
+    sh:name "Name"@en, "名称"@ja;
     sh:minCount 1;
   ] .
