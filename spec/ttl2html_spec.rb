@@ -264,6 +264,20 @@ RSpec.describe TTL2HTML::App do
         end
       end
     end
+    it "should support literals with langauge tags" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))
+      ttl2html.output_turtle_files
+      expect(File.exist?("/tmp/html/c.ttl")).to be true
+      RDF::Turtle::Reader.new(open("/tmp/html/c.ttl")) do |reader|
+        reader.statements.each do |statement|
+          if statement.predicate == RDF::URI("http://purl.org/dc/terms/title")
+            expect(statement.object).to be_language
+            expect(statement.object.language).to eq :ja
+          end
+        end
+      end
+    end
   end
   context "#cleanup" do
     it "should cleanup" do

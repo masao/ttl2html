@@ -77,13 +77,12 @@ module TTL2HTML
         str << @data[subject.to_s][predicate].sort.map do |object|
           if object =~ /^_:/ # blank node:
             format_turtle(object, depth + 1)
+          elsif object =~ RDF::URI::IRI
+            turtle.format_uri(RDF::URI.new object)
+          elsif object.respond_to?(:first) and object.first.kind_of?(Symbol)
+            turtle.format_literal(RDF::Literal.new(object[1], language: object[0]))
           else
-            case object
-            when RDF::URI
-              turtle.format_uri(object)
-            else
-              turtle.format_literal(object)
-            end
+            turtle.format_literal(object)
           end
         end.join(", ")
         str
