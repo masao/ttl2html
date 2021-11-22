@@ -2,3 +2,4 @@
 <https://example.org/a> <http://purl.org/dc/terms/title> "test title".
 <https://example.org/1234567890123> a <https://example.org/b>.
 <https://example.org/1234567890123> <http://purl.org/dc/terms/title> "test title".
+<https://example.org/1234567890123> <http://purl.org/dc/terms/hasPart> <https://example.org/0000000000001>.

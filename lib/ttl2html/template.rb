@@ -113,6 +113,33 @@ module TTL2HTML
     end
 
     # helper method:
+    def uri_mapping_to_path(uri, suffix = ".html")
+      path = nil
+      if @param[:uri_mappings]
+        @param[:uri_mappings].each do |mapping|
+          local_file = uri.sub(@param[:base_uri], "")
+          if mapping["regexp"] =~ local_file
+            path = local_file.sub(mapping["regexp"], mapping["path"])
+          end
+        end
+      end
+      if path.nil?
+        if suffix == ".html"
+          if @param[:data_global] and @param[:data_global].keys.find{|e| e.start_with?(uri + "/") }
+            path = uri + "/index"
+          elsif uri.end_with?("/")
+            path = uri + "index"
+          else
+            path = uri
+          end
+        else
+          path = uri
+        end
+      end
+      path = path.sub(@param[:base_uri], "") if @param[:base_uri]
+      path << suffix
+      path
+    end
     def relative_path(dest)
       src = @param[:output_file]
       src = Pathname.new(src).relative_path_from(Pathname.new(@param[:output_dir])) if @param[:output_dir]
@@ -123,6 +150,7 @@ module TTL2HTML
     def relative_path_uri(dest_uri, base_uri)
       if dest_uri.start_with? base_uri
         dest = dest_uri.sub(base_uri, "")
+        dest = uri_mapping_to_path(dest, "")
         relative_path(dest)
       else
         dest_uri

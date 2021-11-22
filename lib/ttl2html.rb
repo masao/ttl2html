@@ -11,7 +11,6 @@ require "ttl2html/template"
 module TTL2HTML
   class App
     def initialize(config = "config.yml")
-      @template = {}
       @config = load_config(config)
       if not @config[:base_uri]
         raise "load_config: base_uri not found"
