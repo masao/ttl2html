@@ -201,7 +201,7 @@ module TTL2HTML
     def format_object(object, data)
       if object =~ /\Ahttps?:\/\//
         rel_path = relative_path_uri(object, param[:base_uri])
-        if data[object]
+        if param[:data_global][object]
           "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or object}</a>"
         else
           "<a href=\"#{rel_path}\">#{object}</a>"

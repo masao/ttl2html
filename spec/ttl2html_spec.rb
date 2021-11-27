@@ -88,6 +88,14 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_title("test description")
     end
+    it "should use title labels as a link text" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = File.open("/tmp/html/b.html").read
+      html = Capybara.string cont
+      expect(html).to have_link("test title", href: "a")
+    end
     it "should respect labels" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
@@ -117,7 +125,7 @@ RSpec.describe TTL2HTML::App do
       ttl2html.output_html_files
       cont = File.open("/tmp/html/b.html").read
       html = Capybara.string cont
-      expect(html).to have_link "https://example.org/a"
+      expect(html).to have_link "a"
     end
     it "should accept top_class config" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
