@@ -3,16 +3,14 @@
         <h1><%=h t("about.title", title: param[:site_title]) %></h1>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ol class="breadcrumb">
-            <li><a href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-            <li class="active"><%=h t("about.title", title: param[:site_title]) %></li>
-          </ol>
-        </div>
-      </div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./"><i class="bi bi-house-door-fill"></i> Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%=h t("about.title", title: param[:site_title]) %></li>
+      </ol>
+    </nav>
 
+    <div class="container">
       <div class="row">
         <div class="col-md-10">
           <%- param[:content].keys.sort.each do |shape| -%>
@@ -23,3 +21,4 @@
           <%- end -%>
         </div>
       </div>
+    </div>
