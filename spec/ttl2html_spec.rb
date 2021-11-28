@@ -126,6 +126,7 @@ RSpec.describe TTL2HTML::App do
       cont = File.open("/tmp/html/b.html").read
       html = Capybara.string cont
       expect(html).to have_link "a"
+      expect(html).to have_css("dt", text: /Referred to as/)
     end
     it "should accept top_class config" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

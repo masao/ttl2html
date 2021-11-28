@@ -24,3 +24,5 @@ en:
     non-repeatable: "Non repeatable"
     blank-node-structure: "The structural contents of a blank node are as follows:"
     blank-node-or-structure: "The structural contents of a blank node are either of the followings:"
+  triples:
+    inverse_refered: "Referred to as '%{property}' from:"

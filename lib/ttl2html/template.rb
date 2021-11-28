@@ -212,8 +212,9 @@ module TTL2HTML
         object
       end
     end
-    def format_triples(triples)
+    def format_triples(triples, type = :default)
       param_local = @param.dup.merge(data: triples)
+      param_local[:type] = type
       if @param[:labels_with_class] and triples["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
         @param[:labels_with_class].reverse_each do |k, v|
           triples["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].each do |entity_class|

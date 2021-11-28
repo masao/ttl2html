@@ -1,6 +1,10 @@
 <dl class="row">
 <% param[:data].each do |k, v| %>
+  <% if param[:type] == :inverse %>
+  <dt class="col-sm-3"><%=h t('triples.inverse_refered', property: format_property(k, param[:labels])) %></dt>
+  <% else %>
   <dt class="col-sm-3"><%=h format_property(k, param[:labels]) %></dt>
+  <% end %>
   <% if v.respond_to? :has_key? %>
     <% v.each_with_index do |v2, idx| %>
       <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" lang="<%=h v2[0] %>"><%= format_object v2[1], param[:data] %></dd>
