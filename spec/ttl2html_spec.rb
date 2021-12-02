@@ -238,6 +238,15 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).not_to have_css("footer a")
     end
+    it "should output breadcrums according to the settings" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_breadcrumbs.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/b.html"){|io| io.read }
+      p cont
+      html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+    end
   end
   context "#output_turtle_files" do
     it "should generate files" do

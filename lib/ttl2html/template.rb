@@ -191,6 +191,24 @@ module TTL2HTML
         object
       end
     end
+    def build_breadcrums(data)
+      results = []
+      if @param[:breadcrums]
+        @param[:breadcrums].each do |e|
+          if data[e[:property]]
+            data[e[:property]].each do |parent|
+              label = e[:label] ? @param[:data_global][parent][e[:label]] : get_language_literal(@param[:data_global][parent])
+              results << {
+                uri: parent,
+                label: label,
+              }
+              results += build_breadcrums(parent)
+            end
+          end
+        end
+      end
+      results
+    end
     def format_property(property, labels = {})
       if labels and labels[property]
         labels[property]

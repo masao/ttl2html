@@ -82,4 +82,24 @@ RSpec.describe TTL2HTML::Template do
       expect(html).to have_css("th", text: "プロパティ名")
     end
   end
+  context "build_breadcrums" do
+    it "should build breadcrums data" do
+      settings = {
+        breadcrums: [
+          property: "http://www.w3.org/2004/02/skos/core#broader",
+        ],
+        data_global: {
+          "https://example.org/a" => {
+            "http://schema.org/name" => ["a"]
+          }
+        }
+      }
+      template = TTL2HTML::Template.new("", settings)
+      data = {
+        "http://www.w3.org/2004/02/skos/core#broader" => [ "https://example.org/a" ]
+      }
+      breadcrums = template.build_breadcrums(data)
+      expect(breadcrums.size).to eq 1
+    end
+  end
 end
