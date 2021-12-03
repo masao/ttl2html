@@ -238,7 +238,7 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).not_to have_css("footer a")
     end
-    it "should output breadcrums according to the settings" do
+    it "should output breadcrumbs according to the settings" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_breadcrumbs.ttl"))
       ttl2html.output_html_files
@@ -248,6 +248,18 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
       cont = open("/tmp/html/c.html"){|io| io.read }
       html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)
+      expect(html).to have_css("nav ol.breadcrumb li.active", text: "test title 3")
+    end
+    it "should output breadcrumbs with inverse property settings" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs_inverse.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_breadcrumbs_inverse.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/c.html"){|io| io.read }
+      html = Capybara.string cont
+      p cont
       expect(html).to have_css("nav ol.breadcrumb")
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)

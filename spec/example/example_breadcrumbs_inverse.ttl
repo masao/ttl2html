@@ -1,0 +1,5 @@
+<https://example.org/a> <http://purl.org/dc/terms/title> "test title".
+<https://example.org/a> <http://www.w3.org/2004/02/skos/core#narrower> <https://example.org/b>.
+<https://example.org/b> <http://purl.org/dc/terms/title> "test title 2".
+<https://example.org/b> <http://www.w3.org/2004/02/skos/core#narrower> <https://example.org/c>.
+<https://example.org/c> <http://purl.org/dc/terms/title> "test title 3".

@@ -191,7 +191,7 @@ module TTL2HTML
         object
       end
     end
-    def build_breadcrumbs(data, data_global = {})
+    def build_breadcrumbs(data, data_global = {}, data_inverse = {})
       results = []
       if @param[:breadcrumbs]
         first_label = if @param[:breadcrumbs].first["label"]
@@ -201,15 +201,17 @@ module TTL2HTML
         end
         results << { label: first_label }
         @param[:breadcrumbs].each do |e|
-          if data[e["property"]]
-            data[e["property"]].each do |parent|
+          data_target = data 
+          data_target = data_inverse if e["inverse"]
+          if data_target[e["property"]]
+            data_target[e["property"]].each do |parent|
               data_parent = data_global[parent]
               label = e["label"] ? data_parent[e["label"]].first : get_language_literal(data_parent).first
               results << {
                 uri: parent,
                 label: label,
               }
-              results += build_breadcrumbs(data_parent, data_global)
+              results += build_breadcrumbs(data_parent, data_global, data_inverse)
             end
           end
         end

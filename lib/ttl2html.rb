@@ -141,7 +141,7 @@ module TTL2HTML
         param[:data_global] = @data
         param[:title] = template.get_title(v)
         if param[:breadcrumbs]
-          param[:breadcrumbs_items] = template.build_breadcrumbs(v, @data)
+          param[:breadcrumbs_items] = build_breadcrumbs(uri, template)
         end
         file = uri_mapping_to_path(uri, ".html")
         if @config[:output_dir]
@@ -194,6 +194,35 @@ module TTL2HTML
         end
         template.output_to(about_html, param)
       end
+    end
+
+    def build_breadcrumbs(uri, template)
+      results = []
+      data = @data[uri]
+      if @config[:breadcrumbs]
+        first_label = if @config[:breadcrumbs].first["label"]
+          data[@config[:breadcrumbs].first["label"]].first
+        else
+          template.get_title(data)
+        end
+        results << { label: first_label }
+        @config[:breadcrumbs].each do |e|
+          data_target = data
+          data_target = @data_inverse[uri] if e["inverse"]
+          if data_target and data_target[e["property"]]
+            data_target[e["property"]].each do |parent|
+              data_parent = @data[parent]
+              label = e["label"] ? data_parent[e["label"]].first : template.get_language_literal(data_parent).first
+              results << {
+                uri: parent,
+                label: label,
+              }
+              results += build_breadcrumbs(parent, template)
+            end
+          end
+        end
+      end
+      results
     end
 
     def shapes2labels(shapes)
