@@ -60,6 +60,14 @@ RSpec.describe TTL2HTML::Template do
       title = template.get_title({})
       expect(title).to eq "no title"
     end
+    it "should get title with shorten" do
+      data = { "http://schema.org/name" => [
+        "1234567890" * 15
+      ] }
+      template = TTL2HTML::Template.new("")
+      title = template.get_title(data)
+      expect(title).to end_with "..."
+    end
   end
   context "expand_shape" do
     spec_base_dir = File.dirname(__FILE__)
@@ -80,26 +88,6 @@ RSpec.describe TTL2HTML::Template do
       html = Capybara.string cont
       expect(html).to have_css("table > tr > th")
       expect(html).to have_css("th", text: "プロパティ名")
-    end
-  end
-  context "build_breadcrums" do
-    it "should build breadcrums data" do
-      settings = {
-        breadcrumbs: [
-          property: "http://www.w3.org/2004/02/skos/core#broader",
-        ],
-        data_global: {
-          "https://example.org/a" => {
-            "http://schema.org/name" => ["a"]
-          }
-        }
-      }
-      template = TTL2HTML::Template.new("", settings)
-      data = {
-        "http://www.w3.org/2004/02/skos/core#broader" => [ "https://example.org/a" ]
-      }
-      breadcrumbs = template.build_breadcrumbs(data, settings[:data_global])
-      expect(breadcrumbs.size).to eq 1
     end
   end
 end

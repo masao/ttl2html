@@ -156,16 +156,23 @@ module TTL2HTML
         dest_uri
       end
     end
+    def shorten_title(title, length = 140)
+      if title.length > length
+        title[0..length] + "..."
+      else
+        title
+      end
+    end
     def get_title(data, default_title = "no title")
       if @param[:title_property_perclass] and data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
         @param[:title_property_perclass].each do |klass, property|
           if data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include?(klass) and data[property]
-            return get_language_literal(data[property])
+            return shorten_title(get_language_literal(data[property]))
           end
         end
       end
       if @param[:title_property] and data[@param[:title_property]]
-        return get_language_literal(data[@param[:title_property]])
+        return shorten_title(get_language_literal(data[@param[:title_property]]))
       end
       %w(
         http://www.w3.org/2000/01/rdf-schema#label
@@ -174,7 +181,7 @@ module TTL2HTML
         http://schema.org/name
         http://www.w3.org/2004/02/skos/core#prefLabel
       ).each do |property|
-        return get_language_literal(data[property]) if data[property]
+        return shorten_title(get_language_literal(data[property])) if data[property]
       end
       default_title
     end
@@ -190,33 +197,6 @@ module TTL2HTML
       else
         object
       end
-    end
-    def build_breadcrumbs(data, data_global = {}, data_inverse = {})
-      results = []
-      if @param[:breadcrumbs]
-        first_label = if @param[:breadcrumbs].first["label"]
-          data[@param[:breadcrumbs].first["label"]].first
-        else
-          get_title(data)
-        end
-        results << { label: first_label }
-        @param[:breadcrumbs].each do |e|
-          data_target = data 
-          data_target = data_inverse if e["inverse"]
-          if data_target[e["property"]]
-            data_target[e["property"]].each do |parent|
-              data_parent = data_global[parent]
-              label = e["label"] ? data_parent[e["label"]].first : get_language_literal(data_parent).first
-              results << {
-                uri: parent,
-                label: label,
-              }
-              results += build_breadcrumbs(data_parent, data_global, data_inverse)
-            end
-          end
-        end
-      end
-      results
     end
     def format_property(property, labels = {})
       if labels and labels[property]
