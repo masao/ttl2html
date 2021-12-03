@@ -260,7 +260,6 @@ RSpec.describe TTL2HTML::App do
       ttl2html.output_html_files
       cont = open("/tmp/html/c.html"){|io| io.read }
       html = Capybara.string cont
-      p cont
       expect(html).to have_css("nav ol.breadcrumb")
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)
