@@ -191,18 +191,25 @@ module TTL2HTML
         object
       end
     end
-    def build_breadcrums(data)
+    def build_breadcrumbs(data, data_global = {})
       results = []
-      if @param[:breadcrums]
-        @param[:breadcrums].each do |e|
-          if data[e[:property]]
-            data[e[:property]].each do |parent|
-              label = e[:label] ? @param[:data_global][parent][e[:label]] : get_language_literal(@param[:data_global][parent])
+      if @param[:breadcrumbs]
+        first_label = if @param[:breadcrumbs].first["label"]
+          data[@param[:breadcrumbs].first["label"]].first
+        else
+          get_title(data)
+        end
+        results << { label: first_label }
+        @param[:breadcrumbs].each do |e|
+          if data[e["property"]]
+            data[e["property"]].each do |parent|
+              data_parent = data_global[parent]
+              label = e["label"] ? data_parent[e["label"]].first : get_language_literal(data_parent).first
               results << {
                 uri: parent,
                 label: label,
               }
-              results += build_breadcrums(parent)
+              results += build_breadcrumbs(data_parent, data_global)
             end
           end
         end

@@ -140,6 +140,9 @@ module TTL2HTML
         param[:data_inverse] = @data_inverse[uri]
         param[:data_global] = @data
         param[:title] = template.get_title(v)
+        if param[:breadcrumbs]
+          param[:breadcrumbs_items] = template.build_breadcrumbs(v, @data)
+        end
         file = uri_mapping_to_path(uri, ".html")
         if @config[:output_dir]
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]

@@ -243,9 +243,15 @@ RSpec.describe TTL2HTML::App do
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_breadcrumbs.ttl"))
       ttl2html.output_html_files
       cont = open("/tmp/html/b.html"){|io| io.read }
-      p cont
       html = Capybara.string cont
       expect(html).to have_css("nav ol.breadcrumb")
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
+      cont = open("/tmp/html/c.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)
+      expect(html).to have_css("nav ol.breadcrumb li.active", text: "test title 3")
     end
   end
   context "#output_turtle_files" do

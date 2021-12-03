@@ -85,7 +85,7 @@ RSpec.describe TTL2HTML::Template do
   context "build_breadcrums" do
     it "should build breadcrums data" do
       settings = {
-        breadcrums: [
+        breadcrumbs: [
           property: "http://www.w3.org/2004/02/skos/core#broader",
         ],
         data_global: {
@@ -98,8 +98,8 @@ RSpec.describe TTL2HTML::Template do
       data = {
         "http://www.w3.org/2004/02/skos/core#broader" => [ "https://example.org/a" ]
       }
-      breadcrums = template.build_breadcrums(data)
-      expect(breadcrums.size).to eq 1
+      breadcrumbs = template.build_breadcrumbs(data, settings[:data_global])
+      expect(breadcrumbs.size).to eq 1
     end
   end
 end
