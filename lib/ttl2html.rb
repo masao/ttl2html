@@ -136,6 +136,7 @@ module TTL2HTML
         template = Template.new("default.html.erb", @config)
         param = @config.dup
         param[:uri] = uri
+        param[:turtle_uri] = uri_mapping_to_path(uri, ".ttl")
         param[:data] = v
         param[:data_inverse] = @data_inverse[uri]
         param[:data_global] = @data
