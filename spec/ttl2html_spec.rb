@@ -250,6 +250,7 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/c.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("nav ol.breadcrumb")
+      expect(html.all("nav ol.breadcrumb li.breadcrumb-item").size).to eq 4
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)
       expect(html).to have_css("nav ol.breadcrumb li.active", text: "test title 3")

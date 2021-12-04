@@ -197,28 +197,28 @@ module TTL2HTML
       end
     end
 
-    def build_breadcrumbs(uri, template)
+    def build_breadcrumbs(uri, template, depth = 0)
       results = []
       data = @data[uri]
       if @config[:breadcrumbs]
-        first_label = if @config[:breadcrumbs].first["label"]
-          data[@config[:breadcrumbs].first["label"]].first
-        else
-          template.get_title(data)
+        if depth == 0
+          first_label = template.get_title(data)
+          first_label = data[@config[:breadcrumbs].first["label"]].first if @config[:breadcrumbs].first["label"] and data[@config[:breadcrumbs].first["label"]]
+          results << { label: first_label }
         end
-        results << { label: first_label }
         @config[:breadcrumbs].each do |e|
           data_target = data
           data_target = @data_inverse[uri] if e["inverse"]
           if data_target and data_target[e["property"]]
             data_target[e["property"]].each do |parent|
               data_parent = @data[parent]
-              label = e["label"] ? data_parent[e["label"]].first : template.get_language_literal(data_parent).first
+              label = template.get_language_literal(data_parent).first
+              label = data_parent[e["label"]].first if e["label"] and data_parent[e["label"]]
               results << {
                 uri: parent,
                 label: label,
               }
-              results += build_breadcrumbs(parent, template)
+              results += build_breadcrumbs(parent, template, depth + 1)
             end
           end
         end
