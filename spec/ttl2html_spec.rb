@@ -183,6 +183,16 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("h3", text: "Book")
       expect(html).to have_css("p", text: "This class represents a Book instance.")
     end
+    it "should generate resouce instance with the shape order" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_order.ttl"))
+      ttl2html.output_html_files
+      expect(File).to exist "/tmp/html/a.html"
+      cont = open("/tmp/html/a.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("dl dt:nth-child(1)", text: /^Name$/)
+      expect(html).to have_css("dl dt:nth-of-type(2)", text: /^Description$/)
+    end
     it "should accept sh:or node for about.html" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_or.ttl"))

@@ -1,0 +1,15 @@
+<https://example.org/AShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#targetClass> <http://schema.org/Book>;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#path> <https://example.org/name>;
+    <http://www.w3.org/ns/shacl#name> "Name";
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#order> 1;
+  ], [
+    <http://www.w3.org/ns/shacl#path> <https://example.org/description>;
+    <http://www.w3.org/ns/shacl#name> "Description";
+    <http://www.w3.org/ns/shacl#order> 2;
+  ] .
+<https://example.org/a> a <http://schema.org/Book>;
+  <https://example.org/description> "Test description";
+  <https://example.org/name> "Test title".

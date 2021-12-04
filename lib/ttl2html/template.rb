@@ -234,6 +234,18 @@ module TTL2HTML
           end
         end
       end
+      if @param[:orders_with_class] and triples["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
+        @param[:orders_with_class].reverse_each do |k, v|
+          triples["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].each do |entity_class|
+            if entity_class == k
+              v.each do |property, order|
+                param_local[:orders] ||= {}
+                param_local[:orders][property] = order || Float::INFINITY
+              end
+            end
+          end
+        end
+      end
       to_html_raw("triples.html.erb", param_local)
     end
   end

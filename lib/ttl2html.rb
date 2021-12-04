@@ -128,6 +128,7 @@ module TTL2HTML
           end
         end
       end
+      @config[:orders_with_class] = shapes2orders(shapes)
       progressbar = ProgressBar.create(title: :output_html_files,
         total: @data.size,
         format: "(%t) %a %e %P% Processed: %c from %C")
@@ -247,6 +248,21 @@ module TTL2HTML
         end
       end
       labels
+    end
+    def shapes2orders(shapes)
+      orders = {}
+      shapes.subjects.each do |shape|
+        target_class = @data[shape.to_s]["http://www.w3.org/ns/shacl#targetClass"]&.first
+        if target_class
+          @data[shape.to_s]["http://www.w3.org/ns/shacl#property"].each do |property|
+            path = @data[property]["http://www.w3.org/ns/shacl#path"].first
+            order = @data[property]["http://www.w3.org/ns/shacl#order"]
+            orders[target_class] ||= {}
+            orders[target_class][path] = order&.first&.to_i
+          end
+        end
+      end
+      orders
     end
 
     def output_turtle_files
