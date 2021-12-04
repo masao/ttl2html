@@ -6,3 +6,8 @@
     <http://www.w3.org/ns/shacl#description> "名前を示すプロパティ"@ja, "This property represents the name of the resource."@en;
     <http://www.w3.org/ns/shacl#minCount> 1;
   ] .
+<http://schema.org/Book>
+  <http://www.w3.org/2000/01/rdf-schema#label> "書籍"@ja;
+  <http://www.w3.org/2000/01/rdf-schema#comment> "このクラスは書籍リソースをあらわします"@ja;
+  <http://www.w3.org/2004/02/skos/core#example> "https://example.org/<var>ID</var>".
+

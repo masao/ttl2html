@@ -244,6 +244,7 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("td", text: /^名称$/)
       expect(html).to have_css("td", text: /^名前を示すプロパティ$/)
+      expect(html).to have_css("p", text: /^このクラスは書籍リソースをあらわします$/)
     end
     it "should not have a link to rdf data at index.html" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
