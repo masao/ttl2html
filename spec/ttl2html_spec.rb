@@ -178,6 +178,10 @@ RSpec.describe TTL2HTML::App do
       expect(File).to exist "/tmp/html/AShape.html"
       expect(File).to exist "/tmp/html/AShape.ttl"
       ttl2html.cleanup
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("h3", text: "Book")
+      expect(html).to have_css("p", text: "This class represents a Book instance.")
     end
     it "should accept sh:or node for about.html" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

@@ -180,16 +180,22 @@ module TTL2HTML
         param[:data_global] = @data
         param[:content] = {}
         shapes.subjects.each do |subject|
-          label = nil
+          label = comment = nil
           target_class = @data[subject.to_s]["http://www.w3.org/ns/shacl#targetClass"]
           if target_class
-            label = template.get_title(@data[target_class.first], nil) if @data[target_class.first]
-            label = template.format_property(target_class.first) if label.nil?
+            target_class = target_class.first
+            if @data[target_class]
+              label = template.get_title(@data[target_class], nil)
+              comment = @data[target_class]["http://www.w3.org/2000/01/rdf-schema#comment"]&.first
+            else
+              label = template.format_property(target_class)
+            end
           else
             label = template.get_title(@data[subject.to_s])
           end
           param[:content][subject] = {
             label: label,
+            comment: comment,
             html: template.expand_shape(@data, subject.to_s, @prefix),
           }
         end
