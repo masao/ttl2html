@@ -266,6 +266,18 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)
       expect(html).to have_css("nav ol.breadcrumb li.active", text: "test title 3")
     end
+    it "should output breadcrumbs with multiple property settings" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs_multi.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_breadcrumbs_multi.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/c.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+      expect(html.all("nav ol.breadcrumb li.breadcrumb-item").size).to eq 5
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)
+      expect(html).to have_css("nav ol.breadcrumb li.active", text: "test title 3")
+    end
   end
   context "#output_turtle_files" do
     it "should generate files" do

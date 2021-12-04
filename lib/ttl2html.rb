@@ -212,7 +212,7 @@ module TTL2HTML
           if data_target and data_target[e["property"]]
             data_target[e["property"]].each do |parent|
               data_parent = @data[parent]
-              label = template.get_language_literal(data_parent).first
+              label = template.get_title(data_parent)
               label = data_parent[e["label"]].first if e["label"] and data_parent[e["label"]]
               results << {
                 uri: parent,
@@ -220,6 +220,7 @@ module TTL2HTML
               }
               results += build_breadcrumbs(parent, template, depth + 1)
             end
+            return results
           end
         end
       end

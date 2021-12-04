@@ -1,0 +1,5 @@
+base_uri: https://example.org/
+output_dir: /tmp/html
+breadcrumbs:
+  - property: http://www.w3.org/2004/02/skos/core#broader
+  - property: http://purl.org/dc/terms/subject

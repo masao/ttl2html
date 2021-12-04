@@ -1,0 +1,7 @@
+<https://example.org/Subject> <http://purl.org/dc/terms/title> "A subject".
+<https://example.org/a> <http://purl.org/dc/terms/subject> <https://example.org/Subject>.
+<https://example.org/a> <http://purl.org/dc/terms/title> "test title".
+<https://example.org/b> <http://purl.org/dc/terms/title> "test title 2".
+<https://example.org/b> <http://www.w3.org/2004/02/skos/core#broader> <https://example.org/a>.
+<https://example.org/c> <http://purl.org/dc/terms/title> "test title 3".
+<https://example.org/c> <http://www.w3.org/2004/02/skos/core#broader> <https://example.org/b>.
