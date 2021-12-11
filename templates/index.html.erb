@@ -9,9 +9,9 @@
         <div class="col-md-12">
           <h2><%=h t("index.list", resource: param[:class_label]) %></h2>
           <ul>
-            <% param[:index_data].each do |e| %>
+            <%- param[:index_data].each do |e| -%>
               <li><%= format_object(e, param[:data_global]) %></li>
-            <% end %>
+            <%- end -%>
           </ul>
         </div>
       </div>
