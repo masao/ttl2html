@@ -11,6 +11,7 @@ ja:
   index:
     list: "%{resource} 一覧"
     latest-news: 最新のお知らせ
+    past-versions: 過去の更新履歴
   layout:
     rdf-data: RDFデータ
   shape-table:

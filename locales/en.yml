@@ -11,7 +11,8 @@ en:
     inverse_data: Referred resources
   index:
     list: "List of %{resource}"
-    latest-new: "Latest news"
+    latest-news: "Latest news"
+    past-versions: "Past versions"
   layout:
     rdf-data: RDF data
   shape-table:

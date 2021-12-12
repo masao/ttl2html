@@ -16,13 +16,13 @@
           <%- if fileinfo.size > 0 -%>
           (<%=h fileinfo.join(", ") %>)
           <%- end -%>
-          </li>
           <%- if param[:data][:subset].size > 0 -%>
           <ul>
             <%- param[:data][:subset].each do |subset| -%>
             <li><a href="<%=h subset %>"><%=h File.basename(subset) %></a></li>
             <%- end -%>
           </ul>
+          </li>
           <%- end -%>
         </dd>
         <%- end -%>
