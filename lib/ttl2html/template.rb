@@ -5,12 +5,14 @@ require "pathname"
 require "erb"
 require "i18n"
 require "filesize"
+require "action_view"
 
 module TTL2HTML
   class Template
     attr_reader :param
     include ERB::Util
     include I18n::Base
+    include ActionView::Helpers::NumberHelper
     def initialize(template, param = {})
       @template = template
       @param = param.dup

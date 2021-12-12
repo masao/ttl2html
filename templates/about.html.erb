@@ -37,14 +37,14 @@
             <dd><%=h get_language_literal(version[:description]) %></dd>
             <%- if version[:datadump] -%>
             <dd><ul>
-              <li><a href="<%=h version[:datadump] %>"><%=h version[:datadump] %></a>
+              <li><a href="<%=h version[:datadump] %>"><%=h File.basename(version[:datadump]) %></a>
               <%- 
               fileinfo = []
               if version[:triples]
-                fileinfo << t("about.version-triples", triples: version[:triples])
+                fileinfo << t("about.version-triples", triples: number_with_delimiter(version[:triples].to_i))
               end
               if version[:bytesize]
-                fileinfo << Filesize.from(version[:bytesize]).pretty
+                fileinfo << number_to_human_size(version[:bytesize])
               end
               -%>
               <%- if fileinfo.size > 0 -%>
@@ -54,7 +54,7 @@
               <%- if version[:subset].size > 0 -%>
               <ul>
                 <%- version[:subset].each do |subset| -%>
-                <li><a href="<%=h subset %>"><%=h subset %></a></li>
+                <li><a href="<%=h subset %>"><%=h File.basename(subset) %></a></li>
                 <%- end -%>
               </ul>
               <%- end %>
