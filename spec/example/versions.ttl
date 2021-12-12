@@ -11,7 +11,7 @@ _:v1.0 a void:Dataset;
   pav:version "1.0";
   void:triples 28;
   dcat:byteSize 14105;
-  void:dataDump <dataset.ttl>;
+  void:dataDump <dataset-1.ttl>;
   prov:qualifiedRevision [
     a prov:Revision;
     rdfs:comment "The first dataset release.";
@@ -23,7 +23,7 @@ _:v2.0 a void:Dataset;
   pav:version "2.0";
   void:triples 40;
   dcat:byteSize 17065;
-  void:dataDump <dataset.ttl>;
+  void:dataDump <dataset-2.ttl>;
   prov:qualifiedRevision [
     a prov:Revision;
     rdfs:comment "The second dataset release.";

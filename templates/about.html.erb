@@ -35,6 +35,11 @@
             <dt><%=h version[:date] %></dt>
             <dd><%=h t("about.version-release", version: version[:version]) %></dd>
             <dd><%=h get_language_literal(version[:description]) %></dd>
+            <%- if version[:datadump] -%>
+            <dd><ul>
+              <li><a href="<%=h version[:datadump] %>"><%=h version[:datadump] %></a></li>
+            </dd>
+            <%- end -%>
           <%- end -%>
           </dl>
         </div>

@@ -219,6 +219,7 @@ RSpec.describe TTL2HTML::App do
       expect(html.all("h3#versions + dl dt").size).to eq 2
       expect(html).to have_css("dt", text: /^2021-12-11$/)
       expect(html).to have_css("dt", text: /^2021-12-12$/)
+      expect(html).to have_css("h3#versions + dl dd a", text: "dataset-1.ttl")
     end
     it "should accept labels_with_class settings per target class" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
