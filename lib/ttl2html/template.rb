@@ -4,7 +4,6 @@ require "fileutils"
 require "pathname"
 require "erb"
 require "i18n"
-require "filesize"
 require "action_view"
 
 module TTL2HTML
@@ -250,6 +249,10 @@ module TTL2HTML
         end
       end
       to_html_raw("triples.html.erb", param_local)
+    end
+    def format_version_info(version)
+      param_local = @param.dup.merge(data: version)
+      to_html_raw("version.html.erb", param_local)
     end
   end
 end

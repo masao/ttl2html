@@ -6,6 +6,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+<https://example.org/a> a <https://example.org/b>.
 _:subset1 a void:Dataset;
   void:dataDump <subset1.ttl>.
 _:subset2 a void:Dataset;

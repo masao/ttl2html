@@ -10,6 +10,7 @@ ja:
     inverse_data: 被参照情報
   index:
     list: "%{resource} 一覧"
+    latest-news: 最新のお知らせ
   layout:
     rdf-data: RDFデータ
   shape-table:

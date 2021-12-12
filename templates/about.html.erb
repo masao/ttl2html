@@ -29,41 +29,13 @@
       <%- if param[:versions] -%>
       <div class="row">
         <div class="col-md">
-          <h3 id="versions"><%=h t("about.versions") %></h3>
+          <h2 id="versions"><%=h t("about.versions") %> <i class="bi bi-info-circle"></i></h2>
           <dl>
-          <%- param[:versions].each do |version| -%>
-            <dt><%=h version[:date] %></dt>
-            <dd><%=h t("about.version-release", version: version[:version]) %></dd>
-            <dd><%=h get_language_literal(version[:description]) %></dd>
-            <%- if version[:datadump] -%>
-            <dd><ul>
-              <li><a href="<%=h version[:datadump] %>"><%=h File.basename(version[:datadump]) %></a>
-              <%- 
-              fileinfo = []
-              if version[:triples]
-                fileinfo << t("about.version-triples", triples: number_with_delimiter(version[:triples].to_i))
-              end
-              if version[:bytesize]
-                fileinfo << number_to_human_size(version[:bytesize])
-              end
-              -%>
-              <%- if fileinfo.size > 0 -%>
-              (<%=h fileinfo.join(", ") %>)
-              <%- end -%>
-              </li>
-              <%- if version[:subset].size > 0 -%>
-              <ul>
-                <%- version[:subset].each do |subset| -%>
-                <li><a href="<%=h subset %>"><%=h File.basename(subset) %></a></li>
-                <%- end -%>
-              </ul>
-              <%- end %>
-              </dd>
-            <%- end -%>
+          <%- param[:versions].reverse_each do |version| -%>
+            <%= format_version_info(version) %>
           <%- end -%>
           </dl>
         </div>
       </div>
       <%- end -%>
     </div>
-    

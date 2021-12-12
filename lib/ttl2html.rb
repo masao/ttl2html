@@ -105,11 +105,16 @@ module TTL2HTML
       result
     end
 
-    def each_data
+    def each_data(label = :each_data)
+      progressbar = ProgressBar.create(title: label,
+        total: @data.size,
+        format: "(%t) %a %e %P% Processed: %c from %C")
       @data.each do |uri, v|
+        progressbar.increment
         next if not uri.start_with? @config[:base_uri]
         yield uri, v
       end
+      progressbar.finish
     end
     def output_html_files
       template = Template.new("", @config)
@@ -117,6 +122,7 @@ module TTL2HTML
                              RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                              RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
       labels = shapes2labels(shapes)
+      versions = extract_versions
       @config[:labels_with_class] ||= {}
       labels.each do |klass, props|
         props.each do |property, label|
@@ -129,11 +135,7 @@ module TTL2HTML
         end
       end
       @config[:orders_with_class] = shapes2orders(shapes)
-      progressbar = ProgressBar.create(title: :output_html_files,
-        total: @data.size,
-        format: "(%t) %a %e %P% Processed: %c from %C")
-      each_data do |uri, v|
-        progressbar.increment
+      each_data(:output_html_files) do |uri, v|
         template = Template.new("default.html.erb", @config)
         param = @config.dup
         param[:uri] = uri
@@ -152,7 +154,6 @@ module TTL2HTML
         end
         template.output_to(file, param)
       end
-      progressbar.finish
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
       if @config.has_key? :top_class
@@ -166,6 +167,7 @@ module TTL2HTML
           template = Template.new("index.html.erb", @config)
           param = @config.dup
           param[:data_global] = @data
+          param[:versions] = versions
           subjects.sort.each do |subject|
             param[:index_data] ||= []
             param[:index_data] << subject.to_s
@@ -173,13 +175,13 @@ module TTL2HTML
           template.output_to(index_html, param)
         end
       end
-      versions = extract_versions
       if shapes.size > 0 or versions.size > 0
         about_html = @config[:about_file] || "about.html"
         about_html =  File.join(@config[:output_dir], about_html) if @config[:output_dir]
         template = Template.new("about.html.erb", @config)
         param = @config.dup
         param[:data_global] = @data
+        param[:versions] = versions
         param[:shapes] = {}
         shapes.subjects.each do |subject|
           label = comment = nil
@@ -201,7 +203,6 @@ module TTL2HTML
             html: template.expand_shape(@data, subject.to_s, @prefix),
           }
         end
-        param[:versions] = versions
         template.output_to(about_html, param)
       end
     end
@@ -306,11 +307,7 @@ module TTL2HTML
     end
 
     def output_turtle_files
-      progressbar = ProgressBar.create(title: :output_turtle_files,
-        total: @data.size,
-        format: "(%t) %a %e %P% Processed: %c from %C")
-      each_data do |uri, v|
-        progressbar.increment
+      each_data(:output_turtle_files) do |uri, v|
         file = uri_mapping_to_path(uri, ".ttl")
         if @config[:output_dir]
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
@@ -322,7 +319,6 @@ module TTL2HTML
           io.puts str.strip
         end
       end
-      progressbar.finish
     end
     def uri_mapping_to_path(uri, suffix = ".html")
       path = nil
