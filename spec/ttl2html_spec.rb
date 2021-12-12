@@ -227,6 +227,17 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("h2#versions + dl dt", text: /^2021-12-12$/)
       expect(html).to have_css("h2#versions + dl + p a[href='about#versions']")
     end
+    it "should generate toplevel dataset metadata" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/toplevel.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("div.jumbotron p", text: /^Toplevel description$/)
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("div.jumbotron p", text: /^Toplevel description$/)
+    end
     it "should accept labels_with_class settings per target class" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

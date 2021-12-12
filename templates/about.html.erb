@@ -1,6 +1,9 @@
     <div class="jumbotron">
       <div class="container">
         <h1><%=h t("about.title", title: param[:site_title]) %></h1>
+        <%- if param[:toplevel] and param[:toplevel][:description] -%>
+        <p><%= get_language_literal(param[:toplevel][:description]) %></p>
+        <%- end -%>
       </div>
     </div>
     <div class="container">

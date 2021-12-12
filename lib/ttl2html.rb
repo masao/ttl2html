@@ -123,6 +123,7 @@ module TTL2HTML
                              RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
       labels = shapes2labels(shapes)
       versions = extract_versions
+      toplevel = extract_toplevel
       @config[:labels_with_class] ||= {}
       labels.each do |klass, props|
         props.each do |property, label|
@@ -168,6 +169,7 @@ module TTL2HTML
           param = @config.dup
           param[:data_global] = @data
           param[:versions] = versions
+          param[:toplevel] = toplevel
           subjects.sort.each do |subject|
             param[:index_data] ||= []
             param[:index_data] << subject.to_s
@@ -175,13 +177,14 @@ module TTL2HTML
           template.output_to(index_html, param)
         end
       end
-      if shapes.size > 0 or versions.size > 0
+      if shapes.size > 0 or versions.size > 0 or toplevel.size > 0
         about_html = @config[:about_file] || "about.html"
         about_html =  File.join(@config[:output_dir], about_html) if @config[:output_dir]
         template = Template.new("about.html.erb", @config)
         param = @config.dup
         param[:data_global] = @data
         param[:versions] = versions
+        param[:toplevel] = toplevel
         param[:shapes] = {}
         shapes.subjects.each do |subject|
           label = comment = nil
@@ -275,6 +278,7 @@ module TTL2HTML
         objects.each do |o|
           uri = o.to_s
           version = @data[uri]
+          next if not version
           next if not version["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include? "http://rdfs.org/ns/void#Dataset"
           description = version["http://purl.org/dc/terms/description"]
           if not description
@@ -304,6 +308,26 @@ module TTL2HTML
         end
       end
       versions.sort_by{|v| [ v[:date], v[:uri] ] }
+    end
+    def extract_toplevel
+      result = {}
+      toplevel = @graph.query([nil, RDF::URI("http://purl.org/pav/hasCurrentVersion"), nil]).subjects.first
+      data  = @data[toplevel.to_s]
+      if toplevel
+        license = {}
+        if data["http://purl.org/dc/terms/license"]
+          license_data = @data[data["http://purl.org/dc/terms/license"].first]
+          license[:url] = license_data["http://www.w3.org/1999/02/22-rdf-syntax-ns#value"]&.first
+          license[:icon] = license_data["http://xmlns.com/foaf/0.1/thumbnail"]&.first
+          license[:label] = license_data["http://www.w3.org/2000/01/rdf-schema#label"]
+        end
+        result = {
+          uri: toplevel.to_s,
+          description: data["http://purl.org/dc/terms/description"],
+          license: license,
+        }
+      end
+      result
     end
 
     def output_turtle_files

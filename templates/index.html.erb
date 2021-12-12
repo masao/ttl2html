@@ -1,6 +1,9 @@
     <div class="jumbotron">
       <div class="container">
         <h1><%=h param[:site_title] %></h1>
+        <%- if param[:toplevel] and param[:toplevel][:description] -%>
+        <p><%= get_language_literal(param[:toplevel][:description]) %></p>
+        <%- end -%>
         <p><i class="bi bi-link-45deg"></i> <a href="<%=h param[:base_uri] %>"><%=h param[:base_uri] %></a></p>
       </div>
     </div>
@@ -25,7 +28,15 @@
           <%- if param[:versions].size > 1 -%>
           <p><a href="about#versions">&raquo; <%=h t("index.past-versions") %></a></p>
           <%- end -%>
-          </div>
+          <%- if param[:toplevel] and param[:toplevel][:license] -%>
+          <p>
+            <%- if param[:toplevel][:license][:icon] -%>
+            <a href="<%=h param[:toplevel][:license][:url] %>"><img src="<%=h param[:toplevel][:license][:icon] %>"></a>
+            <%- end -%>
+            <%= t("index.license-text", label: get_language_literal(param[:toplevel][:license][:label]), url: param[:toplevel][:license][:url]) %>
+          </p>
+          <%- end -%>
+        </div>
       </div>
       <%- end -%>
     </div>
