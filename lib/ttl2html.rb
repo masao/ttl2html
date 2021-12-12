@@ -173,13 +173,14 @@ module TTL2HTML
           template.output_to(index_html, param)
         end
       end
-      if shapes.size > 0
+      versions = extract_versions
+      if shapes.size > 0 or versions.size > 0
         about_html = @config[:about_file] || "about.html"
         about_html =  File.join(@config[:output_dir], about_html) if @config[:output_dir]
         template = Template.new("about.html.erb", @config)
         param = @config.dup
         param[:data_global] = @data
-        param[:content] = {}
+        param[:shapes] = {}
         shapes.subjects.each do |subject|
           label = comment = nil
           target_class = @data[subject.to_s]["http://www.w3.org/ns/shacl#targetClass"]
@@ -194,12 +195,13 @@ module TTL2HTML
           else
             label = template.get_title(@data[subject.to_s])
           end
-          param[:content][subject] = {
+          param[:shapes][subject] = {
             label: label,
             comment: comment,
             html: template.expand_shape(@data, subject.to_s, @prefix),
           }
         end
+        param[:versions] = versions
         template.output_to(about_html, param)
       end
     end
@@ -263,6 +265,44 @@ module TTL2HTML
         end
       end
       orders
+    end
+
+    def extract_versions
+      versions = []
+      ["http://purl.org/pav/hasVersion", "http://purl.org/pav/hasCurrentVersion", "http://purl.org/dc/terms/hasVersion"].each do |prop|
+        objects = @graph.query([nil, RDF::URI(prop), nil]).objects
+        objects.sort_by{|o|
+          [ @data[o.to_s]["http://purl.org/pav/createdOn"],
+            @data[o.to_s]["http://purl.org/dc/terms/issued"] ]
+        }.each do |o|
+          uri = o.to_s
+          version = @data[uri]
+          description = version["http://purl.org/dc/terms/description"]
+          if not description
+            qrev = version["http://www.w3.org/ns/prov#qualifiedRevision"]&.first
+            description = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#comment"]
+          end
+          subset = []
+          if version["http://rdfs.org/ns/void#subset"]
+            version["http://rdfs.org/ns/void#subset"].each do |s|
+              subset << @data[s]["http://rdfs.org/ns/void#dataDump"].first
+            end
+          end
+          date = version["http://purl.org/pav/createdOn"]&.first
+          date = version["http://purl.org/dc/terms/issued"]&.first if date.nil?
+          versions << {
+            uri: uri,
+            version: version["http://purl.org/pav/version"].first,
+            triples: version["http://rdfs.org/ns/void#triples"].first,
+            datadump: version["http://rdfs.org/ns/void#dataDump"].first,
+            bytesize: version["http://www.w3.org/ns/dcat#byteSize"].first,
+            date: date,
+            description: description,
+            subset: subset,
+          }
+        end
+      end
+      versions
     end
 
     def output_turtle_files

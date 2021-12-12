@@ -2,6 +2,8 @@ ja:
   about:
     title: "%{title}について"
     shape-note: "%{resource}リソースが持つプロパティを下表に示します"
+    versions: 更新履歴
+    version-release: "バージョン%{version}を公開。"
   default:
     details: 詳細情報
     inverse_data: 被参照情報

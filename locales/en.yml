@@ -3,6 +3,8 @@ en:
     title: "About %{title}"
     The properties for the textbook resources are as follows:
     shape-note: "The properties for the %{resource} resources are as follows:"
+    versions: Versions
+    version-release: "Version %{version} released."
   default:
     details: Details
     inverse_data: Referred resources

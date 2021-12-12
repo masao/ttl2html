@@ -209,6 +209,17 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("h3", text: "Book")
     end
+    it "should generate versions information" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/versions.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("h3#versions + dl")
+      expect(html.all("h3#versions + dl dt").size).to eq 2
+      expect(html).to have_css("dt", text: /^2021-12-11$/)
+      expect(html).to have_css("dt", text: /^2021-12-12$/)
+    end
     it "should accept labels_with_class settings per target class" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

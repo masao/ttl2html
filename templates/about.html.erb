@@ -14,15 +14,31 @@
           </nav>
         </div>
       </div>
+      <%- if param[:shapes] -%>
       <div class="row">
         <div class="col-md">
-          <%- param[:content].keys.sort.each do |shape| -%>
-            <h3><%=h param[:content][shape][:label] %></h3>
-            <p><%= param[:content][shape][:comment] %></p>
-            <p><%=h t("about.shape-note", resource: param[:content][shape][:label]) %></p>
-            <%= param[:content][shape][:html] -%>
+          <%- param[:shapes].keys.sort.each do |shape| -%>
+            <h3><%=h param[:shapes][shape][:label] %></h3>
+            <p><%= param[:shapes][shape][:comment] %></p>
+            <p><%=h t("about.shape-note", resource: param[:shapes][shape][:label]) %></p>
+            <%= param[:shapes][shape][:html] -%>
           <%- end -%>
         </div>
       </div>
+      <%- end -%>
+      <%- if param[:versions] -%>
+      <div class="row">
+        <div class="col-md">
+          <h3 id="versions"><%=h t("about.versions") %></h3>
+          <dl>
+          <%- param[:versions].each do |version| -%>
+            <dt><%=h version[:date] %></dt>
+            <dd><%=h t("about.version-release", version: version[:version]) %></dd>
+            <dd><%=h get_language_literal(version[:description]) %></dd>
+          <%- end -%>
+          </dl>
+        </div>
+      </div>
+      <%- end -%>
     </div>
     
