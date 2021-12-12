@@ -6,6 +6,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+_:subset1 a void:Dataset;
+  void:dataDump <subset1.ttl>.
+_:subset2 a void:Dataset;
+  void:dataDump <subset2.ttl>.
 _:v1.0 a void:Dataset;
   dct:issued "2021-12-11"^^xsd:date;
   pav:version "1.0";
@@ -15,7 +19,8 @@ _:v1.0 a void:Dataset;
   prov:qualifiedRevision [
     a prov:Revision;
     rdfs:comment "The first dataset release.";
-  ].
+  ];
+  void:subset _:subset1, _:subset2.
 _:toplevel pav:hasVersion _:v1.0 .
 
 _:v2.0 a void:Dataset;
@@ -27,5 +32,6 @@ _:v2.0 a void:Dataset;
   prov:qualifiedRevision [
     a prov:Revision;
     rdfs:comment "The second dataset release.";
-  ].
+  ];
+  void:subset _:subset1, _:subset2.
 _:toplevel pav:hasCurrentVersion _:v2.0 .

@@ -4,6 +4,7 @@ ja:
     shape-note: "%{resource}リソースが持つプロパティを下表に示します"
     versions: 更新履歴
     version-release: "バージョン%{version}を公開。"
+    version-triples: "%{triples}トリプル"
   default:
     details: 詳細情報
     inverse_data: 被参照情報

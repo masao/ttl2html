@@ -4,6 +4,7 @@ require "fileutils"
 require "pathname"
 require "erb"
 require "i18n"
+require "filesize"
 
 module TTL2HTML
   class Template

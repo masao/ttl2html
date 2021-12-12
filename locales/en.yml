@@ -5,6 +5,7 @@ en:
     shape-note: "The properties for the %{resource} resources are as follows:"
     versions: Versions
     version-release: "Version %{version} released."
+    version-triples: "%{triples} triples"
   default:
     details: Details
     inverse_data: Referred resources
