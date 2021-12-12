@@ -271,16 +271,16 @@ module TTL2HTML
       versions = []
       ["http://purl.org/pav/hasVersion", "http://purl.org/pav/hasCurrentVersion", "http://purl.org/dc/terms/hasVersion"].each do |prop|
         objects = @graph.query([nil, RDF::URI(prop), nil]).objects
-        objects.sort_by{|o|
-          [ @data[o.to_s]["http://purl.org/pav/createdOn"],
-            @data[o.to_s]["http://purl.org/dc/terms/issued"] ]
-        }.each do |o|
+        objects.each do |o|
           uri = o.to_s
           version = @data[uri]
+          next if not version["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include? "http://rdfs.org/ns/void#Dataset"
           description = version["http://purl.org/dc/terms/description"]
           if not description
             qrev = version["http://www.w3.org/ns/prov#qualifiedRevision"]&.first
-            description = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#comment"]
+            if description = @data[qrev]
+              description = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#comment"]
+            end
           end
           subset = []
           if version["http://rdfs.org/ns/void#subset"]
@@ -292,17 +292,17 @@ module TTL2HTML
           date = version["http://purl.org/dc/terms/issued"]&.first if date.nil?
           versions << {
             uri: uri,
-            version: version["http://purl.org/pav/version"].first,
-            triples: version["http://rdfs.org/ns/void#triples"].first,
-            datadump: version["http://rdfs.org/ns/void#dataDump"].first,
-            bytesize: version["http://www.w3.org/ns/dcat#byteSize"].first,
+            version: version["http://purl.org/pav/version"]&.first,
+            triples: version["http://rdfs.org/ns/void#triples"]&.first,
+            datadump: version["http://rdfs.org/ns/void#dataDump"]&.first,
+            bytesize: version["http://www.w3.org/ns/dcat#byteSize"]&.first,
             date: date,
             description: description,
             subset: subset,
           }
         end
       end
-      versions
+      versions.sort_by{|v| [ v[:date], v[:uri] ] }
     end
 
     def output_turtle_files
