@@ -140,6 +140,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_link href: "a"
       expect(html).to have_link href: "c"
       expect(html).not_to have_link href: "b"
+      expect(html).to have_title /^Test website$/
     end
     it "should generate URI order for index.html" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

@@ -158,6 +158,12 @@ module TTL2HTML
         dest_uri
       end
     end
+    def html_title(param)
+      titles = []
+      titles << param[:title]
+      titles << param[:site_title]
+      titles.compact.join(" - ")
+    end
     def shorten_title(title, length = 140)
       if title.length > length
         title[0..length] + "..."
