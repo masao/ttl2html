@@ -70,7 +70,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_title("test label")
       cont = File.open("/tmp/html/c.html").read
       html = Capybara.string cont
-      expect(html).to have_title("test title", exact: true)
+      expect(html).to have_title("test title")
     end
     it "should respect title property settings" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_title.yml"))
@@ -183,6 +183,7 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("h3", text: "Book")
       expect(html).to have_css("p", text: "This class represents a Book instance.")
+      expect(html).to have_title(/^About Test website$/)
     end
     it "should generate resouce instance with the shape order" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

@@ -160,8 +160,12 @@ module TTL2HTML
     end
     def html_title(param)
       titles = []
-      titles << param[:title]
-      titles << param[:site_title]
+      if @template.start_with? "about.html"
+        titles << t("about.title", title: param[:site_title])
+      else
+        titles << param[:title]
+        titles << param[:site_title]
+      end
       titles.compact.join(" - ")
     end
     def shorten_title(title, length = 140)
