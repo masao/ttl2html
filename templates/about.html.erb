@@ -20,7 +20,7 @@
       <%- if param[:shapes] -%>
       <div class="row">
         <div class="col-md">
-          <%- param[:shapes].keys.sort.each do |shape| -%>
+          <%- param[:shapes].each do |shape, v| -%>
             <h3><%=h param[:shapes][shape][:label] %></h3>
             <p><%= param[:shapes][shape][:comment] %></p>
             <p><%=h t("about.shape-note", resource: param[:shapes][shape][:label]) %></p>

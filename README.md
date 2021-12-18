@@ -77,7 +77,7 @@ top_class: http://schema.org/Book
 * ``about_file``: Specified filename is used for documenting schemas of the dataset. It requires SHACL documentation within the dataset. By default, the filename `about.html` is used.
 * ``admin_name``: Name of the dataset publisher displayed at the footer.
 * ``copyright_year``: Copyright year statement displayed at the footer along with the ``admin_name`` parameter above.
-
+* ``logo``: The logo image file to be displayed on the menu. Specify the file path or URL.
 
 ## See also
 
