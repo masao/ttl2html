@@ -4,3 +4,4 @@ output_dir: /tmp/html
 top_class: https://example.org/b
 labels:
   http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
+admin_name: Dataset Admin

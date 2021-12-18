@@ -30,7 +30,10 @@
     <hr>
     <footer>
       <%- if param[:uri] -%>
-      <p class="text-right"><a href="<%=h relative_path(param[:turtle_uri]) %>"><img src="https://www.w3.org/RDF/icons/rdf_flyer.24" alt="<%=h t("layout.rdf-data") %>"></a></p>
+      <p class="float-right"><a href="<%=h relative_path(param[:turtle_uri]) %>"><img src="https://www.w3.org/RDF/icons/rdf_flyer.24" alt="<%=h t("layout.rdf-data") %>"></a></p>
+      <%- end -%>
+      <%- if param[:admin_name] -%>
+      <p><%=h param[:admin_name] %></p>
       <%- end -%>
     </footer>
 
