@@ -80,6 +80,7 @@ top_class: http://schema.org/Book
 * ``copyright_year``: 上記 ``admin_name`` とセットにして出力する著作権表示年。
 * ``logo``: メニューに表示するロゴ。ファイルパスまたはURLを指定する。
 * ``custom_css``: CSSスタイルシートのコードを直接指定します（例: ``nav.navbar { background-color: pink }``）。
+* ``css_file``: ローカルで用いるCSSスタイルシートファイルのパスを指定します。
 
 ## 関連情報
 

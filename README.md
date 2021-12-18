@@ -79,6 +79,7 @@ top_class: http://schema.org/Book
 * ``copyright_year``: Copyright year statement displayed at the footer along with the ``admin_name`` parameter above.
 * ``logo``: The logo image file to be displayed on the menu. Specify the file path or URL.
 * ``custom_css``: Specify the code snippet of the CSS stylesheet (e.g. `` nav.navbar {background-color: pink} ``).
+* ``css_file``: The path of the CSS stylesheet file to use locally.
 
 ## See also
 

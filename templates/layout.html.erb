@@ -6,6 +6,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <%- if param[:css_file] -%>
+    <style type="text/css"><%=h relative_path(param[:css_file]) %></style>
+    <%- end -%>
     <%- if param[:custom_css] -%>
     <style type="text/css"><%=h param[:custom_css] %></style>
     <%- end -%>
