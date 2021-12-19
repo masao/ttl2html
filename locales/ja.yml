@@ -6,6 +6,7 @@ ja:
     version-release: "バージョン%{version}を公開。"
     version-triples: "%{triples}トリプル"
     contact: 連絡先
+    contact-contribution: "本データセットは以下のメンバーが開発したものです："
     contact-email: "データセットに関する問い合わせは <a href=\"%{email}\">%{email}</a> までお問い合わせください。"
   default:
     details: 詳細情報
