@@ -321,10 +321,27 @@ module TTL2HTML
           license[:icon] = license_data["http://xmlns.com/foaf/0.1/thumbnail"]&.first
           license[:label] = license_data["http://www.w3.org/2000/01/rdf-schema#label"]
         end
+        if data["http://purl.org/dc/terms/publisher"]
+          publisher_data = @data[data["http://purl.org/dc/terms/publisher"].first]
+          email = publisher_data["http://xmlns.com/foaf/0.1/mbox"]&.first
+          contact = { email: email }
+          members = []
+          if publisher_data["http://xmlns.com/foaf/0.1/member"]
+            publisher_data["http://xmlns.com/foaf/0.1/member"].each do |member|
+              member_data = @data[member]
+              members << {
+                name: member_data["http://xmlns.com/foaf/0.1/name"],
+                org: member_data["http://www.w3.org/2006/vcard/ns#organization-name"]
+              }
+            end
+            contact[:members] = members
+          end
+        end
         result = {
           uri: toplevel.to_s,
           description: data["http://purl.org/dc/terms/description"],
           license: license,
+          contact: contact,
         }
       end
       result

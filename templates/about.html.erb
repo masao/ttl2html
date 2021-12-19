@@ -41,4 +41,23 @@
         </div>
       </div>
       <%- end -%>
+      <%- if param[:toplevel] and param[:toplevel][:contact] -%>
+      <div class="row">
+        <div class="col-md">
+          <h2 id="contact"><%=h t("about.contact") %></h2>
+          <%- if param[:toplevel][:contact][:members] -%>
+          <p><%=h t("about.contact-contribution") %></p>
+          <ul>
+          <%- param[:toplevel][:contact][:members].each do |member| -%>
+            <li><%=h member[:name] %>
+            <%- if member[:org] -%>
+            (<%=h member[:org] %>)
+            <%- end -%>
+          <%- end -%>
+          </ul>
+          <%- end -%>
+          <%- if param[:toplevel][:contact][:email] -%>
+          <p><%= t("about.contact-email", email: param[:toplevel][:contact][:email]) %></p>
+          <%- end -%>
+      <%- end -%>
     </div>

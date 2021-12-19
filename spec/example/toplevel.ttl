@@ -12,6 +12,9 @@
 _:toplevel a void:Dataset;
   foaf:homepage <https://example.org/>;
   dct:description "Toplevel description";
+  dct:publisher [
+    foaf:mbox <mailto:admin@example.org>;
+  ];
   dct:license [
     rdfs:label "CC0";
     rdf:value <https://creativecommons.org/publicdomain/zero/1.0/>
