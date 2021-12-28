@@ -7,7 +7,7 @@ en:
     version-release: "Version %{version} released."
     version-triples: "%{triples} triples"
     contact: Contact
-    contact-contribution: "This dataset was developed by the following members:"
+    contact-contribution: "This dataset was developed by %{name}"
     contact-email: "For dataset inquiries, please contact at <a href=\"%{email}\">%{email}</a>"
   default:
     details: Details

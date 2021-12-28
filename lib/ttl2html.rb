@@ -325,6 +325,8 @@ module TTL2HTML
           publisher_data = @data[data["http://purl.org/dc/terms/publisher"].first]
           email = publisher_data["http://xmlns.com/foaf/0.1/mbox"]&.first
           contact = { email: email }
+          name = publisher_data["http://xmlns.com/foaf/0.1/name"]
+          contact[:name] = name if name
           members = []
           if publisher_data["http://xmlns.com/foaf/0.1/member"]
             publisher_data["http://xmlns.com/foaf/0.1/member"].each do |member|
