@@ -23,8 +23,10 @@ module TTL2HTML
 
     def load_config(file)
       config = {}
-      YAML.load_file(file).each do |k, v|
-        config[k.intern] = v
+      open(file) do |io|
+        YAML.safe_load(io, permitted_classes: [Regexp]).each do |k, v|
+          config[k.intern] = v
+        end
       end
       config
     end
