@@ -5,6 +5,7 @@ ja:
     versions: 更新履歴
     version-release: "バージョン%{version}を公開。"
     version-triples: "%{triples}トリプル"
+    version-link: "更新の詳細については<a href=\"%{link}\">こちら</a>をご覧ください。"
     contact: 連絡先
     contact-contribution: "本データセットは %{name} が開発したものです"
     contact-email: "データセットに関する問い合わせは <a href=\"%{email}\">%{email}</a> までお問い合わせください。"

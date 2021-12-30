@@ -283,10 +283,12 @@ module TTL2HTML
           next if not version
           next if not version["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include? "http://rdfs.org/ns/void#Dataset"
           description = version["http://purl.org/dc/terms/description"]
+          link = nil
           if not description
             qrev = version["http://www.w3.org/ns/prov#qualifiedRevision"]&.first
-            if description = @data[qrev]
+            if @data[qrev]
               description = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#comment"]
+              link = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#seeAlso"]&.first
             end
           end
           subset = []
@@ -306,6 +308,7 @@ module TTL2HTML
             date: date,
             description: description,
             subset: subset,
+            link: link,
           }
         end
       end

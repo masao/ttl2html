@@ -6,6 +6,7 @@ en:
     versions: Versions
     version-release: "Version %{version} released."
     version-triples: "%{triples} triples"
+    version-link: "Please refer to <a href=\"%{link}\">here</a> for the revision details."
     contact: Contact
     contact-contribution: "This dataset was developed by %{name}"
     contact-email: "For dataset inquiries, please contact at <a href=\"%{email}\">%{email}</a>"

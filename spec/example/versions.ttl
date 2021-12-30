@@ -20,6 +20,7 @@ _:v1.0 a void:Dataset;
   prov:qualifiedRevision [
     a prov:Revision;
     rdfs:comment "The first dataset release.";
+    rdfs:seeAlso <https://example.org/note.html>
   ];
   void:subset _:subset1, _:subset2.
 _:toplevel pav:hasVersion _:v1.0 .

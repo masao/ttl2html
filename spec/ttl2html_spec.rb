@@ -224,6 +224,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("h2#versions + dl dd a[href='dataset-1.ttl']")
       expect(html).to have_css("h2#versions + dl dd a", text: "subset1.ttl")
       expect(html).to have_css("h2#versions + dl dd a", text: "subset2.ttl")
+      expect(html).to have_css("h2#versions + dl dd a[href='https://example.org/note.html']")
       cont = open("/tmp/html/index.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("h2#versions + dl dt", text: /^2021-12-12$/)

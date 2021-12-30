@@ -1,6 +1,10 @@
         <dt><%=h param[:data][:date] %></dt>
         <dd><%=h t("about.version-release", version: param[:data][:version]) %></dd>
-        <dd><%=h get_language_literal(param[:data][:description]) %></dd>
+        <dd><%=h get_language_literal(param[:data][:description]) %>
+        <%- if param[:data][:link] -%>
+        <%= t("about.version-link", link: param[:data][:link]) %>
+        <%- end -%>
+        </dd>
         <%- if param[:data][:datadump] -%>
         <dd><ul>
           <li><a href="<%=h param[:data][:datadump] %>"><%=h File.basename(param[:data][:datadump]) %></a>
