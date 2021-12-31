@@ -75,6 +75,7 @@ top_class: http://schema.org/Book
   - http://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: トップページに表示すべきレコード一覧に対応するクラスURIを指定する。デフォルトではトップページは生成されない。
+* ``locale``: 出力メッセージの言語指定。デフォルトは ``en`` （例: ``ja``, ``en``）
 * ``about_file``: 指定された名前のファイルにスキーマ説明を出力する。データセット内にSHACL記述が存在するときのみ有効。ファイル名 `about.html` に出力する。
 * ``admin_name``: フッタ―に表示するデータ提供管理者の名称。
 * ``copyright_year``: 上記 ``admin_name`` とセットにして出力する著作権表示年。

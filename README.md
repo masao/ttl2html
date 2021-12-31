@@ -74,6 +74,7 @@ top_class: http://schema.org/Book
   - http://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: Specified URI is the class of the records listed in the top page. By default, this tool does not generate the top page.
+* ``locale``: Locale name for the output messages. Default: ``en`` (e.g. ``ja``, ``en``)
 * ``about_file``: Specified filename is used for documenting schemas of the dataset. It requires SHACL documentation within the dataset. By default, the filename `about.html` is used.
 * ``admin_name``: Name of the dataset publisher displayed at the footer.
 * ``copyright_year``: Copyright year statement displayed at the footer along with the ``admin_name`` parameter above.
