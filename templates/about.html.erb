@@ -24,7 +24,7 @@
         </div>
       </div>
       <%- end -%>
-      <%- if param[:shapes] -%>
+      <%- if param[:shapes].size > 0 -%>
       <div class="row">
         <div class="col-md">
           <%- param[:shapes].keys.sort.each do |shape| -%>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <%- end -%>
-      <%- if param[:versions] -%>
+      <%- if param[:versions].size > 0 -%>
       <div class="row">
         <div class="col-md">
           <h2 id="versions"><%=h t("about.versions") %> <i class="bi bi-info-circle"></i></h2>

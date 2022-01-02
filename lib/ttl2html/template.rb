@@ -15,7 +15,7 @@ module TTL2HTML
     def initialize(template, param = {})
       @template = template
       @param = param.dup
-      @template_path = [ Dir.pwd, File.join(Dir.pwd, "templates") ]
+      @template_path = [ File.join(Dir.pwd, "templates") ]
       @template_path << File.join(File.dirname(__FILE__), "..", "..", "templates")
       I18n.load_path << Dir[File.join(File.dirname(__FILE__), "..", "..", "locales") + "/*.yml"]
       I18n.load_path << Dir[File.expand_path("locales") + "/*.yml"]
