@@ -1,7 +1,7 @@
 en:
   about:
     title: "About %{title}"
-    The properties for the textbook resources are as follows:
+    shape-heading: "Resources description"
     shape-note: "The properties for the %{resource} resources are as follows:"
     versions: Versions
     version-release: "Version %{version} released."

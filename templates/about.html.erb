@@ -27,6 +27,7 @@
       <%- if param[:shapes].size > 0 -%>
       <div class="row">
         <div class="col-md">
+          <h2 id="shapes"><%=h t("about.shape-heading") %></h2>
           <%- param[:shapes].keys.sort.each do |shape| -%>
             <h3><%=h param[:shapes][shape][:label] %></h3>
             <p><%= param[:shapes][shape][:comment] %></p>

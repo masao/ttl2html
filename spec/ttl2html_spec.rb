@@ -111,7 +111,6 @@ RSpec.describe TTL2HTML::App do
       cont = File.open("/tmp/html/a/b.html").read
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "Name")
-
       original_locale = I18n.locale
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_ja.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))
@@ -181,6 +180,7 @@ RSpec.describe TTL2HTML::App do
       ttl2html.cleanup
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
+      expect(html).to have_css("h2#shapes")
       expect(html).to have_css("h3", text: "Book")
       expect(html).to have_css("p", text: "This class represents a Book instance.")
       expect(html).to have_title(/^About Test website$/)

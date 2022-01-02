@@ -1,6 +1,7 @@
 ja:
   about:
     title: "%{title}について"
+    shape-heading: "各リソースの説明"
     shape-note: "%{resource}リソースが持つプロパティを下表に示します"
     versions: 更新履歴
     version-release: "バージョン%{version}を公開。"
