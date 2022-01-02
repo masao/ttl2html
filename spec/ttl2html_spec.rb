@@ -242,6 +242,14 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("div.jumbotron p", text: /^Toplevel description$/)
       expect(html).to have_css("p a[href='mailto:admin@example.org']")
     end
+    it "should include about.html template for about.html" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_about.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("div.container p", text: "Test description")
+    end
     it "should accept labels_with_class settings per target class" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

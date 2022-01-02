@@ -179,11 +179,12 @@ module TTL2HTML
           template.output_to(index_html, param)
         end
       end
-      if shapes.size > 0 or versions.size > 0 or toplevel.size > 0
+      if template.find_template_path("about.html") or shapes.size > 0 or versions.size > 0 or toplevel.size > 0
         about_html = @config[:about_file] || "about.html"
         about_html =  File.join(@config[:output_dir], about_html) if @config[:output_dir]
         template = Template.new("about.html.erb", @config)
         param = @config.dup
+        param[:content] = template.to_html_raw("about.html", {}) if template.find_template_path("about.html")
         param[:data_global] = @data
         param[:versions] = versions
         param[:toplevel] = toplevel

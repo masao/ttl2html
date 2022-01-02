@@ -17,6 +17,13 @@
           </nav>
         </div>
       </div>
+      <%- if param[:content] -%>
+      <div class="row">
+        <div class="col-md">
+        <%= param[:content] %>
+        </div>
+      </div>
+      <%- end -%>
       <%- if param[:shapes] -%>
       <div class="row">
         <div class="col-md">
