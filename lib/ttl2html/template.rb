@@ -176,6 +176,7 @@ module TTL2HTML
       end
     end
     def get_title(data, default_title = "no title")
+      return default_title if data.nil?
       if @param[:title_property_perclass] and data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
         @param[:title_property_perclass].each do |klass, property|
           if data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include?(klass) and data[property]
