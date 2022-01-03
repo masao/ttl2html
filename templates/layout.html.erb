@@ -40,6 +40,11 @@
           <li class="nav-item<%= ' active' if @template == "about.html.erb" %>">
             <a class="nav-link" href="<%=h relative_path(param[:about_file] || "about.html") %>">About</a>
           </li>
+          <%- if param[:additional_link] -%>
+            <%- param[:additional_link].each do |link| -%>
+            <li class="nav-item"><a class="nav-link" href="<%=h link["href"] %>"><%=h link["label"] %></a></li>
+            <%- end -%>
+          <%- end -%>
         </ul>
       </div>
     </nav>
