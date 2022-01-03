@@ -142,7 +142,7 @@ module TTL2HTML
         template = Template.new("default.html.erb", @config)
         param = @config.dup
         param[:uri] = uri
-        param[:turtle_uri] = uri_mapping_to_path(uri, ".ttl")
+        param[:turtle_uri] = uri + ".ttl"
         param[:data] = v
         param[:data_inverse] = @data_inverse[uri]
         param[:data_global] = @data
@@ -169,6 +169,7 @@ module TTL2HTML
         else
           template = Template.new("index.html.erb", @config)
           param = @config.dup
+          param[:class_label] = template.get_title(@data[@config[:top_class]], nil)
           param[:data_global] = @data
           param[:versions] = versions
           param[:toplevel] = toplevel

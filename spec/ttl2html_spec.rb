@@ -140,6 +140,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_link href: "c"
       expect(html).not_to have_link href: "b"
       expect(html).to have_title /^Test website$/
+      expect(html).to have_css("h2", text: "List of test label")
     end
     it "should generate URI order for index.html" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
@@ -270,7 +271,6 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/123/4567890123.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("a[href='../000/0000000001']")
-      expect(html).to have_css("footer a[href='4567890123.ttl']")
     end
     it "should respect i18n settings for names" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_ja.yml"))
