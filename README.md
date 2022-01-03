@@ -82,6 +82,7 @@ top_class: http://schema.org/Book
 * ``logo``: The logo image file to be displayed on the menu. Specify the file path or URL.
 * ``custom_css``: Specify the code snippet of the CSS stylesheet (e.g. `` nav.navbar {background-color: pink} ``).
 * ``css_file``: The path of the CSS stylesheet file to use locally.
+* ``additional_link``: Addional links displayed at the top menu. Specify an array of link items with two keys ``href`` and ``label``. e.g. ``[ { "href": "http://example.org", "label": "Link" } ]``
 
 ## See also
 

@@ -83,6 +83,7 @@ top_class: http://schema.org/Book
 * ``logo``: メニューに表示するロゴ。ファイルパスまたはURLを指定する。
 * ``custom_css``: CSSスタイルシートのコードを直接指定します（例: ``nav.navbar { background-color: pink }``）。
 * ``css_file``: ローカルで用いるCSSスタイルシートファイルのパスを指定します。
+* ``additional_link``: メニューに置かれる追加的なリンク。``href``, ``label`` の2つのキーを持つ各リンク情報を配列として設定できる。例: ``[ { "href": "http://example.org", "label": "Link" } ]``
 
 ## 関連情報
 
