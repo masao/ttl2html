@@ -37,6 +37,5 @@ end
 if opt_cleanup
   ttl2html.cleanup
 else
-  ttl2html.output_html_files
-  ttl2html.output_turtle_files
+  ttl2html.output_files
 end
