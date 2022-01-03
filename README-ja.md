@@ -1,4 +1,4 @@
-# ttl2html  [![CircleCI](https://circleci.com/gh/masao/ttl2html/tree/master.svg?style=svg)](https://circleci.com/gh/masao/ttl2html/tree/master) [![Maintainability](https://api.codeclimate.com/v1/badges/6897bef51f3280ae64e5/maintainability)](https://codeclimate.com/github/masao/ttl2html/maintainability)
+# ttl2html [![Ruby test](https://github.com/masao/ttl2html/actions/workflows/ruby.yml/badge.svg)](https://github.com/masao/ttl2html/actions/workflows/ruby.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/6897bef51f3280ae64e5/maintainability)](https://codeclimate.com/github/masao/ttl2html/maintainability)
 
 <div align="right">English: https://github.com/masao/ttl2html/blob/master/README.md</div>
 
