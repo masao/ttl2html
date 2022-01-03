@@ -22,7 +22,7 @@ module TTL2HTML
     end
 
     def load_config(file)
-      config = {}
+      config = { output_turtle: true }
       open(file) do |io|
         YAML.safe_load(io, permitted_classes: [Regexp]).each do |k, v|
           config[k.intern] = v
@@ -362,13 +362,21 @@ module TTL2HTML
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
-        str = format_turtle(uri)
+        dir = File.dirname(file)
+        FileUtils.mkdir_p(dir) if not File.exist?(dir)
+          str = format_turtle(uri)
         str << format_turtle_inverse(uri)
         open(file, "w") do |io|
           io.puts str.strip
         end
       end
     end
+
+    def output_files
+      output_html_files
+      output_turtle_files if @config[:output_turtle]
+    end
+
     def uri_mapping_to_path(uri, suffix = ".html")
       path = nil
       if @config[:uri_mappings]
@@ -405,10 +413,10 @@ module TTL2HTML
       end.each do |uri, v|
         html_file = uri_mapping_to_path(uri, ".html")
         html_file = File.join(@config[:output_dir], html_file) if @config[:output_dir]
-        File.unlink html_file
+        File.unlink html_file if File.exist? html_file
         ttl_file = uri_mapping_to_path(uri, ".ttl")
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
-        File.unlink ttl_file
+        File.unlink ttl_file if File.exist? ttl_file
         dir = uri.sub(@config[:base_uri], "")
         dir = File.join(@config[:output_dir], dir) if @config[:output_dir]
         Dir.rmdir dir if File.exist? dir

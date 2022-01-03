@@ -388,6 +388,10 @@ RSpec.describe TTL2HTML::App do
     end
   end
   context "#output_turtle_files" do
+    ttl2html = nil
+    after(:each) do
+      ttl2html.cleanup
+    end
     it "should generate files" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       expect {
@@ -403,6 +407,7 @@ RSpec.describe TTL2HTML::App do
     end
     it "should generate files" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
       ttl2html.output_turtle_files
       expect(File.exist?("/tmp/html/b.ttl")).to be true
       data = ttl2html.load_turtle("/tmp/html/b.ttl")
@@ -430,7 +435,7 @@ RSpec.describe TTL2HTML::App do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))
       ttl2html.output_turtle_files
-      expect(File.exist?("/tmp/html/c.ttl")).to be true
+      expect(File).to exist("/tmp/html/c.ttl")
       RDF::Turtle::Reader.new(open("/tmp/html/c.ttl")) do |reader|
         reader.statements.each do |statement|
           if statement.predicate == RDF::URI("http://purl.org/dc/terms/title")
@@ -441,14 +446,25 @@ RSpec.describe TTL2HTML::App do
       end
     end
   end
+  context "#output_files" do
+    ttl2html = nil
+    after(:each) do
+      ttl2html.cleanup
+    end
+    it "should support output_turtle settings" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/disable_turtle.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_files
+      expect(File).not_to exist("/tmp/html/b.ttl")
+    end
+  end
   context "#cleanup" do
     it "should cleanup" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
       ttl2html.output_html_files
-      expect(File.exist?("/tmp/html/index.html")).to be true
-      expect(File.exist?("/tmp/html/a/b.html")).to be true
-      expect(File.exist?("/tmp/html/a/b.ttl")).to be true
+      expect(File).to exist("/tmp/html/index.html")
+      expect(File).to exist("/tmp/html/a/b.html")
       ttl2html.cleanup
       expect(File.exist?("/tmp/html/a")).to be false
       expect(File.exist?("/tmp/html/a/b.html")).to be false
