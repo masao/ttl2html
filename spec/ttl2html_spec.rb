@@ -324,9 +324,11 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/index.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("nav.navbar > a.navbar-brand img[src='logo.png']")
+      expect(html).to have_css("nav.navbar > a.navbar-brand[href='./']")
       cont = open("/tmp/html/a/b.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("nav.navbar > a.navbar-brand img[src='../logo.png']")
+      expect(html).to have_css("nav.navbar > a.navbar-brand[href='../']")
     end
     it "should output breadcrumbs according to the settings" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs.yml"))
