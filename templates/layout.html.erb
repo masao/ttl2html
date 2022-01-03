@@ -14,7 +14,7 @@
     <title><%=h html_title(param) %></title>
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<%=h html_title(param) %>">
-    <%- if true -%>
+    <%- if param[:google_analytics] -%>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<%=h param[:google_analytics] %>"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -35,10 +35,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item<%= ' active' if @template == "index.html.erb" %>">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="<%=h relative_path_uri(param[:base_uri], param[:base_uri]) %>">Home</a>
           </li>
           <li class="nav-item<%= ' active' if @template == "about.html.erb" %>">
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="<%=h relative_path(param[:about_file] || "about.html") %>">About</a>
           </li>
         </ul>
       </div>
