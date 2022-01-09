@@ -336,7 +336,7 @@ RSpec.describe TTL2HTML::App do
       ttl2html.output_html_files
       cont = open("/tmp/html/index.html"){|io| io.read }
       html = Capybara.string cont
-      expect(html).to have_css("meta[property='og:image'][content='logo.png']", visible: false)
+      expect(html).to have_css("meta[property='og:image'][content='https://example.org/logo.png']", visible: false)
     end
     it "should output additional links" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_additional_link.yml"))

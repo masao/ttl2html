@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<%=h html_title(param) %>">
     <%- if param[:logo] -%>
-    <meta property="og:image" content="<%=h param[:logo] %>">
+    <meta property="og:image" content="<%=h URI.parse(param[:base_uri]) + param[:logo] %>">
     <%- end -%>
     <%- if param[:google_analytics] -%>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<%=h param[:google_analytics] %>"></script>
