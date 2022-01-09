@@ -330,6 +330,14 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav.navbar > a.navbar-brand img[src='../logo.png']")
       expect(html).to have_css("nav.navbar > a.navbar-brand[href='../']")
     end
+    it "should output ogp tags" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_logo.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("meta[property='og:image'][content='logo.png']", visible: false)
+    end
     it "should output additional links" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_additional_link.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
