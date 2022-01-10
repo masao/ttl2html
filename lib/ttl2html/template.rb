@@ -144,7 +144,7 @@ module TTL2HTML
     end
     def relative_path(dest)
       path = nil
-      dest_uri = URI.parse(dest)
+      dest_uri = RDF::IRI.parse(dest)
       if dest_uri.absolute?
         path = dest
       else
