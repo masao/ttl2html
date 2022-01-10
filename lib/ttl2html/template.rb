@@ -143,10 +143,16 @@ module TTL2HTML
       path
     end
     def relative_path(dest)
-      src = @param[:output_file]
-      src = Pathname.new(src).relative_path_from(Pathname.new(@param[:output_dir])) if @param[:output_dir]
-      path = Pathname(dest).relative_path_from(Pathname(File.dirname src))
-      path = path.to_s + "/" if File.directory? path
+      path = nil
+      dest_uri = URI.parse(dest)
+      if dest_uri.absolute?
+        path = dest
+      else
+        src = @param[:output_file]
+        src = Pathname.new(src).relative_path_from(Pathname.new(@param[:output_dir])) if @param[:output_dir]
+        path = Pathname(dest).relative_path_from(Pathname(File.dirname src))
+        path = path.to_s + "/" if File.directory? path
+      end
       path
     end
     def relative_path_uri(dest_uri, base_uri)

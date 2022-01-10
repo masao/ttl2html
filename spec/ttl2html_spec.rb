@@ -330,6 +330,19 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav.navbar > a.navbar-brand img[src='../logo.png']")
       expect(html).to have_css("nav.navbar > a.navbar-brand[href='../']")
     end
+    it "should output logo with absolute path" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_logo2.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav.navbar > a.navbar-brand img[src='https://example.org/logo.png']")
+      expect(html).to have_css("nav.navbar > a.navbar-brand[href='./']")
+      cont = open("/tmp/html/a/b.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav.navbar > a.navbar-brand img[src='https://example.org/logo.png']")
+      expect(html).to have_css("nav.navbar > a.navbar-brand[href='../']")
+    end
     it "should output ogp tags" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_logo.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

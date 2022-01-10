@@ -1,0 +1,7 @@
+base_uri: https://example.org/
+site_title: "Test website"
+output_dir: /tmp/html
+top_class: https://example.org/b
+labels:
+  http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
+logo: https://example.org/logo.png
