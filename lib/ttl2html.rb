@@ -208,6 +208,7 @@ module TTL2HTML
             label: label,
             comment: comment,
             html: template.expand_shape(@data, subject.to_s, @prefix),
+            target_class: target_class,
           }
         end
         template.output_to(about_html, param)

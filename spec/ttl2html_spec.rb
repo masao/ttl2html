@@ -211,6 +211,7 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("h3", text: "Book")
+      expect(html).to have_link("http://schema.org/Book")
     end
     it "should generate versions information" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

@@ -30,6 +30,9 @@
           <h2 id="shapes"><%=h t("about.shape-heading") %></h2>
           <%- param[:shapes].keys.sort.each do |shape| -%>
             <h3><%=h param[:shapes][shape][:label] %></h3>
+            <%- if param[:shapes][shape][:target_class] -%>
+            <ul><li><%= t("about.shape-target") %>: <a href="<%=h param[:shapes][shape][:target_class] %>"><%=h param[:shapes][shape][:target_class] %></a></li></ul>
+            <%- end -%>
             <p><%= param[:shapes][shape][:comment] %></p>
             <p><%=h t("about.shape-note", resource: param[:shapes][shape][:label]) %></p>
             <%= param[:shapes][shape][:html] -%>
