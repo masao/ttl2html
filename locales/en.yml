@@ -3,6 +3,7 @@ en:
     title: "About %{title}"
     shape-heading: "Resources description"
     shape-note: "The properties for the %{resource} resources are as follows:"
+    shape-target: Target class
     versions: Versions
     version-release: "Version %{version} released."
     version-triples: "%{triples} triples"

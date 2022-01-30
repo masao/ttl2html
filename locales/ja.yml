@@ -3,6 +3,7 @@ ja:
     title: "%{title}について"
     shape-heading: "各リソースの説明"
     shape-note: "%{resource}リソースが持つプロパティを下表に示します"
+    shape-target: 対象クラス
     versions: 更新履歴
     version-release: "バージョン%{version}を公開。"
     version-triples: "%{triples}トリプル"
