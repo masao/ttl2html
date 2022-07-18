@@ -120,6 +120,14 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("dt", text: "名称")
       I18n.locale = original_locale
     end
+    it "should respect shape labels with sh:or" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape2.ttl"))
+      ttl2html.output_html_files
+      cont = File.open("/tmp/html/b.html").read
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "Name")
+    end
     it "should respect inverse properties" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

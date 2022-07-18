@@ -245,33 +245,37 @@ module TTL2HTML
       results
     end
 
-    def shapes2labels(shapes)
-      labels = {}
+    def shapes_parse(shapes)
       shapes.subjects.each do |shape|
         target_class = @data[shape.to_s]["http://www.w3.org/ns/shacl#targetClass"]&.first
         if target_class
-          @data[shape.to_s]["http://www.w3.org/ns/shacl#property"].each do |property|
-            path = @data[property]["http://www.w3.org/ns/shacl#path"].first
-            name = @data[property]["http://www.w3.org/ns/shacl#name"]
-            labels[target_class] ||= {}
-            labels[target_class][path] = name
+          properties = @data[shape.to_s]["http://www.w3.org/ns/shacl#property"]
+          if properties
+            properties.each do |property|
+              path = @data[property]["http://www.w3.org/ns/shacl#path"].first
+              yield target_class, property
+            end
           end
         end
+      end
+    end
+    def shapes2labels(shapes)
+      labels = {}
+      shapes_parse(shapes) do |target_class, property|
+        path = @data[property]["http://www.w3.org/ns/shacl#path"].first
+        name = @data[property]["http://www.w3.org/ns/shacl#name"]
+        labels[target_class] ||= {}
+        labels[target_class][path] = name
       end
       labels
     end
     def shapes2orders(shapes)
       orders = {}
-      shapes.subjects.each do |shape|
-        target_class = @data[shape.to_s]["http://www.w3.org/ns/shacl#targetClass"]&.first
-        if target_class
-          @data[shape.to_s]["http://www.w3.org/ns/shacl#property"].each do |property|
-            path = @data[property]["http://www.w3.org/ns/shacl#path"].first
-            order = @data[property]["http://www.w3.org/ns/shacl#order"]
-            orders[target_class] ||= {}
-            orders[target_class][path] = order&.first&.to_i
-          end
-        end
+      shapes_parse(shapes) do |target_class, property|
+        path = @data[property]["http://www.w3.org/ns/shacl#path"].first
+        order = @data[property]["http://www.w3.org/ns/shacl#order"]
+        orders[target_class] ||= {}
+        orders[target_class][path] = order&.first&.to_i
       end
       orders
     end

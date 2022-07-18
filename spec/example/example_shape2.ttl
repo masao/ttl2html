@@ -1,0 +1,24 @@
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix ex: <https://example.org/>.
+ex:a a ex:b.
+ex:a dc:title "test title".
+ex:a\/b a ex:b.
+ex:a\/b ex:title "test title example".
+ex:b a ex:c.
+ex:b dc:title "title".
+ex:b rdfs:label "test label".
+ex:b ex:title "test title".
+ex:c a ex:b.
+ex:c dc:title "test title"@ja.
+ex:AShape a sh:NodeShape;
+  sh:targetClass ex:b;
+  sh:property [
+    sh:path ex:title;
+    sh:name "Name"@en, "名称"@ja;
+    sh:minCount 1;
+  ] .
+ex:ORShape a sh:NodeShape;
+  sh:targetClass ex:c;
+  sh:or ( ex:AShape ex:BShape ).
