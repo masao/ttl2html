@@ -288,6 +288,7 @@ module TTL2HTML
           uri = o.to_s
           version = @data[uri]
           next if not version
+          next if not version["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
           next if not version["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include? "http://rdfs.org/ns/void#Dataset"
           description = version["http://purl.org/dc/terms/description"]
           link = nil
