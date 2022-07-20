@@ -335,7 +335,7 @@ module TTL2HTML
             license[:icon] = license_data["http://xmlns.com/foaf/0.1/thumbnail"]&.first
             license[:label] = license_data["http://www.w3.org/2000/01/rdf-schema#label"]
           elsif data["http://purl.org/dc/terms/license"].first =~ URI::regexp
-            license[:url] = data["http://purl.org/dc/terms/license"].first
+            license[:url] = license[:label] = data["http://purl.org/dc/terms/license"].first
           end
         end
         if data["http://purl.org/dc/terms/publisher"]

@@ -16,4 +16,17 @@ _:toplevel a void:Dataset;
     foaf:mbox <mailto:admin@example.org>;
   ];
   dct:license <https://creativecommons.org/publicdomain/zero/1.0/>.
+
 _:toplevel pav:hasCurrentVersion _:v1.0.
+
+_:v1.0 a void:Dataset;
+  dct:issued "2021-12-11"^^xsd:date;
+  pav:version "1.0";
+  void:triples 28;
+  dcat:byteSize 14105;
+  void:dataDump <dataset-1.ttl>;
+  prov:qualifiedRevision [
+    a prov:Revision;
+    rdfs:comment "The first dataset release.";
+    rdfs:seeAlso <https://example.org/note.html>
+  ];
