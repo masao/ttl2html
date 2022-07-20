@@ -330,9 +330,13 @@ module TTL2HTML
         license = {}
         if data["http://purl.org/dc/terms/license"]
           license_data = @data[data["http://purl.org/dc/terms/license"].first]
-          license[:url] = license_data["http://www.w3.org/1999/02/22-rdf-syntax-ns#value"]&.first
-          license[:icon] = license_data["http://xmlns.com/foaf/0.1/thumbnail"]&.first
-          license[:label] = license_data["http://www.w3.org/2000/01/rdf-schema#label"]
+          if license_data
+            license[:url] = license_data["http://www.w3.org/1999/02/22-rdf-syntax-ns#value"]&.first
+            license[:icon] = license_data["http://xmlns.com/foaf/0.1/thumbnail"]&.first
+            license[:label] = license_data["http://www.w3.org/2000/01/rdf-schema#label"]
+          elsif data["http://purl.org/dc/terms/license"].first =~ URI::regexp
+            license[:url] = data["http://purl.org/dc/terms/license"].first
+          end
         end
         if data["http://purl.org/dc/terms/publisher"]
           publisher_data = @data[data["http://purl.org/dc/terms/publisher"].first]

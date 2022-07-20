@@ -1,0 +1,19 @@
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<https://example.org/a> a <https://example.org/b>.
+_:toplevel a void:Dataset;
+  foaf:homepage <https://example.org/>;
+  dct:description "Toplevel description";
+  dct:publisher [
+    foaf:mbox <mailto:admin@example.org>;
+  ];
+  dct:license <https://creativecommons.org/publicdomain/zero/1.0/>.
+_:toplevel pav:hasCurrentVersion _:v1.0.
