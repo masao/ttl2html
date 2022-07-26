@@ -84,6 +84,13 @@ top_class: http://schema.org/Book
 * ``custom_css``: CSSスタイルシートのコードを直接指定します（例: ``nav.navbar { background-color: pink }``）。
 * ``css_file``: ローカルで用いるCSSスタイルシートファイルのパスを指定します。
 * ``additional_link``: メニューに置かれる追加的なリンク。``href``, ``label`` の2つのキーを持つ各リンク情報を配列として設定できる。例: ``[ { "href": "http://example.org", "label": "Link" } ]``
+* ``breadcrumbs``: 複数のリソースを階層化したパンくずリストを作るための設定。当該リソースの上位階層リソースまたは関連リソースにあたるプロパティをリストとして定義します。下記の例では ``schema:hasPart`` プロパティ、``jp-cos:couseOfStudy``プロパティそれぞれの順でもし存在すれば、当該リソースの上位階層とみなしてナビゲーションメニューを構築します。また、パンくずリスト上の表示ラベルはデフォルトでは「タイトル」を用いますが、``label``属性が定義されていれば、当該``label``属性に定義されたプロパティの値をパンくずリンクとして用いることができます。また、`inverse`属性がある場合は、当該リソースへのプロパティとして遷移されたリソースを上位階層とみなします。
+  ```turtle
+  - property: http://schema.org/hasPart
+    inverse: true
+    label: https://w3id.org/jp-cos/sectionNumber
+  - property: https://w3id.org/jp-cos/courseOfStudy
+  ```
 
 ## 関連情報
 
