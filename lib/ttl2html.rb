@@ -175,8 +175,16 @@ module TTL2HTML
           param[:versions] = versions
           param[:toplevel] = toplevel
           subjects.sort.each do |subject|
+            objects = []
+            if @config.has_key? :top_additional_property
+              @config[:top_additional_property].each do |property|
+                objects += @graph.query([subject, RDF::URI(property), nil]).objects
+              end
+            end
             param[:index_data] ||= []
-            param[:index_data] << subject.to_s
+            param[:index_data] << {
+              subject.to_s => objects
+            }
           end
           template.output_to(index_html, param)
         end

@@ -150,6 +150,16 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_title /^Test website$/
       expect(html).to have_css("h2", text: "List of test label")
     end
+    it "should accept multiple top_class config" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_multi_top_class.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_multi_top_class.ttl"))
+      ttl2html.output_html_files
+      expect(File).to exist "/tmp/html/index.html"
+      cont = File.open("/tmp/html/index.html").read
+      html = Capybara.string cont
+      expect(html).to have_link href: "a"
+      expect(html).to have_link href: "c"
+    end
     it "should generate URI order for index.html" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

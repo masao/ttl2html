@@ -1,0 +1,9 @@
+@prefix ex: <https://example.org/>.
+@prefix dc: <http://purl.org/dc/terms/>.
+ex:a a ex:b;
+  dc:title "test title";
+  dc:hasPart ex:c.
+ex:a\/b a ex:b;
+  dc:title "test title example".
+ex:c a ex:d;
+  dc:title "test title c".
