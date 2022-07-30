@@ -75,6 +75,7 @@ top_class: http://schema.org/Book
   - http://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: トップページに表示すべきレコード一覧に対応するクラスURIを指定する。デフォルトではトップページは生成されない。
+* ``top_additional_property``: ``top_class``設定で展開されるリソース群に対して、追加でサブ階層として展開されるべきリストを指定する。サブ階層を構成するプロパティをリストとして指定する。
 * ``template_dir``: ローカルのテンプレートディレクトリ。未指定の場合はカレントディレクトリ内の ``templates/``ディレクトリを用いる。なお、テンプレートを上書きするには、[標準のテンプレートファイル](https://github.com/masao/ttl2html/tree/master/templates)をローカルのテンプレートディレクトリにコピーしてきて、内容を書き換えること。
 * ``locale``: 出力メッセージの言語指定。デフォルトは ``en`` （例: ``ja``, ``en``）
 * ``about_file``: 指定された名前のファイルにスキーマ説明を出力する。データセット内にSHACL記述が存在するときのみ有効。ファイル名 `about.html` に出力する。
