@@ -92,8 +92,6 @@ top_class: http://schema.org/Book
   - property: https://w3id.org/jp-cos/courseOfStudy
   ````
 
-
-Translated with www.DeepL.com/Translator (free version)
 ## See also
 
 There is another tool **``xlsx2shape``** to describe a dataset schema using SHACL. See [README-xlsx2shape.md](README-xlsx2shape.md) for details.
