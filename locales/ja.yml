@@ -37,3 +37,4 @@ ja:
     blank-node-or-structure: ブランクノードの内容は以下のいずれかの内容からなる構造を持ちます。
   triples:
     inverse_refered: "'%{property}'としての参照元:"
+    blank_node: "空ノード"

@@ -224,7 +224,9 @@ module TTL2HTML
         property.split(/[\/\#]/).last.capitalize
       end
     end
-    def format_object(object, data)
+    def format_object(object, data, type = :default)
+      #p [object, type]
+      #p param[:data_inverse_global] if type == :inverse
       if object =~ /\Ahttps?:\/\//
         rel_path = relative_path_uri(object, param[:base_uri])
         if param[:data_global][object]
@@ -233,7 +235,11 @@ module TTL2HTML
           "<a href=\"#{rel_path}\">#{object}</a>"
         end
       elsif object =~ /\A_:/ and param[:data_global][object]
-        format_triples(param[:data_global][object])
+        if type == :inverse and param[:data_inverse_global][object]
+          format_triples(param[:data_inverse_global][object], :blank)
+        else
+          format_triples(param[:data_global][object], :blank)
+        end
       else
         object
       end
@@ -265,7 +271,14 @@ module TTL2HTML
           end
         end
       end
-      to_html_raw("triples.html.erb", param_local)
+      case type
+      when :default
+        to_html_raw("triples.html.erb", param_local)
+      when :inverse
+        to_html_raw("triples-inverse.html.erb", param_local)
+      when :blank
+        to_html_raw("triples-blank.html.erb", param_local)
+      end
     end
     def format_version_info(version)
       param_local = @param.dup.merge(data: version)

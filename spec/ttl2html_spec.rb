@@ -436,6 +436,14 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("head script[src='https://www.googletagmanager.com/gtag/js?id=zzz']", visible: false)
     end
+    it "should support inverse property of blank node" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_subject.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/a.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("dl dd dl dd a[href='b']")
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil

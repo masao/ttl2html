@@ -56,7 +56,7 @@ module TTL2HTML
             @data[s.to_s][v.to_s] ||= []
             @data[s.to_s][v.to_s] << o.to_s
           end
-          if o.is_a? RDF::URI
+          if o.is_a? RDF::URI or o.is_a? RDF::Node
             @data_inverse[o.to_s] ||= {}
             @data_inverse[o.to_s][v.to_s] ||= []
             @data_inverse[o.to_s][v.to_s] << s.to_s
@@ -146,6 +146,7 @@ module TTL2HTML
         param[:turtle_uri] = uri + ".ttl"
         param[:data] = v
         param[:data_inverse] = @data_inverse[uri]
+        param[:data_inverse_global] = @data_inverse
         param[:data_global] = @data
         param[:title] = template.get_title(v)
         if param[:breadcrumbs]
