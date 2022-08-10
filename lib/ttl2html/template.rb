@@ -225,8 +225,6 @@ module TTL2HTML
       end
     end
     def format_object(object, data, type = {})
-      #p [object, type]
-      #p param[:data_inverse_global] if type == :inverse
       if object =~ /\Ahttps?:\/\//
         rel_path = relative_path_uri(object, param[:base_uri])
         if param[:data_global][object]
@@ -236,7 +234,6 @@ module TTL2HTML
         end
       elsif object =~ /\A_:/ and param[:data_global][object]
         if type[:inverse] and param[:data_inverse_global][object]
-          p [object, param[:data_inverse_global][object]]
           format_triples(param[:data_inverse_global][object], inverse: true, blank: true)
         else
           format_triples(param[:data_global][object], blank: true)
