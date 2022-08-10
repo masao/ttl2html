@@ -1,10 +1,4 @@
 <dl class="row">
-<%- param[:data].sort_by{|k, v|
-      order = param[:orders][k] if param[:orders] and param[:orders][k]
-      order = Float::INFINITY if order.nil?
-      [ order, k ]
-    }.each do |k, v| -%>
-  <dt class="col-sm-3"><%=h t('triples.blank_node') %></dt>
-  <dd class="col-sm-9"><%= format_triples(param[:data]) %></dd>
-<%- end -%>
+  <dt class="col-sm-3"><%= format_object(param[:data].values.first.first, param[:data]) %></dt>
+  <dd class="col-sm-9"><%= format_triples(param[:data_global][param[:data].values.first.first]) %></dd>
 </dl>

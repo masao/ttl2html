@@ -224,7 +224,7 @@ module TTL2HTML
         property.split(/[\/\#]/).last.capitalize
       end
     end
-    def format_object(object, data, type = :default)
+    def format_object(object, data, type = {})
       #p [object, type]
       #p param[:data_inverse_global] if type == :inverse
       if object =~ /\Ahttps?:\/\//
@@ -235,16 +235,17 @@ module TTL2HTML
           "<a href=\"#{rel_path}\">#{object}</a>"
         end
       elsif object =~ /\A_:/ and param[:data_global][object]
-        if type == :inverse and param[:data_inverse_global][object]
-          format_triples(param[:data_inverse_global][object], :blank)
+        if type[:inverse] and param[:data_inverse_global][object]
+          p [object, param[:data_inverse_global][object]]
+          format_triples(param[:data_inverse_global][object], inverse: true, blank: true)
         else
-          format_triples(param[:data_global][object], :blank)
+          format_triples(param[:data_global][object], blank: true)
         end
       else
         object
       end
     end
-    def format_triples(triples, type = :default)
+    def format_triples(triples, type = {})
       param_local = @param.dup.merge(data: triples)
       param_local[:type] = type
       if @param[:labels_with_class] and triples["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
@@ -271,13 +272,14 @@ module TTL2HTML
           end
         end
       end
-      case type
-      when :default
+      if type[:inverse] == true
+        if type[:blank] == true
+          to_html_raw("triples-blank.html.erb", param_local)
+        else
+          to_html_raw("triples-inverse.html.erb", param_local)
+        end
+      else
         to_html_raw("triples.html.erb", param_local)
-      when :inverse
-        to_html_raw("triples-inverse.html.erb", param_local)
-      when :blank
-        to_html_raw("triples-blank.html.erb", param_local)
       end
     end
     def format_version_info(version)
