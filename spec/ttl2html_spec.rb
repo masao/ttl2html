@@ -463,6 +463,7 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       #puts cont
       expect(html).to have_css("dl dd dl dt a[href='b']")
+      expect(html).to have_css("dl dd dl dt", text: /^C$/)
       expect(html).to have_css("dl dd dl dd a[href='a']")
       expect(html).not_to have_css("dd", text: "FFF")
     end
