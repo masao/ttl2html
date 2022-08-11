@@ -4,3 +4,14 @@
     <https://example.org/BShape>
     <https://example.org/CShape>
   ).
+
+<https://example.org/BShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#path> <https://example.org/b>;
+    <http://www.w3.org/ns/shacl#name> "Foo"
+  ] .
+<https://example.org/CShape> a <http://www.w3.org/ns/shacl#NodeShape>;
+  <http://www.w3.org/ns/shacl#property> [
+    <http://www.w3.org/ns/shacl#path> <https://example.org/c>;
+    <http://www.w3.org/ns/shacl#name> "Bar"
+  ] .

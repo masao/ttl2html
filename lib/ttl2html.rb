@@ -260,7 +260,18 @@ module TTL2HTML
         target_class = @data[shape.to_s]["http://www.w3.org/ns/shacl#targetClass"]&.first
         if target_class
           properties = @data[shape.to_s]["http://www.w3.org/ns/shacl#property"]
-          if properties
+          if @data[shape.to_s]["http://www.w3.org/ns/shacl#or"]
+            properties ||= []
+            node_list = @data[shape.to_s]["http://www.w3.org/ns/shacl#or"].first
+            while node_list and @data[node_list] do
+              sub_shape = @data[node_list]["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"].first
+              if @data[sub_shape] and @data[sub_shape]["http://www.w3.org/ns/shacl#property"]
+                properties += @data[sub_shape]["http://www.w3.org/ns/shacl#property"]
+              end
+              node_list = @data[node_list]["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"].first
+            end
+          end
+          if not properties.empty?
             properties.each do |property|
               path = @data[property]["http://www.w3.org/ns/shacl#path"].first
               yield target_class, property

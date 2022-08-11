@@ -13,6 +13,9 @@
   ], [
     sh:path <https://example.org/item>;
     sh:name "Item";
+    sh:node <https://example.org/ItemShape>;
+    sh:nodeKind sh:BlankNode;
+    sh:class <https://example.org/Item>
   ] .
 <https://example.org/ItemShape> a sh:NodeShape;
   sh:targetClass <https://example.org/Item>;

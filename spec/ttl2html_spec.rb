@@ -553,4 +553,27 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/index.html")).to be false
     end
   end
+  context "#shapes2labels" do
+    it "should import labels from shape" do
+      ttl_file = File.join(spec_base_dir, "example/shape.ttl")
+      graph = RDF::Graph.load(ttl_file, format:  :ttl)
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(ttl_file)
+      shapes = graph.query([nil, RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
+      labels = ttl2html.shapes2labels(shapes)
+      expect(labels).to have_key "http://schema.org/Book"
+      expect(labels["http://schema.org/Book"]).to have_key "https://example.org/name"
+    end
+    it "should support sh:or shapes" do
+      ttl_file = File.join(spec_base_dir, "example/shape_or.ttl")
+      graph = RDF::Graph.load(ttl_file, format:  :ttl)
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(ttl_file)
+      shapes = graph.query([nil, RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"), RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
+      labels = ttl2html.shapes2labels(shapes)
+      expect(labels).to have_key "https://example.org/Item"
+      expect(labels["https://example.org/Item"]).to have_key "https://example.org/b"
+      expect(labels["https://example.org/Item"]["https://example.org/b"].first).to eq "Foo"
+    end
+  end
 end
