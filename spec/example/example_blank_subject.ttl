@@ -2,4 +2,5 @@
 <https://example.org/b> <https://example.org/c> [
     a <https://example.org/e>;
     <https://example.org/d> <https://example.org/a>
-].
+];
+  <https://example.org/f> "FFF".
