@@ -272,13 +272,15 @@ module TTL2HTML
       if type[:inverse] == true
         if type[:blank] == true
           #p param_local[:data]
-          #p param_local[:data].keys.first
           #p param_local[:data_inverse]
           #p param_local[:data_inverse].values.first.first
           param_local[:blank_subject] = param_local[:data].values.first.first
           param_local[:blank_triples] = {
-            param_local[:data].keys.first => param_local[:data_inverse].values.first
+            param_local[:data].keys.first => param_local[:data_global][param_local[:blank_subject]][param_local[:data].keys.first]
           }
+          #p param_local[:blank_subject]
+          #p param_local[:blank_triples]
+          param_local[:type] = {}
           #pp param_local
           to_html_raw("triples-blank.html.erb", param_local)
         else
