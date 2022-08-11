@@ -6,3 +6,4 @@ labels:
 labels_with_class:
   https://example.org/b:
     http://purl.org/dc/terms/title: Description
+    http://purl.org/dc/terms/hasPart: "Has Part"

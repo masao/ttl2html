@@ -137,6 +137,17 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_link "a"
       expect(html).to have_css("dt", text: /Referred to as/)
     end
+    it "should respect inverse blank property labels with shapes" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_with_instances.ttl"))
+      ttl2html.output_html_files
+      cont = File.open("/tmp/html/a.html").read
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "Library")
+      cont = File.open("/tmp/html/b.html").read
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "Author")
+    end
     it "should accept top_class config" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
@@ -288,6 +299,14 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/b.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "Class")
+    end
+    it "should respect labels_with_class settings for inverse properties" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_multi_top_class.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/c.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "Has Part")
     end
     it "should accept uri_maping parameters in config.yml" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_mapping.yml"))

@@ -1,4 +1,5 @@
 <https://example.org/a> a <https://example.org/b>.
 <https://example.org/b> <https://example.org/c> [
+    a <https://example.org/e>;
     <https://example.org/d> <https://example.org/a>
 ].
