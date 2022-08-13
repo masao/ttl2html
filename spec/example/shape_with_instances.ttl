@@ -25,14 +25,17 @@
     sh:minCount 1;
   ] .
 
+<https://example.org/b> a <http://schema.org/Agent>;
+  <https://example.org/name> "Alice".
+<https://example.org/00b> a <http://schema.org/Agent>;
+  <https://example.org/name> "Bob".
 <https://example.org/a> a <http://schema.org/Book>;
   <https://example.org/name> "Title";
   <https://example.org/creator> <https://example.org/b>;
+  <https://example.org/creator> <https://example.org/00b>;
   <https://example.org/item> [
     a <https://example.org/Item>;
     <https://example.org/holding> <https://example.org/libraryA>
   ] .
-<https://example.org/b> a <http://schema.org/Agent>;
-  <https://example.org/name> "Alice".
 <https://example.org/libraryA> a <http://schema.org/Agent>;
   <https://example.org/name> "A Library".

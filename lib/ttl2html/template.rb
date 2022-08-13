@@ -217,8 +217,11 @@ module TTL2HTML
         object
       end
     end
-    def format_property(property, labels = {})
-      if labels and labels[property]
+    def format_property(property, labels = {}, subject = nil)
+      subject_class = @param[:data_global][subject][RDF.type.to_s]&.first if subject
+      if subject_class and @param[:labels_with_class][subject_class] and @param[:labels_with_class][subject_class][property]
+        @param[:labels_with_class][subject_class][property]
+      elsif labels[property]
         labels[property]
       else
         property.split(/[\/\#]/).last.capitalize
