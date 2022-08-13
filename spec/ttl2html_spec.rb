@@ -32,6 +32,7 @@ RSpec.describe TTL2HTML::App do
     after(:each) do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.cleanup
+      I18n.locale = I18n.default_locale
     end
     it "should deal with path separators" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
@@ -111,14 +112,12 @@ RSpec.describe TTL2HTML::App do
       cont = File.open("/tmp/html/a/b.html").read
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "Name")
-      original_locale = I18n.locale
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_ja.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))
       ttl2html.output_html_files
       cont = File.open("/tmp/html/a/b.html").read
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "名称")
-      I18n.locale = original_locale
     end
     it "should respect shape labels with sh:or" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
