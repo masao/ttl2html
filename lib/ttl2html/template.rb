@@ -221,7 +221,7 @@ module TTL2HTML
       subject_class = @param[:data_global][subject][RDF.type.to_s]&.first if subject
       if subject_class and @param[:labels_with_class][subject_class] and @param[:labels_with_class][subject_class][property]
         @param[:labels_with_class][subject_class][property]
-      elsif labels[property]
+      elsif labels and labels[property]
         labels[property]
       else
         property.split(/[\/\#]/).last.capitalize
