@@ -1,0 +1,45 @@
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+
+<https://example.org/AShape> a sh:NodeShape;
+  sh:targetClass <http://schema.org/Book>;
+  sh:property [
+    sh:path <https://example.org/name>;
+    sh:name "Name"@en, "タイトル"@ja;
+    sh:minCount 1;
+  ], [
+    sh:path <https://example.org/creator>;
+    sh:name "Author"@en, "著者"@ja;
+    sh:minCount 1;
+  ], [
+    sh:path <https://example.org/item>;
+    sh:name "Item";
+    sh:node <https://example.org/ItemShape>;
+    sh:nodeKind sh:BlankNode;
+    sh:class <https://example.org/Item>
+  ] .
+<https://example.org/ItemShape> a sh:NodeShape;
+  sh:targetClass <https://example.org/Item>;
+  sh:property [
+    sh:path <https://example.org/holding>;
+    sh:name "Library";
+    sh:minCount 1;
+  ] .
+<https://example.org/AgentShape> a sh:NodeShape;
+  sh:targetClass <http://schema.org/Agent>;
+  sh:property [
+    sh:path <https://example.org/name>;
+    sh:name "氏名"@ja, "Name"@en;
+    sh:minCount 1;
+  ] .
+
+<https://example.org/a> a <http://schema.org/Book>;
+  <https://example.org/name> "Title";
+  <https://example.org/creator> <https://example.org/b>;
+  <https://example.org/item> [
+    a <https://example.org/Item>;
+    <https://example.org/holding> <https://example.org/libraryA>
+  ] .
+<https://example.org/b> a <http://schema.org/Agent>;
+  <https://example.org/name> "Alice".
+<https://example.org/libraryA> a <http://schema.org/Agent>;
+  <https://example.org/name> "A Library".

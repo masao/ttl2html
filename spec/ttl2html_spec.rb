@@ -148,6 +148,18 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "Author")
     end
+    it "should respect inverse property labels with shapes with locale" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_ja.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_with_instances_ja.ttl"))
+      ttl2html.output_html_files
+      cont = File.open("/tmp/html/a.html").read
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "Library")
+      cont = File.open("/tmp/html/b.html").read
+      html = Capybara.string cont
+      expect(html).to have_css("dt", text: "氏名")
+      expect(html).to have_css("dt", text: "著者")
+    end
     it "should accept top_class config" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
