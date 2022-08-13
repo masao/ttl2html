@@ -1,0 +1,8 @@
+base_uri: https://example.org/
+output_dir: /tmp/html
+breadcrumbs:
+  - property:
+    - property: http://schema.org/workExample
+    - property: http://schema.org/isPartOf
+  - property: http://www.w3.org/2004/02/skos/core#broader
+  - property: http://purl.org/dc/terms/subject

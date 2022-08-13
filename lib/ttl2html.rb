@@ -237,22 +237,41 @@ module TTL2HTML
         @config[:breadcrumbs].each do |e|
           data_target = data
           data_target = @data_inverse[uri] if e["inverse"]
-          if data_target and data_target[e["property"]]
-            data_target[e["property"]].each do |parent|
-              data_parent = @data[parent]
-              label = template.get_title(data_parent)
-              label = data_parent[e["label"]].first if e["label"] and data_parent[e["label"]]
-              results << {
-                uri: parent,
-                label: label,
-              }
-              results += build_breadcrumbs(parent, template, depth + 1)
+          if data_target
+            if e["property"].kind_of? Array
+              parent = nil
+              data_target_sub = data_target
+              e["property"].each do |prop|
+                if data_target_sub[prop["property"]]
+                  data_target_sub[prop["property"]].each do |o|
+                    parent = o
+                    data_target_sub = @data[parent]
+                  end
+                end
+              end
+              if parent
+                results << build_breadcrumbs_sub(parent, template)
+                results += build_breadcrumbs(parent, template, depth + 1)
+              end
+            elsif data_target[e["property"]]
+              data_target[e["property"]].each do |parent|
+                results << build_breadcrumbs_sub(parent, template, e["label"])
+                results += build_breadcrumbs(parent, template, depth + 1)
+              end
             end
-            return results
           end
         end
       end
       results
+    end
+    def build_breadcrumbs_sub(parent, template, label_prop = nil)
+      data_parent = @data[parent]
+      label = template.get_title(data_parent)
+      label = data_parent[label_prop].first if label_prop and data_parent[label_prop]
+      {
+        uri: parent,
+        label: label,
+      }
     end
 
     def shapes_parse(shapes)

@@ -447,6 +447,15 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)
       expect(html).to have_css("nav ol.breadcrumb li.active", text: "test title 3")
     end
+    it "should output breadcrumbs with a sequence of multiple properties" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs_propsequence.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_breadcrumbs_propsequence.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/d.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+      expect(html.all("nav ol.breadcrumb li.breadcrumb-item").size).to eq 6
+    end
     it "should support google_analytics" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example_analytics.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))
