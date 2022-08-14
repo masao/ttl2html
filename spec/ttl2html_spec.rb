@@ -152,6 +152,7 @@ RSpec.describe TTL2HTML::App do
       cont = File.open("/tmp/html/libraryA.html").read
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "Library")
+      expect(html).to have_css("dt", text: "Holding")
     end
     it "should respect inverse property labels with shapes with locale" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_ja.yml"))

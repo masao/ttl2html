@@ -218,6 +218,7 @@ module TTL2HTML
       end
     end
     def format_property(property, labels = {}, subject = nil)
+      subject = @param[:blank_subject] if not subject and @param[:blank_subject]
       subject_class = @param[:data_global][subject][RDF.type.to_s]&.first if subject
       if subject_class and @param[:labels_with_class][subject_class] and @param[:labels_with_class][subject_class][property]
         @param[:labels_with_class][subject_class][property]

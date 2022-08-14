@@ -12,7 +12,7 @@
     sh:minCount 1;
   ], [
     sh:path <https://example.org/item>;
-    sh:name "Item";
+    sh:name "Holding";
     sh:node <https://example.org/ItemShape>;
     sh:nodeKind sh:BlankNode;
     sh:class <https://example.org/Item>
@@ -25,6 +25,8 @@
     sh:minCount 1;
   ] .
 
+<https://example.org/libraryA> a <http://schema.org/Agent>;
+  <https://example.org/name> "A Library".
 <https://example.org/b> a <http://schema.org/Agent>;
   <https://example.org/name> "Alice".
 <https://example.org/00b> a <http://schema.org/Agent>;
@@ -37,5 +39,3 @@
     a <https://example.org/Item>;
     <https://example.org/holding> <https://example.org/libraryA>
   ] .
-<https://example.org/libraryA> a <http://schema.org/Agent>;
-  <https://example.org/name> "A Library".
