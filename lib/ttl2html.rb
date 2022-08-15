@@ -167,7 +167,6 @@ module TTL2HTML
                                 RDF::URI(@config[:top_class])]).subjects
         if subjects.empty?
           STDERR.puts "WARN: top_class parameter specified as [#{@config[:top_class]}], but there is no instance data."
-          STDERR.puts "  Skip generation of top page."
         else
           template = Template.new("index.html.erb", @config)
           param = @config.dup
@@ -187,6 +186,8 @@ module TTL2HTML
               subject.to_s => objects
             }
           end
+          param[:output_file] = index_html
+          param[:index_list] = template.to_html_raw("index-list.html.erb", param)
           template.output_to(index_html, param)
         end
       end
