@@ -34,6 +34,31 @@ RSpec.describe TTL2HTML::App do
       ttl2html.cleanup
       I18n.locale = I18n.default_locale
     end
+    it "should have no errors in HTML structures" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/index.html").read, max_errors: -1)
+      expect(doc.errors).to be_empty
+      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/a/index.html").read, max_errors: -1)
+      expect(doc.errors).to be_empty
+    end
+    it "shoud have no errors in HTML for versions info" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/versions.ttl"))
+      ttl2html.output_html_files
+      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/index.html").read, max_errors: -1)
+      expect(doc.errors).to be_empty
+      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/about.html").read, max_error: -1)
+      expect(doc.errors).to be_empty
+    end
+    it "shoud have no errors in HTML for shapes info" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_with_instances.ttl"))
+      ttl2html.output_html_files
+      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/about.html").read, max_error: -1)
+      expect(doc.errors).to be_empty
+    end
     it "should deal with path separators" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       expect {
