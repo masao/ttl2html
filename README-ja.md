@@ -86,7 +86,7 @@ top_class: http://schema.org/Book
 * ``css_file``: ローカルで用いるCSSスタイルシートファイルのパスを指定します。
 * ``additional_link``: メニューに置かれる追加的なリンク。``href``, ``label`` の2つのキーを持つ各リンク情報を配列として設定できる。例: ``[ { "href": "http://example.org", "label": "Link" } ]``
 * ``breadcrumbs``: 複数のリソースを階層化したパンくずリストを作るための設定。当該リソースの上位階層リソースまたは関連リソースにあたるプロパティをリストとして定義します。下記の例では ``schema:hasPart`` プロパティ、``jp-cos:couseOfStudy``プロパティそれぞれの順でもし存在すれば、当該リソースの上位階層とみなしてナビゲーションメニューを構築します。また、パンくずリスト上の表示ラベルはデフォルトでは「タイトル」を用いますが、``label``属性が定義されていれば、当該``label``属性に定義されたプロパティの値をパンくずリンクとして用いることができます。また、`inverse`属性がある場合は、当該リソースへのプロパティとして遷移されたリソースを上位階層とみなします。また、空ノード等で多段階の関係をまたいだリソースを指定することもできます。その場合、``property``属性にリストを追加してその下位アイテムに同様に``property``属性を追加します。下記の末尾の例では、当該リソースの``schema:workExample``プロパティ指定先リソースのさらに``schema:isPartOf``プロパティ先のリソースをナビゲーションリソースとして用いることができます。
-  ```turtle
+  ```yaml
   - property: http://schema.org/hasPart
     inverse: true
     label: https://w3id.org/jp-cos/sectionNumber
@@ -94,6 +94,12 @@ top_class: http://schema.org/Book
   - property:
     - property: http://schema.org/workExample
     - property: http://schema.org/isPartOf
+  ```
+* ``shape_orders``: about.htmlに出力されるリソース説明の順序を制御する。ここに一覧されたリソースシェイプの順に説明が出力される。設定されない場合、デフォルトではシェイプURIのアルファベット順に出力される。以下の例のようにリストとして設定する：
+  ```yaml
+  shape_orders:
+    - https://example.org/ItemShape
+    - https://example.org/BookShape
   ```
 
 ## 関連情報

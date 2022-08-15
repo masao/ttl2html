@@ -276,6 +276,15 @@ RSpec.describe TTL2HTML::App do
       }.not_to raise_error
       expect(File).to exist "/tmp/html/about.html"
     end
+    it "should respect order of resources at about.html" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_shape_orders.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_with_instances_ja.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("h2#shapes")
+      expect(html).to have_css("h2#shapes + h3", text: "Item")
+    end
     it "should use Class label for title" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/shape.ttl"))

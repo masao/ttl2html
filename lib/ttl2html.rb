@@ -202,6 +202,12 @@ module TTL2HTML
         param[:toplevel] = toplevel
         param[:shapes] = {}
         shapes.subjects.each do |subject|
+          orders = []
+          if param[:shape_orders]
+            param[:shape_orders].index(subject)
+            orders << ( param[:shape_orders].index(subject) or Float::INFINITY )
+          end
+          orders << subject
           label = comment = nil
           target_class = @data[subject.to_s]["http://www.w3.org/ns/shacl#targetClass"]
           if target_class
@@ -220,6 +226,7 @@ module TTL2HTML
             comment: comment,
             html: template.expand_shape(@data, subject.to_s, @prefix),
             target_class: target_class,
+            order: orders,
           }
         end
         template.output_to(about_html, param)
