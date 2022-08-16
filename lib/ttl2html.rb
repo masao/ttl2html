@@ -260,11 +260,13 @@ module TTL2HTML
               if parent
                 results << build_breadcrumbs_sub(parent, template)
                 results += build_breadcrumbs(parent, template, depth + 1)
+                return results
               end
             elsif data_target[e["property"]]
               data_target[e["property"]].each do |parent|
                 results << build_breadcrumbs_sub(parent, template, e["label"])
                 results += build_breadcrumbs(parent, template, depth + 1)
+                return results
               end
             end
           end
