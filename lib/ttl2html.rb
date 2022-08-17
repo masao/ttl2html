@@ -19,7 +19,6 @@ module TTL2HTML
       @data = {}
       @data_inverse = {}
       @prefix = {}
-      @graph = RDF::Graph.new
     end
 
     def load_config(file)
@@ -40,10 +39,9 @@ module TTL2HTML
       else
         io = File.open(file)
       end
-      RDF::Turtle::Reader.new(io) do |reader|
+      RDF::Format.for(:turtle).reader.new(io) do |reader|
         @prefix.merge! reader.prefixes
         reader.statements.each do |statement|
-          @graph.insert(statement)
           s = statement.subject
           v = statement.predicate
           o = statement.object
@@ -121,9 +119,12 @@ module TTL2HTML
     end
     def output_html_files
       template = Template.new("", @config)
-      shapes = @graph.query([nil,
-                             RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-                             RDF::URI("http://www.w3.org/ns/shacl#NodeShape")])
+      shapes = []
+      @data.each do |s, v|
+        if v[RDF.type.to_s] and @data[s][RDF.type.to_s].include?("http://www.w3.org/ns/shacl#NodeShape")
+          shapes << s
+        end
+      end
       labels = shapes2labels(shapes)
       versions = extract_versions
       toplevel = extract_toplevel
@@ -165,9 +166,12 @@ module TTL2HTML
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
       if @config.has_key? :top_class
-        subjects = @graph.query([nil,
-                                RDF::URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-                                RDF::URI(@config[:top_class])]).subjects
+        subjects = []
+        @data.each do |s, v|
+          if @data[s][RDF.type.to_s] and @data[s][RDF.type.to_s].include?(@config[:top_class])
+            subjects << s
+          end
+        end
         if subjects.empty?
           STDERR.puts "WARN: top_class parameter specified as [#{@config[:top_class]}], but there is no instance data."
         else
@@ -181,7 +185,9 @@ module TTL2HTML
             objects = []
             if @config.has_key? :top_additional_property
               @config[:top_additional_property].each do |property|
-                objects += @graph.query([subject, RDF::URI(property), nil]).objects
+                if @data[subject][property]
+                  objects += @data[subject][property]
+                end
               end
             end
             param[:index_data] ||= []
@@ -204,7 +210,7 @@ module TTL2HTML
         param[:versions] = versions
         param[:toplevel] = toplevel
         param[:shapes] = {}
-        shapes.subjects.each do |subject|
+        shapes.each do |subject|
           orders = []
           if param[:shape_orders]
             param[:shape_orders].index(subject)
@@ -288,8 +294,8 @@ module TTL2HTML
     end
 
     def shapes_parse(shapes)
-      shapes.subjects.each do |shape|
-        target_class = @data[shape.to_s]["http://www.w3.org/ns/shacl#targetClass"]&.first
+      shapes.each do |shape|
+        target_class = @data[shape]["http://www.w3.org/ns/shacl#targetClass"]&.first
         if target_class
           properties = @data[shape.to_s]["http://www.w3.org/ns/shacl#property"]
           if @data[shape.to_s]["http://www.w3.org/ns/shacl#or"]
@@ -336,7 +342,12 @@ module TTL2HTML
     def extract_versions
       versions = []
       ["http://purl.org/pav/hasVersion", "http://purl.org/pav/hasCurrentVersion", "http://purl.org/dc/terms/hasVersion"].each do |prop|
-        objects = @graph.query([nil, RDF::URI(prop), nil]).objects
+        objects = []
+        @data.each do |s, v|
+          if @data[s][prop]
+            objects += @data[s][prop]
+          end
+        end
         objects.each do |o|
           uri = o.to_s
           version = @data[uri]
@@ -377,7 +388,12 @@ module TTL2HTML
     end
     def extract_toplevel
       result = {}
-      toplevel = @graph.query([nil, RDF::URI("http://purl.org/pav/hasCurrentVersion"), nil]).subjects.first
+      toplevel = nil
+      @data.each do |s, v|
+        if @data[s]["http://purl.org/pav/hasCurrentVersion"]
+          toplevel = s
+        end
+      end
       data  = @data[toplevel.to_s]
       if toplevel
         license = {}
