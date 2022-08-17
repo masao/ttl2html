@@ -160,7 +160,6 @@ module TTL2HTML
         if template.find_template_path("_default.html.erb")
           param[:additional_content] = template.to_html_raw("_default.html.erb", param)
         end
-        pp param
         template.output_to(file, param)
       end
       index_html = "index.html"
