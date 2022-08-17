@@ -31,6 +31,9 @@
           <%= format_triples(param[:data]) %>
         </div>
       </div>
+      <%- if param[:additional_content] -%>
+      <%= param[:additional_content] %>
+      <%- end -%>
       <%- if param[:data_inverse] -%>
       <div class="row inverse">
         <div class="col-md-12">

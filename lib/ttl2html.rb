@@ -157,6 +157,10 @@ module TTL2HTML
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
+        if template.find_template_path("_default.html.erb")
+          param[:additional_content] = template.to_html_raw("_default.html.erb", param)
+        end
+        pp param
         template.output_to(file, param)
       end
       index_html = "index.html"

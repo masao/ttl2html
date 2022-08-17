@@ -341,6 +341,14 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("div.container p", text: "Test description")
     end
+    it "should include an additional content template with template_dir" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_content.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/a/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("p.additional-content", text: "Test description")
+    end
     it "should accept labels_with_class settings per target class" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
