@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.email       = 'tmasao@acm.org'
   s.files       = [
     "lib/ttl2html.rb", "lib/ttl2html/version.rb", "lib/ttl2html/template.rb",
+    "lib/ttl2html/util.rb",
     "lib/xlsx2shape.rb",
   ]
   s.files       += Dir["templates/*", "locales/*"]
