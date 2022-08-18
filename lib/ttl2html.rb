@@ -7,10 +7,12 @@ require "nokogiri"
 require "rdf/turtle"
 require "ruby-progressbar"
 
+require "ttl2html/util"
 require "ttl2html/template"
 
 module TTL2HTML
   class App
+    include Util
     def initialize(config = "config.yml")
       @config = load_config(config)
       if not @config[:base_uri]
@@ -153,7 +155,7 @@ module TTL2HTML
         if param[:breadcrumbs]
           param[:breadcrumbs_items] = build_breadcrumbs(uri, template)
         end
-        file = uri_mapping_to_path(uri, ".html")
+        file = uri_mapping_to_path(uri, @config, ".html")
         if @config[:output_dir]
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
@@ -437,7 +439,7 @@ module TTL2HTML
 
     def output_turtle_files
       each_data(:output_turtle_files) do |uri, v|
-        file = uri_mapping_to_path(uri, ".ttl")
+        file = uri_mapping_to_path(uri, @config, ".ttl")
         if @config[:output_dir]
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
@@ -457,44 +459,16 @@ module TTL2HTML
       output_turtle_files if @config[:output_turtle]
     end
 
-    def uri_mapping_to_path(uri, suffix = ".html")
-      path = nil
-      if @config[:uri_mappings]
-        @config[:uri_mappings].each do |mapping|
-          local_file = uri.sub(@config[:base_uri], "")
-          if mapping["regexp"] =~ local_file
-            path = local_file.sub(mapping["regexp"], mapping["path"])
-          end
-        end
-      end
-      if path.nil?
-        if suffix == ".html"
-          if @data.keys.find{|e| e.start_with?(uri + "/") }
-            path = uri + "/index"
-          elsif uri.end_with?("/")
-            path = uri + "index"
-          else
-            path = uri
-          end
-        else
-          path = uri
-        end
-      end
-      path = path.sub(@config[:base_uri], "")
-      path << suffix
-      #p [uri, path]
-      path
-    end
     def cleanup
       @data.select do |uri, v|
         uri.start_with? @config[:base_uri]
       end.sort_by do |uri, v|
         -(uri.size)
       end.each do |uri, v|
-        html_file = uri_mapping_to_path(uri, ".html")
+        html_file = uri_mapping_to_path(uri, @config, ".html")
         html_file = File.join(@config[:output_dir], html_file) if @config[:output_dir]
         File.unlink html_file if File.exist? html_file
-        ttl_file = uri_mapping_to_path(uri, ".ttl")
+        ttl_file = uri_mapping_to_path(uri, @config, ".ttl")
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
         File.unlink ttl_file if File.exist? ttl_file
         dir = uri.sub(@config[:base_uri], "")

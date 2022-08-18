@@ -14,7 +14,7 @@ RSpec.describe TTL2HTML::Template do
   end
   context "#relative_path_uri" do
     it "should generate relative path" do
-      tmpl = TTL2HTML::Template.new("", output_file: "a.html")
+      tmpl = TTL2HTML::Template.new("", output_file: "a.html", base_uri: "http://example.org/")
       path = tmpl.relative_path_uri("http://example.org/a", "http://example.org/")
       expect(path).to eq Pathname.new("a")
       path = tmpl.relative_path_uri("http://example.com/a", "http://example.org/")
