@@ -65,7 +65,7 @@ top_class: http://schema.org/Book
 
 * ``base_uri``: (Required) Base URI for the dataset. Base URI is considered as the prefix for the target resources, and only the matched URIs with the prefix are picked up for the generation.
 * ``output_dir``: Output directory for the dataset.
-* ``label``: Mappings for the custom property labels. 
+* ``labels``: Mappings for the custom property labels.
 * ``site_title``: Main title for the whole website.
 * ``title_property``: Specified URI is regarded as a title property for the resource. In default, a title is matched with the following properties:
   - https://www.w3.org/TR/rdf-schema/#label
@@ -75,6 +75,7 @@ top_class: http://schema.org/Book
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: Specified URI is the class of the records listed in the top page. By default, this tool does not generate the top page.
 * ``top_additional_property``: For each set of resources expanded by ``top_class`` setting, specify a list of additional sub-hierarchies to be expanded. The properties that make up the sub-hierarchy are specified as a list.
+* ``output_turtle``: Whether to output the RDF/Turtle format file corresponding to each resource URI, as ``true`` / ``false``. Default is ``true`` (i.e. output RDF/Turtle format files).
 * ``template_dir``: Local template directory to find a template file. Default template files are available at [here](https://github.com/masao/ttl2html/tree/master/templates). To overwrite the contents of the original template, copy the original file to the directory specified here and rewrite it.
 * ``locale``: Locale name for the output messages. Default: ``en`` (e.g. ``ja``, ``en``)
 * ``about_file``: Specified filename is used for documenting schemas of the dataset. It requires SHACL documentation within the dataset. By default, the filename `about.html` is used.
