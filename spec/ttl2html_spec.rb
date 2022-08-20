@@ -393,6 +393,22 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("td", text: /^名前を示すプロパティ$/)
       expect(html).to have_css("p", text: /^このクラスは書籍リソースをあらわします$/)
     end
+    it "should have html lang attribute" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("html[lang='en']", visible: false)
+    end
+    it "should have html lang attribute with locale setting" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_ja.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("html[lang='ja']", visible: false)
+    end
     it "should not have a link to rdf data at index.html" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
