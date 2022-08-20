@@ -84,6 +84,10 @@ top_class: http://schema.org/Book
 * ``custom_css``: Specify the code snippet of the CSS stylesheet (e.g. `` nav.navbar {background-color: pink} ``).
 * ``css_file``: The path of the CSS stylesheet file to use locally.
 * ``javascript_file``: The path of the JavaScript file to use locally.
+* ``navbar_class``: Specifies the class setting for displaying the navigation bar at the top of the screen. If not specified, ``navbar-light`` is used. Use this if you want to specify a black background color as follows:
+  ```yaml
+  navbar_class: navbar-dark bg-dark
+  ```
 * ``additional_link``: Addional links displayed at the top menu. Specify an array of link items with two keys ``href`` and ``label``. e.g. ``[ { "href": "http://example.org", "label": "Link" } ]``
 * ``breadcrumbs``: Configuration for creating a hierarchical breadcrumb list of multiple resources. Define a list of properties that are higher level resources or related resources of the resource. In the example below, the ``schema:hasPart`` and ``jp-cos:hasOfStudy`` properties, if present, respectively, are used to construct the navigation menu by considering resources linked from the current resource to be higher-level resources. The default display label on the breadcrumb list is "title", but if the ``label`` attribute is defined, the value of the property defined in the ``label`` attribute can be used as a breadcrumb link. Also, if the ``inverse`` attribute is present, then the resource being transitioned to as a property to the current resource is considered to be a higher level. It is also possible to specify a resource that spans a multi-level relationship with an empty node, etc. In that case, add a list to the ``property`` attribute and add a ``property`` attribute to its subordinate items as well. At the end of the example below, the ``schema:isPartOf`` property of the resource to which the ``schema:workExample`` property of the resource in question is specified can be used as a navigation resource.
 
