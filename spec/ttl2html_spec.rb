@@ -439,6 +439,15 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav.navbar a.nav-link[href='../']", text: "Home")
       expect(html).to have_css("nav.navbar a.nav-link[href='../about.html']", text: "About")
     end
+    it "should respect navbar_class setting" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/navbar_dark.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/a/b.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav.navbar.navbar-dark")
+      expect(html).to have_css("nav.navbar.bg-dark")
+    end
     it "should output logo" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_logo.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
