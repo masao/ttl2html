@@ -5,6 +5,7 @@
         <p><%= get_language_literal(param[:toplevel][:description]) %></p>
         <%- end -%>
         <p><i class="bi bi-link-45deg"></i> <a href="<%=h param[:base_uri] %>"><%=h param[:base_uri] %></a></p>
+        <p><a class="btn btn-info" href="<%=h relative_path(param[:about_file] || "about.html") %>"><%=h t("about.title", title: param[:site_title]) %> &raquo;</a></p>
       </div>
     </div>
     <div class="container">

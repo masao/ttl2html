@@ -434,6 +434,7 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("nav.navbar a.nav-link[href='./']", text: "Home")
       expect(html).to have_css("nav.navbar a.nav-link[href='about.html']", text: "About")
+      expect(html).to have_css("div.jumbotron a[href='about.html']", text: "About")
       cont = open("/tmp/html/a/b.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("nav.navbar a.nav-link[href='../']", text: "Home")
