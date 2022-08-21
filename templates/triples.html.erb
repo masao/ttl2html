@@ -6,9 +6,9 @@
     }.each do |k, v| -%>
   <dt class="col-sm-3"><%=h format_property(k, param[:labels]) %></dt>
   <%- if v.respond_to? :has_key? -%>
-    <% v.each_with_index do |v2, idx| %>
+    <%- v.each_with_index do |v2, idx| -%>
       <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" lang="<%=h v2[0] %>"><%= format_object v2[1], param[:data], param[:type] %></dd>
-    <% end %>
+    <%- end -%>
   <%- elsif v.size > 1 -%>
     <%- v.each_with_index do |v2, idx| -%>
       <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>"><%= format_object v2, param[:data], param[:type] %></dd>
