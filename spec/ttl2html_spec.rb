@@ -349,6 +349,14 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("p.additional-content", text: "Test description")
     end
+    it "should respect prefix for sh:path description on about.html" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("td code", text: "ex:title")
+    end
     it "should accept labels_with_class settings per target class" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

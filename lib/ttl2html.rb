@@ -42,7 +42,6 @@ module TTL2HTML
         io = File.open(file)
       end
       RDF::Format.for(:turtle).reader.new(io) do |reader|
-        @prefix.merge! reader.prefixes
         reader.statements.each do |statement|
           s = statement.subject
           v = statement.predicate
@@ -62,6 +61,7 @@ module TTL2HTML
             @data_inverse[o.to_s][v.to_s] << s.to_s
           end
         end
+        @prefix.merge! reader.prefixes
       end
       STDERR.puts "#{count} triples. #{@data.size} subjects."
       @data
