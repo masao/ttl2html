@@ -59,6 +59,7 @@ module TTL2HTML
     def expand_shape(data, uri, prefixes = {})
       return nil if not data[uri]
       return nil if not data[uri]["http://www.w3.org/ns/shacl#property"]
+      prefix_used = {}
       result = data[uri]["http://www.w3.org/ns/shacl#property"].sort_by do |e|
         e["http://www.w3.org/ns/shacl#order"]
       end.map do |property|
@@ -67,6 +68,7 @@ module TTL2HTML
         prefixes.each do |prefix, val|
           if path.index(val) == 0
             shorten_path = path.sub(/\A#{val}/, "#{prefix}:")
+            prefix_used[prefix] = val
           end
         end
         repeatable = false
@@ -107,11 +109,12 @@ module TTL2HTML
           nodeKind: data[property]["http://www.w3.org/ns/shacl#nodeKind"] ? data[property]["http://www.w3.org/ns/shacl#nodeKind"].first : nil,
           nodes: nodes,
           node_mode: node_mode,
+          prefix: prefix_used,
         }
       end
       template = "shape-table.html.erb"
       tmpl = Template.new(template)
-      tmpl.to_html_raw(template, {properties: result})
+      tmpl.to_html_raw(template, { properties: result, prefix: prefix_used })
     end
 
     # helper method:
