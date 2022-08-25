@@ -35,7 +35,9 @@
   <body>
     <nav class="navbar navbar-expand-lg <%=h param[:navbar_class] || "navbar-light" %>">
       <%- if param[:logo] -%>
-      <a class="navbar-brand" href="<%=h relative_path_uri(param[:base_uri], param[:base_uri]) %>"><img src="<%=h relative_path(param[:logo]) %>" height="30" alt="<%=h param[:site_title] %>"></a>
+      <a class="navbar-brand" href="<%=h relative_path_uri(param[:base_uri], param[:base_uri]) %>">
+        <img src="<%=h relative_path(param[:logo]) %>" style="max-height: 54px" alt="<%=h param[:site_title] %>">
+      </a>
       <%- end -%>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
