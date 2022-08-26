@@ -181,6 +181,7 @@ module TTL2HTML
           param = @config.dup
           param[:class_label] = template.get_title(@data[@config[:top_class]], nil)
           param[:data_global] = @data
+          param[:data_inverse_global] = @data_inverse
           param[:versions] = versions
           param[:toplevel] = toplevel
           subjects.sort.each do |subject|
