@@ -132,7 +132,7 @@ module TTL2HTML
       end
       path
     end
-    def relative_path_uri(dest_uri, base_uri)
+    def relative_path_uri(dest_uri, base_uri = @param[:base_uri])
       if dest_uri.start_with? base_uri
         dest = dest_uri.sub(base_uri, "")
         dest = uri_mapping_to_path(dest, @param, "")

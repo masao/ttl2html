@@ -570,6 +570,18 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav ol.breadcrumb")
       expect(html.all("nav ol.breadcrumb li.breadcrumb-item").size).to eq 6
     end
+    it "shoud output breadcrumbs with uri_mappings" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs_urimappings.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_breadcrumbs_urimappings.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/c.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+      cont = open("/tmp/html/012/345/6789012.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+      expect(html).to have_css("nav ol.breadcrumb a[href='../../']", text: "Home")
+    end
     it "should support google_analytics" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example_analytics.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))
