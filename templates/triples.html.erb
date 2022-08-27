@@ -1,4 +1,4 @@
-<dl class="row">
+<dl class="row<%= if param[:type][:blank] then ' border' end %>">
 <%- param[:data].sort_by{|k, v|
       order = param[:orders][k] if param[:orders] and param[:orders][k]
       order = Float::INFINITY if order.nil?
