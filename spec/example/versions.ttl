@@ -35,7 +35,7 @@ _:v2.0 a void:Dataset;
   void:dataDump <dataset-2.ttl>;
   prov:qualifiedRevision [
     a prov:Revision;
-    rdfs:comment "The second dataset release.";
+    rdfs:comment "The second dataset release. <a href=\"https://blog.example.org/features/2\">New features</a> are introduced.";
   ];
   void:subset _:subset1, _:subset2.
 _:toplevel pav:hasCurrentVersion _:v2.0 .
