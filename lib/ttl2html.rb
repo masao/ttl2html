@@ -30,8 +30,10 @@ module TTL2HTML
           config[k.intern] = v
         end
       end
-      if config[:javascript_file]
-        config[:javascript_file] = [ config[:javascript_file] ].flatten
+      [ :css_file, :javascript_file ].each do |k|
+        if config[k]
+          config[k] = [ config[k] ].flatten
+        end
       end
       config
     end
