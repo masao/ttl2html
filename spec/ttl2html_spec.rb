@@ -264,7 +264,6 @@ RSpec.describe TTL2HTML::App do
       ttl2html.output_html_files
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
-      puts cont
       expect(html).to have_css("h2#shapes")
       expect(html).to have_css("h3#AShape", text: "Book")
     end
@@ -532,6 +531,15 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/b.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("script[src='custom.js']", visible: false)
+    end
+    it "should link to multiple custom javascript_file" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/javascript_file2.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      ttl2html.output_html_files
+      cont = open("/tmp/html/a/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("script[src='../custom2.js']", visible: false)
+      expect(html).to have_css("script[src='../custom1.js']", visible: false)
     end
     it "should output breadcrumbs according to the settings" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs.yml"))
