@@ -75,6 +75,15 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/a/index.html")).to be true
       expect(File.exist?("/tmp/html/a/.html")).to be false
     end
+    it "should support stable path links" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/example_links.ttl"))
+      @ttl2html.output_html_files
+      expect(File.exist?("/tmp/html/bbbb.html")).to be true
+      cont = File.open("/tmp/html/bbbb.html").read
+      html = Capybara.string cont
+      expect(html).to have_link("test title", href: "a/")
+    end
     it "should respect output dir" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

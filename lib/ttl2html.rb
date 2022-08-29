@@ -117,7 +117,9 @@ module TTL2HTML
       progressbar = ProgressBar.create(title: label,
         total: @data.size,
         format: "(%t) %a %e %P% Processed: %c from %C")
-      @data.keys.sort_by{|k| k.size }.reverse_each do |uri|
+      @data.keys.sort_by do|uri|
+        [ uri.count("/"), uri.size, uri ] 
+      end.reverse_each do |uri|
         progressbar.increment
         next if not uri.start_with? @config[:base_uri]
         yield uri, @data[uri]
