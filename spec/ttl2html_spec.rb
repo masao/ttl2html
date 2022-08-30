@@ -268,6 +268,13 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("h3", text: "Book")
       expect(html).to have_css("p", text: "This class represents a Book instance.")
       expect(html).to have_title(/^About Test website$/)
+    end
+    it "should generate toc in about.html" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_toc.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/shape.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
       expect(html).to have_css("div.row nav#toc")
     end
     it "should generate id attr for shape headings" do

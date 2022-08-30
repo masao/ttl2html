@@ -80,6 +80,7 @@ top_class: http://schema.org/Book
 * ``template_dir``: ローカルのテンプレートディレクトリ。未指定の場合はカレントディレクトリ内の ``templates/``ディレクトリを用いる。なお、テンプレートを上書きするには、[標準のテンプレートファイル](https://github.com/masao/ttl2html/tree/master/templates)をローカルのテンプレートディレクトリにコピーしてきて、内容を書き換えること。
 * ``locale``: 出力メッセージの言語指定。デフォルトは ``en`` （例: ``ja``, ``en``）
 * ``about_file``: 指定された名前のファイルにスキーマ説明を出力する。データセット内にSHACL記述が存在するときのみ有効。ファイル名 `about.html` に出力する。
+* ``about_toc``: ``about.html``内に目次を出力するかどうかを ``true`` / ``false`` で指定する。デフォルトでは ``false``、目次を出力しない。
 * ``admin_name``: フッタ―に表示するデータ提供管理者の名称。
 * ``copyright_year``: 上記 ``admin_name`` とセットにして出力する著作権表示年。
 * ``logo``: メニューに表示するロゴ。ファイルパスまたはURLを指定する。

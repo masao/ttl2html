@@ -79,6 +79,7 @@ top_class: http://schema.org/Book
 * ``template_dir``: Local template directory to find a template file. Default template files are available at [here](https://github.com/masao/ttl2html/tree/master/templates). To overwrite the contents of the original template, copy the original file to the directory specified here and rewrite it.
 * ``locale``: Locale name for the output messages. Default: ``en`` (e.g. ``ja``, ``en``)
 * ``about_file``: Specified filename is used for documenting schemas of the dataset. It requires SHACL documentation within the dataset. By default, the filename `about.html` is used.
+* ``about_toc``: ``true`` / ``false`` to specify whether to output a table of contents in ``about.html``. The default is ``false``, which means no table of contents.
 * ``admin_name``: Name of the dataset publisher displayed at the footer.
 * ``copyright_year``: Copyright year statement displayed at the footer along with the ``admin_name`` parameter above.
 * ``logo``: The logo image file to be displayed on the menu. Specify the file path or URL.

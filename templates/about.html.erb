@@ -18,21 +18,17 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <%- if @template == "about.html.erb" and param[:about_toc] -%>
+        <div class="col-md-2 order-12">
           <h2 data-toc-skip><%=h t('about.toc') %></h2>
-          <nav id="toc" data-toggle="toc"></nav>
+          <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
         </div>
-      </div>
-      <%- if param[:content] -%>
-      <div class="row">
+        <%- end -%>
         <div class="col-md">
+        <%- if param[:content] -%>
         <%= param[:content] %>
-        </div>
-      </div>
-      <%- end -%>
-      <%- if param[:shapes].size > 0 -%>
-      <div class="row">
-        <div class="col-md">
+        <%- end -%>
+        <%- if param[:shapes].size > 0 -%>
           <h2 id="shapes"><%=h t("about.shape-heading") %></h2>
           <%- param[:shapes].keys.sort_by{|k| param[:shapes][k][:order] }.each do |shape| -%>
             <h3 id="<%=h relative_path_uri(shape) %>"><%=h param[:shapes][shape][:label] %></h3>
@@ -43,24 +39,16 @@
             <p><%=h t("about.shape-note", resource: param[:shapes][shape][:label]) %></p>
             <%= param[:shapes][shape][:html] -%>
           <%- end -%>
-        </div>
-      </div>
-      <%- end -%>
-      <%- if param[:versions].size > 0 -%>
-      <div class="row">
-        <div class="col-md">
+        <%- end -%>
+        <%- if param[:versions].size > 0 -%>
           <h2 id="versions"><%=h t("about.versions") %> <i class="bi bi-info-circle"></i></h2>
           <dl>
           <%- param[:versions].reverse_each do |version| -%>
             <%= format_version_info(version) %>
           <%- end -%>
           </dl>
-        </div>
-      </div>
-      <%- end -%>
-      <%- if param[:toplevel] and param[:toplevel][:contact] -%>
-      <div class="row">
-        <div class="col-md">
+        <%- end -%>
+        <%- if param[:toplevel] and param[:toplevel][:contact] -%>
           <h2 id="contact"><%=h t("about.contact") %></h2>
           <%- if param[:toplevel][:contact][:name] -%>
           <p><%=h t("about.contact-contribution", name: get_language_literal(param[:toplevel][:contact][:name])) %></p>
@@ -78,7 +66,7 @@
           <%- if param[:toplevel][:contact][:email] -%>
           <p><%= t("about.contact-email", email: param[:toplevel][:contact][:email]) %></p>
           <%- end -%>
+        <%- end -%>
         </div>
       </div>
-      <%- end -%>
     </div>
