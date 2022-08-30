@@ -268,6 +268,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("h3", text: "Book")
       expect(html).to have_css("p", text: "This class represents a Book instance.")
       expect(html).to have_title(/^About Test website$/)
+      expect(html).to have_css("div.row nav#toc")
     end
     it "should generate id attr for shape headings" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

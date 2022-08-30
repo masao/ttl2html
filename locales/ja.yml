@@ -12,6 +12,7 @@ ja:
     contact: 連絡先
     contact-contribution: "本データセットは %{name} が開発したものです"
     contact-email: "データセットに関する問い合わせは <a href=\"%{email}\">%{email}</a> までお問い合わせください。"
+    toc: 目次
   default:
     details: 詳細情報
     inverse_data: 被参照情報
