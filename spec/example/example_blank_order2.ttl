@@ -1,0 +1,7 @@
+<https://example.org/a> <https://example.org/b> [
+  a <https://example.org/c>;
+  <https://example.org/e> <https://example.org/a>
+], [
+  a <https://example.org/c>;
+  <https://example.org/d> <https://example.org/a>
+];

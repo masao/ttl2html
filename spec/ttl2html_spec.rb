@@ -651,6 +651,17 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("dl dd dl.border")
     end
+    it "should output properties in a stable order" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_order.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/a.html"){|io| io.read }
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_order2.ttl"))
+      @ttl2html.output_html_files
+      cont2 = open("/tmp/html/a.html"){|io| io.read }
+      expect(cont).to eq cont2
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
