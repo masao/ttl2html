@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'ttl2html'
-  s.version     = '2.0.1'
-  s.date        = '2022-08-27'
+  s.version     = '2.0.2'
+  s.date        = '2022-08-31'
   s.summary     = "ttl2html"
   s.description = "Static site generator for RDF/Turtle"
   s.authors     = ["Masao Takaku"]
