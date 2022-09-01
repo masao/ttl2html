@@ -240,10 +240,12 @@ module TTL2HTML
           else
             label = template.get_title(@data[subject.to_s])
           end
+          html = template.expand_shape(@data, subject.to_s, @prefix)
+          next if html.nil?
           param[:shapes][subject] = {
             label: label,
             comment: comment,
-            html: template.expand_shape(@data, subject.to_s, @prefix),
+            html: html,
             target_class: target_class,
             order: orders,
           }
