@@ -5,11 +5,6 @@
       [ order, k ]
     }.each do |k, v| -%>
   <dt class="col-sm-3"><%=h format_property(k, param[:labels]) %></dt>
-  <%- if v.respond_to? :has_key? -%>
-    <%- v.each_with_index do |v2, idx| -%>
-      <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" lang="<%=h v2[0] %>"><%= format_object v2[1], param[:data], param[:type] %></dd>
-    <%- end -%>
-  <%- elsif v.size > 1 -%>
     <%- v.sort_by{|e|
           if e =~ /\A_:/ and param[:data_global][e]
             param[:data_global][e].to_s
@@ -17,10 +12,11 @@
             e
           end
         }.each_with_index do |v2, idx| -%>
+      <%- if v2.respond_to? :language -%>
+      <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" lang="<%=h v2.language %>"><%= format_object v2, param[:data], param[:type] %></dd>
+      <%- else -%>
       <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>"><%= format_object v2, param[:data], param[:type] %></dd>
+      <%- end -%>
     <%- end -%>
-  <%- else -%>
-    <dd class="col-sm-9"><%= format_object v.first, param[:data], param[:type] %></dd>
-  <%- end -%>
 <%- end -%>
 </dl>

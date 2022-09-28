@@ -671,6 +671,14 @@ RSpec.describe TTL2HTML::App do
       cont2 = open("/tmp/html/a.html"){|io| io.read }
       expect(cont).to eq cont2
     end
+    it "should output lang attr for literals with language tag" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/c.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("dl dd[lang='ja']", text: "test title")
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
@@ -735,7 +743,6 @@ RSpec.describe TTL2HTML::App do
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_datatype.ttl"))
       ttl2html.output_turtle_files
       expect(File).to exist("/tmp/html/c.ttl")
-      puts open("/tmp/html/c.ttl").read
       RDF::Turtle::Reader.new(open("/tmp/html/c.ttl")) do |reader|
         reader.statements.each do |statement|
           if statement.predicate == RDF::URI("https://example.org/propInt")
