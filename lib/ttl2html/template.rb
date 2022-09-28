@@ -157,8 +157,8 @@ module TTL2HTML
       titles.compact.join(" - ")
     end
     def shorten_title(title, length = 140)
-      if title.length > length
-        title[0..length] + "..."
+      if title.to_s.length > length
+        title.to_s[0..length] + "..."
       else
         title
       end
@@ -187,14 +187,15 @@ module TTL2HTML
       default_title
     end
     def get_language_literal(object)
-      if object.respond_to? :has_key?
-        if object.has_key?(I18n.locale)
-          object[I18n.locale]
-        else
-          object.values.first
+      if object.is_a? Array
+        object_lang = object.select do |e|
+          e.language? and e.language == I18n.locale
         end
-      elsif object.is_a? Array
-        object.first
+        if not object_lang.empty?
+          object_lang.first
+        else
+          object.first
+        end
       else
         object
       end

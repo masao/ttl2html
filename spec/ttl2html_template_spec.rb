@@ -47,13 +47,13 @@ RSpec.describe TTL2HTML::Template do
   end
   context "get_title" do
     it "should get title from rdf:label" do
-      data = { "http://schema.org/name" => ["test name"] }
+      data = { "http://schema.org/name" => [RDF::Literal.new("test name")] }
       template = TTL2HTML::Template.new("")
       title = template.get_title(data)
       expect(title).to eq "test name"
       data = {
-        "http://schema.org/name" => ["test name"],
-        "http://www.w3.org/2000/01/rdf-schema#label" => ["test label"],
+        "http://schema.org/name" => [RDF::Literal.new("test name")],
+        "http://www.w3.org/2000/01/rdf-schema#label" => [RDF::Literal.new("test label")],
       }
       title = template.get_title(data)
       expect(title).to eq "test label"
@@ -62,7 +62,7 @@ RSpec.describe TTL2HTML::Template do
     end
     it "should get title with shorten" do
       data = { "http://schema.org/name" => [
-        "1234567890" * 15
+        RDF::Literal.new("1234567890" * 15)
       ] }
       template = TTL2HTML::Template.new("")
       title = template.get_title(data)

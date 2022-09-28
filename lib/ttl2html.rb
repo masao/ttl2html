@@ -53,17 +53,14 @@ module TTL2HTML
           o = statement.object
           count += 1
           @data[s.to_s] ||= {}
-          if o.respond_to?(:has_language?) and o.has_language?
-            @data[s.to_s][v.to_s] ||= {}
-            @data[s.to_s][v.to_s][o.language] = o.to_s
-          else
-            @data[s.to_s][v.to_s] ||= []
-            @data[s.to_s][v.to_s] << o.to_s
-          end
+          @data[s.to_s][v.to_s] ||= []
           if o.is_a? RDF::URI or o.is_a? RDF::Node
+            @data[s.to_s][v.to_s] << o.to_s
             @data_inverse[o.to_s] ||= {}
             @data_inverse[o.to_s][v.to_s] ||= []
             @data_inverse[o.to_s][v.to_s] << s.to_s
+          else
+            @data[s.to_s][v.to_s] << o
           end
         end
         @prefix.merge! reader.prefixes

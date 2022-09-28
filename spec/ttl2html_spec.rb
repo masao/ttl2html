@@ -730,6 +730,21 @@ RSpec.describe TTL2HTML::App do
         end
       end
     end
+    it "should support literals with datatypes" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_datatype.ttl"))
+      ttl2html.output_turtle_files
+      expect(File).to exist("/tmp/html/c.ttl")
+      puts open("/tmp/html/c.ttl").read
+      RDF::Turtle::Reader.new(open("/tmp/html/c.ttl")) do |reader|
+        reader.statements.each do |statement|
+          if statement.predicate == RDF::URI("https://example.org/propInt")
+            expect(statement.object).to be_datatype
+            expect(statement.object.datatype).to eq RDF::XSD.integer
+          end
+        end
+      end
+    end
   end
   context "#output_files" do
     ttl2html = nil
