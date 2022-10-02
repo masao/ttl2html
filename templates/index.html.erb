@@ -20,7 +20,7 @@
           <%- if param[:versions].size > 1 -%>
           <p><a href="about#versions">&raquo; <%=h t("index.past-versions") %></a></p>
           <%- end -%>
-          <%- if param[:toplevel] and param[:toplevel][:license] -%>
+          <%- if param[:toplevel] and not param[:toplevel][:license].empty? -%>
           <p>
             <%- if param[:toplevel][:license][:icon] -%>
             <a href="<%=h param[:toplevel][:license][:url] %>"><img src="<%=h param[:toplevel][:license][:icon] %>"></a>
