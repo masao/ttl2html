@@ -371,6 +371,15 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_link "https://creativecommons.org/publicdomain/zero/1.0/"
     end
+    it "should support multiple dataset files" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions_multi.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_link "dataset-a-1.ttl"
+      expect(html).to have_link "dataset-b-1.ttl"
+    end
     it "should include about.html template for about.html" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_about.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

@@ -5,28 +5,6 @@
         <%= t("about.version-link", link: param[:data][:link]) %>
         <%- end -%>
         </dd>
-        <%- if param[:data][:datadump] -%>
-        <dd><ul>
-          <li><a href="<%=h param[:data][:datadump] %>"><%=h File.basename(param[:data][:datadump]) %></a>
-          <%- 
-          fileinfo = []
-          if param[:data][:triples]
-            fileinfo << t("about.version-triples", triples: number_with_delimiter(param[:data][:triples].to_i))
-          end
-          if param[:data][:bytesize]
-            fileinfo << number_to_human_size(param[:data][:bytesize])
-          end
-          -%>
-          <%- if fileinfo.size > 0 -%>
-          (<%=h fileinfo.join(", ") %>)
-          <%- end -%>
-          <%- if param[:data][:subset].size > 0 -%>
-          <ul>
-            <%- param[:data][:subset].each do |subset| -%>
-            <li><a href="<%=h subset %>"><%=h File.basename(subset) %></a></li>
-            <%- end -%>
-          </ul>
-          </li>
-          <%- end -%>
-        </ul></dd>
+        <%- if param[:data][:dataDump] or param[:data][:subset] -%>
+        <dd><ul><%= to_html_raw("dataset.html.erb", param[:data]) %></ul></dd>
         <%- end -%>

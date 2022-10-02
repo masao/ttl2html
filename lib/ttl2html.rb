@@ -348,6 +348,35 @@ module TTL2HTML
       orders
     end
 
+    def extract_version_metadata(data)
+      description = data["http://purl.org/dc/terms/description"]
+      link = nil
+      if not description
+        qrev = data["http://www.w3.org/ns/prov#qualifiedRevision"]&.first
+        if @data[qrev]
+          description = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#comment"]
+          link = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#seeAlso"]&.first
+        end
+      end
+      subset = []
+      if data["http://rdfs.org/ns/void#subset"]
+        data["http://rdfs.org/ns/void#subset"].each do |s|
+          subset << extract_version_metadata(@data[s])
+        end
+      end
+      date = data["http://purl.org/pav/createdOn"]&.first
+      date = data["http://purl.org/dc/terms/issued"]&.first if date.nil?
+      return {
+        version: data["http://purl.org/pav/version"]&.first,
+        triples: data["http://rdfs.org/ns/void#triples"]&.first,
+        datadump: data["http://rdfs.org/ns/void#dataDump"]&.first,
+        bytesize: data["http://www.w3.org/ns/dcat#byteSize"]&.first,
+        date: date,
+        description: description,
+        subset: subset,
+        link: link,
+      }
+    end
     def extract_versions
       versions = []
       ["http://purl.org/pav/hasVersion", "http://purl.org/pav/hasCurrentVersion", "http://purl.org/dc/terms/hasVersion"].each do |prop|
@@ -363,37 +392,10 @@ module TTL2HTML
           next if not version
           next if not version["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
           next if not version["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include? "http://rdfs.org/ns/void#Dataset"
-          description = version["http://purl.org/dc/terms/description"]
-          link = nil
-          if not description
-            qrev = version["http://www.w3.org/ns/prov#qualifiedRevision"]&.first
-            if @data[qrev]
-              description = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#comment"]
-              link = @data[qrev]["http://www.w3.org/2000/01/rdf-schema#seeAlso"]&.first
-            end
-          end
-          subset = []
-          if version["http://rdfs.org/ns/void#subset"]
-            version["http://rdfs.org/ns/void#subset"].each do |s|
-              subset << @data[s]["http://rdfs.org/ns/void#dataDump"].first
-            end
-          end
-          date = version["http://purl.org/pav/createdOn"]&.first
-          date = version["http://purl.org/dc/terms/issued"]&.first if date.nil?
-          versions << {
-            uri: uri,
-            version: version["http://purl.org/pav/version"]&.first,
-            triples: version["http://rdfs.org/ns/void#triples"]&.first,
-            datadump: version["http://rdfs.org/ns/void#dataDump"]&.first,
-            bytesize: version["http://www.w3.org/ns/dcat#byteSize"]&.first,
-            date: date,
-            description: description,
-            subset: subset,
-            link: link,
-          }
+          versions << extract_version_metadata(version)
         end
       end
-      versions.sort_by{|v| [ v[:date], v[:uri] ] }
+      versions.sort_by{|v| [ v[:date], v[:version] ] }
     end
     def extract_toplevel
       result = {}

@@ -1,0 +1,27 @@
+<%- if param[:datadump] -%>
+  <li><a href="<%=h param[:datadump] %>"><%=h File.basename(param[:datadump]) %></a>
+  <%- 
+  fileinfo = []
+  if param[:triples]
+    fileinfo << t("about.version-triples", triples: number_with_delimiter(param[:triples].to_i))
+  end
+  if param[:bytesize]
+    fileinfo << number_to_human_size(param[:bytesize])
+  end
+  -%>
+  <%- if fileinfo.size > 0 -%>
+  (<%=h fileinfo.join(", ") %>)
+  <%- end -%>
+  <%- if param[:subset].size > 0 -%>
+  <ul>
+    <%- param[:subset].each do |subset| -%>
+    <%= to_html_raw("dataset.html.erb", subset) %>
+    <%- end -%>
+  </ul>
+  </li>
+  <%- end -%>
+<%- elsif param[:subset].size > 0 -%>
+  <%- param[:subset].each do |subset| -%>
+    <%= to_html_raw("dataset.html.erb", subset) %>
+  <%- end -%>
+<%- end -%>
