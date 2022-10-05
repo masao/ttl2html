@@ -49,10 +49,11 @@ RSpec.describe TTL2HTML::App do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions.ttl"))
       @ttl2html.output_html_files
-      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/index.html").read, max_errors: -1)
-      expect(doc.errors).to be_empty
-      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/about.html").read, max_error: -1)
-      expect(doc.errors).to be_empty
+      [ "/tmp/html/index.html", "/tmp/html/about.html" ].each do |file|
+        cont = open(file).read
+        doc = Nokogiri::HTML5::Document.parse(cont, max_errors: -1)
+        expect(doc.errors).to be_empty
+      end
     end
     it "shoud have no errors in HTML for shapes info" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
@@ -380,6 +381,8 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_link "dataset-a-1.ttl"
       expect(html).to have_link "dataset-b-1.ttl"
+      doc = Nokogiri::HTML5.parse(cont)
+      expect(doc.errors).to be_empty
     end
     it "should include about.html template for about.html" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_about.yml"))

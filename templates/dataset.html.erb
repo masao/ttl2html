@@ -21,7 +21,9 @@
   </li>
   <%- end -%>
 <%- elsif param[:subset].size > 0 -%>
+  <ul>
   <%- param[:subset].each do |subset| -%>
     <%= to_html_raw("dataset.html.erb", subset) %>
   <%- end -%>
+  </ul>
 <%- end -%>
