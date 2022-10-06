@@ -375,6 +375,7 @@ module TTL2HTML
         description: description,
         subset: subset,
         link: link,
+        license: extract_license(data),
       }
     end
     def extract_versions
@@ -397,6 +398,20 @@ module TTL2HTML
       end
       versions.sort_by{|v| [ v[:date], v[:version] ] }
     end
+    def extract_license(data)
+      license = {}
+      if data["http://purl.org/dc/terms/license"]
+        license_data = @data[data["http://purl.org/dc/terms/license"].first]
+        if license_data
+          license[:url] = license_data["http://www.w3.org/1999/02/22-rdf-syntax-ns#value"]&.first
+          license[:icon] = license_data["http://xmlns.com/foaf/0.1/thumbnail"]&.first
+          license[:label] = license_data["http://www.w3.org/2000/01/rdf-schema#label"]
+        elsif data["http://purl.org/dc/terms/license"].first =~ URI::regexp
+          license[:url] = license[:label] = data["http://purl.org/dc/terms/license"].first
+        end
+      end
+      license
+    end
     def extract_toplevel
       result = {}
       toplevel = nil
@@ -407,17 +422,7 @@ module TTL2HTML
       end
       data  = @data[toplevel.to_s]
       if toplevel
-        license = {}
-        if data["http://purl.org/dc/terms/license"]
-          license_data = @data[data["http://purl.org/dc/terms/license"].first]
-          if license_data
-            license[:url] = license_data["http://www.w3.org/1999/02/22-rdf-syntax-ns#value"]&.first
-            license[:icon] = license_data["http://xmlns.com/foaf/0.1/thumbnail"]&.first
-            license[:label] = license_data["http://www.w3.org/2000/01/rdf-schema#label"]
-          elsif data["http://purl.org/dc/terms/license"].first =~ URI::regexp
-            license[:url] = license[:label] = data["http://purl.org/dc/terms/license"].first
-          end
-        end
+        license = extract_license(data)
         if data["http://purl.org/dc/terms/publisher"]
           publisher_data = @data[data["http://purl.org/dc/terms/publisher"].first]
           email = publisher_data["http://xmlns.com/foaf/0.1/mbox"]&.first

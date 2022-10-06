@@ -21,6 +21,8 @@ ja:
     latest-news: 最新のお知らせ
     past-versions: 過去の更新履歴
     license-text: "このデータセットは<a href=\"%{url}\">%{label}</a>として自由に利用できます。"
+  dataset:
+    license-text: "<a href=\"%{url}\">%{label}</a>として自由に利用できます"
   layout:
     rdf-data: RDFデータ
   shape-table:

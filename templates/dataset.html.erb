@@ -12,7 +12,15 @@
   <%- if fileinfo.size > 0 -%>
   (<%=h fileinfo.join(", ") %>)
   <%- end -%>
-  <%- if param[:subset].size > 0 -%>
+  <%- if param[:license] -%>
+  <span class="license">
+    <%- if param[:license][:icon] -%>
+    <a href="<%=h param[:license][:url] %>"><img src="<%=h param[:license][:icon] %>"></a>
+    <%- end -%>
+    <%= t("dataset.license-text", label: get_language_literal(param[:license][:label]), url: param[:license][:url]) %>
+  </span>
+  <%- end -%>
+<%- if param[:subset].size > 0 -%>
   <ul>
     <%- param[:subset].each do |subset| -%>
     <%= to_html_raw("dataset.html.erb", subset) %>

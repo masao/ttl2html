@@ -21,6 +21,8 @@ en:
     latest-news: "Latest news"
     past-versions: "Past versions"
     license-text: "This dataset is freely usable as <a href=\"%{url}\">%{label}</a>"
+  dataset:
+    license-text: "This dataset is freely usable as <a href=\"%{url}\">%{label}</a>"
   layout:
     rdf-data: RDF data
   shape-table:

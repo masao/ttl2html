@@ -53,11 +53,13 @@ _:v3.0 a void:Dataset;
     dcat:byteSize 17065;
     void:triples 50;
     void:dataDump <dataset-a-1.ttl>;
+    dct:license <https://creativecommons.org/licenses/by/4.0/>;
   ], [
     a void:Dataset;
     dcat:byteSize 2596;
     void:triples 15;
     void:dataDump <dataset-b-1.ttl>;
+    dct:license <https://creativecommons.org/publicdomain/zero/1.0/>;
   ].
 
 _:toplevel pav:hasCurrentVersion _:v3.0 .
