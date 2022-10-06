@@ -361,6 +361,7 @@ module TTL2HTML
       subset = []
       if data["http://rdfs.org/ns/void#subset"]
         data["http://rdfs.org/ns/void#subset"].each do |s|
+          abort "#{s} not found" if not @data[s]
           subset << extract_version_metadata(@data[s])
         end
       end

@@ -383,6 +383,9 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_link "dataset-b-1.ttl"
       expect(html).to have_link "https://creativecommons.org/publicdomain/zero/1.0/"
       expect(html).to have_link "https://creativecommons.org/licenses/by/4.0/"
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).not_to have_link("", href: "")
       doc = Nokogiri::HTML5.parse(cont)
       expect(doc.errors).to be_empty
     end

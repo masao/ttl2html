@@ -12,7 +12,7 @@
   <%- if fileinfo.size > 0 -%>
   (<%=h fileinfo.join(", ") %>)
   <%- end -%>
-  <%- if param[:license] -%>
+  <%- if not param[:license].empty? -%>
   <span class="license">
     <%- if param[:license][:icon] -%>
     <a href="<%=h param[:license][:url] %>"><img src="<%=h param[:license][:icon] %>"></a>
