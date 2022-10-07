@@ -20,18 +20,16 @@
     <%= t("dataset.license-text", label: get_language_literal(param[:license][:label]), url: param[:license][:url]) %>
   </span>
   <%- end -%>
-<%- if param[:subset].size > 0 -%>
-  <ul>
+  <%- if param[:subset].size > 0 -%>
+    <ul>
     <%- param[:subset].each do |subset| -%>
     <%= to_html_raw("dataset.html.erb", subset) %>
     <%- end -%>
-  </ul>
+    </ul>
   <%- end -%>
   </li>
 <%- elsif param[:subset].size > 0 -%>
-  <ul>
   <%- param[:subset].each do |subset| -%>
     <%= to_html_raw("dataset.html.erb", subset) %>
   <%- end -%>
-  </ul>
 <%- end -%>
