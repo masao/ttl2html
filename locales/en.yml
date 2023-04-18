@@ -18,7 +18,7 @@ en:
     inverse_data: Referred resources
   index:
     list: "List of %{resource}"
-    latest-news: "Latest news"
+    latest-dataset: "Latest dataset"
     past-versions: "Past versions"
     license-text: "This dataset is freely usable as <a href=\"%{url}\">%{label}</a>"
   dataset:

@@ -18,7 +18,7 @@ ja:
     inverse_data: 被参照情報
   index:
     list: "%{resource} 一覧"
-    latest-news: 最新のお知らせ
+    latest-dataset: 最新のデータセット
     past-versions: 過去の更新履歴
     license-text: "このデータセットは<a href=\"%{url}\">%{label}</a>として自由に利用できます。"
   dataset:

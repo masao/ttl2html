@@ -349,6 +349,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("h2#versions + dl dd a[href='https://blog.example.org/features/2']")
       cont = open("/tmp/html/index.html"){|io| io.read }
       html = Capybara.string cont
+      expect(html).to have_css("h2#versions", text: /^Latest dataset/)
       expect(html).to have_css("h2#versions + dl dt", text: /^2021-12-12$/)
       expect(html).to have_css("h2#versions + dl + p a[href='about#versions']")
       expect(html).not_to have_css("p a[href='']", text: "")
