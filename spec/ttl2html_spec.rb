@@ -771,6 +771,22 @@ RSpec.describe TTL2HTML::App do
         end
       end
     end
+    it "should expand blank nodes" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_blank_subject.ttl"))
+      ttl2html.output_turtle_files
+      expect(File).to exist("/tmp/html/b.ttl")
+      RDF::Turtle::Reader.new(open("/tmp/html/b.ttl")) do |reader|
+        statements = reader.statements
+        blank_statement = statements.find{|e| e.predicate == RDF::URI("https://example.org/c") }
+        expect(blank_statement).not_to be_nil
+        blank_subject = blank_statement.object
+        expect(blank_subject).to be_resource
+        blank_statement = statements.find{|e| e.subject == blank_subject }
+        p blank_statement
+        expect(blank_statement).not_to be_nil
+      end
+    end
   end
   context "#output_files" do
     ttl2html = nil

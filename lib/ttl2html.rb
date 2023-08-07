@@ -79,7 +79,7 @@ module TTL2HTML
       result << @data[subject.to_s].keys.sort.map do |predicate|
         str = "<#{predicate}> "
         str << @data[subject.to_s][predicate].sort.map do |object|
-          if object.respond_to?(:resource?) and object.resource? and /^_:/ =~ object # blank node:
+          if /^_:/ =~ object.to_s # blank node:
             format_turtle(object, depth + 1)
           elsif RDF::URI::IRI =~ object.to_s
             turtle.format_uri(RDF::URI.new object)
