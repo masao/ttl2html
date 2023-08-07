@@ -212,14 +212,14 @@ module TTL2HTML
       end
     end
     def format_object(object, data, type = {})
-      if object =~ /\Ahttps?:\/\//
+      if /\Ahttps?:\/\// =~ object.to_s
         rel_path = relative_path_uri(object, param[:base_uri])
         if param[:data_global][object]
           "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or object}</a>"
         else
           "<a href=\"#{rel_path}\">#{object}</a>"
         end
-      elsif object =~ /\A_:/ and param[:data_global][object]
+      elsif /\A_:/ =~ object.to_s and param[:data_global][object]
         if type[:inverse] and param[:data_inverse_global][object]
           format_triples(param[:data_inverse_global][object], inverse: true, blank: true)
         else

@@ -6,7 +6,7 @@
     }.each do |k, v| -%>
   <dt class="col-sm-3"><%=h format_property(k, param[:labels]) %></dt>
     <%- v.sort_by{|e|
-          if e =~ /\A_:/ and param[:data_global][e]
+          if /\A_:/ =~ e.to_s and param[:data_global][e]
             param[:data_global][e].to_s
           else
             e
