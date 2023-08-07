@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
   s.add_dependency "nokogiri"
   s.add_dependency "rdf-turtle"
-  s.add_dependency "roo"
+  s.add_dependency "roo", "~>2.9.0"
   s.add_dependency "i18n"
   s.add_dependency "ruby-progressbar"
   s.add_dependency "actionview"
