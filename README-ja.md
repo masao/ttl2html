@@ -108,6 +108,14 @@ top_class: http://schema.org/Book
     - https://example.org/ItemShape
     - https://example.org/BookShape
   ```
+* ``google_analytics``: [Googleアナリティクス](https://analytics.google.com)による利用統計用の設定コードを指定します。
+  ```yaml
+  - google_analytics: G-XXXXXXXXXX
+  ```
+* ``google_custom_search_id``: [Googleカスタム検索](https://developers.google.com/custom-search?hl=ja)を利用したサイト内検索フォームを設置するための検索エンジンIDを指定します。
+  ```yaml
+  - google_custom_search_id: 0123456789
+  ```
 
 ## 関連情報
 

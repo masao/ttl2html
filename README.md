@@ -108,6 +108,14 @@ top_class: http://schema.org/Book
     - https://example.org/ItemShape
     - https://example.org/BookShape
   ```
+* ``google_analytics``: Google tracking code for usage statistics by [Google Analytics](https://analytics.google.com).
+  ``yaml
+  - google_analytics: G-XXXXXXXXXXXX
+  ```
+* ``google_custom_search_id``: Specify the search engine ID for setting up a site search form using [Google Custom Search](https://developers.google.com/custom-search). .
+  ```yaml
+  - google_custom_search_id: 0123456789
+  ```
 
 ## See also
 
