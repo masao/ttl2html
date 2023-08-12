@@ -9,6 +9,7 @@ require "ruby-progressbar"
 
 require "ttl2html/util"
 require "ttl2html/template"
+require "ttl2html/version"
 
 module TTL2HTML
   class App

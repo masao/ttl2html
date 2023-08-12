@@ -25,6 +25,7 @@
     <%- if param[:logo] -%>
     <meta property="og:image" content="<%=h URI.parse(param[:base_uri]) + param[:logo] %>">
     <%- end -%>
+    <meta name="generator" content="ttl2html <%=h TTL2HTML::VERSION %>">
     <%- if param[:google_analytics] -%>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<%=h param[:google_analytics] %>"></script>
     <script>
