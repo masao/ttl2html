@@ -60,6 +60,10 @@
             <%- end -%>
           <%- end -%>
         </ul>
+        <%- if param[:google_custom_search_id] -%>
+        <script async src="https://cse.google.com/cse.js?cx=<%=h param[:google_custom_search_id] %>"></script>
+        <div class="gcse-search"></div>
+        <%- end -%>
       </div>
     </nav>
     <%= param[:content] %>

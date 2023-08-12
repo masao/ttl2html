@@ -706,6 +706,16 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("meta[name=generator][content~=ttl2html]", visible: false)
     end
+    it "should supprt gcse settings" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example_gcse.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/b.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("script[src='https://cse.google.com/cse.js?cx=0123456789:qidabcdefg']", visible: false)
+      expect(html).to have_css("div.gcse-search")
+      FileUtils.cp "/tmp/html/b.html", "/tmp/b.html"
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
