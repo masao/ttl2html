@@ -18,12 +18,24 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<%=h html_title(param) %>">
     <meta property="og:title" content="<%=h html_title(param) %>">
+    <%- if param[:ogp] and param[:ogp][:type] -%>
+    <meta property="og:type" content="<%=h param[:ogp][:type] %>">
+    <%- else -%>
     <meta property="og:type" content="website">
+    <%- end -%>
     <%- if param[:uri] -%>
     <meta property="og:url" content="<%=h param[:uri] %>">
     <%- end -%>
-    <%- if param[:logo] -%>
+    <%- if param[:ogp] and param[:ogp][:image] -%>
+    <meta property="og:image" content="<%=h URI.parse(param[:base_uri]) + param[:ogp][:image] %>">
+    <%- elsif param[:logo] -%>
     <meta property="og:image" content="<%=h URI.parse(param[:base_uri]) + param[:logo] %>">
+    <%- end -%>
+    <%- if param[:ogp] -%>
+    <%- param[:ogp].each do |key, value| -%>
+      <%- next if key == :image or key == :type -%>
+      <meta property="og:<%=h key %>" content="<%=h value %>">
+    <%- end -%>
     <%- end -%>
     <meta name="generator" content="ttl2html <%=h TTL2HTML::VERSION %>">
     <%- if param[:google_analytics] -%>
