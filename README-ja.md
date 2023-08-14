@@ -110,11 +110,17 @@ top_class: http://schema.org/Book
   ```
 * ``google_analytics``: [Googleアナリティクス](https://analytics.google.com)による利用統計用の設定コードを指定します。
   ```yaml
-  - google_analytics: G-XXXXXXXXXX
+  google_analytics: G-XXXXXXXXXX
   ```
 * ``google_custom_search_id``: [Googleカスタム検索](https://developers.google.com/custom-search?hl=ja)を利用したサイト内検索フォームを設置するための検索エンジンIDを指定します。
   ```yaml
-  - google_custom_search_id: 0123456789
+  google_custom_search_id: 0123456789
+  ```
+* ``ogp``: [OGP (Open Graph Protocol)](https://ogp.me)設定を指定します。SNS等で用いるための追加のロゴ設定などがあれば、こちらを指定してください。``ogp:image``, ``ogp:type``などの指定が可能です。
+  ```yaml
+  ogp:
+    image: https://example.org/logo2.png
+    type: article
   ```
 
 ## 関連情報
