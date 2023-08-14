@@ -5,4 +5,4 @@ top_class: https://example.org/b
 labels:
   http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
 ogp:
-  image: https://example.org/logo2.png
+  image: logo2.png

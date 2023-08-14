@@ -724,6 +724,15 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("meta[property='og:image'][content='https://example.org/logo2.png']", visible: false)
     end
+    it "should support priotize og:image over logo settings" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example_ogp_with_logo.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/b.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("meta[property='og:image'][content='https://example.org/logo2.png']", visible: false)
+      expect(html).not_to have_css("meta[property='og:image'][content='https://example.org/logo.png']", visible: false)
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
