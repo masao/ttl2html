@@ -4,4 +4,4 @@
 ], [
   a <https://example.org/c>;
   <https://example.org/d> <https://example.org/a>
-];
+] .

@@ -818,9 +818,19 @@ RSpec.describe TTL2HTML::App do
         blank_subject = blank_statement.object
         expect(blank_subject).to be_resource
         blank_statement = statements.find{|e| e.subject == blank_subject }
-        p blank_statement
         expect(blank_statement).not_to be_nil
       end
+    end
+    it "should output properties in a stable order" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_order.ttl"))
+      ttl2html.output_turtle_files
+      cont = open("/tmp/html/a.ttl"){|io| io.read }
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_order2.ttl"))
+      ttl2html.output_turtle_files
+      cont2 = open("/tmp/html/a.ttl"){|io| io.read }
+      expect(cont).to eq cont2
     end
   end
   context "#output_files" do
