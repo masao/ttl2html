@@ -107,7 +107,6 @@ module TTL2HTML
       result = ""
       return result if not object.start_with? @config[:base_uri]
       return result if not @data_inverse.has_key? object
-      turtle = RDF::Turtle::Writer.new
       @data_inverse[object].keys.sort.each do |predicate|
         @data_inverse[object.to_s][predicate].sort.each do |subject|
           next if subject =~ /^_:/
@@ -327,7 +326,6 @@ module TTL2HTML
           end
           if not properties.empty?
             properties.each do |property|
-              path = @data[property]["http://www.w3.org/ns/shacl#path"].first
               yield target_class, property
             end
           end
