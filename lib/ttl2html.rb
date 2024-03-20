@@ -81,7 +81,12 @@ module TTL2HTML
         str = "<#{predicate}> "
         str << @data[subject.to_s][predicate].sort_by do |object|
           if /^_:/ =~ object.to_s and @data[object.to_s]
-            format_turtle(object, depth + 1)
+            qb_order = "http://purl.org/linked-data/cube#order"
+            shacl_order = "http://www.w3.org/ns/shacl#order"
+            [ @data[object.to_s][qb_order] ? @data[object.to_s][qb_order].first.to_i : Float::INFINITY,
+              @data[object.to_s][shacl_order] ? @data[object.to_s][shacl_order].first.to_i : Float::INFINITY,
+              format_turtle(object, depth + 1)
+            ]
           else
             object.to_s
           end

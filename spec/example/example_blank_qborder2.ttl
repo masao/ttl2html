@@ -1,0 +1,10 @@
+<https://example.org/a>
+  <https://example.org/b> [
+    <http://purl.org/linked-data/cube#order> 2;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/c>;
+    <https://example.org/d> <https://example.org/a>
+  ], [
+    <http://purl.org/linked-data/cube#order> 10;
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/c>;
+    <https://example.org/e> <https://example.org/a>
+  ] .

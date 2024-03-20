@@ -832,6 +832,16 @@ RSpec.describe TTL2HTML::App do
       cont2 = open("/tmp/html/a.ttl"){|io| io.read }
       expect(cont).to eq cont2
     end
+    it "should output properties in a stable order with respect to order properties" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      ttl = File.join(spec_base_dir, "example", "example_blank_qborder.ttl")
+      ttl2 = File.join(spec_base_dir, "example", "example_blank_qborder2.ttl")
+      ttl2html.load_turtle(ttl)
+      ttl2html.output_turtle_files
+      cont = open("/tmp/html/a.ttl"){|io| io.read }
+      cont2 = open(ttl2){|io| io.read }
+      expect(cont).to eq cont2
+    end
   end
   context "#output_files" do
     ttl2html = nil
