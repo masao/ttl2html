@@ -4,6 +4,9 @@
         <%- if param[:toplevel] and param[:toplevel][:description] -%>
         <p><%= get_language_literal(param[:toplevel][:description]) %></p>
         <%- end -%>
+        <%- if param[:description] -%>
+        <div class="description"><%= param[:description] %></div>
+        <%- end -%>
         <p><i class="bi bi-link-45deg"></i> <a href="<%=h param[:base_uri] %>"><%=h param[:base_uri] %></a></p>
         <p><a class="btn btn-info" href="<%=h relative_path(param[:about_file] || "about.html") %>"><%=h t("about.title", title: param[:site_title]) %> &raquo;</a></p>
       </div>

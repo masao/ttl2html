@@ -199,6 +199,7 @@ module TTL2HTML
           param[:data_inverse_global] = @data_inverse
           param[:versions] = versions
           param[:toplevel] = toplevel
+          param[:description] = template.to_html_raw("description.html", {}) if template.find_template_path("description.html")
           subjects.sort.each do |subject|
             objects = []
             if @config.has_key? :top_additional_property
@@ -227,6 +228,7 @@ module TTL2HTML
         param[:data_global] = @data
         param[:versions] = versions
         param[:toplevel] = toplevel
+        param[:description] = template.to_html_raw("description.html", {}) if template.find_template_path("description.html")
         param[:shapes] = {}
         shapes.each do |subject|
           orders = []
