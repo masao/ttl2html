@@ -122,6 +122,8 @@ top_class: http://schema.org/Book
     type: article
   ```
 
+A more detailed instructions can be found at https://ttl2html-doc.readthedocs.io/.
+
 ## See also
 
 There is another tool **``xlsx2shape``** to describe a dataset schema using SHACL. See [README-xlsx2shape.md](README-xlsx2shape.md) for details.
