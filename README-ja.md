@@ -123,6 +123,8 @@ top_class: http://schema.org/Book
     type: article
   ```
 
+より詳細な説明マニュアルは https://ttl2html-doc.readthedocs.io/ja/ をご覧ください。
+
 ## 関連情報
 
 SHACLに基づくデータセットスキーマ記述を簡便に行うためのツール **`xlsx2shape`** も同梱しています。詳細は [README-xlsx2shape-ja.md](README-xlsx2shape-ja.md) をご覧ください。

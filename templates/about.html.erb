@@ -4,6 +4,9 @@
         <%- if param[:toplevel] and param[:toplevel][:description] -%>
         <p><%= get_language_literal(param[:toplevel][:description]) %></p>
         <%- end -%>
+        <%- if param[:description] -%>
+        <div class="description"><%= param[:description] %></div>
+        <%- end -%>
       </div>
     </div>
     <div class="container">

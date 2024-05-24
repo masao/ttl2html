@@ -753,6 +753,17 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("meta[property='og:image'][content='https://example.org/logo2.png']", visible: false)
       expect(html).not_to have_css("meta[property='og:image'][content='https://example.org/logo.png']", visible: false)
     end
+    it "should include description.html template for top and about pages" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example_content.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("div.jumbotron div.description")
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("div.jumbotron div.description")
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
