@@ -454,11 +454,15 @@ module TTL2HTML
             contact[:members] = members
           end
         end
+        if data["http://rdfs.org/ns/void#sparqlEndpoint"]
+          endpoint = data["http://rdfs.org/ns/void#sparqlEndpoint"].first
+        end
         result = {
           uri: toplevel.to_s,
           description: data["http://purl.org/dc/terms/description"],
           license: license,
           contact: contact,
+          endpoint: endpoint,
         }
       end
       result

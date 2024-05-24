@@ -21,6 +21,8 @@ en:
     latest-dataset: "Latest dataset"
     past-versions: "Past versions"
     license-text: "This dataset is freely usable as <a href=\"%{url}\">%{label}</a>"
+    sparql-endpoint: "SPARQL Endpoint"
+    sparql-endpoint-text: "The SPARQL endpoint for the dataset is available at:"
   dataset:
     license-text: "This dataset is freely usable as <a href=\"%{url}\">%{label}</a>"
   layout:

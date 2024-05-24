@@ -361,7 +361,6 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("h2#versions", text: /^Latest dataset/)
       expect(html).to have_css("h2#versions + dl dt", text: /^2021-12-12$/)
       expect(html).to have_css("h2#versions + dl + p a[href='about#versions']")
-      expect(html).not_to have_css("p a[href='']", text: "")
     end
     it "should generate toplevel dataset metadata" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

@@ -35,6 +35,9 @@
       </div>
       <div class="col-md">
         <h2 id="sparql-endpoint"><%=h t("index.sparql-endpoint") %> <i class="bi bi-info-circle"></i></h2>
+        <p>
+        <%= t("index.sparql-endpoint-text") %>: <a href="<%=h param[:toplevel][:endpoint] %>"><%=h param[:toplevel][:endpoint] %></a>
+        </p>
       </div>
       <%- end -%>
     </div>
