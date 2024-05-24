@@ -332,6 +332,15 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("h3", text: "Book")
       expect(html).to have_link("http://schema.org/Book")
     end
+    it "should setup work break on URL-like string for about page." do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/shape.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("h3", text: "Book")
+      expect(html).to have_link("http://schema.org/Book")
+    end
     it "should generate versions information" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions.ttl"))
@@ -389,6 +398,17 @@ RSpec.describe TTL2HTML::App do
       expect(html).not_to have_link("", href: "")
       doc = Nokogiri::HTML5.parse(cont)
       expect(doc.errors).to be_empty
+    end
+    it "should add link to the SPARQL endpoint info on index and about pages" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions-endpoint.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_link "https://example.org/endpoint"
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_link "https://example.org/endpoint"
     end
     it "should include about.html template for about.html" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_about.yml"))

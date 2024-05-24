@@ -1,0 +1,44 @@
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/a> a <https://example.org/b>.
+<https://example.org/a> dct:hasVersion <https://example.org/c>.
+<https://example.org/c> dct:title "test".
+_:toplevel a void:Dataset;
+  void:sparqlEndpoint <https://example.org/endpoint>.
+
+_:subset1 a void:Dataset;
+  void:dataDump <subset1.ttl>.
+_:subset2 a void:Dataset;
+  void:dataDump <subset2.ttl>.
+_:v1.0 a void:Dataset;
+  dct:issued "2021-12-11"^^xsd:date;
+  pav:version "1.0";
+  void:triples 28;
+  dcat:byteSize 14105;
+  void:dataDump <dataset-1.ttl>;
+  prov:qualifiedRevision [
+    a prov:Revision;
+    rdfs:comment "The first dataset release.";
+    rdfs:seeAlso <https://example.org/note.html>
+  ];
+  void:subset _:subset1, _:subset2.
+_:toplevel pav:hasVersion _:v1.0 .
+
+_:v2.0 a void:Dataset;
+  dct:issued "2021-12-12"^^xsd:date;
+  pav:version "2.0";
+  void:triples 40;
+  dcat:byteSize 17065;
+  void:dataDump <dataset-2.ttl>;
+  prov:qualifiedRevision [
+    a prov:Revision;
+    rdfs:comment "The second dataset release. <a href=\"https://blog.example.org/features/2\">New features</a> are introduced.";
+  ];
+  void:subset _:subset1, _:subset2.
+_:toplevel pav:hasCurrentVersion _:v2.0 .
