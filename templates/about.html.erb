@@ -26,8 +26,10 @@
           <h2 data-toc-skip><%=h t('about.toc') %></h2>
           <nav id="toc" data-toggle="toc" class="sticky-top"></nav>
         </div>
-        <%- end -%>
+        <div class="col-md-10">
+        <%- else -%>
         <div class="col-md">
+        <%- end -%>
         <%- if param[:content] -%>
         <%= param[:content] %>
         <%- end -%>
