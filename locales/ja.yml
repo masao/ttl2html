@@ -22,7 +22,7 @@ ja:
     past-versions: 過去の更新履歴
     license-text: "このデータセットは<a href=\"%{url}\">%{label}</a>として自由に利用できます。"
     sparql-endpoint: "SPARQLエンドポイント"
-    sparql-endpoint-text: "このデータセットに対するSPARQLエンドポイントは以下のURLからアクセスできます:"
+    sparql-endpoint-text: "このデータセットに対するSPARQLエンドポイントは以下のURLからアクセスできます"
   dataset:
     license-text: "<a href=\"%{url}\">%{label}</a>として自由に利用できます"
   layout:
