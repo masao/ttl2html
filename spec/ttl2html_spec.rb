@@ -398,6 +398,16 @@ RSpec.describe TTL2HTML::App do
       doc = Nokogiri::HTML5.parse(cont)
       expect(doc.errors).to be_empty
     end
+    it "should output license and icon image for datasets" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions-thumbnail.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_selector ".license"
+      expect(html).to have_selector ".license img"
+      expect(html).to have_selector ".license img[alt='']"
+    end
     it "should add link to the SPARQL endpoint info on index and about pages" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions-endpoint.ttl"))
