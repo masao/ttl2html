@@ -2,6 +2,10 @@
 
 <div align="right">日本語: https://github.com/masao/ttl2html/blob/master/README-ja.md</div>
 
+## 📘 Documentation
+
+Fnid a detailed documentation at https://ttl2html-doc.readthedocs.io/.
+
 ## Description
 
 Static site generator for Linked Data.
