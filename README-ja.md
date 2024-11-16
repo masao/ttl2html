@@ -2,6 +2,10 @@
 
 <div align="right">English: https://github.com/masao/ttl2html/blob/master/README.md</div>
 
+## 📘 ドキュメント
+
+詳細なドキュメントは以下をご覧ください： https://ttl2html-doc.readthedocs.io/ja/
+
 ## 概要
 
 Linked Dataのための静的サイト生成ツールです。
