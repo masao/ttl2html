@@ -1,0 +1,9 @@
+<https://example.org/a2> a <https://example.org/b>.
+<https://example.org/a2> <http://purl.org/dc/terms/title> "test title".
+<https://example.org/a2/b> a <https://example.org/b>.
+<https://example.org/a2/b> <http://example.org/title> "test title example".
+<https://example.org/b2> a <https://example.org/a>.
+<https://example.org/b2> <http://purl.org/dc/terms/title> "title".
+<https://example.org/b2> <http://www.w3.org/2000/01/rdf-schema#label> "test label".
+<https://example.org/c2> a <https://example.org/b>.
+<https://example.org/c2> <http://purl.org/dc/terms/title> "test title"@ja.
