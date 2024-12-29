@@ -68,7 +68,7 @@ RSpec.describe TTL2HTML::App do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_with_instances.ttl"))
       @ttl2html.output_html_files
-      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/about.html").read, max_error: -1)
+      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/about.html").read, max_errors: -1)
       expect(doc.errors).to be_empty
     end
     it "should deal with path separators" do
