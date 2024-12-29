@@ -40,8 +40,9 @@ module TTL2HTML
     end
 
     def load_turtle(file)
-      STDERR.puts "loading #{file}..."
+      $stderr.puts "loading #{file}..."
       count = 0
+      subjects = Set.new
       if file.end_with?(".gz")
         io = Zlib::GzipReader.open(file)
       else
@@ -53,6 +54,7 @@ module TTL2HTML
           v = statement.predicate
           o = statement.object
           count += 1
+          subjects << s
           @data[s.to_s] ||= {}
           @data[s.to_s][v.to_s] ||= []
           if o.is_a? RDF::URI or o.is_a? RDF::Node
@@ -66,7 +68,7 @@ module TTL2HTML
         end
         @prefix.merge! reader.prefixes
       end
-      STDERR.puts "#{count} triples. #{@data.size} subjects."
+      $stderr.puts "#{count} triples. #{subjects.size} subjects."
       @data
     end
     def format_turtle(subject, depth = 1)
@@ -190,7 +192,7 @@ module TTL2HTML
           end
         end
         if subjects.empty?
-          STDERR.puts "WARN: top_class parameter specified as [#{@config[:top_class]}], but there is no instance data."
+          $stderr.puts "WARN: top_class parameter specified as [#{@config[:top_class]}], but there is no instance data."
         else
           template = Template.new("index.html.erb", @config)
           param = @config.dup

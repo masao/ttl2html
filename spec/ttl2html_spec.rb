@@ -20,6 +20,15 @@ RSpec.describe TTL2HTML::App do
       data = ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl.gz"))
       expect(data.size).to be > 0
     end
+    it "should print accurate resource counts" do
+      ttl2html = TTL2HTML::App.new
+      expect {
+        ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      }.to output(/9 triples. 4 subjects/).to_stderr
+      expect {
+        ttl2html.load_turtle(File.join(spec_base_dir, "example/example2.ttl"))
+      }.to output(/9 triples. 4 subjects/).to_stderr
+    end
   end
   context "#find_turtle" do
     include TTL2HTML
