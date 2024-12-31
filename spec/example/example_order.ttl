@@ -1,0 +1,24 @@
+<https://example.org/a> a <https://example.org/b>.
+<https://example.org/a> <http://purl.org/dc/terms/title> "test title".
+<https://example.org/a/b/> a <https://example.org/b>.
+<https://example.org/a/b/> <http://example.org/title> "test title 2/".
+<https://example.org/a/b> a <https://example.org/b>.
+<https://example.org/a/b> <http://example.org/title> "test title 2".
+<https://example.org/a/c> a <https://example.org/b>.
+<https://example.org/a/c> <http://example.org/title> "test title 3".
+<https://example.org/a/d> a <https://example.org/b>.
+<https://example.org/a/d> <http://example.org/title> "test title 4".
+<https://example.org/a/e> a <https://example.org/b>.
+<https://example.org/a/e> <http://example.org/title> "test title 5".
+<https://example.org/b> a <https://example.org/a>.
+<https://example.org/b> <http://example.org/title> "test title 6".
+<https://example.org/b> a <https://example.org/a>.
+<https://example.org/b> <http://example.org/title> "test title 6".
+<https://example.org/b/a> a <https://example.org/a>.
+<https://example.org/b/a> <http://example.org/title> "test title 6".
+<https://example.org/b/b> a <https://example.org/a>.
+<https://example.org/b/b> <http://example.org/title> "test title 6".
+<https://example.org/b/c> a <https://example.org/a>.
+<https://example.org/b/c> <http://example.org/title> "test title 6".
+<https://example.org/b/d> a <https://example.org/a>.
+<https://example.org/b/d> <http://example.org/title> "test title 6".

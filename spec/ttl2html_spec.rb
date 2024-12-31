@@ -782,6 +782,15 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("div.jumbotron div.description")
     end
+    it "should output files/dirs accurately, even in parallel execution" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example_content.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_order.ttl"))
+      expect {
+        @ttl2html.output_html_files
+      }.not_to raise_error
+      expect(Pathname("/tmp/html/a")).to be_directory
+      expect(Pathname("/tmp/html/b")).to be_directory
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
