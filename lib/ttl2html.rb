@@ -6,6 +6,7 @@ require "yaml"
 require "nokogiri"
 require "rdf/turtle"
 require "ruby-progressbar"
+require "parallel"
 
 require "ttl2html/util"
 require "ttl2html/template"
@@ -49,7 +50,7 @@ module TTL2HTML
         io = File.open(file)
       end
       RDF::Format.for(:turtle).reader.new(io) do |reader|
-        reader.statements.each do |statement|
+        reader.each_statement do |statement|
           s = statement.subject
           v = statement.predicate
           o = statement.object
@@ -127,10 +128,11 @@ module TTL2HTML
       progressbar = ProgressBar.create(title: label,
         total: @data.size,
         format: "(%t) %a %e %P% Processed: %c from %C")
-      @data.keys.sort_by do|uri|
+      data = @data.keys.sort_by do|uri|
         [ uri.count("/"), uri.size, uri ] 
-      end.reverse_each do |uri|
-        progressbar.increment
+      end.reverse
+      Parallel.each(data, progress: label.to_s) do |uri|
+        #progressbar.increment
         next if not uri.start_with? @config[:base_uri]
         yield uri, @data[uri]
       end
