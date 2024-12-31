@@ -125,18 +125,17 @@ module TTL2HTML
     end
 
     def each_data(label = :each_data)
-      progressbar = ProgressBar.create(title: label,
-        total: @data.size,
-        format: "(%t) %a %e %P% Processed: %c from %C")
+      progressbar_options = {
+        title: label.to_s,
+        format: "(%t) %a %e %P% Processed: %c from %C"
+      }
       data = @data.keys.sort_by do|uri|
         [ uri.count("/"), uri.size, uri ] 
       end.reverse
-      Parallel.each(data, progress: label.to_s) do |uri|
-        #progressbar.increment
+      Parallel.each(data, progress: progressbar_options) do |uri|
         next if not uri.start_with? @config[:base_uri]
         yield uri, @data[uri]
       end
-      progressbar.finish
     end
     def output_html_files
       template = Template.new("", @config)
@@ -161,6 +160,7 @@ module TTL2HTML
         end
       end
       @config[:orders_with_class] = shapes2orders(shapes)
+      Dir.mkdir @config[:output_dir] if @config[:output_dir] and not File.exist? @config[:output_dir]
       each_data(:output_html_files) do |uri, v|
         template = Template.new("default.html.erb", @config)
         param = @config.dup
@@ -176,7 +176,6 @@ module TTL2HTML
         end
         file = uri_mapping_to_path(uri, @config, ".html")
         if @config[:output_dir]
-          Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
         if template.find_template_path("_default.html.erb")
@@ -473,6 +472,7 @@ module TTL2HTML
     end
 
     def output_turtle_files
+      Dir.mkdir @config[:output_dir] if @config[:output_dir] and not File.exist? @config[:output_dir]
       each_data(:output_turtle_files) do |uri, v|
         file = uri_mapping_to_path(uri, @config, ".ttl")
         if @config[:output_dir]
