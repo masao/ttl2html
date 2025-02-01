@@ -4,7 +4,7 @@
 
 ## 📘 Documentation
 
-Fnid a detailed documentation at https://ttl2html-doc.readthedocs.io/.
+Find a detailed documentation at https://ttl2html-doc.readthedocs.io/.
 
 ## Description
 
