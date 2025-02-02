@@ -79,57 +79,21 @@ top_class: http://schema.org/Book
   - http://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: トップページに表示すべきレコード一覧に対応するクラスURIを指定する。デフォルトではトップページは生成されない。
-* ``top_additional_property``: ``top_class``設定で展開されるリソース群に対して、追加でサブ階層として展開されるべきリストを指定する。サブ階層を構成するプロパティをリストとして指定する。
-* ``output_turtle``: 各リソースURIに対応するRDF/Turtle形式のファイルを出力するかどうかを ``true`` / ``false`` で指定します。デフォルトは ``true`` です（つまりRDF/Turtle形式を出力します）。
-* ``template_dir``: ローカルのテンプレートディレクトリ。未指定の場合はカレントディレクトリ内の ``templates/``ディレクトリを用いる。なお、テンプレートを上書きするには、[標準のテンプレートファイル](https://github.com/masao/ttl2html/tree/master/templates)をローカルのテンプレートディレクトリにコピーしてきて、内容を書き換えること。
-* ``locale``: 出力メッセージの言語指定。デフォルトは ``en`` （例: ``ja``, ``en``）
-* ``about_file``: 指定された名前のファイルにスキーマ説明を出力する。データセット内にSHACL記述が存在するときのみ有効。ファイル名 `about.html` に出力する。
-* ``about_toc``: ``about.html``内に目次を出力するかどうかを ``true`` / ``false`` で指定する。デフォルトでは ``false``、目次を出力しない。
-* ``admin_name``: フッタ―に表示するデータ提供管理者の名称。
-* ``copyright_year``: 上記 ``admin_name`` とセットにして出力する著作権表示年。
-* ``logo``: メニューに表示するロゴ。ファイルパスまたはURLを指定する。
-* ``custom_css``: CSSスタイルシートのコードを直接指定します（例: ``nav.navbar { background-color: pink }``）。
-* ``css_file``: ローカルで用いるCSSスタイルシートファイルのパスを指定します。
-* ``javascript_file``: ローカルで用いるJavaScriptファイルのパスを指定します。
-* ``navbar_class``: 画面上部に配置するナビゲーションバーの表示用クラス設定を指定します。指定がなければ ``navbar-light`` が指定されたものとみなします。以下のように黒色系の背景色を指定したい場合に用います。
-  ```yaml
-  navbar_class: navbar-dark bg-dark
-  ```
-* ``additional_link``: メニューに置かれる追加的なリンク。``href``, ``label`` の2つのキーを持つ各リンク情報を配列として設定できる。例: ``[ { "href": "http://example.org", "label": "Link" } ]``
-* ``breadcrumbs``: 複数のリソースを階層化したパンくずリストを作るための設定。当該リソースの上位階層リソースまたは関連リソースにあたるプロパティをリストとして定義します。下記の例では ``schema:hasPart`` プロパティ、``jp-cos:couseOfStudy``プロパティそれぞれの順でもし存在すれば、当該リソースの上位階層とみなしてナビゲーションメニューを構築します。また、パンくずリスト上の表示ラベルはデフォルトでは「タイトル」を用いますが、``label``属性が定義されていれば、当該``label``属性に定義されたプロパティの値をパンくずリンクとして用いることができます。また、`inverse`属性がある場合は、当該リソースへのプロパティとして遷移されたリソースを上位階層とみなします。また、空ノード等で多段階の関係をまたいだリソースを指定することもできます。その場合、``property``属性にリストを追加してその下位アイテムに同様に``property``属性を追加します。下記の末尾の例では、当該リソースの``schema:workExample``プロパティ指定先リソースのさらに``schema:isPartOf``プロパティ先のリソースをナビゲーションリソースとして用いることができます。
-  ```yaml
-  - property: http://schema.org/hasPart
-    inverse: true
-    label: https://w3id.org/jp-cos/sectionNumber
-  - property: https://w3id.org/jp-cos/courseOfStudy
-  - property:
-    - property: http://schema.org/workExample
-    - property: http://schema.org/isPartOf
-  ```
-* ``shape_orders``: about.htmlに出力されるリソース説明の順序を制御する。ここに一覧されたリソースシェイプの順に説明が出力される。設定されない場合、デフォルトではシェイプURIのアルファベット順に出力される。以下の例のようにリストとして設定する：
-  ```yaml
-  shape_orders:
-    - https://example.org/ItemShape
-    - https://example.org/BookShape
-  ```
-* ``google_analytics``: [Googleアナリティクス](https://analytics.google.com)による利用統計用の設定コードを指定します。
-  ```yaml
-  google_analytics: G-XXXXXXXXXX
-  ```
-* ``google_custom_search_id``: [Googleカスタム検索](https://developers.google.com/custom-search?hl=ja)を利用したサイト内検索フォームを設置するための検索エンジンIDを指定します。
-  ```yaml
-  google_custom_search_id: 0123456789
-  ```
-* ``ogp``: [OGP (Open Graph Protocol)](https://ogp.me)設定を指定します。SNS等で用いるための追加のロゴ設定などがあれば、こちらを指定してください。``ogp:image``, ``ogp:type``などの指定が可能です。
-  ```yaml
-  ogp:
-    image: https://example.org/logo2.png
-    type: article
-  ```
 
 より詳細な説明マニュアルは https://ttl2html-doc.readthedocs.io/ja/ をご覧ください。
 
-## 関連情報
+## ニュース
+
+### 2024-12-22
+
+:trophy: [LODチャレンジ2024](https://2024.lodc.jp/)において **「技術賞」** を受賞しました。
+
+（関連情報）
+* Linked Open Data チャレンジ 2024 実行委員会. [【プレスリリース】Linked Open Data チャレンジ Japan 2024 受賞作品発表](https://2024.lodc.jp/awardPressRelease2024.html). 2024-11-27.
+* Linked Open Data チャレンジ 2024 実行委員会. [【開催報告】LODチャレンジ2024 授賞式シンポジウム](https://2024.lodc.jp/awardSymposium2024Report.html). 2025-01-11.
+* 江草由佳. [「LODチャレンジ2024」で「技術賞」を受賞しました](https://www.nier.go.jp/03_laboratory/pdf/222.pdf#page=10). NIER NEWS. 2025, No.222, p.10.
+
+## 関連ツール
 
 SHACLに基づくデータセットスキーマ記述を簡便に行うためのツール **`xlsx2shape`** も同梱しています。詳細は [README-xlsx2shape-ja.md](README-xlsx2shape-ja.md) をご覧ください。
 
