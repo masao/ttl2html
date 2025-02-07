@@ -461,6 +461,14 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("table tfoot dl dt", text: "ex:")
       expect(html).to have_css("table tfoot dl dd", text: "https://example.org/")
     end
+    it "should add class=url for the name and example columns in shapes table" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("table td.url", text: "ex:title")
+    end
     it "should accept labels_with_class settings per target class" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
