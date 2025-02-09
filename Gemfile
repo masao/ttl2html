@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 gem "nokogiri"
 gem "rdf-turtle"
-gem "roo", "~>2.9.0"
+gem "roo", "~> 2"
 gem "csv"
 gem "ruby-progressbar"
 gem "i18n"
