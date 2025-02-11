@@ -37,6 +37,15 @@ RSpec.describe TTL2HTML::App do
       expect(file).to eq File.join(spec_base_dir, "example/example-20211023.ttl.gz")
     end
   end
+  context "#each_data" do
+    it "should output a progress bar to stderr" do
+      ttl2html = TTL2HTML::App.new
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      expect {
+        ttl2html.each_data{|e| e }
+      }.to output(/each_data/).to_stderr
+    end
+  end
   context "#output_html_files" do
     before(:each) do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

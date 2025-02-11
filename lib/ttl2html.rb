@@ -126,6 +126,7 @@ module TTL2HTML
 
     def each_data(label = :each_data)
       progressbar_options = {
+        output: $stderr,
         title: label.to_s,
         format: "(%t) %a %e %P% Processed: %c from %C"
       }
