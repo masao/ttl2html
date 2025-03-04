@@ -17,6 +17,7 @@ ja:
     details: 詳細情報
     inverse_data: 被参照情報
   index:
+    derivedfrom-text: "このデータセットは<a href=\"%{url}\">「%{label}」</a>を加工して作成。"
     list: "%{resource} 一覧"
     latest-dataset: 最新のデータセット
     past-versions: 過去の更新履歴

@@ -15,6 +15,11 @@ _:toplevel a void:Dataset;
   dct:publisher [
     foaf:mbox <mailto:admin@example.org>;
   ];
+  prov:wasDerivedFrom [
+    rdf:value <https://example.org/source>;
+    rdfs:label "出典URL"@ja;
+    rdfs:label "Source URL"@en;
+  ];
   dct:license <https://creativecommons.org/publicdomain/zero/1.0/>.
 
 _:toplevel pav:hasCurrentVersion _:v1.0.

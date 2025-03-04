@@ -393,6 +393,7 @@ module TTL2HTML
         subset: subset,
         link: link,
         license: extract_license(data),
+        derivedfrom: extract_derivedfrom(data),
       }
     end
     def extract_versions
@@ -414,6 +415,17 @@ module TTL2HTML
         end
       end
       versions.sort_by{|v| [ v[:date], v[:version] ] }
+    end
+    def extract_derivedfrom(data)
+      derivedfrom = {}
+      wasDerivedFrom = data["http://www.w3.org/ns/prov#wasDerivedFrom"]&.first
+      if @data[wasDerivedFrom]
+        derivedfrom = {
+          url: @data[wasDerivedFrom]["http://www.w3.org/1999/02/22-rdf-syntax-ns#value"]&.first,
+          label: @data[wasDerivedFrom]["http://www.w3.org/2000/01/rdf-schema#label"]
+        }
+      end
+      derivedfrom
     end
     def extract_license(data)
       license = {}
@@ -440,6 +452,7 @@ module TTL2HTML
       data  = @data[toplevel.to_s]
       if toplevel
         license = extract_license(data)
+        derivedfrom = extract_derivedfrom(data)
         if data["http://purl.org/dc/terms/publisher"]
           publisher_data = @data[data["http://purl.org/dc/terms/publisher"].first]
           email = publisher_data["http://xmlns.com/foaf/0.1/mbox"]&.first
@@ -467,6 +480,7 @@ module TTL2HTML
           license: license,
           contact: contact,
           endpoint: endpoint,
+          derivedfrom: derivedfrom,
         }
       end
       result

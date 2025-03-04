@@ -20,6 +20,11 @@
     <%= t("dataset.license-text", label: get_language_literal(param[:license][:label]), url: param[:license][:url]) %>
   </span>
   <%- end -%>
+  <%- if not param[:derivedfrom].empty? -%>
+  <span class="derivedfrom">
+    <%= t("dataset.derivedfrom-text", label: get_language_literal(param[:derivedfrom][:label]), url: param[:derivedfrom][:url]) %>
+  </span>
+  <%- end -%>
   <%- if param[:subset].size > 0 -%>
     <ul>
     <%- param[:subset].each do |subset| -%>

@@ -437,6 +437,24 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_link "https://example.org/endpoint"
     end
+    it "should output citing reference fro the derivatives on index and about page" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/derived.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_link('"Source URL"', href: "https://example.org/source")
+      @ttl2html.cleanup
+
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/derived-2.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_link('"Source URL"', href: "https://example.org/source")
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_link('"Source URL"', href: "https://example.org/source")
+    end
     it "should include about.html template for about.html" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_about.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

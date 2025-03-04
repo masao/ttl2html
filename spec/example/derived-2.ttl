@@ -25,6 +25,11 @@ _:v1.0 a void:Dataset;
   void:triples 28;
   dcat:byteSize 14105;
   void:dataDump <dataset-1.ttl>;
+  prov:wasDerivedFrom [
+    rdf:value <https://example.org/source>;
+    rdfs:label "出典URL"@ja;
+    rdfs:label "Source URL"@en;
+  ];
   prov:qualifiedRevision [
     a prov:Revision;
     rdfs:comment "The first dataset release.";

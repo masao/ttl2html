@@ -24,11 +24,16 @@
           <p><a href="about#versions">&raquo; <%=h t("index.past-versions") %></a></p>
           <%- end -%>
           <%- if param[:toplevel] and not param[:toplevel][:license].empty? -%>
-          <p>
+          <p class="license">
             <%- if param[:toplevel][:license][:icon] -%>
             <a href="<%=h param[:toplevel][:license][:url] %>"><img src="<%=h param[:toplevel][:license][:icon] %>"></a>
             <%- end -%>
             <%= t("index.license-text", label: get_language_literal(param[:toplevel][:license][:label]), url: param[:toplevel][:license][:url]) %>
+          </p>
+          <%- end -%>
+          <%- if param[:toplevel] and not param[:toplevel][:derivedfrom].empty? -%>
+          <p class="derivedfrom">
+            <%= t("index.derivedfrom-text", label: get_language_literal(param[:toplevel][:derivedfrom][:label]), url: param[:toplevel][:derivedfrom][:url]) %>
           </p>
           <%- end -%>
         </div>
