@@ -25,6 +25,7 @@ ja:
     sparql-endpoint: "SPARQLエンドポイント"
     sparql-endpoint-text: "このデータセットに対するSPARQLエンドポイントは以下のURLからアクセスできます"
   dataset:
+    derivedfrom-text: "このデータセットは<a href=\"%{url}\">「%{label}」</a>を加工して作成。"
     license-text: "<a href=\"%{url}\">%{label}</a>として自由に利用できます"
   layout:
     rdf-data: RDFデータ
