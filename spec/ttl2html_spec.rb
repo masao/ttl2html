@@ -160,6 +160,18 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "Class")
     end
+    it "should respect subtitle settings" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_subtitle.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/example_description.ttl"))
+      @ttl2html.output_html_files
+      cont = File.open("/tmp/html/b.html").read
+      html = Capybara.string cont
+      expect(html).to have_css("h1 + p.lead", text: "description")
+
+      cont = File.open("/tmp/html/c.html").read
+      html = Capybara.string cont
+      expect(html).to have_css("dd a + small", text: "description")
+    end
     it "should respect shape labels" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))

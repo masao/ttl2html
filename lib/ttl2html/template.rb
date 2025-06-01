@@ -163,17 +163,17 @@ module TTL2HTML
         title
       end
     end
-    def get_title(data, default_title = "no title")
+    def get_title(data, default_title = "no title", setting_property = :title_property, setting_perclass = :title_property_perclass)
       return default_title if data.nil?
-      if @param[:title_property_perclass] and data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
-        @param[:title_property_perclass].each do |klass, property|
+      if @param[setting_perclass] and data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
+        @param[setting_perclass].each do |klass, property|
           if data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include?(klass) and data[property]
             return shorten_title(get_language_literal(data[property]))
           end
         end
       end
-      if @param[:title_property] and data[@param[:title_property]]
-        return shorten_title(get_language_literal(data[@param[:title_property]]))
+      if @param[setting_property] and data[@param[setting_property]]
+        return shorten_title(get_language_literal(data[@param[setting_property]]))
       end
       %w(
         http://www.w3.org/2000/01/rdf-schema#label
@@ -185,6 +185,9 @@ module TTL2HTML
         return shorten_title(get_language_literal(data[property])) if data[property]
       end
       default_title
+    end
+    def get_subtitle(data, default_title = nil)
+      get_title(data, default_title, :subtitle_property, nil)
     end
     def get_language_literal(object)
       if object.is_a? Array
@@ -215,7 +218,13 @@ module TTL2HTML
       if /\Ahttps?:\/\// =~ object.to_s
         rel_path = relative_path_uri(object, param[:base_uri])
         if param[:data_global][object]
-          "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or object}</a>"
+          result = "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or object}</a>"
+          subtitle = get_subtitle(param[:data_global][object])
+          if subtitle
+            result += " <small>#{subtitle}</small>"
+          else
+            result
+          end
         else
           "<a href=\"#{rel_path}\">#{object}</a>"
         end
