@@ -189,7 +189,7 @@ module TTL2HTML
       default_title
     end
     def get_subtitle(data, default_title = nil)
-      get_title(data, default_title, false, :subtitle_property, nil)
+      get_title(data, default_title, false, :subtitle_property, :subtitle_property_perclass)
     end
     def get_language_literal(object)
       if object.is_a? Array
