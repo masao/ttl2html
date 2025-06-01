@@ -175,7 +175,7 @@ module TTL2HTML
       if @param[setting_property] and data[@param[setting_property]]
         return shorten_title(get_language_literal(data[@param[setting_property]]))
       end
-      if use_true
+      if use_default
         %w(
           http://www.w3.org/2000/01/rdf-schema#label
           http://purl.org/dc/terms/title
