@@ -163,7 +163,7 @@ module TTL2HTML
         title
       end
     end
-    def get_title(data, default_title = "no title", setting_property = :title_property, setting_perclass = :title_property_perclass)
+    def get_title(data, default_title = "no title", use_default = true, setting_property = :title_property, setting_perclass = :title_property_perclass)
       return default_title if data.nil?
       if @param[setting_perclass] and data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
         @param[setting_perclass].each do |klass, property|
@@ -175,19 +175,21 @@ module TTL2HTML
       if @param[setting_property] and data[@param[setting_property]]
         return shorten_title(get_language_literal(data[@param[setting_property]]))
       end
-      %w(
-        http://www.w3.org/2000/01/rdf-schema#label
-        http://purl.org/dc/terms/title
-        http://purl.org/dc/elements/1.1/title
-        http://schema.org/name
-        http://www.w3.org/2004/02/skos/core#prefLabel
-      ).each do |property|
-        return shorten_title(get_language_literal(data[property])) if data[property]
+      if use_true
+        %w(
+          http://www.w3.org/2000/01/rdf-schema#label
+          http://purl.org/dc/terms/title
+          http://purl.org/dc/elements/1.1/title
+          http://schema.org/name
+          http://www.w3.org/2004/02/skos/core#prefLabel
+        ).each do |property|
+          return shorten_title(get_language_literal(data[property])) if data[property]
+        end
       end
       default_title
     end
     def get_subtitle(data, default_title = nil)
-      get_title(data, default_title, :subtitle_property, nil)
+      get_title(data, default_title, false, :subtitle_property, nil)
     end
     def get_language_literal(object)
       if object.is_a? Array
