@@ -172,7 +172,7 @@ module TTL2HTML
         param[:data_inverse_global] = @data_inverse
         param[:data_global] = @data
         param[:title] = template.get_title(v)
-        if @config[:subtitle_property]
+        if @config[:subtitle_property] or @config[:subtitle_property_perclass]
           param[:subtitle] = template.get_subtitle(v)
         end
         if param[:breadcrumbs]

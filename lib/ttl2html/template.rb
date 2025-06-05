@@ -163,33 +163,21 @@ module TTL2HTML
         title
       end
     end
-    def get_title(data, default_title = "no title", use_default = true, setting_property = :title_property, setting_perclass = :title_property_perclass)
-      return default_title if data.nil?
-      if @param[setting_perclass] and data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
-        @param[setting_perclass].each do |klass, property|
-          if data["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"].include?(klass) and data[property]
-            return shorten_title(get_language_literal(data[property]))
-          end
-        end
-      end
-      if @param[setting_property] and data[@param[setting_property]]
-        return shorten_title(get_language_literal(data[@param[setting_property]]))
-      end
-      if use_default
-        %w(
-          http://www.w3.org/2000/01/rdf-schema#label
-          http://purl.org/dc/terms/title
-          http://purl.org/dc/elements/1.1/title
-          http://schema.org/name
-          http://www.w3.org/2004/02/skos/core#prefLabel
-        ).each do |property|
-          return shorten_title(get_language_literal(data[property])) if data[property]
-        end
-      end
-      default_title
+    def get_title(data, default_title = "no title")
+      resolve_title(data,
+        default: default_title,
+        use_default: true,
+        property_key: :title_property,
+        perclass_key: :title_property_perclass
+      )
     end
     def get_subtitle(data, default_title = nil)
-      get_title(data, default_title, false, :subtitle_property, :subtitle_property_perclass)
+      resolve_title(data,
+        default: default_title,
+        use_default: false,
+        property_key: :subtitle_property,
+        perclass_key: :subtitle_property_perclass
+      )
     end
     def get_language_literal(object)
       if object.is_a? Array
@@ -291,6 +279,46 @@ module TTL2HTML
     def format_version_info(version)
       param_local = @param.dup.merge(data: version)
       to_html_raw("version.html.erb", param_local)
+    end
+
+    private
+
+    def resolve_title(data, default:, use_default:, property_key:, perclass_key:)
+      return default if data.nil?
+      # rdf:type
+      type_key = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      # 1. クラスごとのプロパティ指定がある場合
+      if @param[perclass_key].is_a?(Hash) && data[type_key]
+        Array(data[type_key]).each do |klass|
+          if @param[perclass_key][klass]
+            prop = @param[perclass_key][klass]
+            if valid_value?(data[prop])
+              return shorten_title(get_language_literal(data[prop]))
+            end
+          end
+        end
+      end
+      # 2. 一般プロパティ
+      if @param[property_key] && valid_value?(data[@param[property_key]])
+        return shorten_title(get_language_literal(data[@param[property_key]]))
+      end
+      # 3. デフォルト候補を順にチェック
+      if use_default
+        [
+          "http://www.w3.org/2000/01/rdf-schema#label",
+          "http://purl.org/dc/terms/title",
+          "http://purl.org/dc/elements/1.1/title",
+          "http://schema.org/name",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ].each do |prop|
+          return shorten_title(get_language_literal(data[prop])) if valid_value?(data[prop])
+        end
+      end
+      # 4. fallback
+      default
+    end
+    def valid_value?(value)
+      value && !(value.respond_to?(:empty?) && value.empty?)
     end
   end
 end
