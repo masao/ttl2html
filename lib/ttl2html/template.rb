@@ -330,7 +330,7 @@ module TTL2HTML
         if resource and resource[order_elem]
           order_val = resource[order_elem].first.to_s
           if data_global[order_val] and data_global[order_val][RDF::RDFV::value.to_s]
-            results << data_global[order_val.to_s][RDF::RDFV::value.to_s].first.to_i
+            results << data_global[order_val][RDF::RDFV::value.to_s].first.to_i
           else
             results << order_val.to_i
           end
@@ -338,7 +338,7 @@ module TTL2HTML
           results << Float::INFINITY
         end
       end
-      if resource
+      if val.to_s =~ /^_:/
         results << resource.to_s
       else
         results << val.to_s
