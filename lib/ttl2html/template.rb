@@ -321,21 +321,32 @@ module TTL2HTML
       value && !(value.respond_to?(:empty?) && value.empty?)
     end
     def sort_criteria(val, data_global)
-      qb_order = "http://purl.org/linked-data/cube#order"
-      schema_position = "http://schema.org/position"
       resource = data_global[val]
-      if resource
-        [
-          resource[qb_order] ? resource[qb_order].first.to_i : Float::INFINITY,
-          resource[schema_position] ? resource[schema_position].first.to_i : Float::INFINITY,
-          resource.to_s
-        ]
-      else
-        [
-          Float::INFINITY, Float::INFINITY,
-          val.to_s
-        ]
+      results = []
+      [
+         "http://purl.org/linked-data/cube#order",
+         "http://schema.org/position",
+      ].each do |order_elem|
+        if resource and resource[order_elem]
+          order_val = resource[order_elem].first
+          if order_val.literal?
+            results << order_val.to_i
+          elsif data_global[order_val.to_s] and data_global[order_val.to_s][RDF::RDFV::value.to_s]
+            results << data_global[order_val.to_s][RDF::RDFV::value.to_s].first.to_i
+          else
+            results << data_global[order_val].to_s
+          end
+        else
+          results << Float::INFINITY
+        end
       end
+      if resource
+        results << resource.to_s
+      else
+        results << val.to_s
+      end
+      #p [val, results]
+      results
     end
   end
 end
