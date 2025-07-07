@@ -320,5 +320,22 @@ module TTL2HTML
     def valid_value?(value)
       value && !(value.respond_to?(:empty?) && value.empty?)
     end
+    def sort_criteria(val, data_global)
+      qb_order = "http://purl.org/linked-data/cube#order"
+      schema_position = "http://schema.org/position"
+      resource = data_global[val]
+      if resource
+        [
+          resource[qb_order] ? resource[qb_order].first.to_i : Float::INFINITY,
+          resource[schema_position] ? resource[schema_position].first.to_i : Float::INFINITY,
+          resource.to_s
+        ]
+      else
+        [
+          Float::INFINITY, Float::INFINITY,
+          val.to_s
+        ]
+      end
+    end
   end
 end

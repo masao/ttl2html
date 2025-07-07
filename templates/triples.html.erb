@@ -5,13 +5,7 @@
       [ order, k ]
     }.each do |k, v| -%>
   <dt class="col-sm-3"><%=h format_property(k, param[:labels]) %></dt>
-    <%- v.sort_by{|e|
-          if /\A_:/ =~ e.to_s and param[:data_global][e]
-            param[:data_global][e].to_s
-          else
-            e
-          end
-        }.each_with_index do |v2, idx| -%>
+    <%- v.sort_by{|e| sort_criteria(e, param[:data_global]) }.each_with_index do |v2, idx| -%>
       <%- if v2.respond_to? :language and v2.language? -%>
       <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" lang="<%=h v2.language %>"><%= format_object v2, param[:data], param[:type] %></dd>
       <%- else -%>

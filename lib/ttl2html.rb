@@ -72,11 +72,7 @@ module TTL2HTML
       $stderr.puts "#{count} triples. #{subjects.size} subjects."
       @data
     end
-    MAX_DEPTH = 5
     def format_turtle(subject, depth = 1)
-      if depth > MAX_DEPTH
-        return subject
-      end
       turtle = RDF::Turtle::Writer.new
       result = ""
       if subject =~ /^_:/
@@ -88,7 +84,7 @@ module TTL2HTML
         str = "<#{predicate}> "
         str << @data[subject.to_s][predicate].sort_by do |object|
           #p [subject, predicate, object, depth]
-          if object.class != RDF::Literal and @data[object.to_s]
+          if object.to_s =~ /^_:/ and @data[object.to_s]
             qb_order = "http://purl.org/linked-data/cube#order"
             schema_position = "http://schema.org/position"
             shacl_order = "http://www.w3.org/ns/shacl#order"

@@ -850,6 +850,38 @@ RSpec.describe TTL2HTML::App do
       expect(Pathname("/tmp/html/a")).to be_directory
       expect(Pathname("/tmp/html/b")).to be_directory
     end
+    it "should respect order/position property values with qb:order" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_qborder.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/a.html"){|io| io.read }
+      html = Capybara.string cont
+      links = html.all('a')
+      hrefs = links.map { |a| a[:href] }
+      expect(hrefs.index('d')).to be < hrefs.index('c')
+    end
+    it "should respect order/position property values with schema:position" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_schema_position.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/a.html"){|io| io.read }
+      html = Capybara.string cont
+      links = html.all('a')
+      hrefs = links.map { |a| a[:href] }
+      expect(hrefs.index('d')).to be < hrefs.index('c')
+    end
+    it "should respect order/position property values with qb:order on blank nodes" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_qborder.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/a.html"){|io| io.read }
+      html = Capybara.string cont
+      order_values = html.all('dl.row.border').map do |dl|
+        dt = dl.find('dt', text: 'Order', match: :first)
+        dt.find(:xpath, 'following-sibling::dd[1]').text.to_i
+      end
+      expect(order_values.index(2)).to be < order_values.index(10)
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
