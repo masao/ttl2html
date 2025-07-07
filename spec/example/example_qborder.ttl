@@ -1,0 +1,5 @@
+@prefix ex: <https://example.org/>.
+@prefix qb: <http://purl.org/linked-data/cube#>.
+ex:a ex:b ex:c, ex:d.
+ex:c qb:order 2.
+ex:d qb:order 1.

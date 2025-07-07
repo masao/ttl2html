@@ -1,0 +1,5 @@
+@prefix ex: <https://example.org/>.
+@prefix schema: <http://schema.org/>.
+ex:a ex:b ex:c, ex:d.
+ex:c schema:position 2.
+ex:d schema:position 1.
