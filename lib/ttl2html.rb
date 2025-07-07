@@ -72,7 +72,7 @@ module TTL2HTML
       $stderr.puts "#{count} triples. #{subjects.size} subjects."
       @data
     end
-    MAX_DEPTH = 10
+    MAX_DEPTH = 5
     def format_turtle(subject, depth = 1)
       if depth > MAX_DEPTH
         return subject
@@ -506,7 +506,7 @@ module TTL2HTML
         end
         dir = File.dirname(file)
         FileUtils.mkdir_p(dir) if not File.exist?(dir)
-          str = format_turtle(uri)
+        str = format_turtle(uri)
         str << format_turtle_inverse(uri)
         open(file, "w") do |io|
           io.puts str.strip
