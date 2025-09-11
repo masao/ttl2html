@@ -1,4 +1,5 @@
 <table class="table table-sm">
+  <thead>
   <tr>
     <th><%=h t('shape-table.header.property-name') %></th>
     <th><%=h t('shape-table.header.description') %></th>
@@ -7,6 +8,7 @@
         <%=h t('shape-table.header.repeatable') %></th>
     <th><%=h t('shape-table.header.note') %></th>
   </tr>
+  </thead>
   <tbody>
   <%- param[:properties].each do |property| -%>
     <tr>
