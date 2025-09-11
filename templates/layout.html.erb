@@ -8,9 +8,9 @@
     <%- if @template == "about.html.erb" and param[:about_toc] -%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc/dist/bootstrap-toc.min.css">
     <%- end -%>
-    <%- param[:css_file].each do |file| -%>
+    <%- Array(param[:css_file]).each do |file| -%>
     <link rel="stylesheet" href="<%=h relative_path(file) %>">
-    <%- end if param[:css_file] -%>
+    <%- end -%>
     <%- if param[:custom_css] -%>
     <style type="text/css"><%=h param[:custom_css] %></style>
     <%- end -%>
@@ -102,8 +102,8 @@
     <%- if @template == "about.html.erb" and param[:about_toc] -%>
     <script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc/dist/bootstrap-toc.min.js"></script>
     <%- end -%>
-    <%- param[:javascript_file].each do |file| -%>
+    <%- Array(param[:javascript_file]).each do |file| -%>
     <script src="<%=h relative_path(file) %>"></script>
-    <%- end if param[:javascript_file] -%>
+    <%- end -%>
   </body>
 </html>

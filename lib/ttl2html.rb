@@ -34,7 +34,7 @@ module TTL2HTML
       end
       [ :css_file, :javascript_file ].each do |k|
         if config[k]
-          config[k] = [ config[k] ].flatten
+          config[k] = Array(config[k]).flatten
         end
       end
       config
