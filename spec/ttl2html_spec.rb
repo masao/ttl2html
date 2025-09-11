@@ -597,8 +597,23 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("footer p", text: "Dataset Admin")
       expect(html).to have_css("footer p", text: "© 2021")
     end
-    it "should link to home and about" do
+    it "should link to home without about when about page is unnecessary" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav.navbar a.nav-link[href='./']", text: "Home")
+      expect(html).not_to have_css("nav.navbar a.nav-link[href='about.html']", text: "About")
+      expect(html).not_to have_css("div.jumbotron a[href='about.html']", text: "About")
+      cont = open("/tmp/html/a/b.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav.navbar a.nav-link[href='../']", text: "Home")
+      expect(html).not_to have_css("nav.navbar a.nav-link[href='../about.html']", text: "About")
+    end
+
+    it "should link to home and about when about page is generated" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_about.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
       @ttl2html.output_html_files
       cont = open("/tmp/html/index.html"){|io| io.read }

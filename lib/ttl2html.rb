@@ -152,6 +152,8 @@ module TTL2HTML
       labels = shapes2labels(shapes)
       versions = extract_versions
       toplevel = extract_toplevel
+      about_required = template.find_template_path("about.html") || !shapes.empty? || !versions.empty? || !toplevel.empty?
+      about_file = (@config[:about_file] || "about.html") if about_required
       @config[:labels_with_class] ||= {}
       labels.each do |klass, props|
         props.each do |property, label|
@@ -188,6 +190,7 @@ module TTL2HTML
         if template.find_template_path("_default.html.erb")
           param[:additional_content] = template.to_html_raw("_default.html.erb", param)
         end
+        param[:about_file] = about_file if about_required
         template.output_to(file, param)
       end
       index_html = "index.html"
@@ -226,14 +229,16 @@ module TTL2HTML
           end
           param[:output_file] = index_html
           param[:index_list] = template.to_html_raw("index-list.html.erb", param)
+          param[:about_file] = about_file if about_required
           template.output_to(index_html, param)
         end
       end
-      if template.find_template_path("about.html") or shapes.size > 0 or versions.size > 0 or toplevel.size > 0
-        about_html = @config[:about_file] || "about.html"
+      if about_required
+        about_html = about_file
         about_html =  File.join(@config[:output_dir], about_html) if @config[:output_dir]
         template = Template.new("about.html.erb", @config)
         param = @config.dup
+        param[:about_file] = about_file
         param[:content] = template.to_html_raw("about.html", {}) if template.find_template_path("about.html")
         param[:data_global] = @data
         param[:versions] = versions

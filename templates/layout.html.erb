@@ -63,9 +63,11 @@
           <li class="nav-item<%= ' active' if @template == "index.html.erb" %>">
             <a class="nav-link" href="<%=h relative_path_uri(param[:base_uri]) %>">Home</a>
           </li>
+          <%- if param[:about_file] -%>
           <li class="nav-item<%= ' active' if @template == "about.html.erb" %>">
-            <a class="nav-link" href="<%=h relative_path(param[:about_file] || "about.html") %>">About</a>
+            <a class="nav-link" href="<%=h relative_path(param[:about_file]) %>">About</a>
           </li>
+          <%- end -%>
           <%- if param[:additional_link] -%>
             <%- param[:additional_link].each do |link| -%>
             <li class="nav-item"><a class="nav-link" href="<%=h link["href"] %>"><%=h link["label"] %></a></li>
