@@ -18,7 +18,7 @@
       <td class="url"><code><%=h property[:shorten_path] %></code></td>
       <%- end -%>
       <td><%= property[:name] %></td>
-      <%- if property[:nodeKind] == "http://www.w3.org/ns/shacl#IRI" -%>
+      <%- if property[:nodeKind] == "http://www.w3.org/ns/shacl#IRI" or property[:class] -%>
       <td class="url"><%= property[:example] %></td>
       <%- else -%>
       <td><%= property[:example] %></td>

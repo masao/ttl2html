@@ -2,6 +2,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix ex: <https://example.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 ex:a a ex:b.
 ex:a dc:title "test title".
 ex:a\/b a ex:b.
@@ -17,4 +18,14 @@ ex:AShape a sh:NodeShape;
     sh:path ex:title;
     sh:name "Name"@en, "名称"@ja;
     sh:minCount 1;
-  ] .
+  ], [
+    sh:path ex:creator;
+    sh:name "Creator";
+    skos:example <mailto:alice@example.org>;
+    sh:nodeKind sh:IRI;
+  ], [
+    sh:path ex:related;
+    sh:name "Related items";
+    skos:example ex:b;
+    sh:class ex:a;
+  ]

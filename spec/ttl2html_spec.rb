@@ -518,7 +518,10 @@ RSpec.describe TTL2HTML::App do
       @ttl2html.output_html_files
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
+      #puts cont
       expect(html).to have_css("table td.url", text: "ex:title")
+      expect(html).to have_css("table td.url", text: "mailto:alice@example.org")
+      expect(html).to have_css("table td.url", text: "https://example.org/b")
     end
     it "should accept labels_with_class settings per target class" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))

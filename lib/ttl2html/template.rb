@@ -107,6 +107,7 @@ module TTL2HTML
           required: data[property]["http://www.w3.org/ns/shacl#minCount"] ? data[property]["http://www.w3.org/ns/shacl#minCount"].first.to_i > 0 : false,
           repeatable: repeatable,
           nodeKind: data[property]["http://www.w3.org/ns/shacl#nodeKind"] ? data[property]["http://www.w3.org/ns/shacl#nodeKind"].first : nil,
+          class: data[property]["http://www.w3.org/ns/shacl#class"] ? data[property]["http://www.w3.org/ns/shacl#class"].first : nil,
           nodes: nodes,
           node_mode: node_mode,
           prefix: prefix_used,
