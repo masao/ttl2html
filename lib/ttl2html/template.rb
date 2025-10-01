@@ -5,6 +5,7 @@ require "pathname"
 require "erb"
 require "i18n"
 require "action_view"
+require "nokogiri"
 
 module TTL2HTML
   class Template
@@ -159,7 +160,8 @@ module TTL2HTML
     end
     def shorten_title(title, length = 140)
       if title.to_s.length > length
-        title.to_s[0..length] + "..."
+        short_title = Nokogiri::HTML::DocumentFragment.parse(title.to_s[0..length])
+        short_title.to_html + "..."
       else
         title
       end

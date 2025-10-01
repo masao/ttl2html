@@ -90,4 +90,11 @@ RSpec.describe TTL2HTML::Template do
       expect(html).to have_css("th", text: "プロパティ名")
     end
   end
+  context "shorten_title" do
+    it "should repair html fragment" do
+      template = TTL2HTML::Template.new("")
+      text = template.shorten_title("<b>" + "1234567890" * 15)
+      expect(text).to end_with("</b>...")
+    end
+  end
 end
