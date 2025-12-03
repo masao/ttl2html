@@ -14,10 +14,10 @@
     <%- if param[:custom_css] -%>
     <style type="text/css"><%=h param[:custom_css] %></style>
     <%- end -%>
-    <title><%=h html_title(param) %></title>
+    <title><%= html_title(param) %></title>
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="<%=h html_title(param) %>">
-    <meta property="og:title" content="<%=h html_title(param) %>">
+    <meta name="twitter:title" content="<%= html_title(param) %>">
+    <meta property="og:title" content="<%= html_title(param) %>">
     <%- if param[:ogp] and param[:ogp]["type"] -%>
     <meta property="og:type" content="<%=h param[:ogp]["type"] %>">
     <%- else -%>

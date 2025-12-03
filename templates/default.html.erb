@@ -1,8 +1,8 @@
     <div class="jumbotron">
       <div class="container">
-        <h1><%=h param[:title] %></h1>
+        <h1><%= param[:title] %></h1>
         <%- if param[:subtitle] -%>
-        <p class="lead"><%=h param[:subtitle] %></p>
+        <p class="lead"><%= param[:subtitle] %></p>
         <%- end -%>
         <p><i class="bi bi-link-45deg"></i> <a href="<%=h param[:uri] %>"><%=h param[:uri] %></a></p>
       </div>

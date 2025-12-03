@@ -915,6 +915,20 @@ RSpec.describe TTL2HTML::App do
       end
       expect(order_values.index(2)).to be < order_values.index(10)
     end
+    it "should not escape twice for html special chars" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_amp.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/a/index.html"){|io| io.read }
+      puts cont
+      expect(cont).to include "test &amp; title"
+      expect(cont).not_to include "test &amp;amp; title"
+      expect(cont).not_to include "test & title"
+      cont = open("/tmp/html/b.html"){|io| io.read }
+      expect(cont).to include "test &amp; title"
+      expect(cont).not_to include "test &amp;amp; title"
+      expect(cont).not_to include "test & title"
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil

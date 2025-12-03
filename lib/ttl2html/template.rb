@@ -163,7 +163,7 @@ module TTL2HTML
         short_title = Nokogiri::HTML::DocumentFragment.parse(title.to_s[0..length])
         short_title.to_html + "..."
       else
-        title
+        ERB::Util.html_escape title
       end
     end
     def get_title(data, default_title = "no title")
@@ -211,7 +211,7 @@ module TTL2HTML
       if /\Ahttps?:\/\// =~ object.to_s
         rel_path = relative_path_uri(object, param[:base_uri])
         if param[:data_global][object]
-          result = "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or object}</a>"
+          result = "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or ERB::Util.html_escape(object)}</a>"
           subtitle = get_subtitle(param[:data_global][object])
           if subtitle
             result += " <small>#{subtitle}</small>"
@@ -219,7 +219,7 @@ module TTL2HTML
             result
           end
         else
-          "<a href=\"#{rel_path}\">#{object}</a>"
+          "<a href=\"#{rel_path}\">#{ERB::Util.html_escape object}</a>"
         end
       elsif /\A_:/ =~ object.to_s and param[:data_global][object]
         if type[:inverse] and param[:data_inverse_global][object]
@@ -228,7 +228,7 @@ module TTL2HTML
           format_triples(param[:data_global][object], blank: true)
         end
       else
-        object
+        ERB::Util.html_escape object
       end
     end
     def format_triples(triples, type = {})
