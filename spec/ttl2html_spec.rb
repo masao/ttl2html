@@ -928,6 +928,27 @@ RSpec.describe TTL2HTML::App do
       expect(cont).not_to include "test &amp;amp; title"
       expect(cont).not_to include "test & title"
     end
+    it "should output Microdata compliant markup within html" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/a/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css "dl[itemscope]"
+      expect(html).to have_css "dl[itemid='https://example.org/a']"
+    end
+    it "should output Microdata compliant markup for blank nodes" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_subject.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/b.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css "dl[itemscope]"
+      expect(html).to have_css "dl[itemid='https://example.org/b']"
+      expect(html).to have_css "dd dl[itemscope]"
+      expect(html).to have_css "dd dl dd[itemprop='https://example.org/d']"
+      expect(html).to have_css "dd dl dd[itemid='https://example.org/a']"
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil

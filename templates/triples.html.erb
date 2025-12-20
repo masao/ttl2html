@@ -1,4 +1,4 @@
-<dl class="row<%= if param[:type][:blank] then ' border' end %>">
+<dl class="row<%= if param[:type][:blank] then ' border' end %>" itemscope itemid="<%=h param[:uri] %>">
 <%- param[:data].sort_by{|k, v|
       order = param[:orders][k] if param[:orders] and param[:orders][k]
       order = Float::INFINITY if order.nil?
@@ -7,9 +7,11 @@
   <dt class="col-sm-3"><%=h format_property(k, param[:labels]) %></dt>
     <%- v.sort_by{|e| sort_criteria(e, param[:data_global]) }.each_with_index do |v2, idx| -%>
       <%- if v2.respond_to? :language and v2.language? -%>
-      <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" lang="<%=h v2.language %>"><%= format_object v2, param[:data], param[:type] %></dd>
+      <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" lang="<%=h v2.language %>" itemprop="<%=h k %>"><%= format_object v2, param[:data], param[:type] %></dd>
+      <%- elsif /\Ahttps?:\/\// =~ v2.to_s -%>
+      <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" itemscope itemprop="<%=h k %>" itemid="<%=h v2.to_s %>"><%= format_object v2, param[:data], param[:type] %></dd>
       <%- else -%>
-      <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>"><%= format_object v2, param[:data], param[:type] %></dd>
+      <dd class="col-sm-9<%= ' offset-sm-3' if idx > 0 %>" itemprop="<%=h k %>"><%= format_object v2, param[:data], param[:type] %></dd>
       <%- end -%>
     <%- end -%>
 <%- end -%>
