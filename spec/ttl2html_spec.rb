@@ -946,6 +946,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css "dl[itemscope]"
       expect(html).to have_css "dl[itemid='https://example.org/b']"
       expect(html).to have_css "dd dl[itemscope]"
+      expect(html).not_to have_css "dd dl[itemid]"
       expect(html).to have_css "dd dl dd[itemprop='https://example.org/d']"
       expect(html).to have_css "dd dl dd[itemid='https://example.org/a']"
     end
