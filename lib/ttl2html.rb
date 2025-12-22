@@ -82,6 +82,7 @@ module TTL2HTML
       end
       result << @data[subject.to_s].keys.sort.map do |predicate|
         str = "<#{predicate}> "
+        #p [subject, predicate, @data[subject.to_s][predicate]]
         str << @data[subject.to_s][predicate].sort_by do |object|
           #p [subject, predicate, object, depth]
           if object.to_s =~ /^_:/ and @data[object.to_s]
@@ -94,7 +95,7 @@ module TTL2HTML
               format_turtle(object, depth + 1)
             ]
           else
-            object.to_s
+            [Float::INFINITY, Float::INFINITY, Float::INFINITY, object.to_s]
           end
         end.map do |object|
           if /^_:/ =~ object.to_s # blank node:

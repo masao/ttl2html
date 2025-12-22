@@ -939,7 +939,7 @@ RSpec.describe TTL2HTML::App do
     end
     it "should output Microdata compliant markup for blank nodes" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
-      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_subject.ttl"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_sort_complexdata.ttl"))
       @ttl2html.output_html_files
       cont = open("/tmp/html/b.html"){|io| io.read }
       html = Capybara.string cont
@@ -1058,6 +1058,14 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/a.ttl"){|io| io.read }
       cont2 = open(ttl2){|io| io.read }
       expect(cont).to eq cont2
+    end
+    it "should output correctly when language literal data" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "genji.yml"))
+      ttl = File.join(spec_base_dir, "example", "genji.ttl")
+      expect {
+        ttl2html.load_turtle(ttl)
+        ttl2html.output_turtle_files
+      }.not_to raise_error
     end
   end
   context "#output_files" do

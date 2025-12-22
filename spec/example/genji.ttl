@@ -1,0 +1,1749 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcndl: <http://ndl.go.jp/dcndl/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rda: <http://RDVocab.info/ElementsGr2/> .
+@prefix genji: <https://w3id.org/genji/> .
+
+<http://id.ndl.go.jp/auth/entity/00270993>
+    dcndl:transcription "ムラサキ シキブ, ヘイアン チュウキ" ;
+    a foaf:Agent ;
+    foaf:name "紫式部, 平安中期" .
+
+<https://w3id.org/genji/chapter/1>
+    dcterms:title "Kiritsubo"@en, "桐壺"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "1" .
+
+<https://w3id.org/genji/chapter/10>
+    dcterms:title "Sakaki"@en, "賢木"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "10" .
+
+<https://w3id.org/genji/chapter/11>
+    dcterms:title "Hanachirusato"@en, "花散里"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "11" .
+
+<https://w3id.org/genji/chapter/12>
+    dcterms:title "Suma"@en, "須磨"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "12" .
+
+<https://w3id.org/genji/chapter/13>
+    dcterms:title "Akashi"@en, "明石"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "13" .
+
+<https://w3id.org/genji/chapter/14>
+    dcterms:title "Miotsukushi"@en, "澪標"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "14" .
+
+<https://w3id.org/genji/chapter/15>
+    dcterms:title "Yomogiu"@en, "蓬生"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "15" .
+
+<https://w3id.org/genji/chapter/16>
+    dcterms:title "Sekiya"@en, "関屋"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "16" .
+
+<https://w3id.org/genji/chapter/17>
+    dcterms:title "Eawase"@en, "絵合"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "17" .
+
+<https://w3id.org/genji/chapter/18>
+    dcterms:title "Matsukaze"@en, "松風"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "18" .
+
+<https://w3id.org/genji/chapter/19>
+    dcterms:title "Usugumo"@en, "薄雲"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "19" .
+
+<https://w3id.org/genji/chapter/2>
+    dcterms:title "Hahakigi"@en, "帚木"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "2" .
+
+<https://w3id.org/genji/chapter/20>
+    dcterms:title "Asagao"@en, "朝顔"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "20" .
+
+<https://w3id.org/genji/chapter/21>
+    dcterms:title "Otome"@en, "少女"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "21" .
+
+<https://w3id.org/genji/chapter/22>
+    dcterms:title "Tamakazura"@en, "玉鬘"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "22" .
+
+<https://w3id.org/genji/chapter/23>
+    dcterms:title "Hatsune"@en, "初音"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "23" .
+
+<https://w3id.org/genji/chapter/24>
+    dcterms:title "Kochou"@en, "胡蝶"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "24" .
+
+<https://w3id.org/genji/chapter/25>
+    dcterms:title "Hotaru"@en, "蛍"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "25" .
+
+<https://w3id.org/genji/chapter/26>
+    dcterms:title "Tokonatsu"@en, "常夏"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "26" .
+
+<https://w3id.org/genji/chapter/27>
+    dcterms:title "Kagaribi"@en, "篝火"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "27" .
+
+<https://w3id.org/genji/chapter/28>
+    dcterms:title "Nowaki"@en, "野分"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "28" .
+
+<https://w3id.org/genji/chapter/29>
+    dcterms:title "Miyuki"@en, "行幸"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "29" .
+
+<https://w3id.org/genji/chapter/3>
+    dcterms:title "Utsusemi"@en, "空蝉"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "3" .
+
+<https://w3id.org/genji/chapter/30>
+    dcterms:title "Fujibakama"@en, "藤袴"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "30" .
+
+<https://w3id.org/genji/chapter/31>
+    dcterms:title "Makibashira"@en, "真木柱"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "31" .
+
+<https://w3id.org/genji/chapter/32>
+    dcterms:title "Umegae"@en, "梅枝"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "32" .
+
+<https://w3id.org/genji/chapter/33>
+    dcterms:title "Fujinouraba"@en, "藤裏葉"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "33" .
+
+<https://w3id.org/genji/chapter/34>
+    dcterms:title "Wakana 1"@en, "若菜上"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "34" .
+
+<https://w3id.org/genji/chapter/35>
+    dcterms:title "Wakana 2"@en, "若菜下"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "35" .
+
+<https://w3id.org/genji/chapter/36>
+    dcterms:title "Kashiwagi"@en, "柏木"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "36" .
+
+<https://w3id.org/genji/chapter/37>
+    dcterms:title "Yokobue"@en, "横笛"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "37" .
+
+<https://w3id.org/genji/chapter/38>
+    dcterms:title "Suzumushi"@en, "鈴虫"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "38" .
+
+<https://w3id.org/genji/chapter/39>
+    dcterms:title "Yuugiri"@en, "夕霧"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "39" .
+
+<https://w3id.org/genji/chapter/4>
+    dcterms:title "Yuugao"@en, "夕顔"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "4" .
+
+<https://w3id.org/genji/chapter/40>
+    dcterms:title "Minori"@en, "御法"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "40" .
+
+<https://w3id.org/genji/chapter/41>
+    dcterms:title "Maboroshi"@en, "幻"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "41" .
+
+<https://w3id.org/genji/chapter/42>
+    dcterms:title "Nioumiya"@en, "匂宮"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "42" .
+
+<https://w3id.org/genji/chapter/43>
+    dcterms:title "Koubai"@en, "紅梅"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "43" .
+
+<https://w3id.org/genji/chapter/44>
+    dcterms:title "Takekawa"@en, "竹河"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "44" .
+
+<https://w3id.org/genji/chapter/45>
+    dcterms:title "Hashihime"@en, "橋姫"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "45" .
+
+<https://w3id.org/genji/chapter/46>
+    dcterms:title "Shiigamoto"@en, "椎本"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "46" .
+
+<https://w3id.org/genji/chapter/47>
+    dcterms:title "Agemaki"@en, "総角"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "47" .
+
+<https://w3id.org/genji/chapter/48>
+    dcterms:title "Sawarabi"@en, "早蕨"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "48" .
+
+<https://w3id.org/genji/chapter/49>
+    dcterms:title "Yadorigi"@en, "宿木"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "49" .
+
+<https://w3id.org/genji/chapter/5>
+    dcterms:title "Wakamurasaki"@en, "若紫"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "5" .
+
+<https://w3id.org/genji/chapter/50>
+    dcterms:title "Azumaya"@en, "東屋"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "50" .
+
+<https://w3id.org/genji/chapter/51>
+    dcterms:title "Ukifune"@en, "浮舟"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "51" .
+
+<https://w3id.org/genji/chapter/52>
+    dcterms:title "Kagerou"@en, "蜻蛉"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "52" .
+
+<https://w3id.org/genji/chapter/53>
+    dcterms:title "Tenarai"@en, "手習"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "53" .
+
+<https://w3id.org/genji/chapter/54>
+    dcterms:title "Yumenoukihashi"@en, "夢浮橋"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "54" .
+
+<https://w3id.org/genji/chapter/6>
+    dcterms:title "Suetsumuhana"@en, "末摘花"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "6" .
+
+<https://w3id.org/genji/chapter/7>
+    dcterms:title "Momijinoga"@en, "紅葉賀"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "7" .
+
+<https://w3id.org/genji/chapter/8>
+    dcterms:title "Hananoen"@en, "花宴"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "8" .
+
+<https://w3id.org/genji/chapter/9>
+    dcterms:title "Aoi"@en, "葵"@ja ;
+    a genji:Chapter ;
+    genji:chapterNumber "9" .
+
+<https://w3id.org/genji/translation/1>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1882" ;
+    dcterms:extent "20 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "1" ;
+    dcterms:issued "1882" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Trübner"
+    ] ;
+    dcterms:title "Genji monogatari : the most celebrated of the classical Japanese romances" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA13065578> .
+
+<https://w3id.org/genji/translation/10>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1927" ;
+    dcterms:extent "22 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28> ;
+    dcterms:identifier "10" ;
+    dcterms:issued "1927" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Houghton Mifflin"
+    ] ;
+    dcterms:title "A Wreath of cloud : being the third part of \"The tale of Genji\"" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA13586504> .
+
+<https://w3id.org/genji/translation/11>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1928." ;
+    dcterms:extent "333 p. ; 23 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41> ;
+    dcterms:identifier "11" ;
+    dcterms:issued "1928" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London" ;
+        a foaf:Agent ;
+        foaf:name "G. Allen & Unwin"
+    ] ;
+    dcterms:title "Blue trousers : being the fourth part of \"The tale of Genji\" / by Lady Murasaki ; translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281239> .
+
+<https://w3id.org/genji/translation/12>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[1928-1934]." ;
+    dcterms:extent "6 v. 23 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "12" ;
+    dcterms:issued "1928" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London" ;
+        a foaf:Agent ;
+        foaf:name "G. Allen & Unwin"
+    ] ;
+    dcterms:title "The tale of Genji [a novel in six volumes] by Lady Murasaki. Translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006423522> .
+
+<https://w3id.org/genji/translation/13>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1928" ;
+    dcterms:extent "23 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/40> ;
+    dcterms:identifier "13" ;
+    dcterms:issued "1928" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "H. Mifflin"
+    ] ;
+    dcterms:title "Blue trousers : being the fourth part of \"The tale of Genji\"" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA12779149> .
+
+<https://w3id.org/genji/translation/14>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1932" ;
+    dcterms:extent "22 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49> ;
+    dcterms:identifier "14" ;
+    dcterms:issued "1932" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "G. Allen & Unwin"
+    ], [
+        a foaf:Agent ;
+        foaf:name "Houghton Mifflin"
+    ] ;
+    dcterms:title "The lady of the boat : being the fifth part of \"The tale of Genji\"" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA12147258> .
+
+<https://w3id.org/genji/translation/15>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1932" ;
+    dcterms:extent "23 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49> ;
+    dcterms:identifier "15" ;
+    dcterms:issued "1932" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Houghton Mifflin"
+    ] ;
+    dcterms:title "The lady of the boat being the fifth part of \"The Tale of Genji\"" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA13927423> .
+
+<https://w3id.org/genji/translation/16>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1933." ;
+    dcterms:extent "341 p. ; 23 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54> ;
+    dcterms:identifier "16" ;
+    dcterms:issued "1933" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London" ;
+        a foaf:Agent ;
+        foaf:name "Allen & Unwin"
+    ] ;
+    dcterms:title "The bridge of dreams : being the second volume of The lady of the boat and the final part of The tale of Genji / by Lady Murasaki ; translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000011257531>, <http://www.worldcat.org/oclc/07854095> .
+
+<https://w3id.org/genji/translation/17>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1933" ;
+    dcterms:extent "23 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54> ;
+    dcterms:identifier "17" ;
+    dcterms:issued "1933" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "H. Mifflin"
+    ] ;
+    dcterms:title "The bridge of dreams : being the sedond volume of \"The lady of the boat\" and the final part of \"The tale of Genji\"" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA12779218> .
+
+<https://w3id.org/genji/translation/18>
+    dcndl:edition "Reprinted ed." ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[1934?]" ;
+    dcterms:extent "v. ; 19 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3> ;
+    dcterms:identifier "18" ;
+    dcterms:issued "1934" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "San Kaku Sha"
+    ] ;
+    dcterms:title "Genji monogatari : the romance of Genji / by Murasaki Shikibu ; translated from the Japanese by Kenchio Suyematz." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006488956>, <http://id.ndl.go.jp/digimeta/1680905>, <https://doi.org/10.11501/1680905> .
+
+<https://w3id.org/genji/translation/19>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1935." ;
+    dcterms:extent "1135 p. ; 21 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "19" ;
+    dcterms:issued "1935" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London" ;
+        a foaf:Agent ;
+        foaf:name "George Allen & Unwin"
+    ] ;
+    dcterms:title "The tale of Genji : a novel in six parts / by Lady Murasaki ; translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281252> .
+
+<https://w3id.org/genji/translation/2>
+    dcndl:edition "2nd ed., rev." ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "明治27 [1894]" ;
+    dcterms:extent "19 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "2" ;
+    dcterms:issued "1894" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Z.P. Maruya"
+    ] ;
+    dcterms:title "Genji monogatari : the most celebrated of the classical Japanese romances" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA13927048> .
+
+<https://w3id.org/genji/translation/20>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1935." ;
+    dcterms:extent "42 p. ; cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "20" ;
+    dcterms:issued "1935" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "Kairyudo"
+    ] ;
+    dcterms:title "The tale of Genji / by Lady Murasaki ; translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006488285>, <http://id.ndl.go.jp/digimeta/1680566>, <https://doi.org/10.11501/1680566> .
+
+<https://w3id.org/genji/translation/21>
+    dcndl:edition "1 vol. ed." ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1935" ;
+    dcterms:extent "22 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "21" ;
+    dcterms:issued "1935" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "G. Allen and Unwin"
+    ] ;
+    dcterms:title "The tale of Genji : a novel in six parts" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA13602236> .
+
+<https://w3id.org/genji/translation/22>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1935" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "22" ;
+    dcterms:issued "1935" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Houghton Mifflin"
+    ] ;
+    dcterms:title "The Tale of Genji : a novel in six parts" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA06658605> .
+
+<https://w3id.org/genji/translation/23>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1935" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "23" ;
+    dcterms:issued "1935" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Literary Guild"
+    ] ;
+    dcterms:title "The tale of Genji : a novel in four parts" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA06658536> .
+
+<https://w3id.org/genji/translation/24>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1935.4" ;
+    dcterms:extent "24 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "24" ;
+    dcterms:issued "1935" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "開隆堂書店"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA60096500> .
+
+<https://w3id.org/genji/translation/25>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1955" ;
+    dcterms:extent "18 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "25" ;
+    dcterms:issued "1955" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Doubleday"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA18122908> .
+
+<https://w3id.org/genji/translation/26>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[1957]" ;
+    dcterms:extent "1135 p. 21 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "26" ;
+    dcterms:issued "1957" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London" ;
+        a foaf:Agent ;
+        foaf:name "Allen & Unwin"
+    ] ;
+    dcterms:title "The tale of Genji …" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281253> .
+
+<https://w3id.org/genji/translation/27>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1959" ;
+    dcterms:extent "18 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18> ;
+    dcterms:identifier "27" ;
+    dcterms:issued "1959" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Doubleday"
+    ] ;
+    dcterms:title "The sacred tree" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA12363005> .
+
+<https://w3id.org/genji/translation/28>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1960" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "28" ;
+    dcterms:issued "1960" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Modern Library"
+    ] ;
+    dcterms:title "The tale of Genji : a novel in six parts" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA00537029>, <https://ci.nii.ac.jp/ncid/BA10177123>, <https://ci.nii.ac.jp/ncid/BB18719227> .
+
+<https://w3id.org/genji/translation/29>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[1965]" ;
+    dcterms:extent "2 v. (1135 p.) ; 20 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "29" ;
+    dcterms:issued "1965" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London" ;
+        a foaf:Agent ;
+        foaf:name "Allen & Unwin"
+    ] ;
+    dcterms:title "The tale of genji; a novel in six parts by Lady Murasaki. Translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281254> .
+
+<https://w3id.org/genji/translation/3>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1925" ;
+    dcterms:extent "22 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "3" ;
+    dcterms:issued "1925" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "G. Allen & Unwin"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA07049894> .
+
+<https://w3id.org/genji/translation/30>
+    dcndl:edition "[1st Tuttle ed.]" ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[1970]" ;
+    dcterms:extent "2 v. 19 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "30" ;
+    dcterms:issued "1970" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "C. E. Tuttle Co."
+    ] ;
+    dcterms:title "The tale of Genji; a novel in six parts by Lady Murasaki. Translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281255>, <http://lccn.loc.gov/73855607\u0020//r943> .
+
+<https://w3id.org/genji/translation/31>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[1974]" ;
+    dcterms:extent "227 p. 19 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "31" ;
+    dcterms:issued "1974" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Rutland, Vt." ;
+        a foaf:Agent ;
+        foaf:name "C. E. Tuttle"
+    ] ;
+    dcterms:title "Genji monogatari. Translated from the Japanese by Kencho Suematsu. With an introd. to the new ed. by Terence Barrow." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281242>, <http://iss.ndl.go.jp/isbn/0804810451>, <http://lccn.loc.gov/72077523\u0020//r942> .
+
+<https://w3id.org/genji/translation/32>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "c1974" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "32" ;
+    dcterms:issued "1974" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Tuttle"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/4805308729>, <http://iss.ndl.go.jp/isbn/9784805308721>, <https://ci.nii.ac.jp/ncid/BA8312325X> .
+
+<https://w3id.org/genji/translation/33>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[1974]" ;
+    dcterms:extent "18 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "33" ;
+    dcterms:issued "1974" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "C. E. Tuttle Co"
+    ] ;
+    dcterms:title "The tale of Genji : a novel in six parts" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA04593542> .
+
+<https://w3id.org/genji/translation/34>
+    dcndl:edition "1st ed." ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1976." ;
+    dcterms:extent "2 v. (xix, 1090 p.) : ill. ; 25 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "34" ;
+    dcterms:issued "1976" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "New York" ;
+        a foaf:Agent ;
+        foaf:name "Knopf"
+    ] ;
+    dcterms:title "The tale of Genji / Murasaki Shikibu ; translated with an introd. by Edward Seidensticker." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281250>, <http://iss.ndl.go.jp/isbn/0394483286>, <http://lccn.loc.gov/76013680\u0020//r83> .
+
+<https://w3id.org/genji/translation/35>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "c1976" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "35" ;
+    dcterms:issued "1976" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Tuttle Pub."
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9784805309193>, <http://iss.ndl.go.jp/isbn/9784805309209>, <http://iss.ndl.go.jp/isbn/9784805309216>, <https://ci.nii.ac.jp/ncid/BA84646377>, <https://ci.nii.ac.jp/ncid/BB20934630> .
+
+<https://w3id.org/genji/translation/36>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1976" ;
+    dcterms:extent "25 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "36" ;
+    dcterms:issued "1976" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Secker and Warburg"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0436459507>, <http://lccn.loc.gov/77357520>, <https://ci.nii.ac.jp/ncid/BA04938699> .
+
+<https://w3id.org/genji/translation/37>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1977" ;
+    dcterms:extent "25 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "37" ;
+    dcterms:issued "1977" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Knopf"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA15521430> .
+
+<https://w3id.org/genji/translation/38>
+    dcndl:edition "1st pbk. ed." ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1978, c1976." ;
+    dcterms:extent "xix, 1090 p. : ill. ; 24 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "38" ;
+    dcterms:issued "1978" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "New York" ;
+        a foaf:Agent ;
+        foaf:name "Knopf"
+    ] ;
+    dcterms:title "The tale of Genji / Murasaki Shikibu ; translated with an introduction by Edward G. Seidensticker." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000003102200>, <http://iss.ndl.go.jp/isbn/0394483286>, <http://iss.ndl.go.jp/isbn/0394735307>, <http://lccn.loc.gov/76013680\u0020//r83> .
+
+<https://w3id.org/genji/translation/39>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1978." ;
+    dcterms:extent "2 v. (xix, 1090 p.) : ill. ; 19 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "39" ;
+    dcterms:issued "1978" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Rutland, Vt.", "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "Tuttle"
+    ] ;
+    dcterms:title "The tale of Genji / Murasaki Shikibu ; translated with an introduction by Edward G. Seidensticker." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281251> .
+
+<https://w3id.org/genji/translation/4>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1925" ;
+    dcterms:extent "23 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "4" ;
+    dcterms:issued "1925" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Houghton Mifflin"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA12446758> .
+
+<https://w3id.org/genji/translation/40>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1978" ;
+    dcterms:extent "25 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "40" ;
+    dcterms:issued "1978" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Knopf"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0394735307>, <https://ci.nii.ac.jp/ncid/BA00537288> .
+
+<https://w3id.org/genji/translation/41>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1981, c1976" ;
+    dcterms:extent "24 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "41" ;
+    dcterms:issued "1981" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Penguin"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0140443908>, <https://ci.nii.ac.jp/ncid/BA04184292> .
+
+<https://w3id.org/genji/translation/42>
+    dcndl:edition "1st Vintage Books ed" ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1985, c1976" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "42" ;
+    dcterms:issued "1985" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Vintage Books"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0394729218>, <http://lccn.loc.gov/84040519>, <https://ci.nii.ac.jp/ncid/BA01444750> .
+
+<https://w3id.org/genji/translation/43>
+    dcndl:edition "1st Vintage Books ed" ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1990" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "43" ;
+    dcterms:issued "1990" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Vintage Books"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0679729534>, <http://lccn.loc.gov/84040519>, <https://ci.nii.ac.jp/ncid/BA27455854> .
+
+<https://w3id.org/genji/translation/44>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "c1992" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "44" ;
+    dcterms:issued "1992" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "D. Campbell"
+    ], [
+        a foaf:Agent ;
+        foaf:name "Distributed by Random House"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/1857151089>, <https://ci.nii.ac.jp/ncid/BA1912319X> .
+
+<https://w3id.org/genji/translation/45>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1992" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "45" ;
+    dcterms:issued "1992" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Alfred A. Knopf"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0679417389>, <http://lccn.loc.gov/92052930>, <https://ci.nii.ac.jp/ncid/BA2382658X> .
+
+<https://w3id.org/genji/translation/46>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1993" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "46" ;
+    dcterms:issued "1993" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Modern Library"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0679424679>, <http://lccn.loc.gov/92051068>, <https://ci.nii.ac.jp/ncid/BA2778616X> .
+
+<https://w3id.org/genji/translation/47>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2000" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "47" ;
+    dcterms:issued "2000" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Tuttle"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0804832560>, <http://lccn.loc.gov/00055239>, <https://ci.nii.ac.jp/ncid/BA50943826> .
+
+<https://w3id.org/genji/translation/48>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2000" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "48" ;
+    dcterms:issued "2000" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Dover Publications"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9780486414157>, <http://lccn.loc.gov/00029542>, <https://ci.nii.ac.jp/ncid/BA66190487> .
+
+<https://w3id.org/genji/translation/49>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/tyler> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2001." ;
+    dcterms:extent "2 v. (xxix, 1174 p.) : ill. ; 25 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "49" ;
+    dcterms:issued "2001" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "New York" ;
+        a foaf:Agent ;
+        foaf:name "Viking"
+    ] ;
+    dcterms:title "The tale of Genji / Murasaki Shikibu ; translated by Royall Tyler." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000003698664>, <http://iss.ndl.go.jp/isbn/0670030228> .
+
+<https://w3id.org/genji/translation/5>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1926." ;
+    dcterms:extent "300 p. ; 23 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "5" ;
+    dcterms:issued "1926" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Boston", "London" ;
+        a foaf:Agent ;
+        foaf:name "G. Allen & Unwin"
+    ] ;
+    dcterms:title "The tale of Genji / by Lady Murasaki ; translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281249> .
+
+<https://w3id.org/genji/translation/50>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/horton> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993>, [
+        dcndl:transcription "ミヤタ, マサユキ" ;
+        a foaf:Agent ;
+        foaf:name "宮田, 雅之"
+    ], [
+        dcndl:transcription "セトウチ, ジャクチョウ" ;
+        a foaf:Agent ;
+        foaf:name "瀬戸内, 寂聴"
+    ], [
+        a foaf:Agent ;
+        foaf:name "Keene, Donald"
+    ] ;
+    dcterms:date "2001.10" ;
+    dcterms:extent "23cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "50" ;
+    dcterms:issued "2001" ;
+    dcterms:language "eng"^^dcterms:ISO639-2, "jpn"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "講談社インターナショナル"
+    ] ;
+    dcterms:title """源氏物語
+The tale of Genji : scenes from the world's first novel""" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9784770027726>, <https://ci.nii.ac.jp/ncid/BA5602683X> .
+
+<https://w3id.org/genji/translation/51>
+    dcndl:edition "[16th printing]" ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[2002], c1976" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "51" ;
+    dcterms:issued "2002" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Tuttle Pub"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/4805306769>, <https://ci.nii.ac.jp/ncid/BA58433379> .
+
+<https://w3id.org/genji/translation/52>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/tyler> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2003." ;
+    dcterms:extent "xxix, 1182 p. : ill., map ; 24 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "52" ;
+    dcterms:issued "2003" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London", "New York" ;
+        a foaf:Agent ;
+        foaf:name "Penguin"
+    ] ;
+    dcterms:title "The tale of Genji / Murasaki Shikibu ; translated by Royall Tyler." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000007569927>, <http://iss.ndl.go.jp/isbn/014243714X>, <http://iss.ndl.go.jp/isbn/0670030201>, <http://lccn.loc.gov/2001017748> .
+
+<https://w3id.org/genji/translation/53>
+    dcndl:edition "Abridged ed" ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/tyler> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2006" ;
+    dcterms:extent "20 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "53" ;
+    dcterms:issued "2006" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Penguin Books"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/0143039490>, <http://lccn.loc.gov/2005048742>, <https://ci.nii.ac.jp/ncid/BA79885663> .
+
+<https://w3id.org/genji/translation/54>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[2007]" ;
+    dcterms:extent "p. 524-1090 ; 21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54> ;
+    dcterms:identifier "54" ;
+    dcterms:issued "2007" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "Tuttle Pub."
+    ] ;
+    dcterms:title "The tale of Genji. v. 2" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000009189007>, <http://id.ndl.go.jp/jpno/21340604>, <http://iss.ndl.go.jp/isbn/9784805309209>, <http://iss.ndl.go.jp/setisbn/9784805309216> .
+
+<https://w3id.org/genji/translation/55>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[2007]" ;
+    dcterms:extent "521 p. ; 21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "55" ;
+    dcterms:issued "2007" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "Tuttle Pub."
+    ] ;
+    dcterms:title "The tale of Genji. v. 1" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000009189006>, <http://id.ndl.go.jp/jpno/21340601>, <http://iss.ndl.go.jp/isbn/9784805309193>, <http://iss.ndl.go.jp/setisbn/9784805309216> .
+
+<https://w3id.org/genji/translation/56>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/varnam-atkin> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2008" ;
+    dcterms:extent "18 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5> ;
+    dcterms:identifier "56" ;
+    dcterms:issued "2008" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "IBCパブリッシング"
+    ] ;
+    dcterms:title "Yūgao : stories from the tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9784896844795>, <https://ci.nii.ac.jp/ncid/BA88087492> .
+
+<https://w3id.org/genji/translation/57>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/varnam-atkin> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2009.4" ;
+    dcterms:extent "18cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "57" ;
+    dcterms:issued "2009" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "IBCパブリッシング"
+    ] ;
+    dcterms:title "Stories from The Tale of Genji Wakamurasaki" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9784794600004>, <https://ci.nii.ac.jp/ncid/BA90678210> .
+
+<https://w3id.org/genji/translation/58>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "c2010" ;
+    dcterms:extent "1155p ; 21cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "58" ;
+    dcterms:issued "2010" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "Tuttle Publishing"
+    ] ;
+    dcterms:title "The tale of Genji : The Arthur Waley translation of lady Murasaki's masterpiece" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000010942420>, <http://id.ndl.go.jp/jpno/21801324>, <http://iss.ndl.go.jp/isbn/9784805310816> .
+
+<https://w3id.org/genji/translation/59>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/washburn> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "c2010" ;
+    dcterms:extent "21 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "59" ;
+    dcterms:issued "2010" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Tuttle Pub."
+    ] ;
+    dcterms:title "The tale of Genji : the Arthur Waley translation of Lady Murasaki's masterpiece" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9784805310816>, <http://lccn.loc.gov/2009036277>, <https://ci.nii.ac.jp/ncid/BB01543239> .
+
+<https://w3id.org/genji/translation/6>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1926" ;
+    dcterms:extent "22 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18> ;
+    dcterms:identifier "6" ;
+    dcterms:issued "1926" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "G. Allen & Unwin"
+    ] ;
+    dcterms:title "The sacred tree : being the second part of \"The tale of Genji\"" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://lccn.loc.gov/35011371>, <https://ci.nii.ac.jp/ncid/BA12146889> .
+
+<https://w3id.org/genji/translation/60>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2011" ;
+    dcterms:extent "28 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "60" ;
+    dcterms:issued "2011" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "ZuuBooks"
+    ] ;
+    dcterms:title "The Tale of Genji : Genji Monogatari" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9781463528379>, <https://ci.nii.ac.jp/ncid/BB10682746> .
+
+<https://w3id.org/genji/translation/61>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/hijiya>, <https://w3id.org/genji/translator/toyota> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2012.1" ;
+    dcterms:extent "220p ; 21cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54> ;
+    dcterms:identifier "61" ;
+    dcterms:issued "2012" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Kyoto" ;
+        a foaf:Agent ;
+        foaf:name "Yamaguchi Shoten"
+    ] ;
+    dcterms:title "The tale of Genji. the Uji chapters part Ⅱ" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/023395193>, <http://id.ndl.go.jp/jpno/22039217>, <http://iss.ndl.go.jp/isbn/9784841109146> .
+
+<https://w3id.org/genji/translation/62>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993>, [
+        a foaf:Agent ;
+        foaf:name "コトノ・キリエ"
+    ] ;
+    dcterms:date "2012.2" ;
+    dcterms:extent "102p ; 26cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1> ;
+    dcterms:identifier "62" ;
+    dcterms:issued "2012" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "東京" ;
+        a foaf:Agent ;
+        foaf:name "バベル・プレス"
+    ] ;
+    dcterms:title "英語対訳「源氏物語(桐壺)」 : E.G. サイデンステッカー訳と読む" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/023338431>, <http://id.ndl.go.jp/jpno/22022148>, <http://iss.ndl.go.jp/isbn/9784894491243>, <https://ci.nii.ac.jp/ncid/BB08516176> .
+
+<https://w3id.org/genji/translation/63>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "c2012" ;
+    dcterms:extent "23 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "63" ;
+    dcterms:issued "2012" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Popular Classics Pub."
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9781388187460>, <https://ci.nii.ac.jp/ncid/BB27656977> .
+
+<https://w3id.org/genji/translation/64>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/hijiya>, <https://w3id.org/genji/translator/toyota> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2013.6" ;
+    dcterms:extent "319p ; 21cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/50> ;
+    dcterms:identifier "64" ;
+    dcterms:issued "2013" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Kyoto" ;
+        a foaf:Agent ;
+        foaf:name "Yamaguchi Shoten"
+    ] ;
+    dcterms:title "The tale of Genji. the Uji chapters part 1" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/024634087>, <http://id.ndl.go.jp/jpno/22274276>, <http://iss.ndl.go.jp/isbn/9784841109139> .
+
+<https://w3id.org/genji/translation/65>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/washburn> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[2015]" ;
+    dcterms:extent "xxxviii, 1320 pages ; 25 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "65" ;
+    dcterms:issued "2015" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London", "New York" ;
+        a foaf:Agent ;
+        foaf:name "W.W. Norton & Company"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/025944273>, <http://iss.ndl.go.jp/isbn/0393047873>, <http://iss.ndl.go.jp/isbn/9780393047875>, <http://lccn.loc.gov/2014045358>, <http://www.worldcat.org/oclc/891611234> .
+
+<https://w3id.org/genji/translation/66>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/washburn> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "2016, c2015" ;
+    dcterms:extent "24 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "66" ;
+    dcterms:issued "2016" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "W.W. Norton"
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9780393353396>, <https://ci.nii.ac.jp/ncid/BB27538347> .
+
+<https://w3id.org/genji/translation/67>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "c2018" ;
+    dcterms:extent "223p ; 21cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "67" ;
+    dcterms:issued "2018" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "Tuttle Publishing"
+    ] ;
+    dcterms:title "THE TALE OF GENJI : The Authentic First Translation of the World's Earliest Novel" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/028954724>, <http://id.ndl.go.jp/jpno/23195159>, <http://iss.ndl.go.jp/isbn/9784805314647> .
+
+<https://w3id.org/genji/translation/68>
+    dcndl:edition "First edition" ;
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/washburn> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[2021]" ;
+    dcterms:extent "xxxviii, 1377 pages ; 24 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "68" ;
+    dcterms:issued "2021" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "New York, N.Y" ;
+        a foaf:Agent ;
+        foaf:name "W.W. Norton & Company"
+    ] ;
+    dcterms:title "The tale of Genji : a new translation, contexts, criticism" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/031460806>, <http://iss.ndl.go.jp/isbn/9780393933987>, <http://lccn.loc.gov/2020022179> .
+
+<https://w3id.org/genji/translation/69>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "CN"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "c2022" ;
+    dcterms:extent "22 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "69" ;
+    dcterms:issued "2022" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Eastern Indiana Publishing Co."
+    ] ;
+    dcterms:title "The tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://iss.ndl.go.jp/isbn/9781774265963>, <https://ci.nii.ac.jp/ncid/BD0069381X> .
+
+<https://w3id.org/genji/translation/7>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "US"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1926" ;
+    dcterms:extent "23 cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "7" ;
+    dcterms:issued "1926" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        a foaf:Agent ;
+        foaf:name "Houghton Mifflin"
+    ] ;
+    dcterms:title "The sacred tree : being the second part of \"The tale of Genji\"" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <https://ci.nii.ac.jp/ncid/BA03983348> .
+
+<https://w3id.org/genji/translation/70>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/seidensticker> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[2023]" ;
+    dcterms:extent "1090p ; 21cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18>, <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28>, <https://w3id.org/genji/chapter/29>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/30>, <https://w3id.org/genji/chapter/31>, <https://w3id.org/genji/chapter/32>, <https://w3id.org/genji/chapter/33>, <https://w3id.org/genji/chapter/34>, <https://w3id.org/genji/chapter/35>, <https://w3id.org/genji/chapter/36>, <https://w3id.org/genji/chapter/37>, <https://w3id.org/genji/chapter/38>, <https://w3id.org/genji/chapter/39>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/40>, <https://w3id.org/genji/chapter/41>, <https://w3id.org/genji/chapter/42>, <https://w3id.org/genji/chapter/43>, <https://w3id.org/genji/chapter/44>, <https://w3id.org/genji/chapter/45>, <https://w3id.org/genji/chapter/46>, <https://w3id.org/genji/chapter/47>, <https://w3id.org/genji/chapter/48>, <https://w3id.org/genji/chapter/49>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/50>, <https://w3id.org/genji/chapter/51>, <https://w3id.org/genji/chapter/52>, <https://w3id.org/genji/chapter/53>, <https://w3id.org/genji/chapter/54>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "70" ;
+    dcterms:issued "2023" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "チャールズ・イー・タトル出版"
+    ] ;
+    dcterms:title "The Tale of Genji" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/032898845>, <http://id.ndl.go.jp/jpno/23878859>, <http://iss.ndl.go.jp/isbn/9784805317594> .
+
+<https://w3id.org/genji/translation/71>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "JP"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/suematsu> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "[2024]" ;
+    dcterms:extent "223p ; 21cm" ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/1>, <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/2>, <https://w3id.org/genji/chapter/3>, <https://w3id.org/genji/chapter/4>, <https://w3id.org/genji/chapter/5>, <https://w3id.org/genji/chapter/6>, <https://w3id.org/genji/chapter/7>, <https://w3id.org/genji/chapter/8>, <https://w3id.org/genji/chapter/9> ;
+    dcterms:identifier "71" ;
+    dcterms:issued "2024" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "Tokyo" ;
+        a foaf:Agent ;
+        foaf:name "チャールズ・イー・タトル出版"
+    ] ;
+    dcterms:title "THE TALE OF GENJI" ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/033508050>, <http://id.ndl.go.jp/jpno/24021474>, <http://iss.ndl.go.jp/isbn/9784805318485> .
+
+<https://w3id.org/genji/translation/8>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1927." ;
+    dcterms:extent "304 p. 22 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/10>, <https://w3id.org/genji/chapter/11>, <https://w3id.org/genji/chapter/12>, <https://w3id.org/genji/chapter/13>, <https://w3id.org/genji/chapter/14>, <https://w3id.org/genji/chapter/15>, <https://w3id.org/genji/chapter/16>, <https://w3id.org/genji/chapter/17>, <https://w3id.org/genji/chapter/18> ;
+    dcterms:identifier "8" ;
+    dcterms:issued "1927" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London" ;
+        a foaf:Agent ;
+        foaf:name "G. Allen & Unwin ltd."
+    ] ;
+    dcterms:title "The sacred tree, being the second part of \"The tale of Genji\", translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281247>, <http://lccn.loc.gov/35011371> .
+
+<https://w3id.org/genji/translation/9>
+    dcndl:originalLanguage "jpn"^^dcterms:ISO639-2 ;
+    dcndl:publicationPlace "GB"^^dcterms:ISO3166 ;
+    dcterms:contributor <https://w3id.org/genji/translator/waley> ;
+    dcterms:creator <http://id.ndl.go.jp/auth/entity/00270993> ;
+    dcterms:date "1927." ;
+    dcterms:extent "312 p. ; 23 cm." ;
+    dcterms:hasPart <https://w3id.org/genji/chapter/19>, <https://w3id.org/genji/chapter/20>, <https://w3id.org/genji/chapter/21>, <https://w3id.org/genji/chapter/22>, <https://w3id.org/genji/chapter/23>, <https://w3id.org/genji/chapter/24>, <https://w3id.org/genji/chapter/25>, <https://w3id.org/genji/chapter/26>, <https://w3id.org/genji/chapter/27>, <https://w3id.org/genji/chapter/28> ;
+    dcterms:identifier "9" ;
+    dcterms:issued "1927" ;
+    dcterms:language "eng"^^dcterms:ISO639-2 ;
+    dcterms:publisher [
+        dcndl:location "London" ;
+        a foaf:Agent ;
+        foaf:name "Allen & Unwin"
+    ] ;
+    dcterms:title "A wreath of cloud : being the third part of \"The tale of Genji\" / translated from the Japanese by Arthur Waley." ;
+    a dcndl:BibResource ;
+    rdfs:seeAlso <http://id.ndl.go.jp/bib/000006281256> .
+
+<https://w3id.org/genji/translator/hijiya>
+    a foaf:Agent ;
+    rdfs:seeAlso <http://id.ndl.go.jp/auth/entity/00962884> ;
+    foaf:name "Hijiya, Kazuyuki"@en, "ヒジヤ, カズユキ"@ja-kana, "土屋, 和之"@ja .
+
+<https://w3id.org/genji/translator/horton>
+    rda:dateOfBirth "1952" ;
+    a foaf:Agent ;
+    rdfs:seeAlso <https://id.ndl.go.jp/auth/entity/00742718> ;
+    foaf:name "Horton, H. Mack"@en .
+
+<https://w3id.org/genji/translator/seidensticker>
+    rda:dateOfBirth "1921" ;
+    rda:dateOfDeath "2007" ;
+    a foaf:Agent ;
+    rdfs:seeAlso <http://id.ndl.go.jp/auth/entity/00456035> ;
+    foaf:name "Seidensticker, Edward"@en .
+
+<https://w3id.org/genji/translator/suematsu>
+    rda:dateOfBirth "1855" ;
+    rda:dateOfDeath "1920" ;
+    a foaf:Agent ;
+    rdfs:seeAlso <http://id.ndl.go.jp/auth/entity/00073853> ;
+    foaf:name "Suematsu Kencho"@en, "スエマツ, ケンチョウ"@ja-kana, "末松, 謙澄"@ja .
+
+<https://w3id.org/genji/translator/toyota>
+    a foaf:Agent ;
+    rdfs:seeAlso <http://id.ndl.go.jp/auth/entity/001098296> ;
+    foaf:name "Toyota, Nahoko"@en, "トヨタ, ナホコ"@ja-kana, "豊田, 菜保子"@ja .
+
+<https://w3id.org/genji/translator/tyler>
+    rda:dateOfBirth "1936" ;
+    a foaf:Agent ;
+    rdfs:seeAlso <http://id.ndl.go.jp/auth/entity/00476408> ;
+    foaf:name "Tyler, Royall"@en .
+
+<https://w3id.org/genji/translator/varnam-atkin>
+    rda:dateOfBirth "1949" ;
+    a foaf:Agent ;
+    rdfs:seeAlso <https://id.ndl.go.jp/auth/entity/00855992> ;
+    foaf:name "Varnam-Atkin, Stuart"@en .
+
+<https://w3id.org/genji/translator/waley>
+    rda:dateOfBirth "1889" ;
+    rda:dateOfDeath "1966" ;
+    a foaf:Agent ;
+    rdfs:seeAlso <http://id.ndl.go.jp/auth/entity/00460025> ;
+    foaf:name "Waley, Arthur"@en .
+
+<https://w3id.org/genji/translator/washburn>
+    rda:dateOfBirth "1954" ;
+    a foaf:Agent ;
+    foaf:name "Washburn, Dennis C."@en .
+
