@@ -939,7 +939,7 @@ RSpec.describe TTL2HTML::App do
     end
     it "should output Microdata compliant markup for blank nodes" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
-      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_sort_complexdata.ttl"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_subject.ttl"))
       @ttl2html.output_html_files
       cont = open("/tmp/html/b.html"){|io| io.read }
       html = Capybara.string cont
