@@ -1,6 +1,8 @@
-# ttl2html  [![Ruby test](https://github.com/masao/ttl2html/actions/workflows/ruby.yml/badge.svg)](https://github.com/masao/ttl2html/actions/workflows/ruby.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/6897bef51f3280ae64e5/maintainability)](https://codeclimate.com/github/masao/ttl2html/maintainability)
+# ttl2html  [![Ruby test](https://github.com/masao/ttl2html/actions/workflows/ruby.yml/badge.svg)](https://github.com/masao/ttl2html/actions/workflows/ruby.yml) [![Maintainability](https://qlty.sh/gh/masao/projects/ttl2html/maintainability.svg)](https://qlty.sh/gh/masao/projects/ttl2html)
 
 <div align="right">日本語: https://github.com/masao/ttl2html/blob/master/README-ja.md</div>
+
+@tmasao
 
 ## 📘 Documentation
 
