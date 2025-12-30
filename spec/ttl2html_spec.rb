@@ -1,5 +1,5 @@
+spec_base_dir = File.dirname(__FILE__)
 RSpec.describe TTL2HTML::App do
-  spec_base_dir = File.dirname(__FILE__)
   context "#new" do
     it "should construct a new instance" do
       ttl2html = TTL2HTML::App.new
@@ -1139,5 +1139,16 @@ RSpec.describe TTL2HTML::App do
       expect(labels["https://example.org/Item"]).to have_key "https://example.org/b"
       expect(labels["https://example.org/Item"]["https://example.org/b"].first).to eq "Foo"
     end
+  end
+end
+
+RSpec.describe "bin/ttl2html" do
+  require "open3"
+  it "should output usages when no input given" do
+    stdout, stderr, status = Open3.capture3("ruby -I#{spec_base_dir}/../lib bin/ttl2html")
+    msg = stdout
+    err_msg = stderr
+    expect(err_msg).not_to include("output_html_files")
+    expect(msg).to include("Usage")
   end
 end

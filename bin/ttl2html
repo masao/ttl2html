@@ -36,6 +36,8 @@ ARGV.each do |file|
 end
 if opt_cleanup
   ttl2html.cleanup
+elsif ARGV.empty?
+  usage
 else
   ttl2html.output_files
 end
