@@ -209,6 +209,7 @@ module TTL2HTML
           template = Template.new("index.html.erb", @config)
           param = @config.dup
           param[:class_label] = template.get_title(@data[@config[:top_class]], nil)
+          param[:class_label] ||= @config[:top_class].split(/[\/\#]/).last.capitalize
           param[:data_global] = @data
           param[:data_inverse_global] = @data_inverse
           param[:versions] = versions

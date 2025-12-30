@@ -965,6 +965,14 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/index.html"){|io| io.read }
       expect(cont).not_to include "SPARQL"
     end
+    it "should output index list name in index.html" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_nolabel.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css "h2", text: "List of B"
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
