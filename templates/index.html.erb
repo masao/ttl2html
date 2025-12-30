@@ -40,11 +40,15 @@
           <%- end -%>
         </div>
       </div>
-      <div class="col-md">
-        <h2 id="sparql-endpoint"><%=h t("index.sparql-endpoint") %> <i class="bi bi-database-add"></i></h2>
-        <p>
-        <%= t("index.sparql-endpoint-text") %>: <a href="<%=h param[:toplevel][:endpoint] %>"><%=h param[:toplevel][:endpoint] %></a>
-        </p>
+      <%- end -%>
+      <%- if param[:toplevel][:endpoint] -%>
+      <div class="row">
+        <div class="col-md">
+          <h2 id="sparql-endpoint"><%=h t("index.sparql-endpoint") %> <i class="bi bi-database-add"></i></h2>
+          <p>
+          <%= t("index.sparql-endpoint-text") %>: <a href="<%=h param[:toplevel][:endpoint] %>"><%=h param[:toplevel][:endpoint] %></a>
+          </p>
+        </div>
       </div>
       <%- end -%>
     </div>

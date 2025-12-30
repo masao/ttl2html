@@ -20,3 +20,6 @@ _:toplevel a void:Dataset;
     rdf:value <https://creativecommons.org/publicdomain/zero/1.0/>
   ].
 _:toplevel pav:hasCurrentVersion _:v1.0.
+_:v1.0 a void:Dataset;
+  dct:issued "2025-12-30";
+  dct:description "First release" .
