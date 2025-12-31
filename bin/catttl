@@ -35,7 +35,7 @@ ARGV.each do |file|
 end
 
 prefix.each do |k, v|
-  STDERR.puts "Duplicate prefixes: #{k}: #{v}" if v.uniq.size > 1
+  STDERR.puts "Duplicate prefixes: #{k}: #{v.uniq}" if v.uniq.size > 1
   prefix[k] = v.sort.first
 end
 dups = prefix.values.group_by{|e| e }.select{|k, v| v.size > 1 }.keys

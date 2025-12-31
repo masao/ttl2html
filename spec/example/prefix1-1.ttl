@@ -1,0 +1,2 @@
+@prefix ex: <https://example.org/>.
+:a :b :c .
