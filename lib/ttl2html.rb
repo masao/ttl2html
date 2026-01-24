@@ -548,7 +548,11 @@ module TTL2HTML
 
   def find_turtle(filename, params = {})
     if params[:noexpand] == true
-      filename if File.exists? filename
+      if File.exist? filename
+        filename
+      else
+        nil
+      end
     else
       file = nil
       basename = File.basename(filename, ".ttl")

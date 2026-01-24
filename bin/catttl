@@ -1,18 +1,39 @@
 #!/usr/bin/env ruby
 
 require "zlib"
+require "getoptlong"
 require "ttl2html"
 include TTL2HTML
 
 prefix = {}
 ttl = []
+noexpand_filenames = false
 
+opts = GetoptLong.new(
+  ["--no-expand", "-f", GetoptLong::NO_ARGUMENT],
+  ["--help", "-h", GetoptLong::NO_ARGUMENT]
+)
+
+opts.each do |opt, arg|
+  case opt
+  when "--no-expand"
+    noexpand_filenames = true
+  when "--help"
+    puts "Usage: catttl [options] [files]"
+    puts "Options:"
+    puts "  -f, --no-expand  Do not expand filenames"
+    puts "  -h, --help        Show this help message"
+    exit
+  end
+end
+p ARGV
 ARGV.each do |file|
-  filename = find_turtle(file)
+  filename = find_turtle(file, noexpand: noexpand_filenames)
   if filename.nil?
     STDERR.puts "#{file} not found. skipping."
     next
   end
+  STDERR.puts filename
   klass = File
   if File.extname(filename) == ".gz"
     klass = Zlib::GzipReader
@@ -28,10 +49,6 @@ ARGV.each do |file|
       ttl << line
     end
   end
-end
-ARGV.each do |file|
-  filename = find_turtle(file)
-  STDERR.puts filename
 end
 
 prefix.each do |k, v|
