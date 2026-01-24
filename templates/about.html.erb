@@ -55,9 +55,13 @@
         <%- end -%>
         <%- if param[:toplevel][:endpoint] -%>
           <h2 id="sparql-endpoint"><%=h t("index.sparql-endpoint") %> <i class="bi bi-database-add"></i></h2>
-          <p>
-          <%= t("index.sparql-endpoint-text") %>: <a href="<%=h param[:toplevel][:endpoint] %>"><%=h param[:toplevel][:endpoint] %></a>
-          </p>
+          <p><%= t("index.sparql-endpoint-text") %></p>
+          <ul>
+            <%- if param[:toplevel][:endpoint_landingpage] -%>
+            <li><%= t("index.sparql-endpoint-landingpage") %>: <a href="<%=h param[:toplevel][:endpoint_landingpage] %>"><%=h param[:toplevel][:endpoint_landingpage] %></a></li>
+            <%- end -%>
+            <li><%= t("index.sparql-endpoint") %>: <a href="<%=h param[:toplevel][:endpoint] %>"><%=h param[:toplevel][:endpoint] %></a></li>
+          </ul>
         <%- end -%>
         <%- if param[:toplevel] and param[:toplevel][:contact] -%>
           <h2 id="contact"><%=h t("about.contact") %></h2>

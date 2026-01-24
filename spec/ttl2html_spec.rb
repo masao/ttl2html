@@ -450,7 +450,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_selector ".license img"
       expect(html).to have_selector ".license img[alt='']"
     end
-    it "should add link to the SPARQL endpoint info on index and about pages" do
+    it "should add link to the SPARQL endpoint info with void vocab on index and about pages" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions-endpoint.ttl"))
       @ttl2html.output_html_files
@@ -460,6 +460,19 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_link "https://example.org/endpoint"
+    end
+    it "should add link to the SPARQL endpoint info with dcat vocabs on index and about pages" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions-endpoint-dcat.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_link "https://example.org/endpoint"
+      expect(html).to have_link "https://example.org/endpoint-info"
+      cont = open("/tmp/html/about.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_link "https://example.org/endpoint"
+      expect(html).to have_link "https://example.org/endpoint-info"
     end
     it "should output citing reference fro the derivatives on index and about page" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

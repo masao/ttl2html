@@ -23,7 +23,8 @@ en:
     past-versions: "Past versions"
     license-text: "This dataset is freely usable as <a href=\"%{url}\">%{label}</a>."
     sparql-endpoint: "SPARQL Endpoint"
-    sparql-endpoint-text: "The SPARQL endpoint for the dataset is available at"
+    sparql-endpoint-text: "The SPARQL endpoint for the dataset is available at:"
+    sparql-endpoint-landingpage: "Search page"
   dataset:
     derivedfrom-text: "This dataset is created by editing <a href=\"%{url}\">\"%{label}\"</a>."
     license-text: "This dataset is freely usable as <a href=\"%{url}\">%{label}</a>."

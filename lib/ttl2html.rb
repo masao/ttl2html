@@ -487,12 +487,21 @@ module TTL2HTML
         if data["http://rdfs.org/ns/void#sparqlEndpoint"]
           endpoint = data["http://rdfs.org/ns/void#sparqlEndpoint"].first
         end
+        if data["http://www.w3.org/ns/dcat#accessService"]
+          service = data["http://www.w3.org/ns/dcat#accessService"].first
+          service_data = @data[service]
+          if service_data
+            endpoint = service_data["http://www.w3.org/ns/dcat#endpointURL"]&.first
+            endpoint_landingpage = service_data["http://www.w3.org/ns/dcat#landingPage"]&.first
+          end
+        end
         result = {
           uri: toplevel.to_s,
           description: data["http://purl.org/dc/terms/description"],
           license: license,
           contact: contact,
           endpoint: endpoint,
+          endpoint_landingpage: endpoint_landingpage,
           derivedfrom: derivedfrom,
         }
       end
