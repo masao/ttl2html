@@ -45,6 +45,7 @@
       <div class="row">
         <div class="col-md">
           <h2 id="sparql-endpoint"><%=h t("index.sparql-endpoint") %> <i class="bi bi-database-add"></i></h2>
+          <p><%= t("index.sparql-endpoint-text") %></p>
           <ul>
             <%- if param[:toplevel][:endpoint_landingpage] -%>
             <li><%= t("index.sparql-endpoint-landingpage") %>: <a href="<%=h param[:toplevel][:endpoint_landingpage] %>"><%=h param[:toplevel][:endpoint_landingpage] %></a></li>
