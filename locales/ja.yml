@@ -16,6 +16,7 @@ ja:
   default:
     details: 詳細情報
     inverse_data: 被参照情報
+    copy-link: "リンクをコピー"
   index:
     derivedfrom-text: "このデータセットは<a href=\"%{url}\">「%{label}」</a>を加工して作成。"
     list: "%{resource} 一覧"

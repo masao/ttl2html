@@ -16,6 +16,7 @@ en:
   default:
     details: Details
     inverse_data: Referred resources
+    copy-link: "Copy Link"
   index:
     derivedfrom-text: "This dataset is created by editing <a href=\"%{url}\">\"%{label}\"</a>."
     list: "List of %{resource}"

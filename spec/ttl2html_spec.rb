@@ -986,6 +986,14 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css "h2", text: "List of B"
     end
+    it "should output copy url button when enable_copy_link_button is true" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example_copy_link.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/a/index.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css "button#copy-link"
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil
