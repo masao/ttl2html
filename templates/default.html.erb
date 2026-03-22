@@ -8,7 +8,7 @@
         <i class="bi bi-link-45deg"></i> <a href="<%=h param[:uri] %>"><%=h param[:uri] %></a>
         <%- if param[:enable_copy_link_button] -%>
         <button id="copy-link" class="btn btn-sm btn-outline-secondary" aria-live="polite">
-        <i class="bi bi-clipboard"></i> <span class="copy-link-text"><%=h t("default.copy-link") %></span>
+        <i class="bi bi-copy"></i> <span class="copy-link-text"><%=h t("default.copy-link") %></span>
         </button>
         <%- end -%>
         </p>
