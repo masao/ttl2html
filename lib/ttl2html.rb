@@ -27,7 +27,7 @@ module TTL2HTML
 
     def load_config(file)
       config = { output_turtle: true }
-      open(file) do |io|
+      File.open(file) do |io|
         YAML.safe_load(io, permitted_classes: [Regexp]).each do |k, v|
           config[k.intern] = v
         end
