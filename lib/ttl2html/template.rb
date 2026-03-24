@@ -27,7 +27,7 @@ module TTL2HTML
       @param[:output_file] = file
       dir = File.dirname(file)
       FileUtils.mkdir_p(dir) if not File.exist?(dir)
-      open(file, "w") do |io|
+      File.open(file, "w") do |io|
         io.print to_html(@param)
       end
     end
@@ -39,7 +39,7 @@ module TTL2HTML
     def to_html_raw(template, param)
       @param.update(param)
       template = find_template_path(template)
-      tmpl = open(template){|io| io.read }
+      tmpl = File.open(template) { |io| io.read }
       erb = ERB.new(tmpl, trim_mode: "-")
       erb.filename = template
       erb.result(binding)
