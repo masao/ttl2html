@@ -58,9 +58,9 @@ RSpec.describe TTL2HTML::App do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
       @ttl2html.output_html_files
-      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/index.html").read, max_errors: -1)
+      doc = Nokogiri::HTML5::Document.parse(File.read("/tmp/html/index.html"), max_errors: -1)
       expect(doc.errors).to be_empty
-      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/a/index.html").read, max_errors: -1)
+      doc = Nokogiri::HTML5::Document.parse(File.read("/tmp/html/a/index.html"), max_errors: -1)
       expect(doc.errors).to be_empty
     end
     it "shoud have no errors in HTML for versions info" do
@@ -68,7 +68,7 @@ RSpec.describe TTL2HTML::App do
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/versions.ttl"))
       @ttl2html.output_html_files
       [ "/tmp/html/index.html", "/tmp/html/about.html" ].each do |file|
-        cont = open(file).read
+        cont = File.read(file)
         doc = Nokogiri::HTML5::Document.parse(cont, max_errors: -1)
         expect(doc.errors).to be_empty
       end
@@ -77,7 +77,7 @@ RSpec.describe TTL2HTML::App do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/shape_with_instances.ttl"))
       @ttl2html.output_html_files
-      doc = Nokogiri::HTML5::Document.parse(open("/tmp/html/about.html").read, max_errors: -1)
+      doc = Nokogiri::HTML5::Document.parse(File.read("/tmp/html/about.html"), max_errors: -1)
       expect(doc.errors).to be_empty
     end
     it "should deal with path separators" do
