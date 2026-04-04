@@ -28,4 +28,4 @@ ex:AShape a sh:NodeShape;
     sh:name "Related items";
     skos:example ex:b;
     sh:class ex:a;
-  ]
+  ].
