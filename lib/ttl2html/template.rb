@@ -20,7 +20,7 @@ module TTL2HTML
       @template_path << File.join(File.dirname(__FILE__), "..", "..", "templates")
       I18n.load_path << Dir[File.join(File.dirname(__FILE__), "..", "..", "locales") + "/*.yml"]
       I18n.load_path << Dir[File.expand_path("locales") + "/*.yml"]
-      I18n.locale = @param[:locale] if @param[:locale]
+      I18n.locale = @param[:locale].to_sym if @param[:locale]
     end
     def output_to(file, param = {})
       @param.update(param)
