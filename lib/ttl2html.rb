@@ -135,7 +135,9 @@ module TTL2HTML
         format: "(%t) %a %e %P% Processed: %c from %C"
       }
       data = @data.keys.sort_by do|uri|
-        [ uri.count("/"), uri.size, uri ] 
+        local_path = uri_mapping_to_path(uri, @config, ".html")
+        #p [ local_path.size, local_path.count("/"), local_path ]
+        [ local_path.size, local_path.count("/"), local_path ]
       end.reverse
       Parallel.each(data, progress: progressbar_options) do |uri|
         next if not uri.start_with? @config[:base_uri]
@@ -185,6 +187,7 @@ module TTL2HTML
           param[:breadcrumbs_items] = build_breadcrumbs(uri, template)
         end
         file = uri_mapping_to_path(uri, @config, ".html")
+        #p [:each_data, uri, file]
         if @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
@@ -532,6 +535,7 @@ module TTL2HTML
     end
 
     def cleanup
+      dirs = []
       @data.select do |uri, v|
         uri.start_with? @config[:base_uri]
       end.sort_by do |uri, v|
@@ -539,18 +543,28 @@ module TTL2HTML
       end.each do |uri, v|
         html_file = uri_mapping_to_path(uri, @config, ".html")
         html_file = File.join(@config[:output_dir], html_file) if @config[:output_dir]
+        dirs << File.dirname(html_file)
         File.unlink html_file if File.exist? html_file
         ttl_file = uri_mapping_to_path(uri, @config, ".ttl")
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
         File.unlink ttl_file if File.exist? ttl_file
         dir = uri.sub(@config[:base_uri], "")
         dir = File.join(@config[:output_dir], dir) if @config[:output_dir]
-        Dir.rmdir dir if File.exist? dir
+        dirs << dir
       end
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
       if @config[:top_class] and File.exist? index_html
         File.unlink index_html
+      end
+      about_html = (@config[:about_file] || "about.html")
+      about_html = File.join(@config[:output_dir], about_html) if @config[:output_dir]
+      File.unlink about_html if File.exist? about_html
+
+      dirs = dirs.uniq.sort_by{|e| -(e.size) }
+      #p dirs
+      dirs.each do |dir|
+        Dir.rmdir(dir) if File.exist? dir
       end
     end
   end

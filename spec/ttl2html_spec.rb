@@ -994,6 +994,12 @@ RSpec.describe TTL2HTML::App do
       html = Capybara.string cont
       expect(html).to have_css "button#copy-link"
     end
+    it "should check generated files in respect to the uri_mapping settings" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_mapping2.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/example_mapping2.ttl"))
+      @ttl2html.output_html_files
+      expect(File.exist?("/tmp/html/a/index.html")).to be true
+    end
   end
   context "#output_turtle_files" do
     ttl2html = nil

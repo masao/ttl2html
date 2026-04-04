@@ -1,0 +1,7 @@
+@prefix ex: <https://example.org/> .
+ex:a a ex:b;
+ <http://purl.org/dc/terms/title> "test title".
+ex:aa a ex:b;
+ <http://purl.org/dc/terms/title> "test title2" .
+ex:aa\/a a ex:b;
+ <http://purl.org/dc/terms/title> "test title3" .

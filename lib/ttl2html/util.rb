@@ -1,29 +1,38 @@
 module TTL2HTML
   module Util
-    def uri_mapping_to_path(uri, param, suffix = ".html")
-      path = nil
+    def make_mapping_uris_cache(param)
+      @path_cache = []
+      data = @data || @param[:data_global] || @param[:data] || {}
+      data.keys.each do |uri|
+        local_path =_uri_mapping_to_path(uri, param)
+        @path_cache << local_path
+      end
+      @path_cache
+    end
+    def _uri_mapping_to_path(uri, param, suffix = ".html")
+      local_path = uri.sub(param[:base_uri], "")
       if param[:uri_mappings]
         param[:uri_mappings].each do |mapping|
-          local_file = uri.sub(param[:base_uri], "")
-          if mapping["regexp"] =~ local_file
-            path = local_file.sub(mapping["regexp"], mapping["path"])
+          if mapping["regexp"] =~ local_path
+            #p [mapping["regexp"], local_path]
+            local_path = local_path.sub(mapping["regexp"], mapping["path"])
+            #p [mapping["regexp"], local_path]
           end
         end
       end
-      if path.nil?
-        if suffix == ".html"
-          if @data.keys.find{|e| e.start_with?(uri + "/") }
-            path = uri + "/index"
-          elsif uri.end_with?("/")
-            path = uri + "index"
-          else
-            path = uri
-          end
-        else
-          path = uri
+      local_path
+    end
+    def uri_mapping_to_path(uri, param, suffix = ".html")
+      path = nil
+      @path_cache = make_mapping_uris_cache(param) if @path_cache.nil?
+      path = _uri_mapping_to_path(uri, param, suffix)
+      if suffix == ".html"
+        if @path_cache.find{|e| e.start_with?(path + "/") }
+          path += "/index"
+        elsif path.end_with?("/")
+          path += "index"
         end
       end
-      path = path.sub(param[:base_uri], "")
       path << suffix
       #p [uri, path]
       path
