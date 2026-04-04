@@ -1,4 +1,6 @@
 spec_base_dir = File.dirname(__FILE__)
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
 RSpec.describe TTL2HTML::App do
   context "#new" do
     it "should construct a new instance" do
