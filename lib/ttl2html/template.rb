@@ -23,12 +23,12 @@ module TTL2HTML
       I18n.locale = @param[:locale].to_sym if @param[:locale]
     end
     def output_to(file, param = {})
-      @param.update(param)
-      @param[:output_file] = file
+      param = @param.merge(param)
+      param[:output_file] = file
       dir = File.dirname(file)
       FileUtils.mkdir_p(dir) if not File.exist?(dir)
       File.open(file, "w") do |io|
-        io.print to_html(@param)
+        io.print to_html(param)
       end
     end
     def to_html(param)
