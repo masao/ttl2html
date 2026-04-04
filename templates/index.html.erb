@@ -9,7 +9,7 @@
         <%- end -%>
         <p><i class="bi bi-link-45deg"></i> <a href="<%=h param[:base_uri] %>"><%=h param[:base_uri] %></a></p>
         <%- if param[:about_file] -%>
-        <p><a class="btn btn-info" href="<%=h relative_path(param[:about_file]) %>"><%=h t("about.title", title: param[:site_title]) %> &raquo;</a></p>
+        <p><a class="btn btn-info" href="<%=h relative_path(param[:output_file], param[:about_file]) %>"><%=h t("about.title", title: param[:site_title]) %> &raquo;</a></p>
         <%- end -%>
       </div>
     </div>
@@ -23,7 +23,7 @@
             <%= format_version_info(param[:versions].last) %>
           </dl>
           <%- if param[:about_file] and param[:versions].size > 1 -%>
-          <p><a href="<%=h relative_path(param[:about_file]) %>#versions">&raquo; <%=h t("index.past-versions") %></a></p>
+          <p><a href="<%=h relative_path(param[:output_file], param[:about_file]) %>#versions">&raquo; <%=h t("index.past-versions") %></a></p>
           <%- end -%>
           <%- if param[:toplevel] and not param[:toplevel][:license].empty? -%>
           <p class="license">

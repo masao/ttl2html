@@ -9,7 +9,6 @@ require "nokogiri"
 
 module TTL2HTML
   class Template
-    attr_reader :param
     include ERB::Util
     include I18n::Base
     include ActionView::Helpers::NumberHelper
@@ -37,7 +36,7 @@ module TTL2HTML
       to_html_raw(layout_fname, param)
     end
     def to_html_raw(template, param)
-      @param.update(param)
+      param = @param.merge(param)
       template = find_template_path(template)
       tmpl = File.open(template) { |io| io.read }
       erb = ERB.new(tmpl, trim_mode: "-")
@@ -121,13 +120,12 @@ module TTL2HTML
 
     # helper method:
     include TTL2HTML::Util
-    def relative_path(dest)
+    def relative_path(src, dest)
       path = nil
       dest_uri = RDF::IRI.parse(dest)
       if dest_uri.absolute?
         path = dest
       else
-        src = @param[:output_file]
         src = Pathname.new(src).relative_path_from(Pathname.new(@param[:output_dir])) if @param[:output_dir]
         path = Pathname(dest).relative_path_from(Pathname(File.dirname src))
         if @param[:output_dir] and File.directory?(Pathname.new(@param[:output_dir]) + path)
@@ -139,11 +137,11 @@ module TTL2HTML
       #p [ :relative_path, path, dest, src ]
       path
     end
-    def relative_path_uri(dest_uri, base_uri = @param[:base_uri])
+    def relative_path_uri(src, dest_uri, base_uri = @param[:base_uri])
       if dest_uri.start_with? base_uri
         dest = dest_uri.sub(base_uri, "")
         dest = uri_mapping_to_path(dest, @param, "")
-        relative_path(dest)
+        relative_path(src, dest)
       else
         dest_uri
       end
@@ -196,20 +194,23 @@ module TTL2HTML
         object
       end
     end
-    def format_property(property, labels = {}, subject = nil)
-      subject = @param[:blank_subject] if not subject and @param[:blank_subject]
-      subject_class = @param[:data_global][subject][RDF.type.to_s]&.first if subject
-      if subject_class and @param[:labels_with_class][subject_class] and @param[:labels_with_class][subject_class][property]
-        @param[:labels_with_class][subject_class][property]
-      elsif labels and labels[property]
-        labels[property]
+    def format_property(property, param, subject = nil)
+      param = @param.merge(param)
+      subject = param[:blank_subject] if not subject and param[:blank_subject]
+      subject_class = param[:data_global][subject][RDF.type.to_s]&.first if subject
+      if subject_class and param[:labels_with_class][subject_class] and param[:labels_with_class][subject_class][property]
+        param[:labels_with_class][subject_class][property]
+      elsif param[:labels] and param[:labels][property]
+        param[:labels][property]
       else
         property.split(/[\/\#]/).last.capitalize
       end
     end
-    def format_object(object, data, type = {})
+    def format_object(object, param)
+      type = param[:type] || {}
+      data = param[:data] || {}
       if /\Ahttps?:\/\// =~ object.to_s
-        rel_path = relative_path_uri(object, param[:base_uri])
+        rel_path = relative_path_uri(param[:output_file], object, param[:base_uri])
         if param[:data_global][object]
           result = "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or ERB::Util.html_escape(object)}</a>"
           subtitle = get_subtitle(param[:data_global][object])
@@ -223,16 +224,17 @@ module TTL2HTML
         end
       elsif /\A_:/ =~ object.to_s and param[:data_global][object]
         if type[:inverse] and param[:data_inverse_global][object]
-          format_triples(param[:data_inverse_global][object], inverse: true, blank: true)
+          format_triples(param[:data_inverse_global][object], param, inverse: true, blank: true)
         else
-          format_triples(param[:data_global][object], blank: true)
+          format_triples(param[:data_global][object], param, blank: true)
         end
       else
         ERB::Util.html_escape object
       end
     end
-    def format_triples(triples, type = {})
-      param_local = @param.dup.merge(data: triples)
+    def format_triples(triples, param, type = {})
+      param_local = @param.dup.merge(param)
+      param_local = param_local.merge(data: triples)
       param_local[:type] = type
       if @param[:labels_with_class] and triples["http://www.w3.org/1999/02/22-rdf-syntax-ns#type"]
         @param[:labels_with_class].reverse_each do |k, v|
@@ -324,6 +326,7 @@ module TTL2HTML
       value && !(value.respond_to?(:empty?) && value.empty?)
     end
     def sort_criteria(val, data_global)
+      raise "sort_criteria got nil." if data_global.nil?
       resource = data_global[val]
       results = []
       [

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc/dist/bootstrap-toc.min.css">
     <%- end -%>
     <%- Array(param[:css_file]).each do |file| -%>
-    <link rel="stylesheet" href="<%=h relative_path(file) %>">
+    <link rel="stylesheet" href="<%=h relative_path(param[:output_file], file) %>">
     <%- end -%>
     <%- if param[:custom_css] -%>
     <style type="text/css"><%=h param[:custom_css] %></style>
@@ -51,8 +51,8 @@
   <body<%= ' data-spy="scroll" data-target="#toc"' if @template == "about.html.erb" and param[:about_toc] %>>
     <nav class="navbar navbar-expand-lg <%=h param[:navbar_class] || "navbar-light" %>">
       <%- if param[:logo] -%>
-      <a class="navbar-brand" href="<%=h relative_path_uri(param[:base_uri]) %>">
-        <img src="<%=h relative_path(param[:logo]) %>" style="max-height: 54px" alt="<%=h param[:site_title] %>">
+      <a class="navbar-brand" href="<%=h relative_path_uri(param[:output_file], param[:base_uri]) %>">
+        <img src="<%=h relative_path(param[:output_file], param[:logo]) %>" style="max-height: 54px" alt="<%=h param[:site_title] %>">
       </a>
       <%- end -%>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,16 +61,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item<%= ' active' if @template == "index.html.erb" %>">
-            <a class="nav-link" href="<%=h relative_path_uri(param[:base_uri]) %>">Home</a>
+            <a class="nav-link" href="<%=h relative_path_uri(param[:output_file], param[:base_uri]) %>">Home</a>
           </li>
           <%- if param[:about_file] -%>
           <li class="nav-item<%= ' active' if @template == "about.html.erb" %>">
-            <a class="nav-link" href="<%=h relative_path(param[:about_file]) %>">About</a>
+            <a class="nav-link" href="<%=h relative_path(param[:output_file], param[:about_file]) %>">About</a>
           </li>
           <%- end -%>
           <%- if param[:additional_link] -%>
             <%- param[:additional_link].each do |link| -%>
-            <li class="nav-item"><a class="nav-link" href="<%=h link["href"] %>"><%=h link["label"] %></a></li>
+            <li class="nav-item"><a class="nav-link" href="<%=h relative_path_uri(param[:output_file], link["href"]) %>"><%=h link["label"] %></a></li>
             <%- end -%>
           <%- end -%>
         </ul>
@@ -103,7 +103,7 @@
     <script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc/dist/bootstrap-toc.min.js"></script>
     <%- end -%>
     <%- Array(param[:javascript_file]).each do |file| -%>
-    <script src="<%=h relative_path(file) %>"></script>
+    <script src="<%=h relative_path(param[:output_file], file) %>"></script>
     <%- end -%>
   </body>
 </html>

@@ -15,9 +15,9 @@ RSpec.describe TTL2HTML::Template do
   context "#relative_path_uri" do
     it "should generate relative path" do
       tmpl = TTL2HTML::Template.new("", output_file: "a.html", base_uri: "http://example.org/")
-      path = tmpl.relative_path_uri("http://example.org/a", "http://example.org/")
+      path = tmpl.relative_path_uri("a.html", "http://example.org/a", "http://example.org/")
       expect(path).to eq Pathname.new("a")
-      path = tmpl.relative_path_uri("http://example.com/a", "http://example.org/")
+      path = tmpl.relative_path_uri("http://example.org/a", "http://example.com/a", "http://example.org/")
       expect(path).to eq "http://example.com/a"
     end
   end
@@ -38,10 +38,10 @@ RSpec.describe TTL2HTML::Template do
         "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" => "Class",
       }
       template = TTL2HTML::Template.new("")
-      expect(template.format_property("http://schema.org/name")).to eq "Name"
-      value = template.format_property("http://schema.org/name", labels)
+      expect(template.format_property("http://schema.org/name", {})).to eq "Name"
+      value = template.format_property("http://schema.org/name", {labels: labels})
       expect(value).to eq "Title"
-      value = template.format_property("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", labels)
+      value = template.format_property("http://www.w3.org/1999/02/22-rdf-syntax-ns#type", {labels: labels})
       expect(value).to eq "Class"
     end
   end

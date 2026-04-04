@@ -4,11 +4,11 @@
   <ul>
     <%- param[:index_data].each do |e| -%>
       <%- e.each do |s, o| -%>
-      <li><%= format_object(s, param[:data_global]) %>
+      <li><%= format_object(s, param) %>
       <%- if o and o.size > 0 -%>
         <ul>
           <%- o.each do |o2| -%>
-          <li><%= format_object(o2.to_s, param[:data_global]) %></li>
+          <li><%= format_object(o2.to_s, param) %></li>
           <%- end -%>
         </ul>
       <%- end -%>

@@ -265,7 +265,7 @@ module TTL2HTML
               label = template.get_title(@data[target_class], nil)
               comment = template.get_language_literal(@data[target_class]["http://www.w3.org/2000/01/rdf-schema#comment"]) if @data[target_class]["http://www.w3.org/2000/01/rdf-schema#comment"]
             else
-              label = template.format_property(target_class)
+              label = template.format_property(target_class, param)
             end
           else
             label = template.get_title(@data[subject.to_s])

@@ -696,7 +696,7 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/index.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("nav.navbar a.nav-link[href='https://example.com/']", text: "Link1")
-      expect(html).to have_css("nav.navbar a.nav-link[href='https://example.org/']", text: "Link2")
+      expect(html).to have_css("nav.navbar a.nav-link[href='./']", text: "Link2")
     end
     it "should link to custom javascript_file" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/javascript_file_single.yml"))
