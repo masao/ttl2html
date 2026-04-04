@@ -304,7 +304,6 @@ RSpec.describe TTL2HTML::App do
       expect(File).to exist "/tmp/html/about.html"
       expect(File).to exist "/tmp/html/AShape.html"
       expect(File).to exist "/tmp/html/AShape.ttl"
-      @ttl2html.cleanup
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
       expect(html).to have_css("h2#shapes")

@@ -564,7 +564,9 @@ module TTL2HTML
       dirs = dirs.uniq.sort_by{|e| -(e.size) }
       #p dirs
       dirs.each do |dir|
-        Dir.rmdir(dir) if File.exist? dir
+        next if dir == "." # failsafe...
+        next if dir == @config[:output_dir] # failsafe...
+        FileUtils.remove_entry_secure(dir) if File.exist? dir
       end
     end
   end
