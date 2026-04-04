@@ -170,8 +170,8 @@ module TTL2HTML
       end
       @config[:orders_with_class] = shapes2orders(shapes)
       Dir.mkdir @config[:output_dir] if @config[:output_dir] and not File.exist? @config[:output_dir]
+      template = Template.new("default.html.erb", @config)
       each_data(:output_html_files) do |uri, v|
-        template = Template.new("default.html.erb", @config)
         param = @config.dup
         param[:uri] = uri
         param[:turtle_uri] = uri + ".ttl"
