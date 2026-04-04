@@ -210,7 +210,7 @@ module TTL2HTML
       type = param[:type] || {}
       data = param[:data] || {}
       if /\Ahttps?:\/\// =~ object.to_s
-        rel_path = relative_path_uri(param[:output_file], object, param[:base_uri])
+        rel_path = relative_path_uri(param[:output_file], object)
         if param[:data_global][object]
           result = "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or ERB::Util.html_escape(object)}</a>"
           subtitle = get_subtitle(param[:data_global][object])
