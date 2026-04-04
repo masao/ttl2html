@@ -1,3 +1,4 @@
+# encoding: UTF-8
 spec_base_dir = File.dirname(__FILE__)
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
@@ -242,7 +243,7 @@ RSpec.describe TTL2HTML::App do
       cont = File.open("/tmp/html/a.html").read
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "Library")
-      cont = File.open("/tmp/html/b.html").read
+      cont = File.read("/tmp/html/b.html", encoding: "UTF-8")
       html = Capybara.string cont
       expect(html).to have_css("dt", text: "氏名")
       expect(html).to have_css("dt", text: "著者")
