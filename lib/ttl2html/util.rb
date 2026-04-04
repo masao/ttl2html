@@ -1,7 +1,5 @@
 module TTL2HTML
   module Util
-    require "set"
-
     def make_mapping_uris_cache(param)
       @path_cache = Set.new
       data = @data || @param[:data_global] || @param[:data] || {}
