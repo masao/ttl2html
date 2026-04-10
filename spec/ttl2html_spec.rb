@@ -1036,15 +1036,14 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/a.ttl")).to be true
       expect(File.exist?("/tmp/html/123/4567890123.ttl")).to be true
     end
-    it "should skip blank subjects in inverse statements" do
+    it "should output blank subjects in inverse statements" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_blank_subject.ttl"))
       ttl2html.output_turtle_files
       expect(File.exist?("/tmp/html/a.ttl")).to be true
       RDF::Turtle::Reader.new(open("/tmp/html/a.ttl")) do |reader|
-        reader.statements.each do |statement|
-          expect(statement.subject.to_s).not_to start_with("_:")
-        end
+        subjects = reader.subjects
+        expect(subjects).to include RDF::URI("https://example.org/b")
       end
     end
     it "should support literals with langauge tags" do
@@ -1118,6 +1117,16 @@ RSpec.describe TTL2HTML::App do
         ttl2html.load_turtle(ttl)
         ttl2html.output_turtle_files
       }.not_to raise_error
+    end
+    it "should output inverse properties" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_inverse.ttl"))
+      ttl2html.output_turtle_files
+      expect(File).to exist("/tmp/html/c.ttl")
+      RDF::Turtle::Reader.new(open("/tmp/html/c.ttl")) do |reader|
+        subjects = reader.subjects
+        expect(subjects).to include RDF::URI("https://example.org/c")
+      end
     end
   end
   context "#output_files" do

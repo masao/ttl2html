@@ -117,12 +117,21 @@ module TTL2HTML
     end
     def format_turtle_inverse(object)
       result = ""
-      return result if not object.start_with? @config[:base_uri]
+      return result if not object.start_with? @config[:base_uri] or object.start_with?("_:")
       return result if not @data_inverse.has_key? object
       @data_inverse[object].keys.sort.each do |predicate|
         @data_inverse[object.to_s][predicate].sort.each do |subject|
-          next if subject =~ /^_:/
-          result << "<#{subject}> <#{predicate}> <#{object}>.\n"
+          if subject =~ /^_:/
+            @data_inverse[subject.to_s].keys.sort.each do |p2|
+              @data_inverse[subject.to_s][p2].sort.each do |s2|
+                result << "<#{s2}> <#{p2}> [\n"
+                result << "  <#{predicate}> <#{object}>\n"
+                result << "].\n"
+              end
+            end
+          else
+            result << "<#{subject}> <#{predicate}> <#{object}>.\n"
+          end
         end
       end
       result
