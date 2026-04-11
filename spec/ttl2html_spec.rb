@@ -1132,6 +1132,19 @@ RSpec.describe TTL2HTML::App do
         expect(subjects).to include RDF::URI("https://example.org/c")
       end
     end
+    it "should support blank nodes in blank nodes" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_blank_blank.ttl"))
+      ttl2html.output_files
+      expect(File).to exist("/tmp/html/a.ttl")
+      #puts File.read("/tmp/html/a.ttl")
+      RDF::Turtle::Reader.open("/tmp/html/a.ttl") do |reader|
+        statements = reader.statements
+        objects = statements.map(&:object)
+        #p objects
+        expect(objects).to include RDF::URI("https://example.org/a")
+      end
+    end
   end
   context "#output_files" do
     ttl2html = nil

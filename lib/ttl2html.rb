@@ -76,7 +76,7 @@ module TTL2HTML
       turtle = RDF::Turtle::Writer.new
       result = ""
       #p [:format_turtle, subject, depth, force]
-      return result if @cache[:output_turtle_files].include? subject
+      return result if !force && @cache[:output_turtle_files].include?(subject)
       if subject =~ /^_:/
         result << "[\n#{"  "*depth}"
       else
@@ -101,7 +101,7 @@ module TTL2HTML
           end
         end.map do |object|
           if /^_:/ =~ object.to_s # blank node:
-            format_turtle(object, depth + 1)
+            format_turtle(object, depth + 1, force)
           elsif RDF::URI::IRI =~ object.to_s
             turtle.format_uri(RDF::URI.new object)
           elsif object.respond_to?(:first) and object.first.kind_of?(Symbol)
@@ -115,7 +115,7 @@ module TTL2HTML
       result << " ." if not subject =~ /^_:/
       result << "\n"
       result << "#{"  "*(depth-1)}]" if subject =~ /^_:/
-      @cache[:output_turtle_files] << subject if not force
+      @cache[:output_turtle_files] << subject unless force
       result
     end
     def format_turtle_inverse(object)

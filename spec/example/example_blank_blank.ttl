@@ -1,0 +1,14 @@
+@prefix ex: <https://example.org/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+
+ex:a dct:title "test title";
+  ex:b [
+    a ex:c;
+    ex:d [
+        a ex:e;
+        ex:f ex:a
+    ], [
+        a ex:e;
+        ex:g ex:a
+    ]
+].
