@@ -112,7 +112,7 @@ module TTL2HTML
         end.join(", ")
         str
       end.join(";\n#{"  "*depth}")
-      result << " ." if not subject =~ /^_:/
+      result << "." if not subject =~ /^_:/
       result << "\n"
       result << "#{"  "*(depth-1)}]" if subject =~ /^_:/
       @cache[:output_turtle_files] << subject unless force
@@ -125,7 +125,7 @@ module TTL2HTML
       ref_count  = build_object_ref_count(triples)
       roots      = find_inverse_roots(by_subject)
       roots.map do |root|
-        "#{format_inverse_subject(root, by_subject, ref_count, Set.new, 1)} .\n"
+        "#{format_inverse_subject(root, by_subject, ref_count, Set.new, 1)}.\n"
       end.join
     end
     def collect_inverse_triples(object, triples = Set.new, visited = Set.new)
