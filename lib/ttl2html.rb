@@ -190,7 +190,7 @@ module TTL2HTML
         head = "[\n#{inner}"
         tail = "\n#{indent}]"
       else
-        head = "<#{subject}>\n#{inner}"
+        head = "<#{subject}> "
         tail = ""
       end
       body = props.keys.sort.map do |predicate|
