@@ -1041,13 +1041,29 @@ RSpec.describe TTL2HTML::App do
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_blank_subject.ttl"))
       ttl2html.output_turtle_files
       expect(File.exist?("/tmp/html/a.ttl")).to be true
-      puts open("/tmp/html/a.ttl"){|io| io.read }
+      #puts open("/tmp/html/a.ttl"){|io| io.read }
       RDF::Turtle::Reader.new(open("/tmp/html/a.ttl")) do |reader|
         statements = reader.statements
         subjects = statements.map(&:subject)
+        #p subjects
         expect(subjects).to include RDF::URI("https://example.org/b")
+        predicates = statements.map(&:predicate)
+        expect(predicates).to include RDF::URI("https://example.org/d")
+      end
+    end
+    it "should support inverse output for blank nodes in blank nodes" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_blank_blank.ttl"))
+      ttl2html.output_files
+      expect(File).to exist("/tmp/html/a.ttl")
+      #puts File.read("/tmp/html/a.ttl")
+      RDF::Turtle::Reader.open("/tmp/html/a.ttl") do |reader|
+        statements = reader.statements
         objects = statements.map(&:object)
-        expect(objects).to include RDF::URI("https://example.org/e")
+        predicates = statements.map(&:predicate)
+        #p objects
+        expect(objects).to include RDF::URI("https://example.org/a")
+        expect(predicates).to include RDF::URI("https://example.org/d")
       end
     end
     it "should support literals with langauge tags" do
@@ -1130,19 +1146,6 @@ RSpec.describe TTL2HTML::App do
       RDF::Turtle::Reader.new(open("/tmp/html/c.ttl")) do |reader|
         subjects = reader.subjects
         expect(subjects).to include RDF::URI("https://example.org/c")
-      end
-    end
-    it "should support blank nodes in blank nodes" do
-      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
-      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_blank_blank.ttl"))
-      ttl2html.output_files
-      expect(File).to exist("/tmp/html/a.ttl")
-      #puts File.read("/tmp/html/a.ttl")
-      RDF::Turtle::Reader.open("/tmp/html/a.ttl") do |reader|
-        statements = reader.statements
-        objects = statements.map(&:object)
-        #p objects
-        expect(objects).to include RDF::URI("https://example.org/a")
       end
     end
   end

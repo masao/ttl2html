@@ -119,24 +119,110 @@ module TTL2HTML
       result
     end
     def format_turtle_inverse(object)
-      result = ""
-      return result if not object.start_with? @config[:base_uri] or object.start_with?("_:")
-      return result if not @data_inverse.has_key? object
-      # return result if @cache[:output_turtle_files].include? object
-      @data_inverse[object].keys.sort.each do |predicate|
-        @data_inverse[object.to_s][predicate].sort.each do |subject|
-          if subject =~ /^_:/
-            @data_inverse[subject.to_s].keys.sort.each do |p2|
-              @data_inverse[subject.to_s][p2].sort.each do |s2|
-                result << format_turtle(s2)
-              end
-            end
-          else
-            result << "<#{subject}> <#{predicate}> <#{object}>.\n"
-          end
+      triples = collect_inverse_triples(object)
+      return "" if triples.empty?
+      by_subject = build_subject_index(triples)
+      ref_count  = build_object_ref_count(triples)
+      roots      = find_inverse_roots(by_subject)
+      roots.map do |root|
+        "#{format_inverse_subject(root, by_subject, ref_count, Set.new, 1)} .\n"
+      end.join
+    end
+    def collect_inverse_triples(object, triples = Set.new, visited = Set.new)
+      return triples if object.to_s.start_with?("_:")
+      return triples unless object.to_s.start_with?(@config[:base_uri].to_s)
+      return triples unless @data_inverse.key?(object.to_s)
+      return triples if visited.include?(object.to_s)
+      visited << object.to_s
+      @data_inverse[object.to_s].each do |predicate, subjects|
+        subjects.each do |subject|
+          triples << [subject.to_s, predicate.to_s, object.to_s]
+          collect_inverse_triples_for_bnode(subject.to_s, triples, visited) if subject.to_s.start_with?("_:")
         end
       end
-      result
+      triples
+    end
+    def collect_inverse_triples_for_bnode(node, triples, visited)
+      return triples unless @data_inverse.key?(node)
+      return triples if visited.include?(node)
+      visited << node
+      @data_inverse[node].each do |predicate, subjects|
+        subjects.each do |subject|
+            triples << [subject.to_s, predicate.to_s, node]
+            collect_inverse_triples_for_bnode(subject.to_s, triples, visited) if subject.to_s.start_with?("_:")
+        end
+      end
+      triples
+    end
+    def build_subject_index(triples)
+      by_subject = Hash.new { |h, k| h[k] = Hash.new { |hh, kk| hh[kk] = [] } }
+      triples.each do |subject, predicate, object|
+        by_subject[subject][predicate] << object
+      end
+      by_subject.each_value do |predicates|
+        predicates.each_value(&:uniq!)
+      end
+      by_subject
+    end
+    def build_object_ref_count(triples)
+      count = Hash.new(0)
+      triples.each do |_subject, _predicate, object|
+        count[object] += 1 if object.to_s.start_with?("_:")
+      end
+      count
+    end
+    def find_inverse_roots(by_subject)
+      all_subjects = by_subject.keys
+      all_objects  = by_subject.values.flat_map { |preds| preds.values.flatten }.uniq
+      all_subjects.reject do |subject|
+        subject.start_with?("_:") || all_objects.include?(subject)
+      end.sort
+    end
+    def format_inverse_subject(subject, by_subject, ref_count, visited, depth = 1)
+      props = by_subject[subject]
+      return format_node(subject) if props.nil? || props.empty?
+      indent = "  " * (depth - 1)
+      inner  = "  " * depth
+      if subject.start_with?("_:")
+        return "[]" if visited.include?(subject)
+        visited = visited.dup
+        visited << subject
+        head = "[\n#{inner}"
+        tail = "\n#{indent}]"
+      else
+        head = "<#{subject}>\n#{inner}"
+        tail = ""
+      end
+      body = props.keys.sort.map do |predicate|
+        objects = props[predicate].sort.map do |object|
+          format_inverse_object(object, by_subject, ref_count, visited, depth + 1)
+        end.join(", ")
+        "<#{predicate}> #{objects}"
+      end.join(";\n#{inner}")
+      head + body + tail
+    end
+    def format_inverse_object(object, by_subject, ref_count, visited, depth = 1)
+      if object.to_s.start_with?("_:") && by_subject.key?(object.to_s)
+        if ref_count[object.to_s] <= 1
+          format_inverse_subject(object.to_s, by_subject, ref_count, visited, depth)
+        else
+          object.to_s
+        end
+      else
+        format_node(object)
+      end
+    end
+    def format_node(value)
+      turtle = RDF::Turtle::Writer.new
+      if value.to_s.start_with?("_:")
+        value.to_s
+      elsif RDF::URI::IRI =~ value.to_s
+        "<#{value}>"
+      elsif value.respond_to?(:first) && value.first.kind_of?(Symbol)
+        turtle.format_literal(RDF::Literal.new(value[1], language: value[0]))
+      else
+        turtle.format_literal(value)
+      end
     end
 
     def each_data(label = :each_data)
