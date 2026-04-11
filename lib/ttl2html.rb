@@ -72,9 +72,11 @@ module TTL2HTML
       $stderr.puts "#{count} triples. #{subjects.size} subjects."
       @data
     end
-    def format_turtle(subject, depth = 1)
+    def format_turtle(subject, depth = 1, force = false)
       turtle = RDF::Turtle::Writer.new
       result = ""
+      #p [:format_turtle, subject, depth, force]
+      return result if @cache[:output_turtle_files].include? subject
       if subject =~ /^_:/
         result << "[\n#{"  "*depth}"
       else
@@ -92,7 +94,7 @@ module TTL2HTML
             [ @data[object.to_s][schema_position] ? @data[object.to_s][schema_position].first.to_i : Float::INFINITY,
               @data[object.to_s][qb_order] ? @data[object.to_s][qb_order].first.to_i : Float::INFINITY,
               @data[object.to_s][shacl_order] ? @data[object.to_s][shacl_order].first.to_i : Float::INFINITY,
-              format_turtle(object, depth + 1)
+              format_turtle(object, depth + 1, true)
             ]
           else
             [Float::INFINITY, Float::INFINITY, Float::INFINITY, object.to_s]
@@ -113,20 +115,20 @@ module TTL2HTML
       result << " ." if not subject =~ /^_:/
       result << "\n"
       result << "#{"  "*(depth-1)}]" if subject =~ /^_:/
+      @cache[:output_turtle_files] << subject if not force
       result
     end
     def format_turtle_inverse(object)
       result = ""
       return result if not object.start_with? @config[:base_uri] or object.start_with?("_:")
       return result if not @data_inverse.has_key? object
+      # return result if @cache[:output_turtle_files].include? object
       @data_inverse[object].keys.sort.each do |predicate|
         @data_inverse[object.to_s][predicate].sort.each do |subject|
           if subject =~ /^_:/
             @data_inverse[subject.to_s].keys.sort.each do |p2|
               @data_inverse[subject.to_s][p2].sort.each do |s2|
-                result << "<#{s2}> <#{p2}> [\n"
-                result << "  <#{predicate}> <#{object}>\n"
-                result << "].\n"
+                result << format_turtle(s2)
               end
             end
           else
@@ -530,6 +532,8 @@ module TTL2HTML
         end
         dir = File.dirname(file)
         FileUtils.mkdir_p(dir) if not File.exist?(dir)
+        @cache ||= {}
+        @cache[:output_turtle_files] = Set.new
         str = format_turtle(uri)
         str << format_turtle_inverse(uri)
         open(file, "w") do |io|

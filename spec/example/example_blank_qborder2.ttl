@@ -8,9 +8,3 @@
     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://example.org/c>;
     <https://example.org/e> <https://example.org/a>
   ] .
-<https://example.org/a> <https://example.org/b> [
-  <https://example.org/d> <https://example.org/a>
-].
-<https://example.org/a> <https://example.org/b> [
-  <https://example.org/e> <https://example.org/a>
-].

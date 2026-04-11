@@ -1041,9 +1041,13 @@ RSpec.describe TTL2HTML::App do
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_blank_subject.ttl"))
       ttl2html.output_turtle_files
       expect(File.exist?("/tmp/html/a.ttl")).to be true
+      puts open("/tmp/html/a.ttl"){|io| io.read }
       RDF::Turtle::Reader.new(open("/tmp/html/a.ttl")) do |reader|
-        subjects = reader.subjects
+        statements = reader.statements
+        subjects = statements.map(&:subject)
         expect(subjects).to include RDF::URI("https://example.org/b")
+        objects = statements.map(&:object)
+        expect(objects).to include RDF::URI("https://example.org/e")
       end
     end
     it "should support literals with langauge tags" do
