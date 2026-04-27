@@ -1,0 +1,38 @@
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix ex: <https://example.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+ex:a a ex:b.
+ex:a dc:title "test title".
+ex:a\/b a ex:b.
+ex:a\/b ex:title "test title example".
+ex:b a ex:a.
+ex:b dc:title "title".
+ex:b rdfs:label "test label".
+ex:c a ex:b.
+ex:c dc:title "test title"@ja.
+ex:AShape a sh:NodeShape;
+  sh:targetClass ex:b;
+  sh:property [
+    sh:path ex:title;
+    sh:name "Name"@en, "名称"@ja;
+    sh:minCount 1;
+  ], [
+    sh:path ex:creator;
+    sh:name "Creator";
+    skos:example <mailto:alice@example.org>;
+    sh:nodeKind sh:IRI;
+  ], [
+    sh:path ex:related;
+    sh:name "Related items";
+    skos:example ex:b;
+    sh:class ex:a;
+  ], [
+    sh:path dc:issued;
+    sh:name "Publication Year"@en, "出版年"@ja;
+    skos:example "2025"^^xsd:gYear;
+    sh:nodeKind sh:Literal;
+  ].

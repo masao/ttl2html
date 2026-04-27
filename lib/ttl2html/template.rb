@@ -98,11 +98,16 @@ module TTL2HTML
           end
           #p nodes
         end
+        example = data[property]["http://www.w3.org/2004/02/skos/core#example"].first if data[property]["http://www.w3.org/2004/02/skos/core#example"]
+        if example.respond_to?(:datatype) and example.datatype?
+          datatype = example.datatype.pname or example.datatype.to_s
+          example = example.to_s + "^^" + example.datatype.pname
+        end
         {
           path: path,
           shorten_path: shorten_path,
           name: get_language_literal(data[property]["http://www.w3.org/ns/shacl#name"]),
-          example: data[property]["http://www.w3.org/2004/02/skos/core#example"] ? data[property]["http://www.w3.org/2004/02/skos/core#example"].first : nil,
+          example: example,
           description: get_language_literal(data[property]["http://www.w3.org/ns/shacl#description"]),
           required: data[property]["http://www.w3.org/ns/shacl#minCount"] ? data[property]["http://www.w3.org/ns/shacl#minCount"].first.to_i > 0 : false,
           repeatable: repeatable,
