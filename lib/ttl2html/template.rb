@@ -101,7 +101,7 @@ module TTL2HTML
         example = data[property]["http://www.w3.org/2004/02/skos/core#example"].first if data[property]["http://www.w3.org/2004/02/skos/core#example"]
         if example.respond_to?(:datatype) and example.datatype?
           datatype = example.datatype.pname or example.datatype.to_s
-          example = example.to_s + "^^" + example.datatype.pname
+          example = example.to_s + "<span class=\"datatype\">^^" + example.datatype.pname + "</span>"
         end
         {
           path: path,
