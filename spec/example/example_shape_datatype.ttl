@@ -35,4 +35,5 @@ ex:AShape a sh:NodeShape;
     sh:name "Publication Year"@en, "出版年"@ja;
     skos:example "2025"^^xsd:gYear;
     sh:nodeKind sh:Literal;
+    sh:datatype xsd:gYear;
   ].

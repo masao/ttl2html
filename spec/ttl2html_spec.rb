@@ -545,7 +545,8 @@ RSpec.describe TTL2HTML::App do
       cont = open("/tmp/html/about.html"){|io| io.read }
       html = Capybara.string cont
       #puts cont
-      expect(html).to have_css("table td", text: "2025^^xsd:gYear")
+      expect(html).to have_css("table td:nth-child(3)", text: "2025^^xsd:gYear")
+      expect(html).to have_css("table td:nth-child(5)", text: %r{http://www.w3.org/2001/XMLSchema#gYear})
     end
     it "should accept labels_with_class settings per target class" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_labels_with_class.yml"))

@@ -45,6 +45,7 @@ ja:
     non-repeatable: 繰り返し無し
     blank-node-structure: ブランクノードの内容は以下の内容からなる構造を持ちます。
     blank-node-or-structure: ブランクノードの内容は以下のいずれかの内容からなる構造を持ちます。
+    datatype: "データ型: "
   triples:
     inverse_refered: "'%{property}'としての参照元:"
     blank_node: "空ノード"

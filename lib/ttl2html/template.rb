@@ -103,12 +103,18 @@ module TTL2HTML
           datatype = example.datatype.pname or example.datatype.to_s
           example = example.to_s + "<span class=\"datatype\">^^" + example.datatype.pname + "</span>"
         end
+        descriptions = [ get_language_literal(data[property]["http://www.w3.org/ns/shacl#description"]) ]
+        if data[property]["http://www.w3.org/ns/shacl#datatype"]
+          data[property]["http://www.w3.org/ns/shacl#datatype"].each do |datatype|
+            descriptions << t('shape-table.datatype') + datatype.to_s
+          end
+        end
         {
           path: path,
           shorten_path: shorten_path,
           name: get_language_literal(data[property]["http://www.w3.org/ns/shacl#name"]),
           example: example,
-          description: get_language_literal(data[property]["http://www.w3.org/ns/shacl#description"]),
+          description: descriptions.compact.join("<br>"),
           required: data[property]["http://www.w3.org/ns/shacl#minCount"] ? data[property]["http://www.w3.org/ns/shacl#minCount"].first.to_i > 0 : false,
           repeatable: repeatable,
           nodeKind: data[property]["http://www.w3.org/ns/shacl#nodeKind"] ? data[property]["http://www.w3.org/ns/shacl#nodeKind"].first : nil,
