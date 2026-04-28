@@ -106,7 +106,7 @@ module TTL2HTML
         descriptions = [ get_language_literal(data[property]["http://www.w3.org/ns/shacl#description"]) ]
         if data[property]["http://www.w3.org/ns/shacl#datatype"]
           datatypes = data[property]["http://www.w3.org/ns/shacl#datatype"].map do |datatype|
-            datatype.to_s.sub(%r{\Ahttp://www.w3.org/2001/XMLSchema#}, 'xsd:')
+            datatype.to_s.sub(%r{\Ahttp://www\.w3\.org/2001/XMLSchema#}, 'xsd:')
           end.join(", ")
           descriptions << t('shape-table.datatype') + datatypes
         end
