@@ -290,6 +290,18 @@ RSpec.describe TTL2HTML::App do
       }.not_to raise_error
       expect(File).not_to exist "/tmp/html/index.html"
     end
+    it "should generate ordering resources for index.html" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/example_top_order.ttl"))
+      @ttl2html.output_html_files
+      expect(File).to exist "/tmp/html/index.html"
+      cont = File.open("/tmp/html/index.html").read
+      #puts cont
+      html = Capybara.string cont
+      expect(html.find("div.row ul li:nth-child(1)")).to have_link href: "c"
+      expect(html.find("div.row ul li:nth-child(2)")).to have_link href: "a/b"
+      expect(html.find("div.row ul li:nth-child(3)")).to have_link href: "a/"
+    end
     it "should work even if config does not have output_dir paramerter" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_nooutput_dir.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))

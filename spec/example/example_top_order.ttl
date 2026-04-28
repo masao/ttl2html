@@ -1,0 +1,14 @@
+@prefix ex: <https://example.org/>.
+@prefix qb: <http://purl.org/linked-data/cube#>.
+ex:a a ex:b.
+ex:a <http://purl.org/dc/terms/title> "test title".
+ex:a qb:order 3.
+ex:a\/b a ex:b.
+ex:a\/b <http://example.org/title> "test title example".
+ex:a\/b qb:order 2.
+ex:b a ex:a.
+ex:b <http://purl.org/dc/terms/title> "title".
+ex:b <http://www.w3.org/2000/01/rdf-schema#label> "test label".
+ex:c a ex:b.
+ex:c <http://purl.org/dc/terms/title> "test title"@ja.
+ex:c qb:order 1.
