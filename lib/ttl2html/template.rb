@@ -343,6 +343,7 @@ module TTL2HTML
       results = []
       [
          "http://purl.org/linked-data/cube#order",
+         "https://schema.org/position",
          "http://schema.org/position",
       ].each do |order_elem|
         if resource and resource[order_elem]

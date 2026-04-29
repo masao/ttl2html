@@ -72,8 +72,10 @@ module TTL2HTML
       $stderr.puts "#{count} triples. #{subjects.size} subjects."
       @data
     end
+
     QB_ORDER_URI = "http://purl.org/linked-data/cube#order"
     SCHEMA_POSITION_URI = "http://schema.org/position"
+    SCHEMA_POSITION_URI_S = "https://schema.org/position"
     SHACL_ORDER_URI = "http://www.w3.org/ns/shacl#order"
     def sort_key_for_resource(resource, depth = 1)
       qb_order = Float::INFINITY
@@ -82,6 +84,7 @@ module TTL2HTML
       if @data[resource.to_s]
         qb_order = @data[resource.to_s][QB_ORDER_URI].first.to_i if @data[resource.to_s][QB_ORDER_URI]
         schema_position = @data[resource.to_s][SCHEMA_POSITION_URI].first.to_i if @data[resource.to_s][SCHEMA_POSITION_URI]
+        schema_position = @data[resource.to_s][SCHEMA_POSITION_URI_S].first.to_i if @data[resource.to_s][SCHEMA_POSITION_URI_S]
         shacl_order = @data[resource.to_s][SHACL_ORDER_URI].first.to_i if @data[resource.to_s][SHACL_ORDER_URI]
       end
       if resource.to_s =~ /^_:/ and depth < 5
