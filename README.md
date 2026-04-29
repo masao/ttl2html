@@ -63,10 +63,10 @@ base_uri: https://www.example.org/
 output_dir: /var/www/html/dataset/
 labels:
   http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
-  http://schema.org/name: Title
+  https://schema.org/name: Title
 site_title: A sample dataset
 title_property: http://example.org/title
-top_class: http://schema.org/Book
+top_class: https://schema.org/Book
 ```
 
 * ``base_uri``: (Required) Base URI for the dataset. Base URI is considered as the prefix for the target resources, and only the matched URIs with the prefix are picked up for the generation.
@@ -77,7 +77,7 @@ top_class: http://schema.org/Book
   - https://www.w3.org/TR/rdf-schema/#label
   - http://purl.org/dc/terms/title
   - http://purl.org/dc/elements/1.1/title
-  - http://schema.org/name
+  - https://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: Specified URI is the class of the records listed in the top page. By default, this tool does not generate the top page.
 

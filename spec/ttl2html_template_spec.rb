@@ -68,6 +68,12 @@ RSpec.describe TTL2HTML::Template do
       title = template.get_title(data)
       expect(title).to end_with "..."
     end
+    it "should get title from schema:name" do
+      data = { "https://schema.org/name" => [ RDF::Literal.new("title") ] }
+      template = TTL2HTML::Template.new("")
+      title = template.get_title(data)
+      expect(title).to eq "title"
+    end
   end
   context "expand_shape" do
     spec_base_dir = File.dirname(__FILE__)

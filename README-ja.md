@@ -62,10 +62,10 @@ base_uri: https://www.example.org/
 output_dir: /var/www/html/dataset/
 labels:
   http://www.w3.org/1999/02/22-rdf-syntax-ns#type: Class
-  http://schema.org/name: Title
+  https://schema.org/name: Title
 site_title: A sample dataset
 title_property: https://www.example.org/title
-top_class: http://schema.org/Book
+top_class: https://schema.org/Book
 ```
 
 * ``base_uri``: (必須) データセット用のベースURIを指定します。ベースURIは出力されるファイル群に対する接頭辞とみなし、先頭一致したURIリソースのみが生成対象となります。
@@ -76,7 +76,7 @@ top_class: http://schema.org/Book
   - https://www.w3.org/TR/rdf-schema/#label
   - http://purl.org/dc/terms/title
   - http://purl.org/dc/elements/1.1/title
-  - http://schema.org/name
+  - https://schema.org/name
   - http://www.w3.org/2004/02/skos/core#prefLabel
 * ``top_class``: トップページに表示すべきレコード一覧に対応するクラスURIを指定する。デフォルトではトップページは生成されない。
 
