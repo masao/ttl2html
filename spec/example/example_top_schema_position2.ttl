@@ -1,0 +1,14 @@
+@prefix ex: <https://example.org/>.
+@prefix schema: <https://schema.org/>.
+ex:a a ex:b.
+ex:a <http://purl.org/dc/terms/title> "test title".
+ex:a schema:position 3.
+ex:a\/b a ex:b.
+ex:a\/b <http://example.org/title> "test title example".
+ex:a\/b schema:position 2.
+ex:b a ex:a.
+ex:b <http://purl.org/dc/terms/title> "title".
+ex:b <http://www.w3.org/2000/01/rdf-schema#label> "test label".
+ex:c a ex:b.
+ex:c <http://purl.org/dc/terms/title> "test title"@ja.
+ex:c schema:position 1.

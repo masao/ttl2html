@@ -325,6 +325,7 @@ module TTL2HTML
           "http://www.w3.org/2000/01/rdf-schema#label",
           "http://purl.org/dc/terms/title",
           "http://purl.org/dc/elements/1.1/title",
+          "https://schema.org/name",
           "http://schema.org/name",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ].each do |prop|
