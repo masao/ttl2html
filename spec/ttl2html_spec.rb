@@ -112,6 +112,7 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/bbbb.html")).to be true
       cont = File.open("/tmp/html/bbbb.html").read
       html = Capybara.string cont
+      #puts cont
       expect(html).to have_link("test title", href: "a/")
     end
     it "should respect output dir" do

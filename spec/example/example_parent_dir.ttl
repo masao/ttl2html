@@ -9,3 +9,5 @@
 <https://example.org/c> <http://purl.org/dc/terms/title> "test title"@ja.
 <https://example.org/../testtest> a <https://example.org/b>.
 <https://example.org/../testtest> <http://www.w3.org/2000/01/rdf-schema#label> "includes directory traversal".
+<https://example.org//testtest> a <https://example.org/b>.
+<https://example.org//testtest> <http://www.w3.org/2000/01/rdf-schema#label> "includes directory traversal".

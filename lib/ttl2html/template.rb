@@ -138,9 +138,10 @@ module TTL2HTML
       if dest_uri.absolute?
         path = dest
       else
+        dest.sub!(/^\/+/, "")
         src = Pathname.new(src).relative_path_from(Pathname.new(@param[:output_dir])) if @param[:output_dir]
         path = Pathname(dest).relative_path_from(Pathname(File.dirname src))
-        if @param[:output_dir] and File.directory?(Pathname.new(@param[:output_dir]) + path)
+        if @param[:output_dir] and File.directory?(File.join(@param[:output_dir], path))
           path = path.to_s + "/"
         elsif File.directory?(path)
           path = path.to_s + "/"
@@ -222,6 +223,7 @@ module TTL2HTML
       type = param[:type] || {}
       data = param[:data] || {}
       if /\Ahttps?:\/\// =~ object.to_s
+        #p [:format_object_uri, param[:output_file], object]
         rel_path = relative_path_uri(param[:output_file], object)
         if param[:data_global][object]
           result = "<a href=\"#{rel_path}\">#{get_title(param[:data_global][object]) or ERB::Util.html_escape(object)}</a>"
