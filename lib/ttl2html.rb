@@ -304,7 +304,9 @@ module TTL2HTML
           param[:additional_content] = template.to_html_raw("_default.html.erb", param)
         end
         param[:about_file] = about_file if about_required
-        template.output_to(file, param)
+        if safe_output_path(file)
+          template.output_to(file, param)
+        end
       end
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
@@ -630,6 +632,7 @@ module TTL2HTML
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
+        next if not safe_output_path(file)
         dir = File.dirname(file)
         FileUtils.mkdir_p(dir) if not File.exist?(dir)
         @cache ||= {}
@@ -656,6 +659,7 @@ module TTL2HTML
       end.each do |uri, v|
         html_file = uri_mapping_to_path(uri, @config, ".html")
         html_file = File.join(@config[:output_dir], html_file) if @config[:output_dir]
+        next if not safe_output_path(html_file)
         dirs << File.dirname(html_file)
         File.unlink html_file if File.exist? html_file
         ttl_file = uri_mapping_to_path(uri, @config, ".ttl")

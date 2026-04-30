@@ -42,6 +42,24 @@ module TTL2HTML
       path << suffix
       #p [uri, path]
       path
-    end  
+    end
+    def safe_output_path(file)
+      if @config[:output_dir]
+        base = File.expand_path(@config[:output_dir])
+        target = File.expand_path(file)
+        unless target.start_with?(base)
+          warn "Attempting to write outside of output_dir: #{file}"
+          return false
+        end
+      else
+        base = File.expand_path(".")
+        target = File.expand_path(file)
+        unless target.start_with?(base)
+          warn "Attempting to write outside of current directory: #{file}"
+          return false
+        end
+      end
+      file
+    end
   end
 end

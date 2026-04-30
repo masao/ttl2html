@@ -57,6 +57,14 @@ RSpec.describe TTL2HTML::App do
       @ttl2html.cleanup
       I18n.locale = I18n.default_locale
     end
+    it "should skip output if parent dir included" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/example_parent_dir.ttl"))
+      expect {
+        @ttl2html.output_html_files
+      }.not_to raise_error
+      expect(File.exist?("/tmp/testtest.html")).not_to be true
+    end
     it "should have no errors in HTML structures" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
@@ -1075,6 +1083,13 @@ RSpec.describe TTL2HTML::App do
       data = ttl2html.load_turtle("/tmp/html/b.ttl")
       expect(data.size).to be > 1
     end
+    it "should skip output if parent dir included" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_parent_dir.ttl"))
+      expect {
+        ttl2html.output_turtle_files
+      }.not_to raise_error
+    end
     it "should accept uri_maping parameters in config.yml" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_mapping.yml"))
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_mapping.ttl"))
@@ -1219,6 +1234,14 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/a/b.html")).to be false
       expect(File.exist?("/tmp/html/a/b.ttl")).to be false
       expect(File.exist?("/tmp/html/index.html")).to be false
+    end
+    it "should skip output if parent dir included" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example/example_parent_dir.ttl"))
+      ttl2html.output_files
+      expect {
+        ttl2html.cleanup
+      }.not_to raise_error
     end
   end
   context "#shapes2labels" do
