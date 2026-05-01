@@ -664,25 +664,30 @@ module TTL2HTML
         File.unlink html_file if File.exist? html_file
         ttl_file = uri_mapping_to_path(uri, @config, ".ttl")
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
+        next if not safe_output_path(ttl_file)
         File.unlink ttl_file if File.exist? ttl_file
         dir = uri.sub(@config[:base_uri], "")
         dir = File.join(@config[:output_dir], dir) if @config[:output_dir]
+        next if not safe_output_path(dir)
         dirs << dir
       end
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
-      if @config[:top_class] and File.exist? index_html
+      if @config[:top_class] and safe_output_path(index_html) and File.exist? index_html
         File.unlink index_html
       end
       about_html = (@config[:about_file] || "about.html")
       about_html = File.join(@config[:output_dir], about_html) if @config[:output_dir]
-      File.unlink about_html if File.exist? about_html
+      if safe_output_path(about_html) and File.exist? about_html
+        File.unlink about_html
+      end
 
       dirs = dirs.uniq.sort_by{|e| -(e.size) }
       #p dirs
       dirs.each do |dir|
         next if dir == "." # failsafe...
         next if dir == @config[:output_dir] # failsafe...
+        next if not safe_output_path(dir)
         FileUtils.remove_entry_secure(dir) if File.exist? dir
       end
     end
