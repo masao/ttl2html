@@ -115,6 +115,10 @@ RSpec.describe TTL2HTML::App do
       #puts cont
       expect(html).to have_link("test title", href: "a/")
     end
+    it "should block writes outside output_dir with matching prefix" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      expect(@ttl2html.safe_output_path("/tmp/html_evil/attack.html")).to be false
+    end
     it "should respect output dir" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example/example.ttl"))
