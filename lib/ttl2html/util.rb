@@ -51,7 +51,11 @@ module TTL2HTML
              end
       target = File.expand_path(file)
       unless target == base || target.start_with?(base + File::SEPARATOR)
-        warn "Attempting to write outside of output_dir: #{file}"
+        if @config[:output_dir]
+          warn "Attempting to write outside of output_dir: #{file}"
+        else
+          warn "Attempting to write outside of current directory: #{file}"
+        end
         return false
       end
       file
