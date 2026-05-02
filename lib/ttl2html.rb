@@ -77,7 +77,7 @@ module TTL2HTML
     SCHEMA_POSITION_URI = "http://schema.org/position"
     SCHEMA_POSITION_URI_S = "https://schema.org/position"
     SHACL_ORDER_URI = "http://www.w3.org/ns/shacl#order"
-    def sort_key_for_resource(resource, depth = 1)
+    def sort_key_for_resource(resource)
       qb_order = Float::INFINITY
       schema_position = Float::INFINITY
       shacl_order = Float::INFINITY
@@ -87,12 +87,10 @@ module TTL2HTML
         schema_position = @data[resource.to_s][SCHEMA_POSITION_URI_S].first.to_i if @data[resource.to_s][SCHEMA_POSITION_URI_S]
         shacl_order = @data[resource.to_s][SHACL_ORDER_URI].first.to_i if @data[resource.to_s][SHACL_ORDER_URI]
       end
-      if resource.to_s =~ /^_:/ and depth < 5
-        [ schema_position, qb_order, shacl_order,
-          format_turtle(resource, depth + 1, true)
-        ]
+      if resource.to_s =~ /^_:/ and @data[resource.to_s]
+        [ schema_position, qb_order, shacl_order, @data[resource.to_s].to_s ]
       else
-        [ schema_position, qb_order, shacl_order, resource.to_s]
+        [ schema_position, qb_order, shacl_order, resource.to_s ]
       end
     end
     def format_turtle(subject, depth = 1, force = false)
@@ -110,7 +108,7 @@ module TTL2HTML
         #p [subject, predicate, @data[subject.to_s][predicate]]
         str << @data[subject.to_s][predicate].sort_by do |object|
           #p [subject, predicate, object, depth]
-          sort_key_for_resource(object, depth)
+          sort_key_for_resource(object)
         end.map do |object|
           if /^_:/ =~ object.to_s # blank node:
             format_turtle(object, depth + 1, force)
