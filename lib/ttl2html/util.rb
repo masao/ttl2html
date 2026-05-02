@@ -56,9 +56,9 @@ module TTL2HTML
         else
           warn "Attempting to write outside of current directory: #{file}"
         end
-        return false
+        return nil
       end
-      file
+      target
     end
   end
 end

@@ -345,8 +345,8 @@ RSpec.describe TTL2HTML::App do
       expect {
         @ttl2html.output_html_files
         @ttl2html.output_turtle_files
+        @ttl2html.cleanup
       }.not_to raise_error
-      @ttl2html.cleanup
     end
     it "should generate about.html" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
