@@ -300,11 +300,12 @@ module TTL2HTML
         if @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
-        if template.find_template_path("_default.html.erb")
-          param[:additional_content] = template.to_html_raw("_default.html.erb", param)
-        end
-        param[:about_file] = about_file if about_required
-        if safe_output_path(file)
+        file = safe_output_path(file)
+        if file
+          if template.find_template_path("_default.html.erb")
+            param[:additional_content] = template.to_html_raw("_default.html.erb", param)
+          end
+          param[:about_file] = about_file if about_required
           template.output_to(file, param)
         end
       end
@@ -632,7 +633,8 @@ module TTL2HTML
           Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
-        next if not safe_output_path(file)
+        file = safe_output_path(file)
+        next if not file
         dir = File.dirname(file)
         FileUtils.mkdir_p(dir) if not File.exist?(dir)
         @cache ||= {}
@@ -659,26 +661,33 @@ module TTL2HTML
       end.each do |uri, v|
         html_file = uri_mapping_to_path(uri, @config, ".html")
         html_file = File.join(@config[:output_dir], html_file) if @config[:output_dir]
-        next if not safe_output_path(html_file)
-        dirs << File.dirname(html_file)
-        File.unlink html_file if File.exist? html_file
+        html_file = safe_output_path(html_file)
+        if html_file
+          dirs << File.dirname(html_file)
+          File.unlink html_file if File.exist? html_file
+        end
         ttl_file = uri_mapping_to_path(uri, @config, ".ttl")
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
-        next if not safe_output_path(ttl_file)
-        File.unlink ttl_file if File.exist? ttl_file
+        ttl_file = safe_output_path(ttl_file)
+        if ttl_file
+          File.unlink ttl_file if File.exist? ttl_file
+        end
         dir = uri.sub(@config[:base_uri], "")
         dir = File.join(@config[:output_dir], dir) if @config[:output_dir]
-        next if not safe_output_path(dir)
-        dirs << dir
+        if dir = safe_output_path(dir)
+          dirs << dir
+        end
       end
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
-      if @config[:top_class] and safe_output_path(index_html) and File.exist? index_html
+      index_html = safe_output_path(index_html)
+      if index_html and @config[:top_class] and File.exist? index_html
         File.unlink index_html
       end
       about_html = (@config[:about_file] || "about.html")
       about_html = File.join(@config[:output_dir], about_html) if @config[:output_dir]
-      if safe_output_path(about_html) and File.exist? about_html
+      about_html = safe_output_path(about_html)
+      if about_html and File.exist? about_html
         File.unlink about_html
       end
 
