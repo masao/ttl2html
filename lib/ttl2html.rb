@@ -94,7 +94,7 @@ module TTL2HTML
       end
     end
     def format_turtle(subject, depth = 1, force = false)
-      turtle = RDF::Turtle::Writer.new
+      @turtle_writer ||= RDF::Turtle::Writer.new
       result = ""
       #p [:format_turtle, subject, depth, force]
       return result if !force && @cache[:output_turtle_files].include?(subject)
@@ -113,11 +113,11 @@ module TTL2HTML
           if /^_:/ =~ object.to_s # blank node:
             format_turtle(object, depth + 1, force)
           elsif RDF::URI::IRI =~ object.to_s
-            turtle.format_uri(RDF::URI.new object)
+            @turtle_writer.format_uri(RDF::URI.new object)
           elsif object.respond_to?(:first) and object.first.kind_of?(Symbol)
-            turtle.format_literal(RDF::Literal.new(object[1], language: object[0]))
+            @turtle_writer.format_literal(RDF::Literal.new(object[1], language: object[0]))
           else
-            turtle.format_literal(object)
+            @turtle_writer.format_literal(object)
           end
         end.join(", ")
         str
@@ -223,15 +223,15 @@ module TTL2HTML
       end
     end
     def format_node(value)
-      turtle = RDF::Turtle::Writer.new
+      @turtle_writer ||= RDF::Turtle::Writer.new
       if value.to_s.start_with?("_:")
         value.to_s
       elsif RDF::URI::IRI =~ value.to_s
         "<#{value}>"
       elsif value.respond_to?(:first) && value.first.kind_of?(Symbol)
-        turtle.format_literal(RDF::Literal.new(value[1], language: value[0]))
+        @turtle_writer.format_literal(RDF::Literal.new(value[1], language: value[0]))
       else
-        turtle.format_literal(value)
+        @turtle_writer.format_literal(value)
       end
     end
 
