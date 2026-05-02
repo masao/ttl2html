@@ -246,8 +246,8 @@ module TTL2HTML
       data = @data.keys.sort_by do|uri|
         local_path = uri_mapping_to_path(uri, @config, ".html")
         #p [ local_path.size, local_path.count("/"), local_path ]
-        [ local_path.size, local_path.count("/"), local_path ]
-      end.reverse
+        [ -(local_path.count("/")), -(local_path.size), local_path ]
+      end
       Parallel.each(data, progress: progressbar_options) do |uri|
         next if not uri.start_with? @config[:base_uri]
         yield uri, @data[uri]
