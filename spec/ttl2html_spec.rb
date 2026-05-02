@@ -117,7 +117,7 @@ RSpec.describe TTL2HTML::App do
     end
     it "should block writes outside output_dir with matching prefix" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
-      expect(@ttl2html.safe_output_path("/tmp/html_evil/attack.html")).to be false
+      expect(@ttl2html.safe_output_path("/tmp/html_evil/attack.html")).to be nil
     end
     it "should respect output dir" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))

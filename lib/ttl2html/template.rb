@@ -139,12 +139,12 @@ module TTL2HTML
         path = dest
       else
         dest.sub!(/^\/+/, "")
+        #p [:relative_path, src, dest]
         if @param[:output_dir]
           src = Pathname.new(src).relative_path_from(Pathname.new(@param[:output_dir]))
         else
-          src = Pathname.new(src).relative_path_from(Pathname.new(File.expand_path(".")))
+          src = Pathname.new(File.expand_path(src)).relative_path_from(Pathname.new(File.expand_path(".")))
         end
-        #p [:relative_path, src, dest]
         path = Pathname(dest).relative_path_from(Pathname(File.dirname src))
         if @param[:output_dir] and File.directory?(File.join(@param[:output_dir], path))
           path = path.to_s + "/"
