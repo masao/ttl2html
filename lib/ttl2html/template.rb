@@ -51,9 +51,9 @@ module TTL2HTML
       end
       @template_path.each do |dir|
         file = File.join(dir, fname)
-        return file if File.exist? file
+        return file if File.file? file
       end
-      return nil
+      nil
     end
 
     def expand_shape(data, uri, prefixes = {})

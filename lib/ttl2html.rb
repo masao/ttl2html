@@ -349,7 +349,8 @@ module TTL2HTML
           param[:output_file] = index_html
           param[:index_list] = template.to_html_raw("index-list.html.erb", param)
           param[:about_file] = about_file if about_required
-          template.output_to(index_html, param)
+          index_html = safe_output_path(index_html)
+          template.output_to(index_html, param) if index_html
         end
       end
       if about_required
@@ -394,7 +395,8 @@ module TTL2HTML
             order: orders,
           }
         end
-        template.output_to(about_html, param)
+        about_html = safe_output_path(about_html)
+        template.output_to(about_html, param) if about_html
       end
     end
 
@@ -641,7 +643,7 @@ module TTL2HTML
         @cache[:output_turtle_files] = Set.new
         str = format_turtle(uri)
         str << format_turtle_inverse(uri)
-        open(file, "w") do |io|
+        File.open(file, "w") do |io|
           io.puts str.strip
         end
       end
@@ -662,32 +664,28 @@ module TTL2HTML
         html_file = uri_mapping_to_path(uri, @config, ".html")
         html_file = File.join(@config[:output_dir], html_file) if @config[:output_dir]
         html_file = safe_output_path(html_file)
-        if html_file
+        if html_file and File.file? html_file
           dirs << File.dirname(html_file)
-          File.unlink html_file if File.exist? html_file
+          File.unlink html_file
         end
         ttl_file = uri_mapping_to_path(uri, @config, ".ttl")
         ttl_file = File.join(@config[:output_dir], ttl_file) if @config[:output_dir]
         ttl_file = safe_output_path(ttl_file)
-        if ttl_file
-          File.unlink ttl_file if File.exist? ttl_file
-        end
-        dir = uri.sub(@config[:base_uri], "")
-        dir = File.join(@config[:output_dir], dir) if @config[:output_dir]
-        if dir = safe_output_path(dir)
-          dirs << dir
+        if ttl_file and File.file? ttl_file
+          dirs << File.dirname(ttl_file)
+          File.unlink ttl_file
         end
       end
       index_html = "index.html"
       index_html = File.join(@config[:output_dir], "index.html") if @config[:output_dir]
       index_html = safe_output_path(index_html)
-      if index_html and @config[:top_class] and File.exist? index_html
+      if index_html and @config[:top_class] and File.file? index_html
         File.unlink index_html
       end
       about_html = (@config[:about_file] || "about.html")
       about_html = File.join(@config[:output_dir], about_html) if @config[:output_dir]
       about_html = safe_output_path(about_html)
-      if about_html and File.exist? about_html
+      if about_html and File.file? about_html
         File.unlink about_html
       end
 
@@ -696,8 +694,10 @@ module TTL2HTML
       dirs.each do |dir|
         next if dir == "." # failsafe...
         next if dir == @config[:output_dir] # failsafe...
-        next if not safe_output_path(dir)
-        FileUtils.remove_entry_secure(dir) if File.exist? dir
+        dir = safe_output_path(dir)
+        if dir and File.exist?(dir) and File.directory?(dir)
+          FileUtils.remove_entry_secure(dir)
+        end
       end
     end
   end
