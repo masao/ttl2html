@@ -628,11 +628,10 @@ module TTL2HTML
     end
 
     def output_turtle_files
-      Dir.mkdir @config[:output_dir] if @config[:output_dir] and not File.exist? @config[:output_dir]
+      FileUtils.mkdir_p(@config[:output_dir]) if @config[:output_dir]
       each_data(:output_turtle_files) do |uri, v|
         file = uri_mapping_to_path(uri, @config, ".ttl")
         if @config[:output_dir]
-          Dir.mkdir @config[:output_dir] if not File.exist? @config[:output_dir]
           file = File.join(@config[:output_dir], file)
         end
         file = safe_output_path(file)
