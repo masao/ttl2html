@@ -278,7 +278,7 @@ module TTL2HTML
         end
       end
       @config[:orders_with_class] = shapes2orders(shapes)
-      Dir.mkdir @config[:output_dir] if @config[:output_dir] and not File.exist? @config[:output_dir]
+      FileUtils.mkdir_p(@config[:output_dir]) if @config[:output_dir]
       template = Template.new("default.html.erb", @config)
       each_data(:output_html_files) do |uri, v|
         param = @config.dup
@@ -693,6 +693,7 @@ module TTL2HTML
       #p dirs
       dirs.each do |dir|
         dir = safe_output_path(dir)
+        next unless dir
         next if dir == File.expand_path(".") # failsafe...
         next if @config[:output_dir] and dir == File.expand_path(@config[:output_dir]) # failsafe...
         if dir and File.exist?(dir) and File.directory?(dir)

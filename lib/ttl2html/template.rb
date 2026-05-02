@@ -24,8 +24,7 @@ module TTL2HTML
     def output_to(file, param = {})
       param = @param.merge(param)
       param[:output_file] = file
-      dir = File.dirname(file)
-      FileUtils.mkdir_p(dir) if not File.exist?(dir)
+      FileUtils.mkdir_p(File.dirname(file))
       File.open(file, "w") do |io|
         io.print to_html(param)
       end
@@ -56,9 +55,10 @@ module TTL2HTML
       nil
     end
 
-    def expand_shape(data, uri, prefixes = {})
+    def expand_shape(data, uri, prefixes = {}, depth = 0)
       return nil if not data[uri]
       return nil if not data[uri]["http://www.w3.org/ns/shacl#property"]
+      return nil if depth > 10
       prefix_used = {}
       result = data[uri]["http://www.w3.org/ns/shacl#property"].sort_by do |e|
         e["http://www.w3.org/ns/shacl#order"]
@@ -87,14 +87,14 @@ module TTL2HTML
             node_or = data[data[node]["http://www.w3.org/ns/shacl#or"].first]
             node_mode = :or
             nodes = []
-            nodes << expand_shape(data, node_or["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"].first, prefixes)
+            nodes << expand_shape(data, node_or["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"].first, prefixes, depth + 1)
             rest = node_or["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"].first
             while data[rest] do
-              nodes << expand_shape(data, data[rest]["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"].first, prefixes)
+              nodes << expand_shape(data, data[rest]["http://www.w3.org/1999/02/22-rdf-syntax-ns#first"].first, prefixes, depth + 1)
               rest = data[rest]["http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"].first
             end
           else
-            nodes = expand_shape(data, node, prefixes)
+            nodes = expand_shape(data, node, prefixes, depth + 1)
           end
           #p nodes
         end
