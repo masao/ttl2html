@@ -92,6 +92,7 @@ RSpec.describe TTL2HTML::Template do
       template = TTL2HTML::Template.new("", {locale: :ja})
       cont = template.expand_shape(data, "https://example.org/AShape")
       html = Capybara.string cont
+      #puts cont
       expect(html).to have_css("table > thead > tr > th")
       expect(html).to have_css("th", text: "プロパティ名")
     end

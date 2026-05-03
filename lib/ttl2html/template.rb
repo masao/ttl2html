@@ -40,7 +40,9 @@ module TTL2HTML
       tmpl = File.open(template) { |io| io.read }
       erb = ERB.new(tmpl, trim_mode: "-")
       erb.filename = template
-      erb.result(binding)
+      I18n.with_locale(@param[:locale] || I18n.default_locale) do
+        erb.result(binding)
+      end
     end
 
     def find_template_path(fname)
@@ -126,8 +128,7 @@ module TTL2HTML
         }
       end
       template = "shape-table.html.erb"
-      tmpl = Template.new(template)
-      tmpl.to_html_raw(template, { properties: result, prefix: prefix_used })
+      to_html_raw(template, { properties: result, prefix: prefix_used })
     end
 
     # helper method:
