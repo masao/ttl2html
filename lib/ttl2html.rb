@@ -121,8 +121,6 @@ module TTL2HTML
             format_turtle(object, depth + 1, force)
           elsif RDF::URI::IRI =~ object.to_s
             format_uri(object)
-          elsif object.respond_to?(:first) and object.first.kind_of?(Symbol)
-            @turtle_writer.format_literal(RDF::Literal.new(object[1], language: object[0]))
           else
             @turtle_writer.format_literal(object)
           end
@@ -235,8 +233,6 @@ module TTL2HTML
         value.to_s
       elsif RDF::URI::IRI =~ value.to_s
         format_uri(value)
-      elsif value.respond_to?(:first) && value.first.kind_of?(Symbol)
-        @turtle_writer.format_literal(RDF::Literal.new(value[1], language: value[0]))
       else
         @turtle_writer.format_literal(value)
       end

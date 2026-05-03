@@ -1137,7 +1137,8 @@ RSpec.describe TTL2HTML::App do
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))
       ttl2html.output_turtle_files
       expect(File).to exist("/tmp/html/c.ttl")
-      RDF::Turtle::Reader.new(open("/tmp/html/c.ttl")) do |reader|
+      puts File.read("/tmp/html/c.ttl")
+      RDF::Turtle::Reader.open("/tmp/html/c.ttl") do |reader|
         reader.statements.each do |statement|
           if statement.predicate == RDF::URI("http://purl.org/dc/terms/title")
             expect(statement.object).to be_language
