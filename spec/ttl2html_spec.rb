@@ -1185,6 +1185,12 @@ RSpec.describe TTL2HTML::App do
       ttl2html.output_turtle_files
       cont2 = open("/tmp/html/a.ttl"){|io| io.read }
       expect(cont).to eq cont2
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_blank_order3.ttl"))
+      ttl2html.output_turtle_files
+      cont3 = open("/tmp/html/a.ttl"){|io| io.read }
+      expect(cont).to eq cont3
+      #puts cont3
     end
     it "should output properties in a stable order with respect to order properties" do
       ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))

@@ -88,7 +88,10 @@ module TTL2HTML
         shacl_order = @data[resource.to_s][SHACL_ORDER_URI].first.to_i if @data[resource.to_s][SHACL_ORDER_URI]
       end
       if resource.to_s =~ /^_:/ and @data[resource.to_s]
-        [ schema_position, qb_order, shacl_order, @data[resource.to_s].to_s ]
+        resource_str = "{" + @data[resource.to_s].sort_by do |p, o|
+          [p, o]
+        end.join("\t") + "}"
+        [ schema_position, qb_order, shacl_order, resource_str ]
       else
         [ schema_position, qb_order, shacl_order, resource.to_s ]
       end
