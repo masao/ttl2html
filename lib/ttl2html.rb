@@ -96,12 +96,11 @@ module TTL2HTML
         [ schema_position, qb_order, shacl_order, resource.to_s ]
       end
     end
-    def format_uri(uri)
-      @turtle_writer ||= RDF::Turtle::Writer.new(nil, prefixes: @prefix)
-      @turtle_writer.format_uri(RDF::URI(uri))
+    def format_uri(uri, writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix))
+      writer.format_uri(RDF::URI(uri))
     end
     def format_turtle(subject, depth = 1, force = false)
-      @turtle_writer ||= RDF::Turtle::Writer.new(nil, prefixes: @prefix)
+      turtle_writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix)
       result = ""
       #p [:format_turtle, subject, depth, force]
       return result if !force && @cache[:output_turtle_files].include?(subject)
@@ -111,7 +110,7 @@ module TTL2HTML
         result << format_uri(subject) << "\n#{"  "*depth}"
       end
       result << @data[subject.to_s].keys.sort.map do |predicate|
-        str = format_uri(predicate) << " "
+        str = format_uri(predicate, turtle_writer) << " "
         #p [subject, predicate, @data[subject.to_s][predicate]]
         str << @data[subject.to_s][predicate].sort_by do |object|
           #p [subject, predicate, object, depth]
@@ -120,9 +119,9 @@ module TTL2HTML
           if /^_:/ =~ object.to_s # blank node:
             format_turtle(object, depth + 1, force)
           elsif RDF::URI::IRI =~ object.to_s
-            format_uri(object)
+            format_uri(object, turtle_writer)
           else
-            @turtle_writer.format_literal(object)
+            turtle_writer.format_literal(object)
           end
         end.join(", ")
         str
@@ -194,8 +193,9 @@ module TTL2HTML
       end.sort
     end
     def format_inverse_subject(subject, by_subject, ref_count, visited, depth = 1)
+      turtle_writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix)
       props = by_subject[subject]
-      return format_node(subject) if props.nil? || props.empty?
+      return format_node(subject, turtle_writer) if props.nil? || props.empty?
       indent = "  " * (depth - 1)
       inner  = "  " * depth
       if subject.start_with?("_:")
@@ -205,18 +205,18 @@ module TTL2HTML
         head = "[\n#{inner}"
         tail = "\n#{indent}]"
       else
-        head = format_uri(subject) << " "
+        head = format_uri(subject, turtle_writer) << " "
         tail = ""
       end
       body = props.keys.sort.map do |predicate|
         objects = props[predicate].sort.map do |object|
-          format_inverse_object(object, by_subject, ref_count, visited, depth + 1)
+          format_inverse_object(object, by_subject, ref_count, visited, depth + 1, turtle_writer)
         end.join(", ")
-        format_uri(predicate) << " " << objects
+        format_uri(predicate, turtle_writer) << " " << objects
       end.join(";\n#{inner}")
       head + body + tail
     end
-    def format_inverse_object(object, by_subject, ref_count, visited, depth = 1)
+    def format_inverse_object(object, by_subject, ref_count, visited, depth = 1, turtle_writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix))
       if object.to_s.start_with?("_:") && by_subject.key?(object.to_s)
         if ref_count[object.to_s] <= 1
           format_inverse_subject(object.to_s, by_subject, ref_count, visited, depth)
@@ -224,17 +224,16 @@ module TTL2HTML
           object.to_s
         end
       else
-        format_node(object)
+        format_node(object, turtle_writer)
       end
     end
-    def format_node(value)
-      @turtle_writer ||= RDF::Turtle::Writer.new(nil, prefixes: @prefix)
+    def format_node(value, writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix))
       if value.to_s.start_with?("_:")
         value.to_s
       elsif RDF::URI::IRI =~ value.to_s
-        format_uri(value)
+        format_uri(value, writer)
       else
-        @turtle_writer.format_literal(value)
+        writer.format_literal(value)
       end
     end
 

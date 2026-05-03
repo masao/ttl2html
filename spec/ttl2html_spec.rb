@@ -633,6 +633,7 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/AShape.html")).to be true
       cont = open("/tmp/html/AShape.html"){|io| io.read }
       html = Capybara.string cont
+      #puts cont
       expect(html).to have_css("footer img[alt='RDFデータ']")
       expect(File.exist?("/tmp/html/about.html")).to be true
       cont = open("/tmp/html/about.html"){|io| io.read }
@@ -1137,7 +1138,7 @@ RSpec.describe TTL2HTML::App do
       ttl2html.load_turtle(File.join(spec_base_dir, "example/example_shape.ttl"))
       ttl2html.output_turtle_files
       expect(File).to exist("/tmp/html/c.ttl")
-      puts File.read("/tmp/html/c.ttl")
+      #puts File.read("/tmp/html/c.ttl")
       RDF::Turtle::Reader.open("/tmp/html/c.ttl") do |reader|
         reader.statements.each do |statement|
           if statement.predicate == RDF::URI("http://purl.org/dc/terms/title")
