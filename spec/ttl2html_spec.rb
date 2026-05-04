@@ -1241,6 +1241,26 @@ RSpec.describe TTL2HTML::App do
         expect(reader.prefixes.size).to eq 1
       end
     end
+    it "should support more prefix patterns for outputs" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_default_prefix.ttl"))
+      ttl2html.output_turtle_files
+      expect(File).to exist("/tmp/html/a.ttl")
+      #puts File.read("/tmp/html/a.ttl")
+      RDF::Turtle::Reader.new(open("/tmp/html/a.ttl")) do |reader|
+        expect(reader.statements).not_to be_empty
+        expect(reader.prefixes).not_to be_empty
+        expect(reader.prefixes).to have_key nil
+        expect(reader.prefixes[nil]).to eq RDF::URI("https://example.org/")
+      end
+      #puts File.read("/tmp/html/a/b.ttl")
+      RDF::Turtle::Reader.new(open("/tmp/html/a/b.ttl")) do |reader|
+        expect(reader.statements).not_to be_empty
+        expect(reader.prefixes).not_to be_empty
+        expect(reader.prefixes).to have_key nil
+        expect(reader.prefixes[nil]).to eq RDF::URI("https://example.org/")
+      end
+    end
   end
   context "#output_files" do
     ttl2html = nil

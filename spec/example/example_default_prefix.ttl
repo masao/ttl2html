@@ -1,0 +1,12 @@
+@prefix : <https://example.org/>.
+@prefix ex.test: <https://example.com/>.
+@prefix dct: <http://purl.org/dc/terms/>.
+:a a :b.
+:a dct:title "test title".
+:a\/b a :b.
+:a\/b ex.test:title "test title example".
+:b a :a.
+:b dct:title "title".
+:b <http://www.w3.org/2000/01/rdf-schema#label> "test label".
+:c a :b.
+:c dct:title "test title"@ja.
