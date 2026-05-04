@@ -125,11 +125,10 @@ module TTL2HTML
           elsif RDF::URI::IRI =~ object.to_s
             format_uri(object, turtle_writer)
           else
-            literal_s = turtle_writer.format_literal(object)
-            if literal_s =~ /\^\^(#{RDF::Turtle::Terminals::PN_PREFIX})?:.*?$/
-              @used_prefixes << $1
+            if object.respond_to?(:datatype) and object.datatype?
+              datatype = format_uri(object.datatype) # to add @used_prefixes
             end
-            literal_s
+            turtle_writer.format_literal(object)
           end
         end.join(", ")
         str
