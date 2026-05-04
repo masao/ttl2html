@@ -1261,6 +1261,19 @@ RSpec.describe TTL2HTML::App do
         expect(reader.prefixes[nil]).to eq RDF::URI("https://example.org/")
       end
     end
+    it "should output xsd prefix for xsd-ed datatype literals" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example.yml"))
+      ttl2html.load_turtle(File.join(spec_base_dir, "example", "example_xsd_datatype.ttl"))
+      expect {
+        ttl2html.output_turtle_files
+      }.not_to raise_error
+      #puts File.read("/tmp/html/a.ttl")
+      RDF::Turtle::Reader.open("/tmp/html/a.ttl", validate: true) do |reader|
+        expect {
+          expect(reader.statements).not_to be_empty
+        }.not_to raise_error
+      end
+    end
   end
   context "#output_files" do
     ttl2html = nil
