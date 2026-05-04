@@ -143,27 +143,37 @@ module TTL2HTML
       end.join
     end
     def collect_inverse_triples(object, triples = Set.new, visited = Set.new)
-      return triples if object.to_s.start_with?("_:")
-      return triples unless object.to_s.start_with?(@config[:base_uri].to_s)
-      return triples unless @data_inverse.key?(object.to_s)
       return triples if visited.include?(object.to_s)
       visited << object.to_s
-      @data_inverse[object.to_s].each do |predicate, subjects|
-        subjects.each do |subject|
-          triples << [subject.to_s, predicate.to_s, object.to_s]
-          collect_inverse_triples_for_bnode(subject.to_s, triples, visited) if subject.to_s.start_with?("_:")
+      if @data_inverse.key?(object.to_s)
+        @data_inverse[object.to_s].each do |predicate, subjects|
+          subjects.each do |subject|
+            triples << [subject.to_s, predicate.to_s, object.to_s]
+            collect_inverse_triples_for_bnode(subject.to_s, triples, visited) if subject.to_s.start_with?("_:")
+          end
         end
       end
       triples
     end
     def collect_inverse_triples_for_bnode(node, triples, visited)
-      return triples unless @data_inverse.key?(node)
       return triples if visited.include?(node)
       visited << node
-      @data_inverse[node].each do |predicate, subjects|
-        subjects.each do |subject|
+      if @data.key?(node)
+        @data[node].each do |predicate, objects|
+          objects.each do |object|
+            triples << [node, predicate.to_s, object]
+            if object.to_s.start_with?("_:")
+              collect_inverse_triples_for_bnode(object.to_s, triples, visited)
+            end
+          end
+        end
+      end
+      if @data_inverse.key?(node)
+        @data_inverse[node].each do |predicate, subjects|
+          subjects.each do |subject|
             triples << [subject.to_s, predicate.to_s, node]
             collect_inverse_triples_for_bnode(subject.to_s, triples, visited) if subject.to_s.start_with?("_:")
+          end
         end
       end
       triples
@@ -188,9 +198,10 @@ module TTL2HTML
     def find_inverse_roots(by_subject)
       all_subjects = by_subject.keys
       all_objects  = by_subject.values.flat_map { |preds| preds.values.flatten }.uniq
-      all_subjects.reject do |subject|
-        subject.start_with?("_:") || all_objects.include?(subject)
-      end.sort
+      roots = all_subjects.reject do |subject|
+        all_objects.include?(subject)
+      end
+      roots.sort_by { |subject| sort_key_for_resource(subject) }
     end
     def format_inverse_subject(subject, by_subject, ref_count, visited, depth = 1)
       turtle_writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix)
