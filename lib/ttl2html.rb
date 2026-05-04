@@ -97,7 +97,11 @@ module TTL2HTML
       end
     end
     def format_uri(uri, writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix))
-      writer.format_uri(RDF::URI(uri))
+      result = writer.format_uri(RDF::URI(uri))
+      if result =~ /^[a-zA-Z_][a-zA-Z0-9_\-]*:/
+        @used_prefixes << result.split(":").first
+      end
+      result
     end
     def format_turtle(subject, depth = 1, force = false)
       turtle_writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix)
@@ -651,11 +655,12 @@ module TTL2HTML
         FileUtils.mkdir_p(dir) if not File.exist?(dir)
         @cache ||= {}
         @cache[:output_turtle_files] = Set.new
+        @used_prefixes = Set.new
         str = format_turtle(uri)
         str << format_turtle_inverse(uri)
         File.open(file, "w") do |io|
-          @prefix.each do |prefix, namespace|
-            io.puts "@prefix #{prefix}: <#{namespace}>."
+          @used_prefixes.each do |prefix|
+            io.puts "@prefix #{prefix}: <#{@prefix[prefix.to_sym]}>."
           end
           io.puts str.strip
         end
