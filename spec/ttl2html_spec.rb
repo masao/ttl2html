@@ -1116,6 +1116,8 @@ RSpec.describe TTL2HTML::App do
         expect(subjects).to include RDF::URI("https://example.org/b")
         predicates = statements.map(&:predicate)
         expect(predicates).to include RDF::URI("https://example.org/d")
+        objects = statements.map(&:object)
+        expect(objects).to include RDF::URI("https://example.org/e")
       end
     end
     it "should support inverse output for blank nodes in blank nodes" do
