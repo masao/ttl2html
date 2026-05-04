@@ -1234,6 +1234,12 @@ RSpec.describe TTL2HTML::App do
         expect(reader.statements).not_to be_empty
         expect(reader.prefixes).not_to be_empty
       end
+      #puts File.read("/tmp/html/a/b.ttl")
+      RDF::Turtle::Reader.new(open("/tmp/html/a/b.ttl")) do |reader|
+        expect(reader.statements).not_to be_empty
+        expect(reader.prefixes).not_to be_empty
+        expect(reader.prefixes.size).to eq 1
+      end
     end
   end
   context "#output_files" do
