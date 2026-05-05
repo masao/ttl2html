@@ -78,23 +78,29 @@ module TTL2HTML
     SCHEMA_POSITION_URI_S = "https://schema.org/position"
     SHACL_ORDER_URI = "http://www.w3.org/ns/shacl#order"
     def sort_key_for_resource(resource)
+      @cache ||= {}
+      @cache[:sort_key_for_resource] ||= {}
+      resource_s = resource.to_s
+      return @cache[:sort_key_for_resource][resource_s] if @cache[:sort_key_for_resource].key?(resource_s)
+
       qb_order = Float::INFINITY
       schema_position = Float::INFINITY
       shacl_order = Float::INFINITY
-      if @data[resource.to_s]
-        qb_order = @data[resource.to_s][QB_ORDER_URI].first.to_i if @data[resource.to_s][QB_ORDER_URI]
-        schema_position = @data[resource.to_s][SCHEMA_POSITION_URI].first.to_i if @data[resource.to_s][SCHEMA_POSITION_URI]
-        schema_position = @data[resource.to_s][SCHEMA_POSITION_URI_S].first.to_i if @data[resource.to_s][SCHEMA_POSITION_URI_S]
-        shacl_order = @data[resource.to_s][SHACL_ORDER_URI].first.to_i if @data[resource.to_s][SHACL_ORDER_URI]
+      if @data[resource_s]
+        qb_order = @data[resource_s][QB_ORDER_URI].first.to_i if @data[resource_s][QB_ORDER_URI]
+        schema_position = @data[resource_s][SCHEMA_POSITION_URI].first.to_i if @data[resource_s][SCHEMA_POSITION_URI]
+        schema_position = @data[resource_s][SCHEMA_POSITION_URI_S].first.to_i if @data[resource_s][SCHEMA_POSITION_URI_S]
+        shacl_order = @data[resource_s][SHACL_ORDER_URI].first.to_i if @data[resource_s][SHACL_ORDER_URI]
       end
-      if resource.to_s =~ /^_:/ and @data[resource.to_s]
-        resource_str = "{" + @data[resource.to_s].sort_by do |p, o|
+      value = if resource_s =~ /^_:/ and @data[resource_s]
+        resource_str = "{" + @data[resource_s].sort_by do |p, o|
           [p, o]
         end.join("\t") + "}"
         [ schema_position, qb_order, shacl_order, resource_str ]
       else
-        [ schema_position, qb_order, shacl_order, resource.to_s ]
+        [ schema_position, qb_order, shacl_order, resource_s ]
       end
+      @cache[:sort_key_for_resource][resource_s] = value
     end
     def format_uri(uri, writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix))
       result = writer.format_uri(RDF::URI(uri))
@@ -103,8 +109,7 @@ module TTL2HTML
       end
       result
     end
-    def format_turtle(subject, depth = 1, force = false)
-      turtle_writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix)
+    def format_turtle(subject, depth = 1, force = false, turtle_writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix))
       result = ""
       #p [:format_turtle, subject, depth, force]
       return result if !force && @cache[:output_turtle_files].include?(subject)
@@ -121,7 +126,7 @@ module TTL2HTML
           sort_key_for_resource(object)
         end.map do |object|
           if /^_:/ =~ object.to_s # blank node:
-            format_turtle(object, depth + 1, force)
+            format_turtle(object, depth + 1, force, turtle_writer)
           elsif RDF::URI::IRI =~ object.to_s
             format_uri(object, turtle_writer)
           else
@@ -204,9 +209,16 @@ module TTL2HTML
     end
     def find_inverse_roots(by_subject)
       all_subjects = by_subject.keys
-      all_objects  = by_subject.values.flat_map { |preds| preds.values.flatten }.uniq
+      all_object_ids = Set.new
+      by_subject.each_value do |predicates|
+        predicates.each_value do |objects|
+          objects.each do |object|
+            all_object_ids << object.to_s
+          end
+        end
+      end
       roots = all_subjects.reject do |subject|
-        all_objects.include?(subject)
+        all_object_ids.include?(subject.to_s)
       end
       roots.sort_by { |subject| sort_key_for_resource(subject) }
     end
@@ -659,7 +671,8 @@ module TTL2HTML
         @cache ||= {}
         @cache[:output_turtle_files] = Set.new
         @used_prefixes = Set.new
-        str = format_turtle(uri)
+        turtle_writer = RDF::Turtle::Writer.new(nil, prefixes: @prefix)
+        str = format_turtle(uri, 1, false, turtle_writer)
         str << format_turtle_inverse(uri)
         File.open(file, "w") do |io|
           @used_prefixes.each do |prefix|
