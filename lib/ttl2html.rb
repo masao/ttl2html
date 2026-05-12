@@ -106,6 +106,7 @@ module TTL2HTML
       result = writer.format_uri(RDF::URI(uri))
       if result =~ /^#{RDF::Turtle::Terminals::PN_PREFIX}?:/
         @used_prefixes << result.split(":").first
+        #STDERR.puts [uri, @used_prefixes].inspect
       end
       result
     end
@@ -119,7 +120,8 @@ module TTL2HTML
         result << format_uri(subject) << "\n#{"  "*depth}"
       end
       result << @data[subject.to_s].keys.sort.map do |predicate|
-        str = format_uri(predicate, turtle_writer) << " "
+        str = format_uri(predicate, turtle_writer).dup
+        str << " "
         #p [subject, predicate, @data[subject.to_s][predicate]]
         str << @data[subject.to_s][predicate].sort_by do |object|
           #p [subject, predicate, object, depth]
