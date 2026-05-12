@@ -1332,6 +1332,31 @@ RSpec.describe TTL2HTML::App do
       expect(labels["https://example.org/Item"]["https://example.org/b"].first).to eq "Foo"
     end
   end
+  context "#format_turtle" do
+    it "does not mutate string returned by format_uri" do
+      ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example.yml"))
+      ttl2html.instance_variable_set(:@data, {
+        "https://example.org/a" => {
+          "https://example.org/p" => [
+            RDF::Literal.new("1"),
+            RDF::Literal.new("2")
+          ],
+          "https://example.org/q" => [
+            RDF::Literal.new("3")
+          ]
+        }
+      })
+      ttl2html.instance_variable_set(:@cache, { output_turtle_files: Set.new })
+      ttl2html.instance_variable_set(:@used_prefixes, Set.new)
+      ttl2html.instance_variable_set(:@prefix, {})
+      shared = +"ex:p"
+      allow(ttl2html).to receive(:format_uri).and_return(shared)
+      turtle = ttl2html.format_turtle("https://example.org/a")
+      #puts turtle
+      expect(turtle).not_to include('"1", "2" "3"')
+      expect(shared).to eq("ex:p")
+    end
+  end
 end
 
 RSpec.describe "bin/ttl2html" do
