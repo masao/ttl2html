@@ -141,22 +141,15 @@ module TTL2HTML
       else
         dest.sub!(/^\/+/, "")
         #p [:relative_path, src, dest]
-        if @param[:output_dir]
-          # src is a relative path from the current working directory and may already
-          # include `output_dir` when `output_dir` is configured as a relative path.
-          output_dir = Pathname.new(@param[:output_dir]).expand_path
-          src_path = Pathname.new(src)
-          src_path = output_dir.join(src_path) unless src_path.absolute?
-          src = src_path.expand_path.relative_path_from(output_dir)
-        else
-          src = Pathname.new(src).expand_path.relative_path_from(Pathname.pwd)
-        end
-        path = Pathname(dest).relative_path_from(src.dirname)
-        if @param[:output_dir] and File.directory?(File.join(@param[:output_dir], path))
-          path = path.to_s + "/"
-        elsif File.directory?(path)
-          path = path.to_s + "/"
-        end
+        # src is always passed as an absolute path.
+        base_dir = Pathname.pwd
+        base_dir = Pathname.new(@param[:output_dir]).expand_path if @param[:output_dir]
+        # src is always passed as an absolute path, but normalize it to remove
+        # any "." or ".." components before calling relative_path_from.
+        src_path = Pathname.new(src).expand_path
+        src_relative = src_path.relative_path_from(base_dir)
+        path = Pathname.new(dest).relative_path_from(src_relative.dirname)
+        path = "#{path}/" if base_dir.join(dest).cleanpath.directory?
       end
       #p [ :relative_path, path, dest, src ]
       path
