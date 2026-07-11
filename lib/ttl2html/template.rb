@@ -141,17 +141,15 @@ module TTL2HTML
       else
         dest.sub!(/^\/+/, "")
         #p [:relative_path, src, dest]
-        if @param[:output_dir]
-          src = Pathname.new(src).relative_path_from(Pathname.new(@param[:output_dir]))
-        else
-          src = Pathname.new(File.expand_path(src)).relative_path_from(Pathname.new(File.expand_path(".")))
-        end
-        path = Pathname(dest).relative_path_from(Pathname(File.dirname src))
-        if @param[:output_dir] and File.directory?(File.join(@param[:output_dir], path))
-          path = path.to_s + "/"
-        elsif File.directory?(path)
-          path = path.to_s + "/"
-        end
+        # src is always passed as an absolute path.
+        base_dir = Pathname.pwd
+        base_dir = Pathname.new(@param[:output_dir]).expand_path if @param[:output_dir]
+        # src is always passed as an absolute path, but normalize it to remove
+        # any "." or ".." components before calling relative_path_from.
+        src_path = Pathname.new(src).expand_path
+        src_relative = src_path.relative_path_from(base_dir)
+        path = Pathname.new(dest).relative_path_from(src_relative.dirname)
+        path = "#{path}/" if base_dir.join(dest).cleanpath.directory?
       end
       #p [ :relative_path, path, dest, src ]
       path
