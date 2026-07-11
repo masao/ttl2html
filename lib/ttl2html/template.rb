@@ -155,6 +155,9 @@ module TTL2HTML
       path
     end
     def relative_path_uri(src, dest_uri, base_uri = @param[:base_uri])
+      # A relative link cannot be calculated without the source output file.
+      # Fall back to the original absolute URI.
+      return dest_uri unless src
       if dest_uri.start_with? base_uri
         dest = dest_uri.sub(base_uri, "")
         dest = uri_mapping_to_path(dest, @param, "")
