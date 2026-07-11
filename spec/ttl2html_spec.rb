@@ -1063,6 +1063,34 @@ RSpec.describe TTL2HTML::App do
       expect(File.exist?("/tmp/html/a/index.html")).to be true
     end
   end
+  describe "index-list.html.erb" do
+    let(:subject_uri) { "https://example.org/subject/1" }
+    let(:param) do
+      {
+        base_uri: "https://example.org/",
+        index_data: [
+          { subject_uri => {} }
+        ],
+        data_global: {
+          subject_uri => {
+            "http://purl.org/dc/terms/date" => ["2025"],
+            "https://w3id.org/jp-cos/subjectArea" => [RDF::Literal.new("国語", language: :ja)],
+            RDF::RDFS.label.to_s => [RDF::Literal.new("国語", language: :ja)]
+          }
+        },
+        output_file: nil
+      }
+    end
+    let(:tmpl) do
+      TTL2HTML::Template.new("", param)
+    end
+    it "renders resources even when output_file is not set" do
+      expect {
+        cont = tmpl.to_html_raw("index-list.html.erb", param)
+        #puts cont
+      }.not_to raise_error
+    end
+  end
   context "#output_turtle_files" do
     ttl2html = nil
     after(:each) do
