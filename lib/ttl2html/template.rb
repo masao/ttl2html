@@ -142,6 +142,8 @@ module TTL2HTML
         dest.sub!(/^\/+/, "")
         #p [:relative_path, src, dest]
         if @param[:output_dir]
+          # src is a relative path from the current working directory and may already
+          # include `output_dir` when `output_dir` is configured as a relative path.
           output_dir = Pathname.new(@param[:output_dir]).expand_path
           src_path = Pathname.new(src)
           src_path = output_dir.join(src_path) unless src_path.absolute?

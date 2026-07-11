@@ -26,6 +26,24 @@ RSpec.describe TTL2HTML::Template do
       expect(path).to eq Pathname.new("a")
     end
   end
+  context "#relative_path" do
+      it "handles a relative src that already includes output_dir" do
+      tmpl = TTL2HTML::Template.new("", base_uri: "http://example.org/")
+      param = {
+        output_dir: "out",
+        output_file: "out/index.html"
+      }
+      expect(tmpl.relative_path(param[:output_file], "a.html")).to eq Pathname.new("../a.html")
+    end
+    it "does not prepend a relative output_dir twice" do
+      tmpl = TTL2HTML::Template.new("", base_uri: "http://example.org/")
+      param = {
+        output_dir: "out",
+        output_file: "out/sub/index.html"
+      }
+      expect(tmpl.relative_path(param[:output_file], "a.html")).to eq Pathname.new("../../a.html")
+    end
+  end
   context "find_template" do
     it "should find proper template file" do
       template = TTL2HTML::Template.new("")
