@@ -817,6 +817,7 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
       expect(html).to have_css("nav ol.breadcrumb a", text: /^test title 2$/)
       expect(html).to have_css("nav ol.breadcrumb li.active", text: "test title 3")
+      expect(html).to have_css('nav ol.breadcrumb [aria-current="page"]', count: 1)
     end
     it "should output breadcrumbs with inverse property settings" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs_inverse.yml"))
