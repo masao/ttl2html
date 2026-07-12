@@ -475,14 +475,20 @@ module TTL2HTML
     end
     def build_breadcrumbs_sub(parent, template, label_prop = nil)
       data_parent = @data[parent]
-      label = template.get_title(data_parent)
-      label = data_parent[label_prop].first if label_prop and data_parent[label_prop]
       {
         uri: parent,
-        label: label,
+        label: breadcrumb_label(data_parent, template, label_prop),
       }
     end
-
+    def breadcrumb_label(data, template, label_prop = nil)
+      default_label = template.get_title(data)
+      Array(label_prop).each do |property|
+        #p [property, data[property]]
+        values = data[property]
+        return values.first if values && !values.empty?
+      end
+      default_label
+    end
     def shapes_parse(shapes)
       shapes.each do |shape|
         target_class = @data[shape]["http://www.w3.org/ns/shacl#targetClass"]&.first

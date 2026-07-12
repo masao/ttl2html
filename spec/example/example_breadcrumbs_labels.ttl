@@ -1,0 +1,13 @@
+@prefix schema: <https://schema.org/>.
+@prefix ex: <https://example.org/>.
+ex:a schema:name "test title".
+ex:a schema:hasPart ex:chap1.
+ex:chap1 schema:name "Chapter 1".
+ex:chap1 ex:chapterName "Chap1".
+ex:chap1 schema:hasPart ex:sect1, ex:sect2.
+ex:sect1 schema:name "Section 1".
+ex:sect1 ex:sectionName "Sect1".
+ex:sect1 schema:hasPart ex:subsect1.
+ex:sect2 schema:name "Section 2".
+ex:subsect1 schema:name "Subsection 1".
+ex:subsect1 ex:subsectionName "Subsect1".
