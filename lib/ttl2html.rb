@@ -437,8 +437,8 @@ module TTL2HTML
       data = @data[uri]
       if @config[:breadcrumbs]
         if depth == 0
-          first_label = template.get_title(data)
-          first_label = data[@config[:breadcrumbs].first["label"]].first if @config[:breadcrumbs].first["label"] and data[@config[:breadcrumbs].first["label"]]
+          label_prop = @config[:breadcrumbs].first["label"]
+          first_label = breadcrumb_label(data, template, label_prop)
           results << { label: first_label }
         end
         @config[:breadcrumbs].each do |e|
