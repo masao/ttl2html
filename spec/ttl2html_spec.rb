@@ -863,6 +863,24 @@ RSpec.describe TTL2HTML::App do
       expect(html).to have_css("nav ol.breadcrumb")
       expect(html).to have_css("nav ol.breadcrumb a[href='../../']", text: "Home")
     end
+    it "should output breadcrumbs with multiple label properties" do
+      @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example/example_breadcrumbs_labels.yml"))
+      @ttl2html.load_turtle(File.join(spec_base_dir, "example/example_breadcrumbs_labels.ttl"))
+      @ttl2html.output_html_files
+      cont = open("/tmp/html/sect1.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+      expect(html).to have_css("nav ol.breadcrumb li.breadcrumb-item", count: 4)
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^Chap1$/)
+      cont = open("/tmp/html/subsect1.html"){|io| io.read }
+      html = Capybara.string cont
+      expect(html).to have_css("nav ol.breadcrumb")
+      expect(html).to have_css("nav ol.breadcrumb li.breadcrumb-item", count: 5)
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^test title$/)
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^Chap1$/)
+      expect(html).to have_css("nav ol.breadcrumb a", text: /^Sect1$/)
+    end
     it "should support google_analytics" do
       @ttl2html = TTL2HTML::App.new(File.join(spec_base_dir, "example", "example_analytics.yml"))
       @ttl2html.load_turtle(File.join(spec_base_dir, "example", "example.ttl"))

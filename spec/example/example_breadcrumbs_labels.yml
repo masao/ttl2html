@@ -1,0 +1,9 @@
+base_uri: https://example.org/
+output_dir: /tmp/html
+breadcrumbs:
+  - property: https://schema.org/hasPart
+    inverse: true
+    label:
+      - https://example.org/chapterName
+      - https://example.org/sectionName
+      - https://example.org/subsectionName
